@@ -5,7 +5,7 @@ set -f # disable pathname expansion
 set -C # noclobber
 
 readonly BASE_BRANCH_NAME="upstream-merge-"
-readonly BASE_PULL_URL="https://api.github.com/repos/discordia-space/CEV-Eris/pulls"
+readonly BASE_PULL_URL="https://api.github.com/repos/tgstation/tgstation/pulls"
 
 # Ensure the current directory is a git directory
 if [ ! -d .git ]; then
@@ -33,8 +33,8 @@ containsElement () {
 }
 
 # Make sure we have our upstream remote
-if ! git remote | grep CEV-Eris > /dev/null; then
-   git remote add CEV-Eris https://github.com/discordia-space/CEV-Eris.git
+if ! git remote | grep tgstation > /dev/null; then
+   git remote add tgstation https://github.com/tgstation/tgstation.git
 fi
 
 # We need to make sure we are always on a clean master when creating the new branch.
