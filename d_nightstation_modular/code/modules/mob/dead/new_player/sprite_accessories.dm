@@ -5,11 +5,11 @@
 /////////////////////////////
 
 /datum/sprite_accessory/tails/human/nightstation
-	icon = 'z_nightstation_modular/icons/mob/mutant_bodyparts.dmi'
+	icon = 'd_nightstation_modular/icons/mob/mutant_bodyparts.dmi'
 	color_src = HAIR
 
 /datum/sprite_accessory/tails_animated/human/nightstation
-	icon = 'z_nightstation_modular/icons/mob/mutant_bodyparts.dmi'
+	icon = 'd_nightstation_modular/icons/mob/mutant_bodyparts.dmi'
 	color_src = HAIR
 
 /datum/sprite_accessory/tails/human/nightstation/catbig
@@ -133,7 +133,7 @@
 	icon_state = "wolf"
 
 /datum/sprite_accessory/ears/human/nightstation
-	icon = 'z_nightstation_modular/icons/mob/mutant_bodyparts.dmi'
+	icon = 'd_nightstation_modular/icons/mob/mutant_bodyparts.dmi'
 	color_src = HAIR
 
 /datum/sprite_accessory/ears/human/nightstation/bunny
