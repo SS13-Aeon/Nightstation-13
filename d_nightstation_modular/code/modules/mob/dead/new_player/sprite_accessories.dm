@@ -20,6 +20,14 @@
 	name = "Cat, Big"
 	icon_state = "catbig"
 
+/datum/sprite_accessory/tails/human/nightstation/cat2tail
+	name = "Cat, Two Tailed"
+	icon_state = "twocat"
+
+/datum/sprite_accessory/tails_animated/human/nightstation/cat2tail
+	name = "Cat, Two Tailed"
+	icon_state = "twocat"
+
 /datum/sprite_accessory/tails/human/nightstation/cow
 	name = "Cow"
 	icon_state = "cow"
