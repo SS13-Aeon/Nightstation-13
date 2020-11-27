@@ -1,5 +1,5 @@
 // All nightstation ear organs are stored here.
-
+////This file is not included in the dme because it does not work yet but I didn't want to let my ideas to go to waste.
 /obj/item/organ/ears/nightstation
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "kitty"

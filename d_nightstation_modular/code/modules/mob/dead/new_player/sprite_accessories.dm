@@ -76,21 +76,6 @@
 	name = "Kitsune, Three-Tailed"
 	icon_state = "kitsune"
 
-/datum/sprite_accessory/tails/human/nightstation/kitsune9tail
-	name = "Kitsune, Nine-Tailed"
-	icon_state =  "sabresune"
-
-/datum/sprite_accessory/tails_animated/human/nightstation/kitsune9tail
-	name = "Kitsune, Nine-Tailed"
-	icon_state = "sabresune"
-
-/datum/sprite_accessory/tails/human/nightstation/kitsune9tailalt
-	name = "Kitsune, Nine-Tailed Alt"
-	icon_state = "lunasune"
-
-/datum/sprite_accessory/tails_animated/human/nightstation/kitsune9tailalt
-	name = "Kitsune, Nine-Tailed Alt"
-	icon_state = "lunasune"
 
 /datum/sprite_accessory/tails/human/nightstation/murid
 	name = "Murid"

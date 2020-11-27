@@ -1,5 +1,5 @@
 // All nightstation tail organs are stored here using cat tails as a base.
-
+//This file is not included in the dme because it does not work yet but I didn't want to let my ideas to go to waste.
 /obj/item/organ/tail/cat/catbig
 	name = "big cat tail"
 	desc = "A severed big cat tail. Who's wagging now?"
@@ -40,16 +40,6 @@
 	desc = "A severed bunch of kitsune tails. These might go for a fortune."
 	tail_type = "Kitsune, Three-Tailed"
 
-/obj/item/organ/tail/cat/kitsune9tail
-	name = "kitsune nine tails"
-	desc = "A severed bunch of kitsune tails. These are probably worth their weight in plasma."
-	tail_type = "Kitsune, Nine-Tailed"
-
-/obj/item/organ/tail/cat/kitsune9tailalt
-	name = "kitsune nine tails"
-	desc = "A severed bunch of kitsune tails. These are probably worth their weight in plasma."
-	tail_type = "Kitsune, Nine-Tailed Alt"
-
 /obj/item/organ/tail/cat/murid
 	name = "murid tail"
 	desc = "A severed murid tail. Rats rats, we are the rats."
@@ -59,6 +49,11 @@
 	name = "rabbit tail"
 	desc = "A severed rabbit tail. Does this give good luck?"
 	tail_type = "Rabbit"
+
+/obj/item/organ/tail/cat/rabbit
+	name = "squirrel tail"
+	desc = "A severed squirrel tail. Quite big and fluffy for a tail"
+	tail_type = "Squirrel"
 
 /obj/item/organ/tail/cat/tantacle
 	name = "tentacles"

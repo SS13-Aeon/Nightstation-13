@@ -6,8 +6,8 @@
 
 	mutant_bodyparts = list("tail_human" = "None", "ears" = "None", "wings" = "None")
 
-//	mutantears = /obj/item/organ/ears/cat
-//	mutant_organs = list(/obj/item/organ/tail/cat)
+//	mutantears = /obj/item/organ/ears/nightstation/ Eventually implement all tails and ears as organs.
+//	mutant_organs = list(/obj/item/organ/tail/cat/)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	payday_modifier = 0.75
 	ass_image = 'icons/ass/asscat.png'
@@ -22,7 +22,7 @@
 		stop_wagging_tail(H)
 	. = ..()
 
-/datum/species/human/geenemodder/can_wag_tail(mob/living/carbon/human/H)
+/datum/species/human/genemodder/can_wag_tail(mob/living/carbon/human/H)
 	return mutant_bodyparts["tail_human"] || mutant_bodyparts["waggingtail_human"]
 
 /datum/species/human/genemodder/is_wagging_tail(mob/living/carbon/human/H)
