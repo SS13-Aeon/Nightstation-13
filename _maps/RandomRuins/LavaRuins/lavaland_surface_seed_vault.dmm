@@ -352,6 +352,7 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/plantgenes/seedvault,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
 "aW" = (
@@ -401,6 +402,8 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
+/obj/item/storage/box/disks_plantgene,
+/obj/item/storage/box/disks_plantgene,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
 "bb" = (
@@ -480,6 +483,8 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
+/obj/item/storage/box/disks_plantgene,
+/obj/item/storage/box/disks_plantgene,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
 "bj" = (
@@ -672,6 +677,16 @@
 /area/ruin/powered/seedvault)
 "sv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/vault,
+/area/ruin/powered/seedvault)
+"AZ" = (
+/obj/effect/spawner/lootdrop/seed_vault,
+/obj/structure/closet/crate/hydroponics,
+/obj/effect/spawner/lootdrop/seed_vault,
+/obj/effect/spawner/lootdrop/seed_vault,
+/obj/item/vending_refill/hydronutrients,
+/obj/item/vending_refill/hydroseeds,
+/obj/item/circuitboard/machine/plantgenes/vault,
 /turf/open/floor/vault,
 /area/ruin/powered/seedvault)
 "Bb" = (
@@ -1130,7 +1145,7 @@ ay
 aO
 ah
 ac
-aB
+AZ
 aB
 aB
 ac
