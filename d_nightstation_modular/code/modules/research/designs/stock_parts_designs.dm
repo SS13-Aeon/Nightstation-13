@@ -9,7 +9,7 @@
 	lathe_time_factor = 0.2
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_SERVICE
 
-	/datum/design/basic_matter_bin
+/datum/design/basic_matter_bin
 	name = "Basic Matter Bin"
 	desc = "A stock part used in the construction of various devices."
 	id = "basic_matter_bin"
@@ -20,7 +20,7 @@
 	lathe_time_factor = 0.2
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_SERVICE
 
-	/datum/design/micro_mani
+/datum/design/micro_mani
 	name = "Micro Manipulator"
 	desc = "A stock part used in the construction of various devices."
 	id = "micro_mani"
