@@ -3,7 +3,7 @@
 	starting_node = TRUE
 	display_name = "Supplemental Research"
 	description = "Additional technology that has been deemed required that doesn't quite fit in any other category."
-	design_ids = list("plantgenes", "discplantgene")
+	design_ids = list("plantgenes", "diskplantgene")
 
 /datum/techweb_node/alien_bio
 	id = "alien_bio"
