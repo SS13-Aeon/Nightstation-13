@@ -21,6 +21,13 @@
 		/obj/item/bodypart/l_leg/monkey,
 		)
 	hud_type = /datum/hud/monkey
+<<<<<<< HEAD
+=======
+	melee_damage_lower = 1
+	melee_damage_upper = 3
+	ai_controller = /datum/ai_controller/monkey
+	faction = list("neutral", "monkey")
+>>>>>>> 681b15b... Refactors how humans receive damage from xenomorphs, monkeys & slimes (#55389)
 
 /mob/living/carbon/monkey/Initialize(mapload, cubespawned=FALSE, mob/spawner)
 	add_verb(src, /mob/living/proc/mob_sleep)
