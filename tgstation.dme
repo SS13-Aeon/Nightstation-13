@@ -393,6 +393,14 @@
 #include "code\datums\achievements\misc_achievements.dm"
 #include "code\datums\achievements\skill_achievements.dm"
 #include "code\datums\actions\beam_rifle.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\ai\_ai_behavior.dm"
+#include "code\datums\ai\_ai_controller.dm"
+#include "code\datums\ai\generic_actions.dm"
+#include "code\datums\ai\monkey\monkey_behaviors.dm"
+#include "code\datums\ai\monkey\monkey_controller.dm"
+>>>>>>> 241e9cf... fix infinite gas production (#55510)
 #include "code\datums\atmosphere\_atmosphere.dm"
 #include "code\datums\atmosphere\planetary.dm"
 #include "code\datums\brain_damage\brain_trauma.dm"
