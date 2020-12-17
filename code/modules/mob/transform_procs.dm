@@ -151,6 +151,16 @@
 	if(tr_flags & TR_KEEPSTAMINADAMAGE)
 		O.adjustStaminaLoss(getStaminaLoss())
 
+<<<<<<< HEAD
+=======
+	//if we have an AI, transfer it; if we don't, make sure the new thing doesn't either
+	if(tr_flags & TR_KEEPAI)
+		if(ai_controller)
+			ai_controller.PossessPawn(O)
+		else if(O.ai_controller)
+			QDEL_NULL(O.ai_controller)
+
+>>>>>>> 16e8e9d... null AI transfers through transformations correctly (#55535)
 	if (tr_flags & TR_DEFAULTMSG)
 		to_chat(O, "<B>You are now a monkey.</B>")
 
@@ -324,6 +334,17 @@
 				changeling.purchasedpowers -= HF
 				changeling.regain_powers()
 
+<<<<<<< HEAD
+=======
+	//if we have an AI, transfer it; if we don't, make sure the new thing doesn't either
+	if(tr_flags & TR_KEEPAI)
+		if(ai_controller)
+			ai_controller.PossessPawn(O)
+		else if(O.ai_controller)
+			QDEL_NULL(O.ai_controller)
+
+
+>>>>>>> 16e8e9d... null AI transfers through transformations correctly (#55535)
 	O.a_intent = INTENT_HELP
 	if (tr_flags & TR_DEFAULTMSG)
 		to_chat(O, "<B>You are now a human.</B>")
