@@ -32,6 +32,7 @@
 #define COLOR_OLIVE						"#808000"
 #define COLOR_VIBRANT_LIME				"#00FF00"
 #define COLOR_LIME						"#32CD32"
+#define COLOR_DARK_LIME					"#00aa00"
 #define COLOR_VERY_PALE_LIME_GREEN		"#DDFFD3"
 #define COLOR_VERY_DARK_LIME_GREEN		"#003300"
 #define COLOR_GREEN						"#008000"
@@ -41,6 +42,7 @@
 #define COLOR_DARK_CYAN					"#00A2FF"
 #define COLOR_TEAL						"#008080"
 #define COLOR_BLUE						"#0000FF"
+#define COLOR_STRONG_BLUE				"#1919c8"
 #define COLOR_BRIGHT_BLUE				"#2CB2E8"
 #define COLOR_MODERATE_BLUE				"#555CC2"
 #define COLOR_BLUE_LIGHT				"#33CCFF"
@@ -48,6 +50,7 @@
 #define COLOR_BLUE_GRAY					"#75A2BB"
 
 #define COLOR_PINK						"#FFC0CB"
+#define COLOR_LIGHT_PINK				"#ff3cc8"
 #define COLOR_MOSTLY_PURE_PINK			"#E4005B"
 #define COLOR_MAGENTA					"#FF00FF"
 #define COLOR_STRONG_MAGENTA			"#B800B8"
@@ -56,6 +59,7 @@
 #define COLOR_STRONG_VIOLET				"#6927c5"
 
 #define COLOR_ORANGE					"#FF9900"
+#define COLOR_MOSTLY_PURE_ORANGE		"#ff8000"
 #define COLOR_TAN_ORANGE				"#FF7B00"
 #define COLOR_BRIGHT_ORANGE				"#E2853D"
 #define COLOR_LIGHT_ORANGE				"#ffc44d"
