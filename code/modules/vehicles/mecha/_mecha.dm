@@ -604,6 +604,14 @@
 		return TRUE
 	return FALSE
 
+<<<<<<< HEAD
+=======
+/obj/vehicle/sealed/mecha/relaymove(mob/living/user, direction)
+	if(canmove)
+		vehicle_move(direction)
+	return TRUE
+
+>>>>>>> 998e101... Fixes clown cars + Fixes mechs not being able to open doors (#55748)
 /obj/vehicle/sealed/mecha/vehicle_move(direction, forcerotate = FALSE)
 	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
 		return FALSE

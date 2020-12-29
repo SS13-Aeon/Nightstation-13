@@ -54,6 +54,7 @@
 /obj/vehicle/ridden/space/speedwagon/Initialize()
 	. = ..()
 	add_overlay(overlay)
+<<<<<<< HEAD
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
 	D.vehicle_move_delay = 0
 	D.set_riding_offsets(1, list(TEXT_NORTH = list(-10, -4), TEXT_SOUTH = list(16, 3), TEXT_EAST = list(-4, 30), TEXT_WEST = list(4, -3)))
@@ -66,6 +67,9 @@
 	D.set_vehicle_dir_offsets(WEST, -48, -48)
 	for(var/i in GLOB.cardinals)
 		D.set_vehicle_dir_layer(i, BELOW_MOB_LAYER)
+=======
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/speedwagon)
+>>>>>>> 998e101... Fixes clown cars + Fixes mechs not being able to open doors (#55748)
 
 /obj/vehicle/ridden/space/speedwagon/Bump(atom/A)
 	. = ..()
