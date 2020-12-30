@@ -1,14 +1,15 @@
 #define TRANSFORMATION_DURATION 22
 
+<<<<<<< HEAD
 /mob/living/carbon/proc/monkeyize(tr_flags = (TR_KEEPITEMS | TR_KEEPVIRUS | TR_KEEPSTUNS | TR_KEEPREAGENTS | TR_DEFAULTMSG | TR_KEEPSTAMINADAMAGE))
+=======
+/mob/living/carbon/proc/monkeyize()
+>>>>>>> f66ca34... Refactors monkeys into a species (#55614)
 	if (notransform || transformation_timer)
 		return
 
-	if(tr_flags & TR_KEEPITEMS)
-		var/Itemlist = get_equipped_items(TRUE)
-		Itemlist += held_items
-		for(var/obj/item/W in Itemlist)
-			dropItemToGround(W)
+	if(ismonkey(src))
+		return
 
 	//Make mob invisible and spawn animation
 	notransform = TRUE
@@ -19,10 +20,11 @@
 
 	new /obj/effect/temp_visual/monkeyify(loc)
 
-	transformation_timer = addtimer(CALLBACK(src, .proc/finish_monkeyize, tr_flags), TRANSFORMATION_DURATION, TIMER_UNIQUE)
+	transformation_timer = addtimer(CALLBACK(src, .proc/finish_monkeyize), TRANSFORMATION_DURATION, TIMER_UNIQUE)
 
-/mob/living/carbon/proc/finish_monkeyize(tr_flags)
+/mob/living/carbon/proc/finish_monkeyize()
 	transformation_timer = null
+<<<<<<< HEAD
 
 	var/list/missing_bodyparts_zones = get_missing_limbs()
 	var/list/stored_implants = list()
@@ -163,36 +165,42 @@
 	. = O
 
 	qdel(src)
+=======
+	to_chat(src, "<B>You are now a monkey.</B>")
+	notransform = FALSE
+	icon = initial(icon)
+	invisibility = 0
+	set_species(/datum/species/monkey)
+	return src
+>>>>>>> f66ca34... Refactors monkeys into a species (#55614)
 
 //////////////////////////           Humanize               //////////////////////////////
 //Could probably be merged with monkeyize but other transformations got their own procs, too
 
+<<<<<<< HEAD
 /mob/living/carbon/proc/humanize(tr_flags = (TR_KEEPITEMS | TR_KEEPVIRUS | TR_KEEPSTUNS | TR_KEEPREAGENTS | TR_DEFAULTMSG))
+=======
+/mob/living/carbon/proc/humanize()
+>>>>>>> f66ca34... Refactors monkeys into a species (#55614)
 	if (notransform || transformation_timer)
 		return
 
-	//now the rest
-	if (tr_flags & TR_KEEPITEMS)
-		var/Itemlist = get_equipped_items(TRUE)
-		Itemlist += held_items
-		for(var/obj/item/W in Itemlist)
-			dropItemToGround(W, TRUE)
-			if (client)
-				client.screen -= W
+	if(!ismonkey(src))
+		return
 
 	//Make mob invisible and spawn animation
 	notransform = TRUE
 	Paralyze(TRANSFORMATION_DURATION, ignore_canstun = TRUE)
-
 	icon = null
 	cut_overlays()
 	invisibility = INVISIBILITY_MAXIMUM
+
 	new /obj/effect/temp_visual/monkeyify/humanify(loc)
+	transformation_timer = addtimer(CALLBACK(src, .proc/finish_humanize), TRANSFORMATION_DURATION, TIMER_UNIQUE)
 
-	transformation_timer = addtimer(CALLBACK(src, .proc/finish_humanize, tr_flags), TRANSFORMATION_DURATION, TIMER_UNIQUE)
-
-/mob/living/carbon/proc/finish_humanize(tr_flags)
+/mob/living/carbon/proc/finish_humanize()
 	transformation_timer = null
+<<<<<<< HEAD
 
 	var/list/stored_implants = list()
 	var/list/int_organs = list()
@@ -337,6 +345,14 @@
 			loc.vars[A] = O
 
 	qdel(src)
+=======
+	to_chat(src, "<B>You are now a human.</B>")
+	notransform = FALSE
+	icon = initial(icon)
+	invisibility = 0
+	set_species(/datum/species/human)
+	return src
+>>>>>>> f66ca34... Refactors monkeys into a species (#55614)
 
 /mob/living/carbon/human/AIize(transfer_after = TRUE, client/preference_source)
 	if (notransform)
