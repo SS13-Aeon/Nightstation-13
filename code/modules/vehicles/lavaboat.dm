@@ -9,7 +9,11 @@
 	var/allowed_turf = /turf/open/lava
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 	can_buckle = TRUE
+<<<<<<< HEAD
 	rider_check_flags = REQUIRES_LEGS | REQUIRES_ARMS | UNBUCKLE_DISABLED_RIDER
+=======
+	key_type = /obj/item/oar
+>>>>>>> be26c15... Merge pull request #55787 from Timberpoes/ridable-tweex
 
 /obj/vehicle/ridden/lavaboat/Initialize()
 	. = ..()
