@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /obj/vehicle/ridden/space
 	name = "Generic Space Vehicle!"
@@ -8,6 +9,9 @@
 	D.override_allow_spacemove = TRUE
 
 /obj/vehicle/ridden/space/speedbike
+=======
+/obj/vehicle/ridden/speedbike
+>>>>>>> be26c15... Merge pull request #55787 from Timberpoes/ridable-tweex
 	name = "Speedbike"
 	icon = 'icons/obj/bike.dmi'
 	icon_state = "speedbike_blue"
@@ -16,7 +20,7 @@
 	var/overlay_state = "cover_blue"
 	var/mutable_appearance/overlay
 
-/obj/vehicle/ridden/space/speedbike/Initialize()
+/obj/vehicle/ridden/speedbike/Initialize()
 	. = ..()
 	overlay = mutable_appearance(icon, overlay_state, ABOVE_MOB_LAYER)
 	add_overlay(overlay)
@@ -28,18 +32,18 @@
 	D.set_vehicle_dir_offsets(EAST, -18, 0)
 	D.set_vehicle_dir_offsets(WEST, -18, 0)
 
-/obj/vehicle/ridden/space/speedbike/Move(newloc,move_dir)
+/obj/vehicle/ridden/speedbike/Move(newloc,move_dir)
 	if(has_buckled_mobs())
 		new /obj/effect/temp_visual/dir_setting/speedbike_trail(loc,move_dir)
 	return ..()
 
-/obj/vehicle/ridden/space/speedbike/red
+/obj/vehicle/ridden/speedbike/red
 	icon_state = "speedbike_red"
 	overlay_state = "cover_red"
 
 //BM SPEEDWAGON
 
-/obj/vehicle/ridden/space/speedwagon
+/obj/vehicle/ridden/speedwagon
 	name = "BM Speedwagon"
 	desc = "Push it to the limit, walk along the razor's edge."
 	icon = 'icons/obj/car.dmi'
@@ -51,7 +55,7 @@
 	pixel_y = -48
 	pixel_x = -48
 
-/obj/vehicle/ridden/space/speedwagon/Initialize()
+/obj/vehicle/ridden/speedwagon/Initialize()
 	. = ..()
 	add_overlay(overlay)
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
@@ -67,7 +71,7 @@
 	for(var/i in GLOB.cardinals)
 		D.set_vehicle_dir_layer(i, BELOW_MOB_LAYER)
 
-/obj/vehicle/ridden/space/speedwagon/Bump(atom/A)
+/obj/vehicle/ridden/speedwagon/Bump(atom/A)
 	. = ..()
 	if(A.density && has_buckled_mobs())
 		var/atom/throw_target = get_edge_target_turf(A, dir)
@@ -87,7 +91,7 @@
 				visible_message("<span class='danger'>[src] crashes into [H]!</span>")
 				playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
 
-/obj/vehicle/ridden/space/speedwagon/Moved()
+/obj/vehicle/ridden/speedwagon/Moved()
 	. = ..()
 	if(has_buckled_mobs())
 		for(var/atom/A in range(2, src))
