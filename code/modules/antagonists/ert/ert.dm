@@ -80,6 +80,13 @@
 	role = "Trooper"
 	rip_and_tear = TRUE
 
+<<<<<<< HEAD
+=======
+/datum/antagonist/ert/deathsquad/New()
+	. = ..()
+	name_source = GLOB.commando_names
+
+>>>>>>> fb0a1f6... Merge pull request #55834 from coiax/k33p-th4t-d15k
 /datum/antagonist/ert/medic/inquisitor
 	outfit = /datum/outfit/centcom/ert/medic/inquisitor
 
