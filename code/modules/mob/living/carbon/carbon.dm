@@ -3,6 +3,10 @@
 	create_reagents(1000)
 	assign_bodypart_ownership()
 	update_body_parts() //to update the carbon's new bodyparts appearance
+
+	// Carbons cannot taste anything without a tongue; the tongue organ removes this on Insert
+	ADD_TRAIT(src, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
+
 	GLOB.carbon_list += src
 
 /mob/living/carbon/Destroy()
