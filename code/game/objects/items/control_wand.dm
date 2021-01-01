@@ -38,6 +38,10 @@
 	if(!target_interface)
 		return
 
+<<<<<<< HEAD
+=======
+	user.set_machine(src)
+>>>>>>> c7bc210... Setting door wand to src instead of user (#55863)
 	// Generate a control packet.
 	var/datum/netdata/data = new
 	data.recipient_ids = list(target_interface.hardware_id)
