@@ -651,10 +651,18 @@
 
 //ANIMAL RIDING
 
+<<<<<<< HEAD
 /mob/living/simple_animal/user_buckle_mob(mob/living/M, mob/user)
 	var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
 	if(riding_datum)
 		if(user.incapacitated())
+=======
+/mob/living/simple_animal/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
+	if(user.incapacitated())
+		return
+	for(var/atom/movable/A in get_turf(src))
+		if(A != src && A != M && A.density)
+>>>>>>> 91a8cf6... You can now mount things from the side (#55741)
 			return
 		for(var/atom/movable/A in get_turf(src))
 			if(A != src && A != M && A.density)
