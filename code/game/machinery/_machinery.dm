@@ -596,16 +596,29 @@
 	if(component_parts)
 		if(panel_open || W.works_from_distance)
 			var/obj/item/circuitboard/machine/CB = locate(/obj/item/circuitboard/machine) in component_parts
-			var/P
+			var/required_type
 			if(W.works_from_distance)
 				to_chat(user, display_parts(user))
+			if(!CB)
+				return FALSE
 			for(var/obj/item/A in component_parts)
-				for(var/D in CB.req_components)
-					if(ispath(A.type, D))
-						P = D
+				for(var/design_type in CB.req_components)
+					if(ispath(A.type, design_type))
+						required_type = design_type
 						break
 				for(var/obj/item/B in W.contents)
+<<<<<<< HEAD
 					if(istype(B, P) && istype(A, P))
+=======
+					if(istype(B, required_type) && istype(A, required_type))
+						// If it's a corrupt or rigged cell, attempting to send it through Bluespace could have unforeseen consequences.
+						if(istype(B, /obj/item/stock_parts/cell) && W.works_from_distance)
+							var/obj/item/stock_parts/cell/checked_cell = B
+							// If it's rigged or corrupted, max the charge. Then explode it.
+							if(checked_cell.rigged || checked_cell.corrupted)
+								checked_cell.charge = checked_cell.maxcharge
+								checked_cell.explode()
+>>>>>>> 00bf90c... Fixes runtime on using BRPD on computers. (#55817)
 						if(B.get_part_rating() > A.get_part_rating())
 							if(istype(B,/obj/item/stack)) //conveniently this will mean A is also a stack and I will kill the first person to prove me wrong
 								var/obj/item/stack/SA = A
