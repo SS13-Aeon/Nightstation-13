@@ -90589,9 +90589,6 @@
 /obj/item/food/grown/potato,
 /obj/item/food/grown/onion,
 /obj/item/food/grown/onion,
-/obj/item/food/meat/rawcutlet/plain,
-/obj/item/food/meat/rawcutlet/plain,
-/obj/item/food/meat/rawcutlet/plain,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -91194,6 +91191,14 @@
 /obj/structure/sink{
 	pixel_y = 29
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/camera{
+	c_tag = "Prison Maintenance";
+	dir = 4;
+	network = list("ss13","prison")
+	},
+>>>>>>> 81cbda8... Meat yoink (#55830)
 /mob/living/simple_animal/mouse/brown/tom{
 	name = "Jerm"
 	},
