@@ -91,3 +91,30 @@
 	explosion(loc, 0, 1, 2, 3, 0)
 	log_message("[src] exploded due to destruction", LOG_ATTACK)
 	return ..()
+<<<<<<< HEAD
+=======
+
+/obj/vehicle/sealed/car/relaymove(mob/living/user, direction)
+	if(is_driver(user) && canmove && (!key_type || istype(inserted_key, key_type)))
+		vehicle_move(direction)
+	return TRUE
+
+/obj/vehicle/sealed/car/vehicle_move(direction)
+	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
+		return FALSE
+	COOLDOWN_START(src, cooldown_vehicle_move, vehicle_move_delay)
+
+	if(COOLDOWN_FINISHED(src, enginesound_cooldown))
+		COOLDOWN_START(src, enginesound_cooldown, engine_sound_length)
+		playsound(get_turf(src), engine_sound, 100, TRUE)
+
+	if(trailer)
+		var/dir_to_move = get_dir(trailer.loc, loc)
+		var/did_move = step(src, direction)
+		if(did_move)
+			step(trailer, dir_to_move)
+		return did_move
+	else
+		after_move(direction)
+		return step(src, direction)
+>>>>>>> 925d56d... beep beep honk honk (#55875)
