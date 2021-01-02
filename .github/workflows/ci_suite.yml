@@ -31,7 +31,12 @@ jobs:
           find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python3 ./tools/json_verifier.py
           bash tools/ci/build_tgui.sh
           bash tools/ci/check_grep.sh
+<<<<<<< HEAD
           python3 tools/mapmerge2/dmi.py --test
+=======
+          tools/bootstrap/python -m dmi.test
+          tools/bootstrap/python -m mapmerge2.dmm_test
+>>>>>>> 93f8650... Add .dmm merge driver (#55699)
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
       - name: Annotate Lints
         uses: yogstation13/DreamAnnotate@v1
