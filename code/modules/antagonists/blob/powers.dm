@@ -367,6 +367,57 @@
 		var/datum/blobstrain/bs = choices[choice]
 		set_strain(bs)
 
+<<<<<<< HEAD
+=======
+	if (!free_strain_rerolls && blob_points < BLOB_REROLL_COST)
+		to_chat(src, "<span class='warning'>You need at least [BLOB_REROLL_COST] resources to reroll your strain again!</span>")
+		return
+
+	open_reroll_menu()
+
+/// Open the menu to reroll strains
+/mob/camera/blob/proc/open_reroll_menu()
+	if (!strain_choices)
+		strain_choices = list()
+
+		var/list/new_strains = GLOB.valid_blobstrains.Copy() - blobstrain.type
+		for (var/_ in 1 to BLOB_REROLL_CHOICES)
+			var/datum/blobstrain/strain = pick_n_take(new_strains)
+
+			var/image/strain_icon = image('icons/mob/blob.dmi', "blob_core")
+			strain_icon.color = initial(strain.color)
+
+			var/info_text = "<span class='boldnotice'>[initial(strain.name)]</span>"
+			info_text += "<br><span class='notice'>[initial(strain.analyzerdescdamage)]</span>"
+			if (!isnull(initial(strain.analyzerdesceffect)))
+				info_text += "<br><span class='notice'>[initial(strain.analyzerdesceffect)]</span>"
+
+			var/datum/radial_menu_choice/choice = new
+			choice.image = strain_icon
+			choice.info = info_text
+
+			strain_choices[initial(strain.name)] = choice
+
+	var/strain_result = show_radial_menu(src, src, strain_choices, radius = BLOB_REROLL_RADIUS, tooltips = TRUE)
+	if (isnull(strain_result))
+		return
+
+	if (!free_strain_rerolls && !can_buy(BLOB_REROLL_COST))
+		return
+
+	for (var/_other_strain in GLOB.valid_blobstrains)
+		var/datum/blobstrain/other_strain = _other_strain
+		if (initial(other_strain.name) == strain_result)
+			set_strain(other_strain)
+
+			if (free_strain_rerolls)
+				free_strain_rerolls -= 1
+
+			last_reroll_time = world.time
+			strain_choices = null
+
+			return
+>>>>>>> 9071703... Fixes two bugs with Blob strain rerolling (#55833)
 
 /mob/camera/blob/verb/blob_help()
 	set category = "Blob"
