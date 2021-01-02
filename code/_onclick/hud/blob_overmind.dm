@@ -93,8 +93,13 @@
 
 /atom/movable/screen/blob/readapt_strain
 	icon_state = "ui_chemswap"
+<<<<<<< HEAD
 	name = "Readapt Strain (40)"
 	desc = "Allows you to choose a new strain from 4 random choices for 40 resources."
+=======
+	name = "Readapt Strain"
+	desc = "Allows you to choose a new strain from 6 random choices for 40 resources."
+>>>>>>> 9071703... Fixes two bugs with Blob strain rerolling (#55833)
 
 /atom/movable/screen/blob/readapt_strain/MouseEntered(location,control,params)
 	if(hud?.mymob && isovermind(hud.mymob))
