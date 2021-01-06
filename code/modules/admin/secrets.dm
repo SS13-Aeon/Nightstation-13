@@ -281,7 +281,20 @@
 				if(H.ckey)
 					dat += "<tr><td>[H]</td><td>[md5(H.dna.uni_identity)]</td></tr>"
 			dat += "</table>"
+<<<<<<< HEAD:code/modules/admin/secrets.dm
 			usr << browse(dat, "window=fingerprints;size=440x410")
+=======
+			holder << browse(dat, "window=fingerprints;size=440x410")
+		if("ctfbutton")
+			toggle_id_ctf(holder, "centcom")
+		if("tdomereset")
+			var/delete_mobs = alert("Clear all mobs?","Confirm","Yes","No","Cancel")
+			if(delete_mobs == "Cancel")
+				return
+
+			log_admin("[key_name(holder)] reset the thunderdome to default with delete_mobs==[delete_mobs].", 1)
+			message_admins("<span class='adminnotice'>[key_name_admin(holder)] reset the thunderdome to default with delete_mobs==[delete_mobs].</span>")
+>>>>>>> 1fd0485... [READY] Hark! The Medieval Reality Simulation Dome Emergency Shuttle! (+speech mutation, NOTELEPORT fixes and teambuilder improvements) (#55424):code/modules/admin/verbs/secrets.dm
 
 		if("monkey")
 			if(!check_rights(R_FUN))
