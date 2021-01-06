@@ -167,7 +167,11 @@
 //////////////////////////           Humanize               //////////////////////////////
 //Could probably be merged with monkeyize but other transformations got their own procs, too
 
+<<<<<<< HEAD
 /mob/living/carbon/proc/humanize(tr_flags = (TR_KEEPITEMS | TR_KEEPVIRUS | TR_KEEPSTUNS | TR_KEEPREAGENTS | TR_DEFAULTMSG))
+=======
+/mob/living/carbon/proc/humanize(species = /datum/species/human)
+>>>>>>> cdf16a2... Makes the monkey mutation remember your species through transformations (#55844)
 	if (notransform || transformation_timer)
 		return
 
@@ -188,6 +192,7 @@
 	cut_overlays()
 	invisibility = INVISIBILITY_MAXIMUM
 	new /obj/effect/temp_visual/monkeyify/humanify(loc)
+<<<<<<< HEAD
 
 	transformation_timer = addtimer(CALLBACK(src, .proc/finish_humanize, tr_flags), TRANSFORMATION_DURATION, TIMER_UNIQUE)
 
@@ -337,6 +342,18 @@
 			loc.vars[A] = O
 
 	qdel(src)
+=======
+	transformation_timer = addtimer(CALLBACK(src, .proc/finish_humanize, species), TRANSFORMATION_DURATION, TIMER_UNIQUE)
+
+/mob/living/carbon/proc/finish_humanize(species = /datum/species/human)
+	transformation_timer = null
+	to_chat(src, "<B>You are now a human.</B>")
+	notransform = FALSE
+	icon = initial(icon)
+	invisibility = 0
+	set_species(species)
+	return src
+>>>>>>> cdf16a2... Makes the monkey mutation remember your species through transformations (#55844)
 
 /mob/living/carbon/human/AIize(transfer_after = TRUE, client/preference_source)
 	if (notransform)
