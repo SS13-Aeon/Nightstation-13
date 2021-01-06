@@ -706,8 +706,17 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 	//Makes em go mad and accumulate rads.
 	var/toAdd = -0.05
+<<<<<<< HEAD
 	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power))) // If they can see it without mesons on.  Bad on them.
 		if(l.mind?.assigned_role == "Psychologist")
+=======
+	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power)))
+		// Someone (generally a Psychologist), when looking at the SM
+		// within hallucination range makes it easier to manage.
+		if (QDELETED(l.mind))
+			continue
+		if(HAS_TRAIT(l.mind, TRAIT_SUPERMATTER_SOOTHER))
+>>>>>>> d1a8fe6... suppermatter doesn't get angry with mindless wights (#55960)
 			toAdd = 0.05
 			psy_overlay = TRUE
 		else if(!istype(l.glasses, /obj/item/clothing/glasses/meson))
