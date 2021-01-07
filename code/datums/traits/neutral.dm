@@ -261,9 +261,14 @@
 	old_tongue.Remove(H)
 	new_tongue.Insert(H)
 	qdel(old_tongue)
+<<<<<<< HEAD
 	H.put_in_hands(gloves)
 	H.equip_to_slot(gloves, ITEM_SLOT_GLOVES)
 	H.regenerate_icons()
+=======
+	if(!H.equip_to_slot_if_possible(gloves, ITEM_SLOT_GLOVES, bypass_equip_delay_self = TRUE))
+		H.put_in_hands(gloves)
+>>>>>>> 7524ab1... Nearsightness, Blindness, Tongue-tied on_spawn() code improvements, bug fixes (#55807)
 
 /datum/quirk/tongue_tied/post_add()
 	to_chat(quirk_holder, "<span class='boldannounce'>Because you speak with your hands, having them full hinders your ability to communicate!</span>")
