@@ -393,6 +393,17 @@
 #include "code\datums\achievements\misc_achievements.dm"
 #include "code\datums\achievements\skill_achievements.dm"
 #include "code\datums\actions\beam_rifle.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\ai\_ai_behavior.dm"
+#include "code\datums\ai\_ai_controller.dm"
+#include "code\datums\ai\generic_actions.dm"
+#include "code\datums\ai\telegraph_effects.dm"
+#include "code\datums\ai\monkey\monkey_behaviors.dm"
+#include "code\datums\ai\monkey\monkey_controller.dm"
+#include "code\datums\ai\objects\vending_machines.dm\vending_machine_behaviors.dm"
+#include "code\datums\ai\objects\vending_machines.dm\vending_machine_controller.dm"
+>>>>>>> 79ed05e... Reworks the brand intelligence event with AI controller datums (#55778)
 #include "code\datums\atmosphere\_atmosphere.dm"
 #include "code\datums\atmosphere\planetary.dm"
 #include "code\datums\brain_damage\brain_trauma.dm"
