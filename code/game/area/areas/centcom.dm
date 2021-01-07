@@ -139,7 +139,12 @@
 	has_gravity = STANDARD_GRAVITY
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | NOTELEPORT
 	flags_1 = NONE
+<<<<<<< HEAD
 	ambientsounds = HIGHSEC
+=======
+	ambience_index = AMBIENCE_DANGER
+	network_root_id = SYNDICATE_NETWORK_ROOT
+>>>>>>> a2a3d25... [Performance] Refactors ambient sounds to use global lists instead of list macros  (#55988)
 
 /area/syndicate_mothership/control
 	name = "Syndicate Control Room"
