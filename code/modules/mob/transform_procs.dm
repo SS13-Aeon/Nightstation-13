@@ -23,6 +23,7 @@
 
 /mob/living/carbon/proc/finish_monkeyize(tr_flags)
 	transformation_timer = null
+<<<<<<< HEAD
 
 	var/list/missing_bodyparts_zones = get_missing_limbs()
 	var/list/stored_implants = list()
@@ -163,6 +164,15 @@
 	. = O
 
 	qdel(src)
+=======
+	to_chat(src, "<B>You are now a monkey.</B>")
+	notransform = FALSE
+	icon = initial(icon)
+	invisibility = 0
+	set_species(/datum/species/monkey)
+	uncuff()
+	return src
+>>>>>>> 9c3e3d9... Monkeyization now causes you to drop cuffs again (#55998)
 
 //////////////////////////           Humanize               //////////////////////////////
 //Could probably be merged with monkeyize but other transformations got their own procs, too
