@@ -180,7 +180,13 @@
 /datum/mutation/human/race/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
+<<<<<<< HEAD
 	. = owner.monkeyize(TR_KEEPITEMS | TR_KEEPIMPLANTS | TR_KEEPORGANS | TR_KEEPDAMAGE | TR_KEEPVIRUS | TR_KEEPSTUNS | TR_KEEPREAGENTS | TR_KEEPSE)
+=======
+	if(!ismonkey(owner))
+		original_species = owner.dna.species.type
+	. = owner.monkeyize()
+>>>>>>> 3e59776... Line change to fix monkeys never devolving into humans if they started as a monkey (#56007)
 
 /datum/mutation/human/race/on_losing(mob/living/carbon/monkey/owner)
 	if(owner && istype(owner) && owner.stat != DEAD && (owner.dna.mutations.Remove(src)))
