@@ -574,6 +574,11 @@
 #include "code\datums\diseases\advance\symptoms\youth.dm"
 #include "code\datums\elements\_element.dm"
 #include "code\datums\elements\art.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\elements\atmos_sensitive.dm"
+#include "code\datums\elements\bed_tucking.dm"
+>>>>>>> 6d1cb94... LINDA Reforged (#55604)
 #include "code\datums\elements\bsa_blocker.dm"
 #include "code\datums\elements\cleaning.dm"
 #include "code\datums\elements\decal.dm"
