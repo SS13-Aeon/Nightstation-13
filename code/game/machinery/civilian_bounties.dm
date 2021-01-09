@@ -107,6 +107,35 @@
 	playsound(loc, 'sound/machines/synth_yes.ogg', 30 , TRUE)
 	sending = FALSE
 
+<<<<<<< HEAD
+=======
+///Here is where cargo bounties are added to the player's bank accounts, then adjusted and scaled into a civilian bounty.
+/obj/machinery/computer/piratepad_control/civilian/proc/add_bounties()
+	if(!inserted_scan_id || !inserted_scan_id.registered_account)
+		return
+	var/datum/bank_account/pot_acc = inserted_scan_id.registered_account
+	if((pot_acc.civilian_bounty && ((world.time) < pot_acc.bounty_timer + 5 MINUTES)) || pot_acc.bounties)
+		var/curr_time = round(((pot_acc.bounty_timer + (5 MINUTES))-world.time)/ (1 MINUTES), 0.01)
+		to_chat(usr, "<span class='warning'>Internal ID network spools coiling, try again in [curr_time] minutes!</span>")
+		return FALSE
+	if(!pot_acc.account_job)
+		to_chat(usr, "<span class='warning'>The console smartly rejects your ID card, as it lacks a job assignment!</span>")
+		return FALSE
+	var/list/datum/bounty/crumbs = list(random_bounty(pot_acc.account_job.bounty_types), // We want to offer 2 bounties from their appropriate job catagories
+										random_bounty(pot_acc.account_job.bounty_types), // and 1 guarenteed assistant bounty if the other 2 suck.
+										random_bounty(CIV_JOB_BASIC))
+	pot_acc.bounty_timer = world.time
+	pot_acc.bounties = crumbs
+
+/obj/machinery/computer/piratepad_control/civilian/proc/pick_bounty(choice)
+	if(!inserted_scan_id?.registered_account)
+		playsound(loc, 'sound/machines/synth_no.ogg', 40 , TRUE)
+		return
+	inserted_scan_id.registered_account.civilian_bounty = inserted_scan_id.registered_account.bounties[choice]
+	inserted_scan_id.registered_account.bounties = null
+	return inserted_scan_id.registered_account.civilian_bounty
+
+>>>>>>> 69524b1... makes civ bounties not completely broken (#55996)
 /obj/machinery/computer/piratepad_control/civilian/AltClick(mob/user)
 	. = ..()
 	id_eject(user, inserted_scan_id)
