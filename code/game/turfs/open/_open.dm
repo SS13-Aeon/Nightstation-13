@@ -263,6 +263,7 @@
 
 /turf/open/rad_act(pulse_strength)
 	. = ..()
+<<<<<<< HEAD
 	if (air.gases[/datum/gas/carbon_dioxide] && air.gases[/datum/gas/oxygen])
 		pulse_strength = min(pulse_strength, air.gases[/datum/gas/carbon_dioxide][MOLES] * 1000, air.gases[/datum/gas/oxygen][MOLES] * 2000) //Ensures matter is conserved properly
 		air.gases[/datum/gas/carbon_dioxide][MOLES] = max(air.gases[/datum/gas/carbon_dioxide][MOLES] - (pulse_strength * 0.001),0)
@@ -276,6 +277,28 @@
 		air.gases[/datum/gas/hydrogen][MOLES] = max(air.gases[/datum/gas/hydrogen][MOLES] - (pulse_strength * 0.001), 0)
 		air.assert_gas(/datum/gas/tritium)
 		air.gases[/datum/gas/tritium][MOLES] += (pulse_strength * 0.001)
+=======
+	var/gas_change = FALSE
+	var/list/cached_gases = air.gases
+	if(cached_gases[/datum/gas/oxygen] && cached_gases[/datum/gas/carbon_dioxide])
+		gas_change = TRUE
+		var/pulse_strength = min(strength, cached_gases[/datum/gas/oxygen][MOLES] * 1000, cached_gases[/datum/gas/carbon_dioxide][MOLES] * 2000)
+		cached_gases[/datum/gas/carbon_dioxide][MOLES] -= pulse_strength / 2000
+		cached_gases[/datum/gas/oxygen][MOLES] -= pulse_strength / 1000
+		ASSERT_GAS(/datum/gas/pluoxium, air)
+		cached_gases[/datum/gas/pluoxium][MOLES] += pulse_strength / 4000
+		strength -= pulse_strength
+
+	if(cached_gases[/datum/gas/hydrogen])
+		gas_change = TRUE
+		var/pulse_strength = min(strength, cached_gases[/datum/gas/hydrogen][MOLES] * 1000)
+		cached_gases[/datum/gas/hydrogen][MOLES] -= pulse_strength / 1000
+		ASSERT_GAS(/datum/gas/tritium, air)
+		cached_gases[/datum/gas/tritium][MOLES] += pulse_strength / 1000
+		strength -= pulse_strength
+
+	if(gas_change)
+>>>>>>> 67c7dd8... Fixes empty gaslist entries, jesus fuck (#56027)
 		air.garbage_collect()
 		air_update_turf()
 
