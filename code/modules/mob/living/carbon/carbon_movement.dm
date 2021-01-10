@@ -59,6 +59,15 @@
 		if(!usable_legs && !(movement_type & (FLYING | FLOATING)))
 			ADD_TRAIT(src, TRAIT_IMMOBILIZED, LACKING_LOCOMOTION_APPENDAGES_TRAIT)
 
+<<<<<<< HEAD
+=======
+/mob/living/carbon/on_movement_type_flag_enabled(datum/source, flag)
+	. = ..()
+	if(flag & (FLYING | FLOATING) && (movement_type & (FLYING | FLOATING) == flag))
+		remove_movespeed_modifier(/datum/movespeed_modifier/limbless)
+		REMOVE_TRAIT(src, TRAIT_FLOORED, LACKING_LOCOMOTION_APPENDAGES_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, LACKING_LOCOMOTION_APPENDAGES_TRAIT)
+>>>>>>> 39a364b... Removes the ANIMATION_PARALLEL flag from floating and fixes another issue with the refactor. (#55930)
 
 /mob/living/carbon/setMovetype(newval)
 	. = ..()
