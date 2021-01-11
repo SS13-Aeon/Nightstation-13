@@ -154,7 +154,13 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_FRIENDLY" = TRAIT_FRIENDLY,
 		"TRAIT_GRABWEAKNESS" = TRAIT_GRABWEAKNESS,
 		"TRAIT_SNOB" = TRAIT_SNOB,
+<<<<<<< HEAD
 		"TRAIT_BALD" = TRAIT_BALD
+=======
+		"TRAIT_BALD" = TRAIT_BALD,
+		"TRAIT_BADTOUCH" = TRAIT_BADTOUCH,
+		"TRAIT_NOBLEED" = TRAIT_NOBLEED
+>>>>>>> 653d75e... Flesh to stone no longer makes you immune to bleeding, refactors bleedsuppress into a trait (#56078)
 
 	),
 	/obj/item/bodypart = list(
