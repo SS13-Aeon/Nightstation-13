@@ -4,7 +4,13 @@
 	icon_state = "sharpener"
 	desc = "A block that makes things sharp."
 	force = 5
+<<<<<<< HEAD
 	var/used = 0
+=======
+	///Amount of uses the whetstone has. Set to -1 for functionally infinite uses.
+	var/uses = 1
+	///How much force the whetstone can add to an item.
+>>>>>>> 1803077... Makes it possible to create an /obj/item/sharpener with multiple uses (#55958)
 	var/increment = 4
 	var/max = 30
 	var/prefix = "sharpened"
@@ -12,7 +18,7 @@
 
 
 /obj/item/sharpener/attackby(obj/item/I, mob/user, params)
-	if(used)
+	if(uses == 0)
 		to_chat(user, "<span class='warning'>The sharpening block is too worn to use again!</span>")
 		return
 	if(I.force >= max || I.throwforce >= max)//no esword sharpening
@@ -42,12 +48,30 @@
 	playsound(src, 'sound/items/unsheath.ogg', 25, TRUE)
 	I.sharpness = SHARP_EDGED
 	I.throwforce = clamp(I.throwforce + increment, 0, max)
+<<<<<<< HEAD
 	I.name = "[prefix] [I.name]"
 	name = "worn out [name]"
 	desc = "[desc] At least, it used to."
 	used = 1
 	update_icon()
 
+=======
+	I.name = "[prefix] [I.name]" //This adds a prefix and a space to the item's name regardless of what the prefix is
+	desc = "[desc] At least, it used to."
+	uses-- //this doesn't cause issues because we check if uses == 0 earlier in this proc
+	if(uses == 0)
+		name = "worn out [name]" //whetstone becomes used whetstone
+	update_icon()
+
+/**
+* # Super whetstone
+*
+* Extremely powerful admin-only whetstone
+*
+* Whetstone that adds 200 damage to an item, with the maximum force and throw_force reachable with it being 200. As with normal whetstones, energy weapons cannot be sharpened with it and two-handed weapons will only get the throw_force bonus.
+*
+*/
+>>>>>>> 1803077... Makes it possible to create an /obj/item/sharpener with multiple uses (#55958)
 /obj/item/sharpener/super
 	name = "super whetstone"
 	desc = "A block that will make your weapon sharper than Einstein on adderall."
