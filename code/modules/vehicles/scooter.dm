@@ -7,9 +7,16 @@
 
 /obj/vehicle/ridden/scooter/Initialize()
 	. = ..()
+<<<<<<< HEAD
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
 	D.set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0), TEXT_SOUTH = list(-2), TEXT_EAST = list(0), TEXT_WEST = list( 2)))
 
+=======
+	make_ridable()
+
+/obj/vehicle/ridden/scooter/proc/make_ridable()
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/scooter)
+>>>>>>> 6b28905... Fixes vehicles like skateboards and wheelys moving multiple times. (#56070)
 
 /obj/vehicle/ridden/scooter/wrench_act(mob/living/user, obj/item/I)
 	..()
@@ -57,16 +64,25 @@
 
 /obj/vehicle/ridden/scooter/skateboard/Initialize()
 	. = ..()
+<<<<<<< HEAD
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
 	D.vehicle_move_delay = 1.5
 	D.set_vehicle_dir_layer(SOUTH, ABOVE_MOB_LAYER)
 	D.set_vehicle_dir_layer(NORTH, OBJ_LAYER)
 	D.set_vehicle_dir_layer(EAST, OBJ_LAYER)
 	D.set_vehicle_dir_layer(WEST, OBJ_LAYER)
+=======
+>>>>>>> 6b28905... Fixes vehicles like skateboards and wheelys moving multiple times. (#56070)
 	sparks = new
 	sparks.set_up(1, 0, src)
 	sparks.attach(src)
 
+<<<<<<< HEAD
+=======
+/obj/vehicle/ridden/scooter/skateboard/make_ridable()
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/scooter/skateboard)
+
+>>>>>>> 6b28905... Fixes vehicles like skateboards and wheelys moving multiple times. (#56070)
 /obj/vehicle/ridden/scooter/skateboard/Destroy()
 	if(sparks)
 		QDEL_NULL(sparks)
@@ -258,11 +274,16 @@
 	///Name of the wheels, for visible messages
 	var/wheel_name = "wheels"
 
+<<<<<<< HEAD
 /obj/vehicle/ridden/scooter/skateboard/wheelys/Initialize()
 	. = ..()
 	var/datum/component/riding/riding = LoadComponent(/datum/component/riding)
 	riding.vehicle_move_delay = 0
 	riding.set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0), TEXT_SOUTH = list(0), TEXT_EAST = list(0), TEXT_WEST = list(0)))
+=======
+/obj/vehicle/ridden/scooter/skateboard/wheelys/make_ridable()
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/scooter/skateboard/wheelys)
+>>>>>>> 6b28905... Fixes vehicles like skateboards and wheelys moving multiple times. (#56070)
 
 /obj/vehicle/ridden/scooter/skateboard/wheelys/post_unbuckle_mob(mob/living/M)
 	if(!has_buckled_mobs())
@@ -288,10 +309,15 @@
 	desc = "An EightO brand pair of roller skates. Vintage, yet functional!"
 	instability = 8
 
+<<<<<<< HEAD
 /obj/vehicle/ridden/scooter/skateboard/wheelys/rollerskates/Initialize()
 	. = ..()
 	var/datum/component/riding/riding = LoadComponent(/datum/component/riding)
 	riding.vehicle_move_delay = 1.5
+=======
+/obj/vehicle/ridden/scooter/skateboard/wheelys/rollerskates/make_ridable()
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/scooter/skateboard/wheelys/rollerskates)
+>>>>>>> 6b28905... Fixes vehicles like skateboards and wheelys moving multiple times. (#56070)
 
 /obj/vehicle/ridden/scooter/skateboard/wheelys/skishoes
 	name = "ski shoes"
@@ -299,8 +325,13 @@
 	instability = 8
 	wheel_name = "skis"
 
+<<<<<<< HEAD
 /obj/vehicle/ridden/scooter/skateboard/wheelys/skishoes/Initialize()
 	. = ..()
 	var/datum/component/riding/riding = LoadComponent(/datum/component/riding)
 	riding.vehicle_move_delay = 1
 	riding.allowed_turf_typecache = typecacheof(/turf/open/floor/plating/asteroid/snow/icemoon)
+=======
+/obj/vehicle/ridden/scooter/skateboard/wheelys/skishoes/make_ridable()
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/scooter/skateboard/wheelys/skishoes)
+>>>>>>> 6b28905... Fixes vehicles like skateboards and wheelys moving multiple times. (#56070)
