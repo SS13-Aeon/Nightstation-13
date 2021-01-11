@@ -20,7 +20,11 @@
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SEC
 
+<<<<<<< HEAD
 	mind_traits = list(TRAIT_DISK_VERIFIER)
+=======
+	liver_traits = list(TRAIT_ROYAL_METABOLISM)
+>>>>>>> 89eea73... Rework job food/alchohol benefits into livers  (#55721)
 
 	display_order = JOB_DISPLAY_ORDER_CAPTAIN
 
