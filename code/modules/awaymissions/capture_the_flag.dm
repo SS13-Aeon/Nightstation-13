@@ -162,6 +162,9 @@
 	var/ctf_gear = /datum/outfit/ctf
 	var/instagib_gear = /datum/outfit/ctf/instagib
 
+	// Fast paced gameplay, no real time for burn infections.
+	var/player_traits = list(TRAIT_NEVER_WOUNDED)
+
 	var/list/dead_barricades = list()
 
 	var/static/arena_reset = FALSE
@@ -270,8 +273,18 @@
 	M.set_species(/datum/species/synth)
 	M.key = new_team_member.key
 	M.faction += team
+<<<<<<< HEAD
 	M.equipOutfit(ctf_gear)
 	spawned_mobs += M
+=======
+	M.equipOutfit(chosen_class)
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/ctf_qdelled_player) //just in case CTF has some map hazards (read: chasms). bit shorter than dust
+	for(var/trait in player_traits)
+		ADD_TRAIT(M, trait, CAPTURE_THE_FLAG_TRAIT)
+	spawned_mobs[M] = chosen_class
+	team_members |= new_team_member.ckey
+	return M //used in medisim.dm
+>>>>>>> 3c3e8ec... Regular CTF no longer has wounding (#56093)
 
 /obj/machinery/capture_the_flag/Topic(href, href_list)
 	if(href_list["join"])
