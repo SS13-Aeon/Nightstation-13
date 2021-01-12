@@ -632,6 +632,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if(!A.density)
 			continue
 		count++
+<<<<<<< HEAD
 		var/obj/effect/hallucination/fake_door_lock/lock = new(get_turf(A))
 		lock.target = target
 		lock.airlock = A
@@ -644,6 +645,43 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		lock.unlock()
 		sleep(rand(4,12))
 	qdel(src)
+=======
+		LAZYADD(airlocks_to_hit, A)
+
+	START_PROCESSING(SSfastprocess, src)
+
+/datum/hallucination/bolts/process(delta_time)
+	next_action -= (delta_time * 10)
+	if (next_action > 0)
+		return
+
+	if (locking)
+		var/atom/next_airlock = pop(airlocks_to_hit)
+		if (next_airlock)
+			var/obj/effect/hallucination/fake_door_lock/lock = new(get_turf(next_airlock))
+			lock.target = target
+			lock.airlock = next_airlock
+			LAZYADD(locks, lock)
+
+		if (!LAZYLEN(airlocks_to_hit))
+			locking = FALSE
+			next_action = 10 SECONDS
+			return
+	else
+		var/obj/effect/hallucination/fake_door_lock/next_unlock = popleft(locks)
+		if (next_unlock)
+			next_unlock.unlock()
+		else
+			qdel(src)
+			return
+
+	next_action = rand(4, 12)
+
+/datum/hallucination/bolts/Destroy()
+	. = ..()
+	QDEL_LIST(locks)
+	STOP_PROCESSING(SSfastprocess, src)
+>>>>>>> 0a997b3... Fix runtime in bolts hallucination (#56108)
 
 /obj/effect/hallucination/fake_door_lock
 	layer = CLOSED_DOOR_LAYER + 1 //for Bump priority
