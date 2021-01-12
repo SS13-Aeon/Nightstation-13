@@ -106090,6 +106090,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
+<<<<<<< HEAD
+=======
+"eTV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/office/light,
+/obj/effect/turf_decal/siding/purple{
+	dir = 4
+	},
+/obj/structure/sign/poster/official/safety_internals{
+	pixel_x = 32;
+	pixel_y = -32
+	},
+/turf/open/floor/glass,
+/area/maintenance/space_hut/observatory)
+>>>>>>> aac5fb5... Fixes double catwalks on Delta Station. (#56110)
 "eVx" = (
 /obj/machinery/light{
 	dir = 8
@@ -170876,6 +170891,13 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
+=======
+hUm
+vpk
+vVc
+wIU
+>>>>>>> aac5fb5... Fixes double catwalks on Delta Station. (#56110)
 aaa
 aaa
 aaa
@@ -171388,6 +171410,7 @@ aad
 ajr
 aaa
 aaa
+<<<<<<< HEAD
 aaa
 aaa
 aaa
@@ -171398,6 +171421,17 @@ aaa
 aaa
 ajr
 aad
+=======
+kUH
+jwg
+yhJ
+vVc
+vVc
+vVc
+vVc
+abj
+dBO
+>>>>>>> aac5fb5... Fixes double catwalks on Delta Station. (#56110)
 dBO
 dBO
 dBO
@@ -171651,6 +171685,13 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< HEAD
+=======
+pCQ
+xBA
+vVc
+ybr
+>>>>>>> aac5fb5... Fixes double catwalks on Delta Station. (#56110)
 aaa
 aaa
 ajr
