@@ -12,3 +12,12 @@ indent_size = 2
 
 [*.py]
 indent_style = space
+<<<<<<< HEAD
+=======
+
+[*.md]
+trim_trailing_whitespace = false
+
+[Dockerfile]
+indent_style = space
+>>>>>>> c9aa81d... Update Dockerfile for CBT (#56175)
