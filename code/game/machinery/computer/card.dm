@@ -448,6 +448,13 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						inserted_modify_id.access -= access_type
 						if(access_allowed == 1)
 							inserted_modify_id.access += access_type
+<<<<<<< HEAD
+=======
+							if(access_type in ACCESS_ALERT_ADMINS)
+								message_admins("[ADMIN_LOOKUPFLW(usr)] just added [get_access_desc(access_type)] to an ID card [ADMIN_VV(inserted_modify_id)] [(inserted_modify_id.registered_name) ? "belonging to [inserted_modify_id.registered_name]." : "with no registered name."]")
+							LOG_ID_ACCESS_CHANGE(usr, inserted_modify_id, "added [get_access_desc(access_type)]")
+
+>>>>>>> 4d31e6f... ID Card access change logging, Part 2 (#56155)
 						playsound(src, "terminal_type", 50, FALSE)
 		if ("assign")
 			if (authenticated == 2)
@@ -476,6 +483,19 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						inserted_modify_id.registered_account.account_job = jobdatum // this is a terrible idea and people will grief but sure whatever
 
 					inserted_modify_id.access = ( istype(src, /obj/machinery/computer/card/centcom) ? get_centcom_access(t1) : jobdatum.get_access() )
+<<<<<<< HEAD
+=======
+					if(inserted_modify_id.sticky_access)
+						inserted_modify_id.access += inserted_modify_id.sticky_access
+
+					// Check if we should alert admins that an ID card has been given a new access level.
+					for(var/logged_access in ACCESS_ALERT_ADMINS)
+						if(logged_access in inserted_modify_id.access)
+							message_admins("[ADMIN_LOOKUPFLW(usr)] assigned the job [jobdatum.title] to an ID card [ADMIN_VV(inserted_modify_id)] [(inserted_modify_id.registered_name) ? "belonging to [inserted_modify_id.registered_name]." : "with no registered name."]")
+							break
+					LOG_ID_ACCESS_CHANGE(usr, inserted_modify_id, "assigned the job [jobdatum.title]")
+
+>>>>>>> 4d31e6f... ID Card access change logging, Part 2 (#56155)
 				if (inserted_modify_id)
 					inserted_modify_id.assignment = t1
 					playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
