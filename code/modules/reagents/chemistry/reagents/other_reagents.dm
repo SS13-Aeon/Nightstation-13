@@ -2324,6 +2324,7 @@
 	color = "#E6E6DA"
 	taste_mult = 0
 
+<<<<<<< HEAD
 /datum/reagent/consumable/gravy
 	name = "Gravy"
 	description = "A mixture of flour, water, and the juices of cooked meat."
@@ -2331,6 +2332,9 @@
 	color = "#623301"
 	taste_mult = 1.2
 
+=======
+// "Second wind" reagent generated when someone suffers a wound. Epinephrine, adrenaline, and stimulants are all already taken so here we are
+>>>>>>> 787bbed... Improves Bleeding Feedback + Misc Wound/Organ Decay Tweaks (+ Removes Teeth) (#56056)
 /datum/reagent/determination
 	name = "Determination"
 	description = "For when you need to push on a little more. Do NOT allow near plants."
