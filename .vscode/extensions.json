@@ -5,6 +5,11 @@
 		"EditorConfig.EditorConfig",
 		"arcanis.vscode-zipfs",
 		"dbaeumer.vscode-eslint",
+<<<<<<< HEAD
 		"kevinkyang.auto-comment-blocks"
+=======
+		"stylemistake.auto-comment-blocks",
+		"Donkie.vscode-tgstation-test-adapter"
+>>>>>>> 17c174e... Superior auto comment blocks VSCode extension (#56194)
 	]
 }
