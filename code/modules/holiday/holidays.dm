@@ -255,7 +255,7 @@
 	return pick("Ayy","Truth","Tsoukalos","Mulder","Scully") //Yes it is!
 
 /datum/holiday/usa
-	name = "Independence Day"
+	name = "US Independence Day"
 	begin_day = 4
 	begin_month = JULY
 
