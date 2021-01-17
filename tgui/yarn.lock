@@ -8254,6 +8254,7 @@ fsevents@~2.1.2:
   dependencies:
     core-js: ^3.6.5
     regenerator-runtime: ^0.13.7
+    whatwg-fetch: ^3.5.0
   languageName: unknown
   linkType: soft
 
@@ -8927,6 +8928,13 @@ fsevents@~2.1.2:
   bin:
     which: ./bin/which
   checksum: 298d95f9c185c4da22c1bfb1fdfa37c2ba56df8a6b98706ab361bf31a7d3a4845afaecfc48d4de7a259048842b5f2977f51b56f5c06c1f6a83dcf5a9e3de634a
+  languageName: node
+  linkType: hard
+
+"whatwg-fetch@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "whatwg-fetch@npm:3.5.0"
+  checksum: dd41999927e87c4cd0af572fe9976dcb1529c00b89c2074b0d1c02baa03670ff7b7cc45ca5b475c02a4a5b274cc1def56a9be7870df7af5c0f9b7d4fb4588ae6
   languageName: node
   linkType: hard
 
