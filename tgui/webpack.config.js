@@ -23,8 +23,9 @@ const createStats = verbose => ({
 });
 
 module.exports = (env = {}, argv) => {
+  const mode = argv.mode === 'production' ? 'production' : 'development';
   const config = {
-    mode: argv.mode === 'production' ? 'production' : 'development',
+    mode,
     context: path.resolve(__dirname),
     entry: {
       'tgui': [
@@ -62,6 +63,7 @@ module.exports = (env = {}, argv) => {
           use: [
             {
               loader: 'babel-loader',
+<<<<<<< HEAD
               options: {
                 presets: [
                   ['@babel/preset-env', {
@@ -82,6 +84,9 @@ module.exports = (env = {}, argv) => {
                   'common/string.babel-plugin.cjs',
                 ],
               },
+=======
+              options: createBabelConfig({ mode }),
+>>>>>>> 134a614... tgui 4.3 hotfix 1 (#56225)
             },
           ],
         },
@@ -126,6 +131,13 @@ module.exports = (env = {}, argv) => {
       hints: false,
     },
     devtool: false,
+<<<<<<< HEAD
+=======
+    cache: {
+      type: 'filesystem',
+      cacheLocation: path.resolve(__dirname, `.yarn/webpack/${mode}`),
+    },
+>>>>>>> 134a614... tgui 4.3 hotfix 1 (#56225)
     stats: createStats(true),
     plugins: [
       new webpack.EnvironmentPlugin({

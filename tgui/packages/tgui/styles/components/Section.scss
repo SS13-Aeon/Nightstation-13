@@ -63,8 +63,17 @@ $shadow-offset: 0 0 !default;
   overflow-x: hidden;
 }
 
+<<<<<<< HEAD
 .Section--fill .Section__content {
   flex-grow: 1;
+=======
+.Section--fill.Section--scrollable .Section__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+>>>>>>> 134a614... tgui 4.3 hotfix 1 (#56225)
 }
 
 .Section--iefix.Section--fill {
