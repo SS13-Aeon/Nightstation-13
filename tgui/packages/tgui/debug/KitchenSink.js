@@ -4,15 +4,20 @@
  * @license MIT
  */
 
+<<<<<<< HEAD
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { BlockQuote, Box, Button, ByondUi, Collapsible, DraggableControl, Flex, Icon, Input, Knob, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Slider, Tabs, Tooltip } from '../components';
 import { formatSiUnit } from '../format';
+=======
+import { useLocalState } from '../backend';
+import { Flex, Section, Tabs } from '../components';
+>>>>>>> a6e60e4... tgui 4.3 (#56080)
 import { Pane, Window } from '../layouts';
-import { createLogger } from '../logging';
 
-const logger = createLogger('KitchenSink');
+const r = require.context('../stories', false, /\.stories\.js$/);
 
+<<<<<<< HEAD
 const COLORS_SPECTRUM = [
   'red',
   'orange',
@@ -86,12 +91,24 @@ const PAGES = [
     component: () => KitchenSinkStorage,
   },
 ];
+=======
+/**
+ * @returns {{
+ *   meta: {
+ *     title: string,
+ *     render: () => any,
+ *   },
+ * }[]}
+ */
+const getStories = () => r.keys().map(path => r(path));
+>>>>>>> a6e60e4... tgui 4.3 (#56080)
 
 export const KitchenSink = (props, context) => {
   const { panel } = props;
   const [theme] = useLocalState(context, 'kitchenSinkTheme');
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
-  const PageComponent = PAGES[pageIndex].component();
+  const stories = getStories();
+  const story = stories[pageIndex];
   const Layout = panel ? Pane : Window;
   return (
     <Layout
@@ -104,13 +121,13 @@ export const KitchenSink = (props, context) => {
         <Flex.Item m={1} mr={0}>
           <Section fill fitted>
             <Tabs vertical>
-              {PAGES.map((page, i) => (
+              {stories.map((story, i) => (
                 <Tabs.Tab
                   key={i}
                   color="transparent"
                   selected={i === pageIndex}
                   onClick={() => setPageIndex(i)}>
-                  {page.title}
+                  {story.meta.title}
                 </Tabs.Tab>
               ))}
             </Tabs>
@@ -120,13 +137,14 @@ export const KitchenSink = (props, context) => {
           position="relative"
           grow={1}>
           <Layout.Content scrollable>
-            <PageComponent />
+            {story.meta.render()}
           </Layout.Content>
         </Flex.Item>
       </Flex>
     </Layout>
   );
 };
+<<<<<<< HEAD
 
 const KitchenSinkButton = props => {
   return (
@@ -670,3 +688,5 @@ const KitchenSinkStorage = (props, context) => {
     </Section>
   );
 };
+=======
+>>>>>>> a6e60e4... tgui 4.3 (#56080)
