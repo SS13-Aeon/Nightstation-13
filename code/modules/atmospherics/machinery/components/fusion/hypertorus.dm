@@ -924,12 +924,16 @@
 	//The amount of heat that is finally emitted, based on the power output. Min and max are variables that depends of the modifier
 	heat_output = clamp(internal_instability * power_output * heat_modifier / 100, - heat_limiter_modifier * 0.01, heat_limiter_modifier)
 
+<<<<<<< HEAD
 	//Modifies the internal_fusion temperature with the amount of heat output
 	if(internal_fusion.temperature <= FUSION_MAXIMUM_TEMPERATURE)
 		internal_fusion.temperature = clamp(internal_fusion.temperature + heat_output,TCMB,FUSION_MAXIMUM_TEMPERATURE)
 	else
 		internal_fusion.temperature -= heat_limiter_modifier * 0.01 * delta_time
 
+=======
+	var/datum/gas_mixture/internal_output = new
+>>>>>>> 1b9ea1a... HFR: Respect moderator heat_output effects (#56248)
 	//gas consumption and production
 	if(check_fuel())
 		var/fuel_consumption = clamp((fuel_injection_rate * 0.001) * 5 * power_level, 0.05, 30) * delta_time
@@ -1066,6 +1070,12 @@
 							critical_threshold_proximity = max(critical_threshold_proximity - (m_healium / 100), 0)
 							moderator_internal.gases[/datum/gas/healium][MOLES] -= min(moderator_internal.gases[/datum/gas/healium][MOLES], scaled_production * 20) * delta_time
 					internal_fusion.gases[/datum/gas/antinoblium][MOLES] += 0.01 * (scaled_helium / (fuel_injection_rate * 0.0095)) * delta_time
+
+	//Modifies the internal_fusion temperature with the amount of heat output
+	if(internal_fusion.temperature <= FUSION_MAXIMUM_TEMPERATURE)
+		internal_fusion.temperature = clamp(internal_fusion.temperature + heat_output,TCMB,FUSION_MAXIMUM_TEMPERATURE)
+	else
+		internal_fusion.temperature -= heat_limiter_modifier * 0.01 * delta_time
 
 	//heat up and output what's in the internal_output into the linked_output port
 	if(internal_output.total_moles() > 0)
