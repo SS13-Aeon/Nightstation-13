@@ -87,9 +87,15 @@ By design, d1 is the smallest direction and d2 is the highest
 	d2 = text2num(copytext(icon_state, dash + length(icon_state[dash])))
 
 	if(d1)
+<<<<<<< HEAD
 		stored = new/obj/item/stack/pipe_cleaner_coil(null,2,pipe_cleaner_color)
 	else
 		stored = new/obj/item/stack/pipe_cleaner_coil(null,1,pipe_cleaner_color)
+=======
+		stored = new/obj/item/stack/pipe_cleaner_coil(null, 2, null, null, null, color)
+	else
+		stored = new/obj/item/stack/pipe_cleaner_coil(null, 1, null, null, null, color)
+>>>>>>> 976c1fc... [READY] Bespoke Datum Mats (#55296)
 
 	var/list/pipe_cleaner_colors = GLOB.pipe_cleaner_colors
 	pipe_cleaner_color = param_color || pipe_cleaner_color || pick(pipe_cleaner_colors)
@@ -220,13 +226,22 @@ By design, d1 is the smallest direction and d2 is the highest
 		user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return(OXYLOSS)
 
-/obj/item/stack/pipe_cleaner_coil/Initialize(mapload, new_amount = null, param_color = null)
+/obj/item/stack/pipe_cleaner_coil/Initialize(mapload, new_amount = null, list/mat_override=null, mat_amt=1, param_color = null)
 	. = ..()
 
+<<<<<<< HEAD
 	var/list/pipe_cleaner_colors = GLOB.pipe_cleaner_colors
 	pipe_cleaner_color = param_color || pipe_cleaner_color || pick(pipe_cleaner_colors)
 	if(pipe_cleaner_colors[pipe_cleaner_color])
 		pipe_cleaner_color = pipe_cleaner_colors[pipe_cleaner_color]
+=======
+	if(param_color)
+		color = param_color
+	if(!color)
+		var/list/pipe_cleaner_colors = GLOB.pipe_cleaner_colors
+		var/random_color = pick(pipe_cleaner_colors)
+		color = pipe_cleaner_colors[random_color]
+>>>>>>> 976c1fc... [READY] Bespoke Datum Mats (#55296)
 
 	pixel_x = base_pixel_x + rand(-2, 2)
 	pixel_y = base_pixel_y + rand(-2, 2)

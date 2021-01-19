@@ -96,9 +96,119 @@
  * Arguments:
  * * external_list - list of reagent types = amounts
  */
+<<<<<<< HEAD
 /datum/reagents/proc/log_list(external_list)
 	if((external_list && !length(external_list)) || !length(reagent_list))
 		return "no reagents"
+=======
+/datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = 300, no_react = 0)
+	if(!isnum(amount) || !amount)
+		return FALSE
+
+	if(amount <= 0)
+		return FALSE
+
+	var/datum/reagent/glob_reagent = GLOB.chemical_reagents_list[reagent]
+	if(!glob_reagent)
+		WARNING("[my_atom] attempted to add a reagent called '[reagent]' which doesn't exist. ([usr])")
+		return FALSE
+
+	update_total()
+	var/cached_total = total_volume
+	if(cached_total + amount > maximum_volume)
+		amount = (maximum_volume - cached_total) //Doesnt fit in. Make it disappear. shouldn't happen. Will happen.
+		if(amount <= 0)
+			return FALSE
+
+	var/cached_temp = chem_temp
+	var/list/cached_reagents = reagent_list
+
+	//Equalize temperature - Not using specific_heat() because the new chemical isn't in yet.
+	var/old_heat_capacity = 0
+	if(reagtemp != cached_temp)
+		for(var/r in cached_reagents)
+			var/datum/reagent/iter_reagent = r
+			old_heat_capacity += iter_reagent.specific_heat * iter_reagent.volume
+
+	//add the reagent to the existing if it exists
+	for(var/r in cached_reagents)
+		var/datum/reagent/iter_reagent = r
+		if (iter_reagent.type == reagent)
+			iter_reagent.volume += amount
+			update_total()
+
+			iter_reagent.on_merge(data, amount)
+			if(reagtemp != cached_temp)
+				var/new_heat_capacity = heat_capacity()
+				if(new_heat_capacity)
+					set_temperature(((old_heat_capacity * cached_temp) + (iter_reagent.specific_heat * amount * reagtemp)) / new_heat_capacity)
+				else
+					set_temperature(reagtemp)
+
+			SEND_SIGNAL(src, COMSIG_REAGENTS_ADD_REAGENT, iter_reagent, amount, reagtemp, data, no_react)
+			if(!no_react)
+				handle_reactions()
+			return TRUE
+
+	//otherwise make a new one
+	var/datum/reagent/new_reagent = new reagent(data)
+	cached_reagents += new_reagent
+	new_reagent.holder = src
+	new_reagent.volume = amount
+	if(data)
+		new_reagent.data = data
+		new_reagent.on_new(data)
+
+	if(isliving(my_atom))
+		new_reagent.on_mob_add(my_atom) //Must occur before it could posibly run on_mob_delete
+
+	update_total()
+	if(reagtemp != cached_temp)
+		var/new_heat_capacity = heat_capacity()
+		if(new_heat_capacity)
+			set_temperature(((old_heat_capacity * cached_temp) + (new_reagent.specific_heat * amount * reagtemp)) / new_heat_capacity)
+		else
+			set_temperature(reagtemp)
+
+	SEND_SIGNAL(src, COMSIG_REAGENTS_NEW_REAGENT, new_reagent, amount, reagtemp, data, no_react)
+	if(!no_react)
+		handle_reactions()
+	return TRUE
+
+/// Like add_reagent but you can enter a list. Format it like this: list(/datum/reagent/toxin = 10, "beer" = 15)
+/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null)
+	for(var/r_id in list_reagents)
+		var/amt = list_reagents[r_id]
+		add_reagent(r_id, amt, data)
+
+
+/// Remove a specific reagent
+/datum/reagents/proc/remove_reagent(reagent, amount, safety)//Added a safety check for the trans_id_to
+	if(isnull(amount))
+		amount = 0
+		CRASH("null amount passed to reagent code")
+
+	if(!isnum(amount))
+		return FALSE
+
+	if(amount < 0)
+		return FALSE
+
+	var/list/cached_reagents = reagent_list
+	for(var/A in cached_reagents)
+		var/datum/reagent/R = A
+		if (R.type == reagent)
+			//clamp the removal amount to be between current reagent amount
+			//and zero, to prevent removing more than the holder has stored
+			amount = clamp(amount, 0, R.volume)
+			R.volume -= amount
+			update_total()
+			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(R) ? reagent : R, amount)
+			if(!safety)//So it does not handle reactions when it need not to
+				handle_reactions()
+
+			return TRUE
+>>>>>>> 976c1fc... [READY] Bespoke Datum Mats (#55296)
 
 	var/list/data = list()
 	if(external_list)
@@ -988,6 +1098,31 @@ Needs matabolizing takes into consideration if the chemical is matabolizing when
 
 	return english_list(out, "something indescribable")
 
+<<<<<<< HEAD
+=======
+
+/// Returns the total heat capacity for all of the reagents currently in this holder.
+/datum/reagents/proc/heat_capacity()
+	. = 0
+	var/list/cached_reagents = reagent_list		//cache reagents
+	for(var/I in cached_reagents)
+		var/datum/reagent/R = I
+		. += R.specific_heat * R.volume
+
+/** Adjusts the thermal energy of the reagents in this holder by an amount.
+ *
+ * Arguments:
+ * - delta_energy: The amount to change the thermal energy by.
+ * - min_temp: The minimum temperature that can be reached.
+ * - max_temp: The maximum temperature that can be reached.
+ */
+/datum/reagents/proc/adjust_thermal_energy(delta_energy, min_temp = 2.7, max_temp = 1000)
+	var/heat_capacity = heat_capacity()
+	if(!heat_capacity)
+		return	// no div/0 please
+	set_temperature(clamp(chem_temp + (delta_energy / heat_capacity), min_temp, max_temp))
+
+>>>>>>> 976c1fc... [READY] Bespoke Datum Mats (#55296)
 /// Applies heat to this holder
 /datum/reagents/proc/expose_temperature(temperature, coeff=0.02)
 	if(istype(my_atom,/obj/item/reagent_containers))
