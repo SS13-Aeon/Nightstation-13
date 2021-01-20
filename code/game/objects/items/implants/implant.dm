@@ -86,6 +86,7 @@
 	if(user)
 		log_combat(user, target, "implanted", "\a [name]")
 
+	SEND_SIGNAL(src, COMSIG_IMPLANT_IMPLANTED, target, user, silent, force)
 	return TRUE
 
 /obj/item/implant/proc/removed(mob/living/source, silent = FALSE, special = 0)
@@ -99,7 +100,8 @@
 		var/mob/living/carbon/human/H = source
 		H.sec_hud_set_implants()
 
-	return 1
+	SEND_SIGNAL(src, COMSIG_IMPLANT_REMOVED, source, silent, special)
+	return TRUE
 
 /obj/item/implant/Destroy()
 	if(imp_in)
