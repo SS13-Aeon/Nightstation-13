@@ -163,6 +163,9 @@
 		if(W.try_handling(user))
 			return TRUE
 
+	if (user.apply_martial_art(src))
+		return TRUE
+
 	return FALSE
 
 
