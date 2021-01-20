@@ -464,8 +464,13 @@ const ViewTabHolder = (props, context) => {
   const { mapRef } = data;
   const TabPageComponent = TABPAGES[tabPageIndex].component();
   return (
+<<<<<<< HEAD
     <Section title="View" fill buttons={(
       <Fragment>
+=======
+    <Section fill title="View" buttons={(
+      <>
+>>>>>>> 6ae8b26... tgui: Fix section fill not stretching its contents to 100% (#56269)
         {(!!data.customDropoff && data.effectReverse===1) && (
           <Button
             inline
@@ -527,6 +532,7 @@ const ViewTabHolder = (props, context) => {
       <Flex direction="column" height="100%">
         <Flex.Item m={0.5}>
           <TabPageComponent />
+<<<<<<< HEAD
         </Flex.Item>
         <Flex.Item m={0.5} grow={1}>
           <Section fill>
@@ -540,6 +546,19 @@ const ViewTabHolder = (props, context) => {
           </Section>
         </Flex.Item>
       </Flex>
+=======
+        </Stack.Item>
+        <Stack.Item grow>
+          <ByondUi
+            height="100%"
+            params={{
+              zoom: 0,
+              id: mapRef,
+              type: 'map',
+            }} />
+        </Stack.Item>
+      </Stack>
+>>>>>>> 6ae8b26... tgui: Fix section fill not stretching its contents to 100% (#56269)
     </Section>
   );
 };
