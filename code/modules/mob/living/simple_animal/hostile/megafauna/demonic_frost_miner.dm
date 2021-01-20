@@ -316,6 +316,13 @@ Difficulty: Extremely Hard
 	var/duration = 6 SECONDS
 
 /obj/item/clothing/shoes/winterboots/ice_boots/ice_trail/Initialize()
+<<<<<<< HEAD
+=======
+	. = ..()
+	RegisterSignal(src, COMSIG_SHOES_STEP_ACTION, .proc/on_step)
+
+/obj/item/clothing/shoes/winterboots/ice_boots/ice_trail/equipped(mob/user, slot)
+>>>>>>> d4cdeab... Refactors step_action to pure signals (#56238)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
@@ -327,8 +334,9 @@ Difficulty: Extremely Hard
 	. = ..()
 	. += "<span class='notice'>The shoes are [on ? "enabled" : "disabled"].</span>"
 
-/obj/item/clothing/shoes/winterboots/ice_boots/ice_trail/step_action()
-	. = ..()
+/obj/item/clothing/shoes/winterboots/ice_boots/ice_trail/proc/on_step()
+	SIGNAL_HANDLER
+
 	var/turf/T = get_turf(loc)
 	if(!on || istype(T, /turf/closed) || istype(T, change_turf))
 		return
