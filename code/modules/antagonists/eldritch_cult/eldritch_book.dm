@@ -131,7 +131,11 @@
 				if(initial(EK.name) != ekname)
 					continue
 				if(cultie.gain_knowledge(EK))
+<<<<<<< HEAD
 					charge -= text2num(params["cost"])
+=======
+					charge -= initial(EK.cost)
+>>>>>>> b478bc6... Fixes Codex Cicatrix having infinite charges - Maintainer edition (#56307)
 					return TRUE
 
 	update_icon() // Not applicable to all objects.
