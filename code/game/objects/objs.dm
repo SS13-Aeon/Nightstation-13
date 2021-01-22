@@ -39,6 +39,16 @@
 
 	vis_flags = VIS_INHERIT_PLANE //when this be added to vis_contents of something it inherit something.plane, important for visualisation of obj in openspace.
 
+<<<<<<< HEAD
+=======
+	/// Map tag for something.  Tired of it being used on snowflake items.  Moved here for some semblance of a standard.
+	/// Next pr after the network fix will have me refactor door interactions, so help me god.
+	var/id_tag = null
+	/// Network id. If set it can be found by either its hardware id or by the id tag if thats set.  It can also be
+	/// broadcasted to as long as the other guys network is on the same branch or above.
+	var/network_id = null
+
+>>>>>>> 1989497... Frame stacking fix and unit test addition. (#56287)
 /obj/vv_edit_var(vname, vval)
 	if(vname == NAMEOF(src, obj_flags))
 		if ((obj_flags & DANGEROUS_POSSESSION) && !(vval & DANGEROUS_POSSESSION))
