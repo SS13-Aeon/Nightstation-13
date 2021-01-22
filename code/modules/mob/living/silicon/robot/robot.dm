@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
@@ -111,6 +112,8 @@
 /mob/living/silicon/robot/get_cell()
 	return cell
 
+=======
+>>>>>>> f837ce4... Cyborg modules renamed to models (#56312)
 /mob/living/silicon/robot/Initialize(mapload)
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
@@ -138,6 +141,12 @@
 
 	create_modularInterface()
 
+<<<<<<< HEAD
+=======
+	model = new /obj/item/robot_model(src)
+	model.rebuild_modules()
+
+>>>>>>> f837ce4... Cyborg modules renamed to models (#56312)
 	if(lawupdate)
 		make_laws()
 		if(!TryConnectToAI())
@@ -180,11 +189,21 @@
 	diag_hud_set_borgcell()
 	logevent("System brought online.")
 
+/mob/living/silicon/robot/model/syndicate/Initialize()
+	. = ..()
+	laws = new /datum/ai_laws/syndicate_override()
+	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
+
 /mob/living/silicon/robot/proc/create_modularInterface()
 	if(!modularInterface)
 		modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
 	modularInterface.layer = ABOVE_HUD_PLANE
 	modularInterface.plane = ABOVE_HUD_PLANE
+
+/mob/living/silicon/robot/model/syndicate/create_modularInterface()
+	if(!modularInterface)
+		modularInterface = new /obj/item/modular_computer/tablet/integrated/syndicate(src)
+	return ..()
 
 //If there's an MMI in the robot, have it ejected when the mob goes away. --NEO
 /mob/living/silicon/robot/Destroy()
@@ -213,7 +232,7 @@
 			radio.keyslot.forceMove(T)
 			radio.keyslot = null
 	QDEL_NULL(wires)
-	QDEL_NULL(module)
+	QDEL_NULL(model)
 	QDEL_NULL(eye_lights)
 	QDEL_NULL(inv1)
 	QDEL_NULL(inv2)
@@ -227,29 +246,32 @@
 	if (href_list["showalerts"])
 		robot_alerts()
 
-/mob/living/silicon/robot/proc/pick_module()
-	if(module.type != /obj/item/robot_module)
+/mob/living/silicon/robot/get_cell()
+	return cell
+
+/mob/living/silicon/robot/proc/pick_model()
+	if(model.type != /obj/item/robot_model)
 		return
 
-	if(wires.is_cut(WIRE_RESET_MODULE))
-		to_chat(src,"<span class='userdanger'>ERROR: Module installer reply timeout. Please check internal connections.</span>")
+	if(wires.is_cut(WIRE_RESET_MODEL))
+		to_chat(src,"<span class='userdanger'>ERROR: Model installer reply timeout. Please check internal connections.</span>")
 		return
 
-	var/list/modulelist = list("Engineering" = /obj/item/robot_module/engineering, \
-	"Medical" = /obj/item/robot_module/medical, \
-	"Miner" = /obj/item/robot_module/miner, \
-	"Janitor" = /obj/item/robot_module/janitor, \
-	"Service" = /obj/item/robot_module/butler)
+	var/list/model_list = list("Engineering" = /obj/item/robot_model/engineering, \
+	"Medical" = /obj/item/robot_model/medical, \
+	"Miner" = /obj/item/robot_model/miner, \
+	"Janitor" = /obj/item/robot_model/janitor, \
+	"Service" = /obj/item/robot_model/service)
 	if(!CONFIG_GET(flag/disable_peaceborg))
-		modulelist["Peacekeeper"] = /obj/item/robot_module/peacekeeper
+		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
 	if(!CONFIG_GET(flag/disable_secborg))
-		modulelist["Security"] = /obj/item/robot_module/security
+		model_list["Security"] = /obj/item/robot_model/security
 
-	var/input_module = input("Please, select a module!", "Robot", null, null) as null|anything in sortList(modulelist)
-	if(!input_module || module.type != /obj/item/robot_module)
+	var/input_model = input("Please, select a model!", "Robot", null, null) as null|anything in sortList(model_list)
+	if(!input_model || model.type != /obj/item/robot_model)
 		return
 
-	module.transform_to(modulelist[input_module])
+	model.transform_to(model_list[input_model])
 
 /mob/living/silicon/robot/proc/updatename(client/C)
 	if(shell)
@@ -330,8 +352,8 @@
 	else
 		. += text("No Cell Inserted!")
 
-	if(module)
-		for(var/datum/robot_energy_storage/st in module.storages)
+	if(model)
+		for(var/datum/robot_energy_storage/st in model.storages)
 			. += "[st.name]: [st.energy]/[st.max_energy]"
 	if(connected_ai)
 		. += "Master AI: [connected_ai.name]"
@@ -429,16 +451,16 @@
 /mob/living/silicon/robot/update_icons()
 	cut_overlays()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	icon_state = module.cyborg_base_icon
+	icon_state = model.cyborg_base_icon
 	if(stat != DEAD && !(HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || IsStun() || IsParalyzed() || low_power_mode)) //Not dead, not stunned.
 		if(!eye_lights)
 			eye_lights = new()
 		if(lamp_enabled || lamp_doom)
-			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_l"
+			eye_lights.icon_state = "[model.special_light_key ? "[model.special_light_key]":"[model.cyborg_base_icon]"]_l"
 			eye_lights.color = lamp_doom? COLOR_RED : lamp_color
 			eye_lights.plane = 19 //glowy eyes
 		else
-			eye_lights.icon_state = "[module.special_light_key ? "[module.special_light_key]":"[module.cyborg_base_icon]"]_e"
+			eye_lights.icon_state = "[model.special_light_key ? "[model.special_light_key]":"[model.cyborg_base_icon]"]_e"
 			eye_lights.color = COLOR_WHITE
 			eye_lights.plane = -1
 		eye_lights.icon = icon
@@ -517,7 +539,7 @@
 
 /mob/living/silicon/robot/proc/SetEmagged(new_state)
 	emagged = new_state
-	module.rebuild_modules()
+	model.rebuild_modules()
 	update_icons()
 	if(emagged)
 		throw_alert("hacked", /atom/movable/screen/alert/hacked)
@@ -613,107 +635,14 @@
 		cell = null
 	qdel(src)
 
-///This is the subtype that gets created by robot suits. It's needed so that those kind of borgs don't have a useless cell in them
-/mob/living/silicon/robot/nocell
-	cell = null
-
-/mob/living/silicon/robot/modules
-	var/set_module = /obj/item/robot_module
-
-/mob/living/silicon/robot/modules/Initialize()
-	. = ..()
-	module.transform_to(set_module)
-
-/mob/living/silicon/robot/modules/medical
-	set_module = /obj/item/robot_module/medical
-	icon_state = "medical"
-
-/mob/living/silicon/robot/modules/engineering
-	set_module = /obj/item/robot_module/engineering
-	icon_state = "engineer"
-
-/mob/living/silicon/robot/modules/security
-	set_module = /obj/item/robot_module/security
-	icon_state = "sec"
-
-/mob/living/silicon/robot/modules/clown
-	set_module = /obj/item/robot_module/clown
-	icon_state = "clown"
-
-/mob/living/silicon/robot/modules/peacekeeper
-	set_module = /obj/item/robot_module/peacekeeper
-	icon_state = "peace"
-
-/mob/living/silicon/robot/modules/miner
-	set_module = /obj/item/robot_module/miner
-	icon_state = "miner"
-
-/mob/living/silicon/robot/modules/janitor
-	set_module = /obj/item/robot_module/janitor
-	icon_state = "janitor"
-
-/mob/living/silicon/robot/modules/syndicate
-	icon_state = "synd_sec"
-	faction = list(ROLE_SYNDICATE)
-	bubble_icon = "syndibot"
-	req_access = list(ACCESS_SYNDICATE)
-	lawupdate = FALSE
-	scrambledcodes = TRUE // These are rogue borgs.
-	ionpulse = TRUE
-	var/playstyle_string = "<span class='big bold'>You are a Syndicate assault cyborg!</span><br>\
-							<b>You are armed with powerful offensive tools to aid you in your mission: help the operatives secure the nuclear authentication disk. \
-							Your cyborg LMG will slowly produce ammunition from your power supply, and your operative pinpointer will find and locate fellow nuclear operatives. \
-							<i>Help the operatives secure the disk at all costs!</i></b>"
-	set_module = /obj/item/robot_module/syndicate
-	cell = /obj/item/stock_parts/cell/hyper
-	radio = /obj/item/radio/borg/syndicate
-
-/mob/living/silicon/robot/modules/syndicate/Initialize()
-	. = ..()
-	laws = new /datum/ai_laws/syndicate_override()
-	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
-
-/mob/living/silicon/robot/modules/syndicate/create_modularInterface()
-	if(!modularInterface)
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/syndicate(src)
-	return ..()
-
-/mob/living/silicon/robot/modules/syndicate/proc/show_playstyle()
-	if(playstyle_string)
-		to_chat(src, playstyle_string)
-
-/mob/living/silicon/robot/modules/syndicate/ResetModule()
-	return
-
-/mob/living/silicon/robot/modules/syndicate/medical
-	icon_state = "synd_medical"
-	playstyle_string = "<span class='big bold'>You are a Syndicate medical cyborg!</span><br>\
-						<b>You are armed with powerful medical tools to aid you in your mission: help the operatives secure the nuclear authentication disk. \
-						Your hypospray will produce Restorative Nanites, a wonder-drug that will heal most types of bodily damages, including clone and brain damage. It also produces morphine for offense. \
-						Your defibrillator paddles can revive operatives through their hardsuits, or can be used on harm intent to shock enemies! \
-						Your energy saw functions as a circular saw, but can be activated to deal more damage, and your operative pinpointer will find and locate fellow nuclear operatives. \
-						<i>Help the operatives secure the disk at all costs!</i></b>"
-	set_module = /obj/item/robot_module/syndicate_medical
-
-/mob/living/silicon/robot/modules/syndicate/saboteur
-	icon_state = "synd_engi"
-	playstyle_string = "<span class='big bold'>You are a Syndicate saboteur cyborg!</span><br>\
-						<b>You are armed with robust engineering tools to aid you in your mission: help the operatives secure the nuclear authentication disk. \
-						Your destination tagger will allow you to stealthily traverse the disposal network across the station \
-						Your welder will allow you to repair the operatives' exosuits, but also yourself and your fellow cyborgs \
-						Your cyborg chameleon projector allows you to assume the appearance and registered name of a Nanotrasen engineering borg, and undertake covert actions on the station \
-						Be aware that almost any physical contact or incidental damage will break your camouflage \
-						<i>Help the operatives secure the disk at all costs!</i></b>"
-	set_module = /obj/item/robot_module/saboteur
-
 /mob/living/silicon/robot/proc/notify_ai(notifytype, oldname, newname)
 	if(!connected_ai)
 		return
 	switch(notifytype)
 		if(NEW_BORG) //New Cyborg
 			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New cyborg connection detected: <a href='?src=[REF(connected_ai)];track=[html_encode(name)]'>[name]</a></span><br>")
-		if(NEW_MODULE) //New Module
-			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Cyborg module change detected: [name] has loaded the [designation] module.</span><br>")
+		if(NEW_MODEL) //New Model
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Cyborg model change detected: [name] has loaded the [designation] model.</span><br>")
 		if(RENAME) //New Name
 			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Cyborg reclassification detected: [oldname] is now designated as [newname].</span><br>")
 		if(AI_SHELL) //New Shell
@@ -729,7 +658,7 @@
 
 /mob/living/silicon/robot/updatehealth()
 	..()
-	if(!module.breakable_modules)
+	if(!model.breakable_modules)
 		return
 
 	/// the current percent health of the robot (-1 to 1)
@@ -835,8 +764,7 @@
 		builtInCamera.c_tag = real_name
 	custom_name = newname
 
-
-/mob/living/silicon/robot/proc/ResetModule()
+/mob/living/silicon/robot/proc/ResetModel()
 	SEND_SIGNAL(src, COMSIG_BORG_SAFE_DECONSTRUCT)
 	uneq_all()
 	shown_robot_modules = FALSE
@@ -847,8 +775,8 @@
 		resize = 0.5
 		hasExpanded = FALSE
 		update_transform()
-	logevent("Chassis configuration has been reset.")
-	module.transform_to(/obj/item/robot_module)
+	logevent("Chassis model has been reset.")
+	model.transform_to(/obj/item/robot_model)
 
 	// Remove upgrades.
 	for(var/obj/item/borg/upgrade/I in upgrades)
@@ -857,31 +785,43 @@
 	ionpulse = FALSE
 	revert_shell()
 
-	return 1
+	return TRUE
 
-/mob/living/silicon/robot/proc/has_module()
-	if(!module || module.type == /obj/item/robot_module)
+/mob/living/silicon/robot/model/syndicate/ResetModel()
+	return
+
+/mob/living/silicon/robot/proc/has_model()
+	if(!model || model.type == /obj/item/robot_model)
 		. = FALSE
 	else
 		. = TRUE
 
 /mob/living/silicon/robot/proc/update_module_innate()
-	designation = module.name
+	designation = model.name
 	if(hands)
+<<<<<<< HEAD
 		hands.icon_state = module.moduleselect_icon
 	if(module.can_be_pushed)
 		status_flags |= CANPUSH
 	else
 		status_flags &= ~CANPUSH
+=======
+		hands.icon_state = model.model_select_icon
 
-	if(module.clean_on_move)
+	REMOVE_TRAITS_IN(src, MODEL_TRAIT)
+	if(model.model_traits)
+		for(var/trait in model.model_traits)
+			ADD_TRAIT(src, trait, MODEL_TRAIT)
+>>>>>>> f837ce4... Cyborg modules renamed to models (#56312)
+
+	if(model.clean_on_move)
 		AddElement(/datum/element/cleaning)
 	else
 		RemoveElement(/datum/element/cleaning)
 
-	hat_offset = module.hat_offset
+	hat_offset = model.hat_offset
 
-	magpulse = module.magpulsing
+	magpulse = model.magpulsing
 	INVOKE_ASYNC(src, .proc/updatename)
 
 
@@ -1022,7 +962,6 @@
 
 
 /mob/living/silicon/robot/proc/undeploy()
-
 	if(!deployed || !mind || !mainframe)
 		return
 	mainframe.redeploy_action.Grant(mainframe)
@@ -1048,10 +987,6 @@
 		var/mob/living/silicon/ai/AI = user
 		AI.deploy_to_shell(src)
 
-/mob/living/silicon/robot/shell
-	shell = TRUE
-	cell = null
-
 /mob/living/silicon/robot/mouse_buckle_handling(mob/living/M, mob/living/user)
 	//Don't try buckling on INTENT_HARM so that silicons can search people's inventories without loading them
 	if(can_buckle && isliving(user) && isliving(M) && !(M in buckled_mobs) && ((user != src) || (a_intent != INTENT_HARM)))
@@ -1071,6 +1006,7 @@
 		return
 	if(incapacitated())
 		return
+<<<<<<< HEAD
 	if(module)
 		if(!module.allow_riding)
 			M.visible_message("<span class='boldwarning'>Unfortunately, [M] just can't seem to hold onto [src]!</span>")
@@ -1080,6 +1016,10 @@
 			M.visible_message("<span class='boldwarning'>[M] can't climb onto [src] because [M.p_they()] don't have any usable arms!</span>")
 		else
 			M.visible_message("<span class='boldwarning'>[M] can't climb onto [src] because [M.p_their()] hands are full!</span>")
+=======
+	if(model && !model.allow_riding)
+		M.visible_message("<span class='boldwarning'>Unfortunately, [M] just can't seem to hold onto [src]!</span>")
+>>>>>>> f837ce4... Cyborg modules renamed to models (#56312)
 		return
 	return ..()
 
@@ -1117,8 +1057,8 @@
 			aicamera.stored[i] = TRUE
 
 /mob/living/silicon/robot/proc/charge(datum/source, amount, repairs)
-	if(module)
-		module.respawn_consumable(src, amount * 0.005)
+	if(model)
+		model.respawn_consumable(src, amount * 0.005)
 	if(cell)
 		cell.charge = min(cell.charge + amount, cell.maxcharge)
 	if(repairs)
