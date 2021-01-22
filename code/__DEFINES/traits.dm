@@ -210,6 +210,55 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PERMANENTLY_ONFIRE	"permanently_onfire" //overrides the update_fire proc to always add fire (for lava)
 #define TRAIT_SIGN_LANG				"sign_language" //Galactic Common Sign Language
 #define TRAIT_NANITE_MONITORING	"nanite_monitoring" //The mob's nanites are sending a monitoring signal visible on diag HUD
+<<<<<<< HEAD
+=======
+#define TRAIT_MARTIAL_ARTS_IMMUNE "martial_arts_immune" // nobody can use martial arts on this mob
+/// Prevents mob from riding mobs when buckled onto something
+#define TRAIT_CANT_RIDE			"cant_ride"
+#define TRAIT_BLOODY_MESS		"bloody_mess" //from heparin, makes open bleeding wounds rapidly spill more blood
+#define TRAIT_COAGULATING		"coagulating" //from coagulant reagents, this doesn't affect the bleeding itself but does affect the bleed warning messages
+/// The holder of this trait has antennae or whatever that hurt a ton when noogied
+#define TRAIT_ANTENNAE	"antennae"
+
+#define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
+
+// You can stare into the abyss, but it does not stare back.
+// You're immune to the hallucination effect of the supermatter, either
+// through force of will, or equipment. Present on /mob or /datum/mind
+#define TRAIT_SUPERMATTER_MADNESS_IMMUNE "supermatter_madness_immune"
+
+// You can stare into the abyss, and it turns pink.
+// Being close enough to the supermatter makes it heal at higher temperatures
+// and emit less heat. Present on /mob or /datum/mind
+#define TRAIT_SUPERMATTER_SOOTHER "supermatter_soother"
+/*
+* Trait granted by various security jobs, and checked by [/obj/item/food/donut]
+* When present in the mob's mind, they will always love donuts.
+*/
+#define TRAIT_DONUT_LOVER "donut_lover"
+
+// METABOLISMS
+// Various jobs on the station have historically had better reactions
+// to various drinks and foodstuffs. Security liking donuts is a classic
+// example. Through years of training/abuse, their livers have taken
+// a liking to those substances. Steal a sec officer's liver, eat donuts good.
+
+// These traits are applied to /obj/item/organ/liver
+#define TRAIT_LAW_ENFORCEMENT_METABOLISM "law_enforcement_metabolism"
+#define TRAIT_CULINARY_METABOLISM "culinary_metabolism"
+#define TRAIT_COMEDY_METABOLISM "comedy_metabolism"
+#define TRAIT_MEDICAL_METABOLISM "medical_metabolism"
+#define TRAIT_GREYTIDE_METABOLISM "greytide_metabolism"
+#define TRAIT_ENGINEER_METABOLISM "engineer_metabolism"
+#define TRAIT_ROYAL_METABOLISM "royal_metabolism"
+#define TRAIT_PRETENDER_ROYAL_METABOLISM "pretender_royal_metabolism"
+
+// If present on a mob or mobmind, allows them to "suplex" an immovable rod
+// turning it into a glorified potted plant, and giving them an
+// achievement. Can also be used on rod-form wizards.
+// Normally only present in the mind of a Research Director.
+#define TRAIT_ROD_SUPLEX "rod_suplex"
+>>>>>>> d982b4b... Adds Noogies (Perfect for bullying Moths) (#56286)
 
 //SKILLS
 #define TRAIT_UNDERWATER_BASKETWEAVING_KNOWLEDGE "underwater_basketweaving"
