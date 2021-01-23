@@ -589,6 +589,7 @@
 #include "code\datums\elements\point_of_interest.dm"
 #include "code\datums\elements\rad_insulation.dm"
 #include "code\datums\elements\selfknockback.dm"
+#include "code\datums\elements\skittish.dm"
 #include "code\datums\elements\snail_crawl.dm"
 #include "code\datums\elements\squish.dm"
 #include "code\datums\elements\swabbable.dm"
