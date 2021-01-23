@@ -229,10 +229,19 @@
 #define SSAIR_PIPENETS 1
 #define SSAIR_ATMOSMACHINERY 2
 #define SSAIR_ACTIVETURFS 3
+<<<<<<< HEAD
 #define SSAIR_EXCITEDGROUPS 4
 #define SSAIR_HIGHPRESSURE 5
 #define SSAIR_HOTSPOTS 6
 #define SSAIR_SUPERCONDUCTIVITY 7
+=======
+#define SSAIR_HOTSPOTS 4
+#define SSAIR_EXCITEDCLEANUP 5
+#define SSAIR_EXCITEDGROUPS 6
+#define SSAIR_HIGHPRESSURE 7
+#define SSAIR_SUPERCONDUCTIVITY 8
+#define SSAIR_PROCESS_ATOMS 9
+>>>>>>> 4cd1db4... Prevents the most common case of fire settling with an excited group (#56317)
 
 // Explosion Subsystem subtasks
 #define SSEXPLOSIONS_MOVABLES 1
