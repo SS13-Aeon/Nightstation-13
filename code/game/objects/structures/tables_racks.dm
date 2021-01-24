@@ -22,7 +22,6 @@
 	anchored = TRUE
 	pass_flags_self = PASSTABLE | LETPASSTHROW
 	layer = TABLE_LAYER
-	climbable = TRUE
 	var/frame = /obj/structure/table_frame
 	var/framestack = /obj/item/stack/rods
 	var/buildstack = /obj/item/stack/sheet/metal
@@ -41,6 +40,10 @@
 	. = ..()
 	if(_buildstack)
 		buildstack = _buildstack
+<<<<<<< HEAD
+=======
+	AddElement(/datum/element/climbable)
+>>>>>>> a6a3342... refactors climbing into an element (#55978)
 
 /obj/structure/table/examine(mob/user)
 	. = ..()
