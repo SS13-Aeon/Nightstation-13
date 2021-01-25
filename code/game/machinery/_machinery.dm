@@ -496,9 +496,27 @@
 	return ..()
 
 /obj/machinery/proc/spawn_frame(disassembled)
+<<<<<<< HEAD
 	var/obj/structure/frame/machine/M = new /obj/structure/frame/machine(loc)
 	. = M
 	M.set_anchored(anchored)
+=======
+	var/obj/structure/frame/machine/new_frame = new /obj/structure/frame/machine(loc)
+
+	new_frame.state = 2
+
+	// If the new frame shouldn't be able to fit here due to the turf being blocked, spawn the frame deconstructed.
+	if(isturf(loc))
+		var/turf/machine_turf = loc
+		// We're spawning a frame before this machine is qdeleted, so we want to ignore it. We've also just spawned a new frame, so ignore that too.
+		if(machine_turf.is_blocked_turf(TRUE, source_atom = new_frame, ignore_atoms = list(src)))
+			new_frame.deconstruct(disassembled)
+			return
+
+	new_frame.icon_state = "box_1"
+	. = new_frame
+	new_frame.set_anchored(anchored)
+>>>>>>> c4972a5... Fix #56371 - Some machines do not deconstruct into frames (#56392)
 	if(!disassembled)
 		M.obj_integrity = M.max_integrity * 0.5 //the frame is already half broken
 	transfer_fingerprints_to(M)
@@ -572,6 +590,12 @@
 		var/prev_anchored = anchored
 		//as long as we're the same anchored state and we're either on a floor or are anchored, toggle our anchored state
 		if(I.use_tool(src, user, time, extra_checks = CALLBACK(src, .proc/unfasten_wrench_check, prev_anchored, user)))
+<<<<<<< HEAD
+=======
+			if(!anchored && ground.is_blocked_turf(exclude_mobs = TRUE, source_atom = src))
+				to_chat(user, "<span class='notice'>You fail to secure [src].</span>")
+				return CANT_UNFASTEN
+>>>>>>> c4972a5... Fix #56371 - Some machines do not deconstruct into frames (#56392)
 			to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [src].</span>")
 			set_anchored(!anchored)
 			playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
