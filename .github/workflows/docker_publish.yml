@@ -7,7 +7,12 @@ on:
 
 jobs:
   publish:
+<<<<<<< HEAD
     runs-on: ubuntu-latest
+=======
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    runs-on: ubuntu-20.04
+>>>>>>> dad2c1b... Fix CI failure with i386 caused by latest Ubuntu version. Pin Ubuntu version to allow us to upgrade in the future. (#56447)
     steps:
       - uses: actions/checkout@v2
 
