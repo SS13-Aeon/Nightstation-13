@@ -27,8 +27,36 @@
 /**
  * anonymous_name: generates a corporate random name. used in admin event tool anonymous names
  *
+<<<<<<< HEAD
  * first letter is always a letter
  * Example name = "Employee Q5460Z"
+=======
+ * why is this a proc instead of just part of above? events use this as well.
+ */
+/proc/anonymous_all_players()
+	var/datum/anonymous_theme/theme = SSticker.anonymousnames
+	for(var/mob/living/player in GLOB.player_list)
+		if(!player.mind || (!ishuman(player) && !issilicon(player)) || !SSjob.GetJob(player.mind.assigned_role))
+			continue
+		if(issilicon(player))
+			player.fully_replace_character_name(player.real_name, theme.anonymous_ai_name(isAI(player)))
+		else
+			var/original_name = player.real_name //id will not be changed if you do not do this
+			randomize_human(player) //do this first so the special name can be given
+			player.fully_replace_character_name(original_name, theme.anonymous_name(player))
+
+/* Datum singleton initialized by the client proc to hold the naming generation */
+/datum/anonymous_theme
+	var/name = "Randomized Names"
+	var/announcement_alert = "A recent bureaucratic error in the Organic Resources Department has resulted in a necessary full recall of all identities and names until further notice."
+
+/**
+ * anonymous_name: generates a random name, based off of whatever the round's anonymousnames is set to.
+ *
+ * examples:
+ * Employee = "Employee Q5460Z"
+ * Wizards = "Gulstaff of Void"
+>>>>>>> cceb2f2... woop (#56400)
  * Arguments:
  * * M - mob for preferences and gender
  */
