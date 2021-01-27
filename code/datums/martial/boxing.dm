@@ -56,15 +56,25 @@
 	if(!ishuman(user))
 		return
 	if(slot == ITEM_SLOT_GLOVES)
+<<<<<<< HEAD
 		var/mob/living/carbon/human/H = user
 		style.teach(H,1)
 	return
+=======
+		var/mob/living/student = user
+		style.teach(student, 1)
+>>>>>>> cd6bff7... removes bad returns (#56431)
 
 /obj/item/clothing/gloves/boxing/dropped(mob/user)
 	. = ..()
 	if(!ishuman(user))
 		return
+<<<<<<< HEAD
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(ITEM_SLOT_GLOVES) == src)
 		style.remove(H)
 	return
+=======
+	var/mob/living/owner = user
+	style.remove(owner)
+>>>>>>> cd6bff7... removes bad returns (#56431)
