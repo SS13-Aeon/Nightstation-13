@@ -393,6 +393,19 @@
 #include "code\datums\achievements\misc_achievements.dm"
 #include "code\datums\achievements\skill_achievements.dm"
 #include "code\datums\actions\beam_rifle.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\ai\_ai_behavior.dm"
+#include "code\datums\ai\_ai_controller.dm"
+#include "code\datums\ai\_item_behaviors.dm"
+#include "code\datums\ai\generic_actions.dm"
+#include "code\datums\ai\hauntium\haunted_controller.dm"
+#include "code\datums\ai\telegraph_effects.dm"
+#include "code\datums\ai\monkey\monkey_behaviors.dm"
+#include "code\datums\ai\monkey\monkey_controller.dm"
+#include "code\datums\ai\objects\vending_machines\vending_machine_behaviors.dm"
+#include "code\datums\ai\objects\vending_machines\vending_machine_controller.dm"
+>>>>>>> c51b77f... Adds the Hauntium material, which turns any item into a ghost (with AI) (#55728)
 #include "code\datums\atmosphere\_atmosphere.dm"
 #include "code\datums\atmosphere\planetary.dm"
 #include "code\datums\brain_damage\brain_trauma.dm"
@@ -584,6 +597,11 @@
 #include "code\datums\elements\empprotection.dm"
 #include "code\datums\elements\firestacker.dm"
 #include "code\datums\elements\forced_gravity.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\elements\haunted.dm"
+#include "code\datums\elements\item_scaling.dm"
+>>>>>>> c51b77f... Adds the Hauntium material, which turns any item into a ghost (with AI) (#55728)
 #include "code\datums\elements\light_blocking.dm"
 #include "code\datums\elements\obj_regen.dm"
 #include "code\datums\elements\point_of_interest.dm"
@@ -641,6 +659,7 @@
 #include "code\datums\materials\_material.dm"
 #include "code\datums\materials\alloys.dm"
 #include "code\datums\materials\basemats.dm"
+#include "code\datums\materials\hauntium.dm"
 #include "code\datums\materials\meat.dm"
 #include "code\datums\materials\pizza.dm"
 #include "code\datums\mood_events\_mood_event.dm"
