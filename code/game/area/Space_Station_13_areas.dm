@@ -516,7 +516,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/chapel
 	icon_state = "chapel"
+<<<<<<< HEAD:code/game/area/Space_Station_13_areas.dm
 	ambientsounds = HOLY
+=======
+	mood_bonus = 5
+	mood_message = "<span class='nicegreen'>Being in the chapel brings me peace.</span>\n"
+	mood_trait = TRAIT_SPIRITUAL
+	ambience_index = AMBIENCE_HOLY
+>>>>>>> b040ac9... Adds trait-dependent room moodlet check (#56462):code/game/area/space_station_13_areas.dm
 	flags_1 = NONE
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
