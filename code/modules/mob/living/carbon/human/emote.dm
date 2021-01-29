@@ -37,7 +37,6 @@
 	message = "hugs themself."
 	message_param = "hugs %t."
 	hands_use_check = TRUE
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
@@ -172,3 +171,48 @@
 		T.Entered(src)
 
 //Ayy lmao
+<<<<<<< HEAD
+=======
+
+
+///Snowflake emotes only for le epic chimp
+/datum/emote/living/carbon/human/monkey
+
+/datum/emote/living/carbon/human/monkey/can_run_emote(mob/user, status_check = TRUE, intentional)
+	if(ismonkey(user))
+		return ..()
+	return FALSE
+
+/datum/emote/living/carbon/human/monkey/gnarl
+	key = "gnarl"
+	key_third_person = "gnarls"
+	message = "gnarls and shows its teeth..."
+
+/datum/emote/living/carbon/human/monkey/roll
+	key = "roll"
+	key_third_person = "rolls"
+	message = "rolls."
+	hands_use_check = TRUE
+
+/datum/emote/living/carbon/human/monkey/scratch
+	key = "scratch"
+	key_third_person = "scratches"
+	message = "scratches."
+	hands_use_check = TRUE
+
+/datum/emote/living/carbon/human/monkey/screech/roar
+	key = "roar"
+	key_third_person = "roars"
+	message = "roars."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/monkey/tail
+	key = "tail"
+	message = "waves their tail."
+
+/datum/emote/living/carbon/human/monkeysign
+	key = "sign"
+	key_third_person = "signs"
+	message_param = "signs the number %t."
+	hands_use_check = TRUE
+>>>>>>> 09d9069... Audits audible emotes (#56465)
