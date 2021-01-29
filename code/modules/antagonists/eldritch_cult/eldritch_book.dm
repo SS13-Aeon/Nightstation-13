@@ -131,7 +131,12 @@
 				if(initial(EK.name) != ekname)
 					continue
 				if(cultie.gain_knowledge(EK))
+<<<<<<< HEAD
 					charge -= text2num(params["cost"])
+=======
+					log_codex_ciatrix("[key_name(last_user)] gained knowledge of [EK]")
+					charge -= initial(EK.cost)
+>>>>>>> 11b3d16... Adds logging to uplinks, spellbooks, and the codex ciatrix (#56450)
 					return TRUE
 
 	update_icon() // Not applicable to all objects.
