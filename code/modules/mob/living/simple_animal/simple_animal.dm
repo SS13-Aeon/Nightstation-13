@@ -215,7 +215,17 @@
 
 /mob/living/simple_animal/attackby(obj/item/O, mob/user, params)
 	if(!is_type_in_list(O, food_type))
+<<<<<<< HEAD
 		..()
+=======
+		return ..()
+	if(stat == DEAD)
+		to_chat(user, "<span class='warning'>[capitalize(src)] is dead!</span>")
+		return
+	user.visible_message("<span class='notice'>[user] hand-feeds [O] to [src].</span>", "<span class='notice'>You hand-feed [O] to [src].</span>")
+	qdel(O)
+	if(tame)
+>>>>>>> c55d881... makes movement reset tolerance less harsh on jousting component, adds keycheck to mob riding (#56497)
 		return
 	else
 		user.visible_message("<span class='notice'>[user] hand-feeds [O] to [src].</span>", "<span class='notice'>You hand-feed [O] to [src].</span>")
