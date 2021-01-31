@@ -48,7 +48,11 @@
 							)
 
 /obj/machinery/autolathe/Initialize()
+<<<<<<< HEAD
 	AddComponent(/datum/component/material_container, SSmaterials.materialtypes_by_category[MAT_CATEGORY_RIGID], 0, MATCONTAINER_EXAMINE, null, null, CALLBACK(src, .proc/AfterMaterialInsert))
+=======
+	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 0, MATCONTAINER_EXAMINE, _after_insert = CALLBACK(src, .proc/AfterMaterialInsert))
+>>>>>>> 7202bcf... Fixes sheetifier not being able to take hauntium (#56488)
 	. = ..()
 
 	wires = new /datum/wires/autolathe(src)
