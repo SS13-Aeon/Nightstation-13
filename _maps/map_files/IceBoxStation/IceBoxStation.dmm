@@ -14466,6 +14466,13 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/button/door{
+	id = "Toilet1";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = 25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet)
 "aGn" = (
@@ -14476,6 +14483,13 @@
 	dir = 8
 	},
 /obj/effect/landmark/blobstart,
+/obj/machinery/button/door{
+	id = "Toilet2";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = 25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet)
 "aGo" = (
@@ -15318,12 +15332,14 @@
 /area/crew_quarters/toilet)
 "aHV" = (
 /obj/machinery/door/airlock{
+	id_tag = "Toilet1";
 	name = "Unit 1"
 	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet)
 "aHW" = (
 /obj/machinery/door/airlock{
+	id_tag = "Toilet2";
 	name = "Unit 2"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -22254,6 +22270,13 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/button/door{
+	id = "AuxToilet1";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet/locker)
 "aZu" = (
@@ -22262,6 +22285,7 @@
 /area/bridge/meeting_room)
 "aZv" = (
 /obj/machinery/door/airlock{
+	id_tag = "AuxToilet1";
 	name = "Unit 1"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -23167,6 +23191,7 @@
 /area/maintenance/port)
 "bbL" = (
 /obj/machinery/door/airlock{
+	id_tag = "AuxToilet2";
 	name = "Unit 2"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -23939,6 +23964,7 @@
 /area/bridge/meeting_room)
 "bdJ" = (
 /obj/machinery/door/airlock{
+	id_tag = "AuxToilet3";
 	name = "Unit 3"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -24985,6 +25011,7 @@
 /area/science/research)
 "bgr" = (
 /obj/machinery/door/airlock{
+	id_tag = "AuxToilet4";
 	name = "Unit 4"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -49056,6 +49083,23 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/mixing)
+"dyF" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "AuxToilet4";
+	id_tag = null;
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/toilet/locker)
 "dyN" = (
 /obj/structure/table/wood,
 /obj/item/taperecorder,
@@ -53051,6 +53095,35 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+<<<<<<< HEAD
+=======
+"nZo" = (
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable,
+/obj/structure/bed/dogbed/lia,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/mob/living/simple_animal/hostile/carp/cayenne/lia,
+/turf/open/floor/carpet,
+/area/crew_quarters/heads/hos)
+"nZR" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "AuxToilet2";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/toilet/locker)
+>>>>>>> 744e12d... ice box toilet locks (#56468)
 "ofT" = (
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
@@ -55734,6 +55807,34 @@
 /obj/machinery/light/small/broken,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+<<<<<<< HEAD
+=======
+"vvZ" = (
+/obj/machinery/power/apc/auto_name/north,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
+"vwa" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "AuxToilet3";
+	id_tag = null;
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/toilet/locker)
+>>>>>>> 744e12d... ice box toilet locks (#56468)
 "vwd" = (
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/hor)
@@ -64430,6 +64531,7 @@ aaa
 aaa
 aaa
 "}
+<<<<<<< HEAD
 (30,1,1) = {"
 aaa
 aaa
@@ -64531,6 +64633,183 @@ ydz
 ydz
 ydz
 ydz
+=======
+(65,1,1) = {"
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+gQb
+boP
+boP
+bBM
+boP
+boP
+boP
+boP
+boP
+aah
+boP
+boP
+boP
+aah
+boP
+boP
+boP
+aah
+boP
+asU
+aCS
+ajV
+ajV
+alS
+amz
+anh
+anH
+aok
+anJ
+anJ
+aFJ
+arK
+alU
+alU
+ali
+alU
+alU
+asK
+azF
+aAP
+iHT
+aAP
+aAQ
+aFO
+aHA
+aIT
+azF
+uBY
+aNl
+aOl
+aPA
+aPA
+aPA
+aPA
+aPA
+aPA
+aXQ
+aZt
+aXQ
+nZR
+aXQ
+vwa
+aXQ
+dyF
+aXQ
+bgw
+bkF
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+btF
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+boP
+bBM
+bJY
+atY
+atY
+atY
+atY
+atY
+boP
+>>>>>>> 744e12d... ice box toilet locks (#56468)
 asU
 ydz
 ydz
