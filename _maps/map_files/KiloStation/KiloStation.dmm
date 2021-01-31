@@ -5040,7 +5040,8 @@
 /area/security/main)
 "aiI" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/fancy/donut_box,
+/obj/machinery/syndicatebomb/training,
+/obj/item/wirecutters,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "aiJ" = (
@@ -26279,6 +26280,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 26
 	},
+/obj/item/storage/fancy/donut_box,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "aQT" = (
