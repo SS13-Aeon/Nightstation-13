@@ -1,10 +1,35 @@
 /*
+<<<<<<< HEAD
 	Holodeck Update
 
 	The on-station holodeck area is of type [holodeck_type].
 	All subtypes of [program_type] are loaded into the program cache or emag programs list.
 	If init_program is null, a random program will be loaded on startup.
 	If you don't wish this, set it to the offline program or another of your choosing.
+=======
+Map Template Holodeck
+
+Holodeck finds the location of mapped_start_area and loads offline_program in it on LateInitialize. It then passes its program templates to Holodeck.js in the form of program_cache and emag_programs. when a user selects a program the
+ui calls load_program() with the id of the selected program.
+load_program() -> map_template/load() on map_template/holodeck.
+
+holodeck map templates:
+1. have an update_blacklist that doesnt allow placing on non holofloors (except for engine floors so you can repair it)
+2. has should_place_on_top = FALSE, so that the baseturfs list doesnt pull a kilostation oom crash
+3. has returns_created = TRUE, so that SSatoms gives the map template a list of spawned atoms
+all the fancy flags and shit are added to holodeck objects in finish_spawn()
+
+Easiest way to add new holodeck programs:
+1. Define new map template datums in code/modules/holodeck/holodeck_map_templates, make sure they have the access flags
+of the holodeck you want them to be able to load, for the onstation holodeck the flag is STATION_HOLODECK.
+2. Create the new map templates in _maps/templates (remember theyre 9x10, and make sure they have area/noop or else it will fuck with linked)
+all turfs in holodeck programs MUST be of type /turf/open/floor/holofloor, OR /turf/open/floor/engine, or they will block future programs!
+
+Note: if youre looking at holodeck code because you want to see how returns_created is handled so that templates return a list of atoms
+created from them: make sure you handle that list correctly! Either copy them by value and delete them or reference it and handle qdel'ing
+and clear when youre done! if you dont i will use :newspaper2: on you
+*/
+>>>>>>> 052130a... see title (#56536)
 
 	You can use this to add holodecks with minimal code:
 	1) Define new areas for the holodeck programs
@@ -25,6 +50,22 @@
 	idle_power_usage = 10
 	active_power_usage = 50
 
+<<<<<<< HEAD
+=======
+	//new vars
+	///what area type this holodeck loads into. linked turns into the nearest instance of this area
+	var/area/mapped_start_area = /area/holodeck/rec_center
+
+	///the currently used map template
+	var/datum/map_template/holodeck/template
+
+	///bottom left corner of the loading room, used for placing
+	var/turf/bottom_left
+
+	//old vars
+
+	///the area that this holodeck loads templates into, used for power and deleting holo objects that leave it
+>>>>>>> 052130a... see title (#56536)
 	var/area/holodeck/linked
 	var/area/holodeck/program
 	var/area/holodeck/last_program
@@ -74,6 +115,7 @@
 	generate_program_list()
 	load_program(offline_program, FALSE, FALSE)
 
+<<<<<<< HEAD
 /obj/machinery/computer/holodeck/Destroy()
 	emergency_shutdown()
 	if(linked)
@@ -84,6 +126,17 @@
 /obj/machinery/computer/holodeck/power_change()
 	. = ..()
 	toggle_power(!machine_stat)
+=======
+///adds all programs that this holodeck has access to, and separates the restricted and unrestricted ones
+/obj/machinery/computer/holodeck/proc/generate_program_list()
+	for(var/typekey in subtypesof(program_type))
+		var/datum/map_template/holodeck/program = typekey
+		var/list/info_this = list("id" = initial(program.template_id), "name" = initial(program.name))
+		if(initial(program.restricted))
+			LAZYADD(emag_programs, list(info_this))
+		else
+			LAZYADD(program_cache, list(info_this))
+>>>>>>> 052130a... see title (#56536)
 
 /obj/machinery/computer/holodeck/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -275,6 +328,7 @@
 
 	addtimer(CALLBACK(src, .proc/finish_spawn), 30)
 
+<<<<<<< HEAD
 /obj/machinery/computer/holodeck/proc/finish_spawn()
 	var/list/added = list()
 	for(var/obj/effect/holodeck_effect/HE in spawned)
@@ -309,5 +363,7 @@
 		visible_message("<span class='notice'>[O] fades away!</span>")
 	qdel(O)
 
+=======
+>>>>>>> 052130a... see title (#56536)
 #undef HOLODECK_CD
 #undef HOLODECK_DMG_CD
