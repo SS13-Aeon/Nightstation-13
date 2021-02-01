@@ -18,12 +18,19 @@
 	open_sound_volume = 35
 	close_sound_volume = 50
 	drag_slowdown = 0
+<<<<<<< HEAD
+=======
+	var/crate_climb_time = 20
+>>>>>>> 0d97087... Fixes up the crate climbing element being incorrectly removed when opened (#56518)
 	var/obj/item/paper/fluff/jobs/cargo/manifest/manifest
 
 /obj/structure/closet/crate/Initialize()
 	. = ..()
 	if(icon_state == "[initial(icon_state)]open")
 		opened = TRUE
+		AddElement(/datum/element/climbable, climb_time = crate_climb_time * 0.5, climb_stun = 0)
+	else
+		AddElement(/datum/element/climbable, climb_time = crate_climb_time, climb_stun = 0)
 	update_icon()
 
 /obj/structure/closet/crate/CanAllowThrough(atom/movable/mover, turf/target)
@@ -51,6 +58,20 @@
 	if(manifest)
 		tear_manifest(user)
 
+<<<<<<< HEAD
+=======
+/obj/structure/closet/crate/after_open(mob/living/user, force)
+	. = ..()
+	RemoveElement(/datum/element/climbable, climb_time = crate_climb_time, climb_stun = 0)
+	AddElement(/datum/element/climbable, climb_time = crate_climb_time * 0.5, climb_stun = 0)
+
+/obj/structure/closet/crate/after_close(mob/living/user, force)
+	. = ..()
+	RemoveElement(/datum/element/climbable, climb_time = crate_climb_time * 0.5, climb_stun = 0)
+	AddElement(/datum/element/climbable, climb_time = crate_climb_time, climb_stun = 0)
+
+
+>>>>>>> 0d97087... Fixes up the crate climbing element being incorrectly removed when opened (#56518)
 /obj/structure/closet/crate/open(mob/living/user, force = FALSE)
 	. = ..()
 	if(. && manifest)
