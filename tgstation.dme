@@ -2168,6 +2168,12 @@
 #include "code\modules\library\skill_learning\skill_station.dm"
 #include "code\modules\library\skill_learning\skillchip.dm"
 #include "code\modules\library\skill_learning\job_skillchips\_job.dm"
+<<<<<<< HEAD
+=======
+#include "code\modules\library\skill_learning\job_skillchips\chef.dm"
+#include "code\modules\library\skill_learning\job_skillchips\psychologist.dm"
+#include "code\modules\library\skill_learning\job_skillchips\research_director.dm"
+>>>>>>> c099476... Move origin of chef CQC to skillchip (#56437)
 #include "code\modules\library\skill_learning\job_skillchips\roboticist.dm"
 #include "code\modules\library\skill_learning\job_skillchips\station_engineer.dm"
 #include "code\modules\library\skill_learning\job_skillchips\traitor.dm"
