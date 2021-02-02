@@ -6,7 +6,12 @@
 	name = "The Sleeping Carp"
 	id = MARTIALART_SLEEPINGCARP
 	allow_temp_override = FALSE
+<<<<<<< HEAD
 	help_verb = /mob/living/carbon/human/proc/sleeping_carp_help
+=======
+	help_verb = /mob/living/proc/sleeping_carp_help
+	display_combos = TRUE
+>>>>>>> 8e68af9... Martial arts combo meter (#56520)
 
 /datum/martial_art/the_sleeping_carp/proc/check_streak(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(findtext(streak,STRONG_PUNCH_COMBO))
