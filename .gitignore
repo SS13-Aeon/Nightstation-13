@@ -231,3 +231,10 @@ tools/LinuxOneShot/Database
 tools/LinuxOneShot/TGS_Config
 tools/LinuxOneShot/TGS_Instances
 tools/LinuxOneShot/TGS_Logs
+<<<<<<< HEAD
+=======
+
+# Common build tooling
+!/tools/build
+code/modules/tgui/USE_BUILD_BAT_INSTEAD_OF_DREAM_MAKER.dm
+>>>>>>> d45477f... Use a dummy include to indicate TGUI isn't built (#56470)
