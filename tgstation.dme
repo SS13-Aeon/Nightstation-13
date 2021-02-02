@@ -3288,6 +3288,7 @@
 #include "d_nightstation_modular\code\game\objects\structures\crates_lockers\closets\secure\hydroponics.dm"
 #include "d_nightstation_modular\code\modules\client\preferences.dm"
 #include "d_nightstation_modular\code\modules\hydroponics\gene_modder.dm"
+#include "d_nightstation_modular\code\modules\mob\emotes.dm"
 #include "d_nightstation_modular\code\modules\mob\dead\new_player\sprite_accessories.dm"
 #include "d_nightstation_modular\code\modules\mob\living\carbon\human\human.dm"
 #include "d_nightstation_modular\code\modules\mob\living\carbon\human\species_types\genemodder.dm"
