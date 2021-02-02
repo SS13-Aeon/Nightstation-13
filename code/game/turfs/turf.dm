@@ -172,9 +172,23 @@ GLOBAL_LIST_EMPTY(station_turfs)
 /turf/proc/is_blocked_turf(exclude_mobs)
 	if(density)
 		return TRUE
+<<<<<<< HEAD
 	for(var/i in contents)
 		var/atom/thing = i
 		if(thing.density && (!exclude_mobs || !ismob(thing)))
+=======
+
+	for(var/content in contents)
+		// We don't want to block ourselves or consider any ignored atoms.
+		if((content == source_atom) || (content in ignore_atoms))
+			continue
+		var/atom/atom_content = content
+		// If the thing is dense AND we're including mobs or the thing isn't a mob AND if there's a source atom and
+		// it cannot pass through the thing on the turf,  we consider the turf blocked.
+		if(atom_content.density && (!exclude_mobs || !ismob(atom_content)))
+			if(source_atom && atom_content.CanPass(source_atom, src))
+				continue
+>>>>>>> 5aeab8c... fixes is_blocked_turf from not working (#56512)
 			return TRUE
 	return FALSE
 
