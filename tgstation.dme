@@ -576,7 +576,13 @@
 #include "code\datums\elements\art.dm"
 #include "code\datums\elements\bsa_blocker.dm"
 #include "code\datums\elements\cleaning.dm"
+<<<<<<< HEAD
 #include "code\datums\elements\decal.dm"
+=======
+#include "code\datums\elements\climbable.dm"
+#include "code\datums\elements\decal.dm"
+#include "code\datums\elements\deferred_aquarium_content.dm"
+>>>>>>> 20d2fb6... reverts Adds Neon Carpet (#55782), it appears to have been causing massive amounts of maptick (#56496)
 #include "code\datums\elements\digitalcamo.dm"
 #include "code\datums\elements\dryable.dm"
 #include "code\datums\elements\earhealing.dm"
