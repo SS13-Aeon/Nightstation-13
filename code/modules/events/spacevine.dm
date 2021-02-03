@@ -569,12 +569,24 @@
 	if(!i && prob(100/severity))
 		qdel(src)
 
+<<<<<<< HEAD
 /obj/structure/spacevine/temperature_expose(null, temp, volume)
 	var/override = 0
 	for(var/datum/spacevine_mutation/SM in mutations)
 		override += SM.process_temperature(src, temp, volume)
 	if(!override)
 		qdel(src)
+=======
+/obj/structure/spacevine/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
+	return exposed_temperature > FIRE_MINIMUM_TEMPERATURE_TO_SPREAD //if you're cold you're safe
+
+/obj/structure/spacevine/atmos_expose(datum/gas_mixture/air, exposed_temperature)
+	var/volume = air.return_volume()
+	for(var/datum/spacevine_mutation/SM in mutations)
+		if(SM.process_temperature(src, exposed_temperature, volume)) //If it's ever true we're safe
+			return
+	qdel(src)
+>>>>>>> 9a47ed2... Fixes space vines dying instantly to gas movement (#56567)
 
 /obj/structure/spacevine/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
