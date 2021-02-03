@@ -8,6 +8,7 @@
 	flags_ricochet = RICOCHET_HARD
 	receive_ricochet_chance_mod = 0.6
 	pass_flags_self = PASSSTRUCTURE
+<<<<<<< HEAD
 
 	var/climb_time = 20
 	var/climb_stun = 20
@@ -15,6 +16,9 @@
 	var/mob/living/structureclimber
 	var/broken = 0 //similar to machinery's stat BROKEN
 
+=======
+	var/broken = FALSE
+>>>>>>> 20d2fb6... reverts Adds Neon Carpet (#55782), it appears to have been causing massive amounts of maptick (#56496)
 
 /obj/structure/Initialize()
 	if (!armor)

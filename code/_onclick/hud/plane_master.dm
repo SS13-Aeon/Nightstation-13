@@ -79,9 +79,15 @@
 
 /atom/movable/screen/plane_master/lighting/Initialize()
 	. = ..()
+<<<<<<< HEAD
 	filters += filter(type="alpha", render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE)
 	filters += filter(type="alpha", render_source = EMISSIVE_UNBLOCKABLE_RENDER_TARGET, flags = MASK_INVERSE)
 	filters += filter(type="alpha", render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE)
+=======
+	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
+	add_filter("unblockable_emissives", 2, alpha_mask_filter(render_source = EMISSIVE_UNBLOCKABLE_RENDER_TARGET, flags = MASK_INVERSE))
+	add_filter("object_lighting", 3, alpha_mask_filter(render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE))
+>>>>>>> 20d2fb6... reverts Adds Neon Carpet (#55782), it appears to have been causing massive amounts of maptick (#56496)
 
 /**
  * Things placed on this mask the lighting plane. Doesn't render directly.
@@ -97,7 +103,11 @@
 
 /atom/movable/screen/plane_master/emissive/Initialize()
 	. = ..()
+<<<<<<< HEAD
 	filters += filter(type="alpha", render_source=EMISSIVE_BLOCKER_RENDER_TARGET, flags=MASK_INVERSE)
+=======
+	add_filter("emissive_block", 1, alpha_mask_filter(render_source = EMISSIVE_BLOCKER_RENDER_TARGET, flags = MASK_INVERSE))
+>>>>>>> 20d2fb6... reverts Adds Neon Carpet (#55782), it appears to have been causing massive amounts of maptick (#56496)
 
 /**
  * Things placed on this always mask the lighting plane. Doesn't render directly.

@@ -359,6 +359,7 @@
 
 /obj/machinery/light/update_overlays()
 	. = ..()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(on && status == LIGHT_OK)
 		glowybit.alpha = clamp(light_power*250, 30, 200)
 	else

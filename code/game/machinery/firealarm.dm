@@ -97,6 +97,14 @@
 		. += "fire_on"
 		SSvis_overlays.add_vis_overlay(src, icon, "fire_on", layer, plane, dir)
 		SSvis_overlays.add_vis_overlay(src, icon, "fire_on", layer, EMISSIVE_PLANE, dir)
+<<<<<<< HEAD
+=======
+
+	if(!panel_open && detecting && triggered) //It just looks horrible with the panel open
+		. += "fire_detected"
+		SSvis_overlays.add_vis_overlay(src, icon, "fire_detected", layer, plane, dir)
+		SSvis_overlays.add_vis_overlay(src, icon, "fire_detected", layer, EMISSIVE_PLANE, dir) //Pain
+>>>>>>> 20d2fb6... reverts Adds Neon Carpet (#55782), it appears to have been causing massive amounts of maptick (#56496)
 
 /obj/machinery/firealarm/emp_act(severity)
 	. = ..()
