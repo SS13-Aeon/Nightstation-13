@@ -55,9 +55,14 @@
 	///How much stamina the mob recovers per call of update_stamina
 	var/stamina_recovery = 10
 
-	///Temperature effect.
+	///Minimal body temperature without receiving damage
 	var/minbodytemp = 250
+	///Maximal body temperature without receiving damage
 	var/maxbodytemp = 350
+	///This damage is taken when the body temp is too cold.
+	var/unsuitable_cold_damage
+	///This damage is taken when the body temp is too hot.
+	var/unsuitable_heat_damage
 
 	///Healable by medical stacks? Defaults to yes.
 	var/healable = 1
@@ -191,6 +196,15 @@
 		atmos_requirements = string_assoc_list(atmos_requirements)
 	if(damage_coeff)
 		damage_coeff = string_assoc_list(damage_coeff)
+<<<<<<< HEAD
+=======
+	if(footstep_type)
+		AddComponent(/datum/component/footstep, footstep_type)
+	if(!unsuitable_cold_damage)
+		unsuitable_cold_damage = unsuitable_atmos_damage
+	if(!unsuitable_heat_damage)
+		unsuitable_heat_damage = unsuitable_atmos_damage
+>>>>>>> c4f9a86... adds vars for damage done by temp on simplemobs (#56572)
 
 /mob/living/simple_animal/Life()
 	. = ..()
@@ -380,8 +394,8 @@
 
 /mob/living/simple_animal/proc/handle_temperature_damage()
 	if(bodytemperature < minbodytemp)
-		adjustHealth(unsuitable_atmos_damage)
-		switch(unsuitable_atmos_damage)
+		adjustHealth(unsuitable_cold_damage)
+		switch(unsuitable_cold_damage)
 			if(1 to 5)
 				throw_alert("temp", /atom/movable/screen/alert/cold, 1)
 			if(5 to 10)
@@ -389,8 +403,8 @@
 			if(10 to INFINITY)
 				throw_alert("temp", /atom/movable/screen/alert/cold, 3)
 	else if(bodytemperature > maxbodytemp)
-		adjustHealth(unsuitable_atmos_damage)
-		switch(unsuitable_atmos_damage)
+		adjustHealth(unsuitable_heat_damage)
+		switch(unsuitable_heat_damage)
 			if(1 to 5)
 				throw_alert("temp", /atom/movable/screen/alert/hot, 1)
 			if(5 to 10)
