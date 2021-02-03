@@ -1056,12 +1056,21 @@
 	return ishuman(target) && target.body_position == LYING_DOWN
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
+<<<<<<< HEAD
 	var/carrydelay = 50 //if you have latex you are faster at grabbing
+=======
+	if(!can_be_firemanned(target) || incapacitated(FALSE, TRUE))
+		to_chat(src, "<span class='warning'>You can't fireman carry [target] while [target.p_they()] [target.p_are()] standing!</span>")
+		return
+
+	var/carrydelay = 5 SECONDS //This is augmented by traits from your skillchip
+>>>>>>> 98642bf... Changes fireman carrying from a trait on gloves to a skillchip (#56593)
 	var/skills_space = "" //cobby told me to do this
 	if(HAS_TRAIT(src, TRAIT_QUICKER_CARRY))
 		carrydelay = 30
 		skills_space = "expertly"
 	else if(HAS_TRAIT(src, TRAIT_QUICK_CARRY))
+<<<<<<< HEAD
 		carrydelay = 40
 		skills_space = "quickly"
 	if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
@@ -1082,6 +1091,21 @@
 						return
 				else
 					buckle_mob(target, TRUE, TRUE, 90, 1, 0)
+=======
+		carrydelay = 4 SECONDS
+		skills_space = " quickly"
+
+	visible_message("<span class='notice'>[src] starts[skills_space] lifting [target] onto [p_their()] back..</span>",
+	//Joe Medic starts quickly/expertly lifting Grey Tider onto their back..
+	"<span class='notice'>[carrydelay < 3.5 SECONDS ? "Using your fireman carrying training, you" : "You"][skills_space] start to lift [target] onto your back[carrydelay == 4 SECONDS ? ", with ease thanks to your advanced knowledge.." : "..."]</span>")
+	//(Using your fireman carrying training, you/You) ( /quickly/expertly) start to lift Grey Tider onto your back(, with ease thanks to your advanced knowledge../...)
+	if(!do_after(src, carrydelay, target))
+		visible_message("<span class='warning'>[src] fails to fireman carry [target]!</span>")
+		return
+
+	//Second check to make sure they're still valid to be carried
+	if(!can_be_firemanned(target) || incapacitated(FALSE, TRUE) || target.buckled)
+>>>>>>> 98642bf... Changes fireman carrying from a trait on gloves to a skillchip (#56593)
 		visible_message("<span class='warning'>[src] fails to fireman carry [target]!</span>")
 	else
 		to_chat(src, "<span class='warning'>You can't fireman carry [target] while they're standing!</span>")

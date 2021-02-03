@@ -34,4 +34,9 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
 	box = /obj/item/storage/box/survival/medical
 
+<<<<<<< HEAD
+=======
+	skillchips = list(/obj/item/skillchip/entrails_reader, /obj/item/skillchip/quickcarry)
+
+>>>>>>> 98642bf... Changes fireman carrying from a trait on gloves to a skillchip (#56593)
 	chameleon_extras = /obj/item/gun/syringe

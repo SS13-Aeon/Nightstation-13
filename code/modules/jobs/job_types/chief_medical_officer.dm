@@ -43,6 +43,11 @@
 	suit_store = /obj/item/flashlight/pen/paramedic
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command=1)
 
+<<<<<<< HEAD
+=======
+	skillchips = list(/obj/item/skillchip/entrails_reader, /obj/item/skillchip/quickercarry)
+
+>>>>>>> 98642bf... Changes fireman carrying from a trait on gloves to a skillchip (#56593)
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
