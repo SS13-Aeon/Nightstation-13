@@ -80,6 +80,15 @@
 	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
 	icon_state = "detective"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38
+	initial_caliber = CALIBER_38
+	alternative_caliber = CALIBER_357
+	initial_fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
+	alternative_fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
+	can_modify_ammo = TRUE
+	alternative_ammo_misfires = TRUE
+	can_misfire = FALSE
+	misfire_probability = 0 
+	misfire_percentage_increment = 25 //about 1 in 4 rounds, which increases rapidly every shot
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list("Default" = "detective",
 						"Fitz Special" = "detective_fitz",
@@ -92,6 +101,7 @@
 						"Black Panther" = "detective_panther"
 						)
 
+<<<<<<< HEAD
 	/// Used to avoid some redundancy on a revolver loaded with 357 regarding misfiring while being wrenched.
 	var/skip_357_missfire_check = FALSE
 
@@ -136,6 +146,8 @@
 		to_chat(user, "<span class='notice'>You tighten the barrel of [src]. Now it will fire .38 rounds.</span>")
 
 
+=======
+>>>>>>> 1611aaa... Pipeguns: Elitism Edition (#56322)
 /obj/item/gun/ballistic/revolver/mateba
 	name = "\improper Unica 6 auto-revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
