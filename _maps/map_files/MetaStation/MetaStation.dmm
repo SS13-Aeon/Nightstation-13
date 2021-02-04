@@ -66158,6 +66158,29 @@
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/theatre)
+<<<<<<< HEAD
+=======
+"gad" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/camera{
+	c_tag = "Science Hallway - Security";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/science/research)
+"gal" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/marker_beacon/burgundy,
+/obj/item/toy/plush/lizardplushie/space{
+	desc = "He stared into the void and listened. He didn't expect an answer...";
+	name = "Void-Stares-Back"
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
+>>>>>>> df4fbfa... Fixes mispelling, improves flow. (#56595)
 "gaD" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/stripes/line{
