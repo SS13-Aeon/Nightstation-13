@@ -75,8 +75,13 @@
 /datum/component/material_container/proc/on_attackby(datum/source, obj/item/I, mob/living/user)
 	SIGNAL_HANDLER
 
+<<<<<<< HEAD
 	var/list/tc = allowed_typecache
 	if(!(mat_container_flags & MATCONTAINER_ANY_INTENT) && user.a_intent != INTENT_HELP)
+=======
+	var/list/tc = allowed_item_typecache
+	if(!(mat_container_flags & MATCONTAINER_ANY_INTENT) && user.combat_mode)
+>>>>>>> 707fc28... Replaces intents with combat mode (#56601)
 		return
 	if(I.item_flags & ABSTRACT)
 		return

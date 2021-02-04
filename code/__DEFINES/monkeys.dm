@@ -27,8 +27,13 @@
 #define MONKEY_RETALIATE_HARM_PROB 			95	// probability for the monkey to aggro when attacked with harm intent
 #define MONKEY_RETALIATE_DISARM_PROB 		20 	// probability for the monkey to aggro when attacked with disarm intent
 
+<<<<<<< HEAD
 #define MONKEY_HATRED_AMOUNT 				4	// amount of aggro to add to an enemy when they attack user
 #define MONKEY_HATRED_REDUCTION_PROB 		25	// probability of reducing aggro by one when the monkey attacks
+=======
+/// probability for the monkey to aggro when attacked
+#define MONKEY_RETALIATE_PROB 			85
+>>>>>>> 707fc28... Replaces intents with combat mode (#56601)
 
 // how many Life ticks the monkey will fail to:
 #define MONKEY_HUNT_FRUSTRATION_LIMIT 		8	// Chase after an enemy before giving up

@@ -58,6 +58,10 @@
 	obj_damage = 30
 	melee_damage_lower = 20
 	melee_damage_upper = 25
+<<<<<<< HEAD
+=======
+	combat_mode = TRUE
+>>>>>>> 707fc28... Replaces intents with combat mode (#56601)
 	faction = list("spiders")
 	pass_flags = PASSTABLE
 	move_to_delay = 6
