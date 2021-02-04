@@ -665,6 +665,7 @@
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		dynamic_mode_options(usr)
+<<<<<<< HEAD
 
 	else if(href_list["f_dynamic_roundstart_centre"])
 		if(!check_rights(R_ADMIN))
@@ -772,6 +773,8 @@
 		GLOB.dynamic_midround_delay_max = (new_max MINUTES)
 		dynamic_mode_options(usr)
 
+=======
+>>>>>>> de44245... Dynamic 2021 (#56221)
 	else if(href_list["f_dynamic_force_extended"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -795,6 +798,7 @@
 		log_admin("[key_name(usr)] set 'no_stacking' to [GLOB.dynamic_no_stacking].")
 		message_admins("[key_name(usr)] set 'no_stacking' to [GLOB.dynamic_no_stacking].")
 		dynamic_mode_options(usr)
+<<<<<<< HEAD
 
 	else if(href_list["f_dynamic_classic_secret"])
 		if(!check_rights(R_ADMIN))
@@ -808,6 +812,8 @@
 		message_admins("[key_name(usr)] set 'classic_secret' to [GLOB.dynamic_classic_secret].")
 		dynamic_mode_options(usr)
 
+=======
+>>>>>>> de44245... Dynamic 2021 (#56221)
 	else if(href_list["f_dynamic_stacking_limit"])
 		if(!check_rights(R_ADMIN))
 			return
