@@ -40,6 +40,11 @@
 #include "combat.dm"
 #include "component_tests.dm"
 #include "confusion.dm"
+<<<<<<< HEAD
+=======
+#include "designs.dm"
+#include "dynamic_ruleset_sanity.dm"
+>>>>>>> de44245... Dynamic 2021 (#56221)
 #include "emoting.dm"
 #include "heretic_knowledge.dm"
 #include "holidays.dm"
