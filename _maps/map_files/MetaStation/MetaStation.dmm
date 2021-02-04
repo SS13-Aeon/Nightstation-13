@@ -70922,6 +70922,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
+<<<<<<< HEAD
+=======
+"mne" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/solar/starboard/aft)
+>>>>>>> 052d9b5... Fixes active turf on sci solars and robotics maintenance access on Meta (#56550)
 "mnI" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
@@ -77835,6 +77843,25 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/service)
+<<<<<<< HEAD
+=======
+"vAO" = (
+/obj/machinery/door/airlock/maintenance{
+	req_one_access_txt = "5;12;29;33;69"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/science/central)
+>>>>>>> 052d9b5... Fixes active turf on sci solars and robotics maintenance access on Meta (#56550)
 "vBx" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating{
