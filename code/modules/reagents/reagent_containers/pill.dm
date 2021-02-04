@@ -270,6 +270,14 @@
 	if(prob(20))
 		desc = pick(descs)
 
+<<<<<<< HEAD
+=======
+/obj/item/reagent_containers/pill/maintenance/on_consumption(mob/M, mob/user)
+	. = ..()
+
+	M.client?.give_award(/datum/award/score/maintenance_pill, M)
+
+>>>>>>> b4c6a49... Fixes maint pill score not being tracked (#56539)
 /obj/item/reagent_containers/pill/potassiodide
 	name = "potassium iodide pill"
 	desc = "Used to reduce low radiation damage very effectively."
