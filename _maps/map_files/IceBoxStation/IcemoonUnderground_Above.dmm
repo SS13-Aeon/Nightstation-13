@@ -4085,6 +4085,9 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hydroponics)
+"BG" = (
+/turf/closed/mineral/random/snow,
+/area/icemoon/underground/unexplored/rivers)
 "BI" = (
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
@@ -4213,6 +4216,9 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"De" = (
+/turf/open/openspace/icemoon,
+/area/icemoon/underground/unexplored/rivers)
 "Dh" = (
 /obj/machinery/light{
 	dir = 4
@@ -5100,9 +5106,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/storage/mining)
-"Ma" = (
-/turf/open/openspace/icemoon,
-/area/icemoon/underground/explored)
 "Mk" = (
 /obj/machinery/camera{
 	c_tag = "Xenobiology Kill Chamber";
@@ -6155,6 +6158,9 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/mine/laborcamp)
+"VY" = (
+/turf/open/floor/plating/asteroid/snow/icemoon,
+/area/icemoon/underground/unexplored/rivers)
 "Wb" = (
 /turf/open/floor/engine,
 /area/science/xenobiology)
@@ -52966,9 +52972,9 @@ hM
 hM
 hM
 hM
-Et
-Et
-Et
+ak
+ak
+ak
 hM
 hM
 hM
@@ -53220,13 +53226,13 @@ Et
 Et
 Et
 Et
-Et
-Et
-Et
-Fp
-Fp
-Et
-Et
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 ak
 ak
 ak
@@ -53477,13 +53483,13 @@ Et
 Et
 Et
 Et
-Et
-Fp
-Ma
-Ma
-Ma
-Fp
-Et
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 ak
 ak
 ak
@@ -53734,13 +53740,13 @@ ak
 ak
 ak
 ak
-Et
-Et
-Et
-Fp
-Fp
-Fp
-Et
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 ak
 ak
 ak
@@ -53992,12 +53998,12 @@ ak
 ak
 ak
 ak
-Et
-Et
-Et
-Et
-Et
-Et
+ak
+ak
+ak
+ak
+ak
+ak
 ak
 ak
 ak
@@ -55285,10 +55291,10 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
+BG
+BG
+BG
+BG
 ak
 ak
 ak
@@ -55542,10 +55548,10 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
+BG
+VY
+VY
+BG
 ak
 ak
 ak
@@ -55797,12 +55803,12 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
-ak
-ak
+BG
+BG
+BG
+De
+VY
+BG
 ak
 ak
 ak
@@ -56054,12 +56060,12 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
-ak
-ak
+BG
+VY
+VY
+De
+BG
+BG
 ak
 ak
 ak
@@ -56311,11 +56317,11 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
-ak
+BG
+VY
+VY
+De
+BG
 ak
 ak
 ak
@@ -56568,11 +56574,11 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
-ak
+BG
+BG
+VY
+BG
+BG
 ak
 ak
 ak
@@ -56825,10 +56831,10 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
+BG
+BG
+BG
+BG
 ak
 ak
 ak
