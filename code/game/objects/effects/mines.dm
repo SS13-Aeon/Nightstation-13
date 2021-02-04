@@ -130,6 +130,7 @@
 	name = "bwoink mine"
 	sound = 'sound/effects/adminhelp.ogg'
 
+<<<<<<< HEAD
 /obj/effect/mine/pickup
 	name = "pickup"
 	desc = "pick me up"
@@ -219,6 +220,8 @@
 	to_chat(victim, "<span class='notice'>You slow down.</span>")
 
 
+=======
+>>>>>>> efbb133... Adds powerup system, refactors ctf pickups and powerup mine subtypes into it (#56605)
 /// These mines spawn pellet_clouds around them when triggered
 /obj/effect/mine/shrapnel
 	name = "shrapnel mine"

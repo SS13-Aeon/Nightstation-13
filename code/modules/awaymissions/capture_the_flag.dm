@@ -4,7 +4,6 @@
 #define FLAG_RETURN_TIME 200 // 20 seconds
 #define INSTAGIB_RESPAWN 50 //5 seconds
 #define DEFAULT_RESPAWN 150 //15 seconds
-#define AMMO_DROP_LIFETIME 300
 #define CTF_REQUIRED_PLAYERS 4
 
 
@@ -161,6 +160,12 @@
 	var/ctf_enabled = FALSE
 	var/ctf_gear = /datum/outfit/ctf
 	var/instagib_gear = /datum/outfit/ctf/instagib
+<<<<<<< HEAD
+=======
+	var/ammo_type = /obj/effect/powerup/ammo/ctf
+	// Fast paced gameplay, no real time for burn infections.
+	var/player_traits = list(TRAIT_NEVER_WOUNDED)
+>>>>>>> efbb133... Adds powerup system, refactors ctf pickups and powerup mine subtypes into it (#56605)
 
 	var/list/dead_barricades = list()
 
@@ -604,6 +609,7 @@
 	alpha = 100
 	resistance_flags = INDESTRUCTIBLE
 
+<<<<<<< HEAD
 /obj/effect/ctf/ammo
 	name = "ammo pickup"
 	desc = "You like revenge, right? Everybody likes revenge! Well, \
@@ -643,6 +649,8 @@
 			qdel(src)
 			break
 
+=======
+>>>>>>> efbb133... Adds powerup system, refactors ctf pickups and powerup mine subtypes into it (#56605)
 /obj/effect/ctf/dead_barricade
 	name = "dead barrier"
 	desc = "It provided cover in fire fights. And now it's gone."
@@ -705,5 +713,4 @@
 #undef FLAG_RETURN_TIME
 #undef INSTAGIB_RESPAWN
 #undef DEFAULT_RESPAWN
-#undef AMMO_DROP_LIFETIME
 #undef CTF_REQUIRED_PLAYERS
