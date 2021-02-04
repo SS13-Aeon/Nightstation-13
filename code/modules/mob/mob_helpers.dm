@@ -248,6 +248,7 @@
 	firstname.Find(real_name)
 	return firstname.match
 
+<<<<<<< HEAD
 
 /**
  * change a mob's act-intent.
@@ -285,6 +286,13 @@
 
 	if(hud_used?.action_intent)
 		hud_used.action_intent.icon_state = "[a_intent]"
+=======
+///Returns a mob's real name between brackets. Useful when you want to display a mob's name alongside their real name
+/mob/proc/get_realname_string()
+	if(real_name && real_name != name)
+		return " \[[real_name]\]"
+	return ""
+>>>>>>> 707fc28... Replaces intents with combat mode (#56601)
 
 ///Checks if the mob is able to see or not. eye_blind is temporary blindness, the trait is if they're permanently blind.
 /mob/proc/is_blind()
@@ -492,8 +500,13 @@
 			colored_message = "(ASAY) [colored_message]"
 		if(LOG_EMOTE)
 			colored_message = "(EMOTE) [colored_message]"
+<<<<<<< HEAD
 	
 	var/list/timestamped_message = list("\[[time_stamp()]\] [key_name(src)] [loc_name(src)]" = colored_message)
+=======
+
+	var/list/timestamped_message = list("\[[time_stamp()]\] [key_name(src)] [loc_name(src)] (Event #[LAZYLEN(logging[smessage_type])])" = colored_message)
+>>>>>>> 707fc28... Replaces intents with combat mode (#56601)
 
 	logging[smessage_type] += timestamped_message
 

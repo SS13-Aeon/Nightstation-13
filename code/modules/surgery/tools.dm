@@ -192,9 +192,14 @@
 	AddComponent(/datum/component/butchering, 40 * toolspeed, 100, 5, 'sound/weapons/circsawhit.ogg') //saws are very accurate and fast at butchering
 
 /obj/item/circular_saw/augment
+<<<<<<< HEAD
 	desc = "A small but very fast spinning saw. Edges dulled to prevent accidental cutting inside of the surgeon."
 	w_class = WEIGHT_CLASS_SMALL
 	force = 10
+=======
+	desc = "A small but very fast spinning saw. It rips and tears until it is done."
+	w_class = WEIGHT_CLASS_SMALL
+>>>>>>> 707fc28... Replaces intents with combat mode (#56601)
 	toolspeed = 0.5
 
 
@@ -361,8 +366,8 @@
 	sharpness = SHARP_EDGED
 	custom_premium_price = PAYCHECK_MEDIUM * 14
 
-/obj/item/shears/attack(mob/living/M, mob/user)
-	if(!iscarbon(M) || user.a_intent != INTENT_HELP)
+/obj/item/shears/attack(mob/living/M, mob/living/user)
+	if(!iscarbon(M) || user.combat_mode)
 		return ..()
 
 	if(user.zone_selected == BODY_ZONE_CHEST)

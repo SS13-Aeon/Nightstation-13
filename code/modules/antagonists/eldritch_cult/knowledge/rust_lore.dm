@@ -19,10 +19,23 @@
 	var/static/list/blacklisted_turfs = typecacheof(list(/turf/closed,/turf/open/space,/turf/open/lava,/turf/open/chasm,/turf/open/floor/plating/rust))
 	route = PATH_RUST
 
-/datum/eldritch_knowledge/rust_fist/on_mansus_grasp(atom/target, mob/user, proximity_flag, click_parameters)
+/datum/eldritch_knowledge/rust_fist/on_mansus_grasp(atom/target, mob/living/user, proximity_flag, click_parameters)
 	. = ..()
+<<<<<<< HEAD
 	target.rust_heretic_act()
 	return TRUE
+=======
+	var/check = FALSE
+	if(ismob(target))
+		var/mob/living/mobster = target
+		if(!mobster.mob_biotypes & MOB_ROBOTIC)
+			return FALSE
+		else
+			check = TRUE
+	if(user.combat_mode || check)
+		target.rust_heretic_act()
+		return TRUE
+>>>>>>> 707fc28... Replaces intents with combat mode (#56601)
 
 /datum/eldritch_knowledge/rust_fist/on_eldritch_blade(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()

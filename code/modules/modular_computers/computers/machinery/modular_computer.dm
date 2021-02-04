@@ -115,8 +115,13 @@
 	if(cpu)
 		return cpu.screwdriver_act(user, tool)
 
+<<<<<<< HEAD
 /obj/machinery/modular_computer/attackby(obj/item/W as obj, mob/user)
 	if(cpu && !(flags_1 & NODECONSTRUCT_1))
+=======
+/obj/machinery/modular_computer/attackby(obj/item/W as obj, mob/living/user)
+	if (!user.combat_mode && cpu && !(flags_1 & NODECONSTRUCT_1))
+>>>>>>> 707fc28... Replaces intents with combat mode (#56601)
 		return cpu.attackby(W, user)
 	return ..()
 
