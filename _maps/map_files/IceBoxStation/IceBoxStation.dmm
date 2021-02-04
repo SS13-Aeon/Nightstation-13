@@ -60,6 +60,7 @@
 /turf/open/floor/plating/asteroid/snow/icemoon,
 /area/icemoon/surface/outdoors)
 "aag" = (
+<<<<<<< HEAD
 /obj/docking_port/stationary{
 	dheight = 1;
 	dir = 8;
@@ -71,6 +72,20 @@
 	},
 /turf/open/genturf,
 /area/icemoon/surface/outdoors)
+=======
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/crew_quarters/bar)
+>>>>>>> f1555fb... Add missing power cable to Bar APC in Ice Box (#56607)
 "aah" = (
 /obj/structure/cable,
 /turf/open/floor/plating/icemoon,
@@ -353,6 +368,7 @@
 /area/security/prison)
 "aaX" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/power/apc{
 	areastring = "/area/security/prison/safe";
 	dir = 4;
@@ -361,6 +377,11 @@
 	},
 /turf/open/floor/plating,
 /area/security/prison/safe)
+=======
+/mob/living/simple_animal/sloth/paperwork,
+/turf/open/floor/plasteel,
+/area/quartermaster/storage)
+>>>>>>> f1555fb... Add missing power cable to Bar APC in Ice Box (#56607)
 "aaY" = (
 /obj/item/stack/sheet/cardboard{
 	amount = 14
@@ -1108,6 +1129,7 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "acz" = (
+<<<<<<< HEAD
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/effect/turf_decal/tile/brown{
@@ -1123,6 +1145,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
+=======
+/obj/structure/bed/dogbed/ian,
+/obj/machinery/power/apc/auto_name/north,
+/obj/structure/cable,
+/mob/living/simple_animal/pet/dog/corgi/ian{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/heads/hop)
+>>>>>>> f1555fb... Add missing power cable to Bar APC in Ice Box (#56607)
 "acA" = (
 /obj/machinery/flasher{
 	id = "executionflash";
@@ -16498,18 +16530,6 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/bar)
-"aKP" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
-/obj/effect/turf_decal/tile/bar,
-/obj/effect/turf_decal/tile/bar{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
 "aKQ" = (
@@ -49588,6 +49608,15 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+<<<<<<< HEAD
+=======
+"fqL" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/science/storage)
+>>>>>>> f1555fb... Add missing power cable to Bar APC in Ice Box (#56607)
 "fqQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -72023,6 +72052,43 @@ boP
 boP
 boP
 boP
+<<<<<<< HEAD
+=======
+aJd
+aLN
+aNl
+aOi
+cOF
+ken
+ken
+nSw
+aPG
+aSX
+bxu
+bxu
+bxu
+bxu
+bxu
+bxu
+bxu
+bxu
+aZE
+epD
+bmh
+aaX
+bmh
+ofT
+aKM
+ofT
+aqg
+arm
+arm
+arm
+arm
+ayp
+ofT
+blW
+>>>>>>> f1555fb... Add missing power cable to Bar APC in Ice Box (#56607)
 boP
 btF
 boP
@@ -76330,6 +76396,7 @@ boP
 boP
 boP
 boP
+<<<<<<< HEAD
 boP
 boP
 boP
@@ -76416,6 +76483,50 @@ amP
 bCq
 bvO
 bLv
+=======
+aPR
+aTR
+aVe
+aTW
+aYq
+aZP
+aZC
+baK
+bbC
+bbC
+bdI
+bbX
+bbX
+bjE
+eoi
+bmo
+acz
+bpd
+bqz
+bqq
+btC
+buN
+brS
+bmr
+byP
+ova
+aJq
+bCs
+bDw
+bEZ
+bGv
+bFb
+bJj
+bKu
+bLy
+bCs
+bNJ
+bNJ
+bKx
+cjL
+gWd
+bNI
+>>>>>>> f1555fb... Add missing power cable to Bar APC in Ice Box (#56607)
 bHE
 bLv
 boP
@@ -82320,6 +82431,91 @@ boP
 boP
 boP
 boP
+<<<<<<< HEAD
+=======
+arj
+aua
+aua
+ams
+aua
+awB
+axY
+azh
+gsz
+arj
+cVb
+fPh
+myW
+aGI
+xzk
+xge
+aag
+aMx
+aNJ
+aQe
+aOL
+aOL
+axz
+aOL
+aOL
+aOL
+aXO
+aZb
+aJC
+aYV
+iKz
+bet
+tyB
+kFS
+cNr
+bjU
+blk
+qgQ
+boh
+xSX
+bpO
+bqY
+hTU
+hTU
+hTU
+hTU
+hTU
+hTU
+hTU
+bzU
+bip
+bCS
+bip
+bIc
+hTU
+hxs
+bzs
+buf
+bOh
+bPl
+bQB
+bRL
+bOh
+bTX
+bUV
+bWd
+bOh
+bXX
+bYV
+bZL
+bOh
+cbI
+ccC
+cdD
+bOh
+asU
+bMQ
+bye
+bMK
+bMK
+bMK
+asU
+>>>>>>> f1555fb... Add missing power cable to Bar APC in Ice Box (#56607)
 boP
 boP
 bCq
