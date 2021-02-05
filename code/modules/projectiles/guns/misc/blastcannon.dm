@@ -1,6 +1,11 @@
 /obj/item/gun/blastcannon
+<<<<<<< HEAD
 	name = "pipe gun"
 	desc = "A pipe welded onto a gun stock, with a mechanical trigger. The pipe has an opening near the top, and there seems to be a spring loaded wheel in the hole."
+=======
+	name = "blast cannon"
+	desc = "A makeshift device used to concentrate a bomb's blast energy to a narrow wave. Small enough to stow in a bag."
+>>>>>>> 9d4f49d... makes blast cannons not seem like an innocent item before a bomb is loaded (#56645)
 	icon_state = "empty_blastcannon"
 	var/icon_state_loaded = "loaded_blastcannon"
 	inhand_icon_state = "blastcannon_empty"
@@ -26,6 +31,11 @@
 	debug_power = 80
 	bombcheck = FALSE
 
+/obj/item/gun/blastcannon/examine(mob/user)
+	. = ..()
+	if(bomb)
+		. += "<span class='notice'>A bomb is loaded inside.</span>"
+
 /obj/item/gun/blastcannon/Initialize()
 	. = ..()
 	if(!pin)
@@ -41,12 +51,11 @@
 		user.put_in_hands(bomb)
 		user.visible_message("<span class='warning'>[user] detaches [bomb] from [src].</span>")
 		bomb = null
-		name = initial(name)
-		desc = initial(desc)
 	update_icon()
 	return ..()
 
 /obj/item/gun/blastcannon/update_icon_state()
+<<<<<<< HEAD
 	if(bomb)
 		icon_state = icon_state_loaded
 	else
@@ -68,6 +77,26 @@
 		update_icon()
 		return TRUE
 	return ..()
+=======
+	. = ..()
+	icon_state = bomb ? icon_state_loaded : initial(icon_state)
+
+/obj/item/gun/blastcannon/attackby(obj/item/transfer_valve/bomb_to_attach, mob/user)
+	if(!istype(bomb_to_attach))
+		return ..()
+
+	if(!bomb_to_attach.tank_one || !bomb_to_attach.tank_two)
+		to_chat(user, "<span class='warning'>What good would an incomplete bomb do?</span>")
+		return FALSE
+	if(!user.transferItemToLoc(bomb_to_attach, src))
+		to_chat(user, "<span class='warning'>[bomb_to_attach] seems to be stuck to your hand!</span>")
+		return FALSE
+
+	user.visible_message("<span class='warning'>[user] attaches [bomb_to_attach] to [src]!</span>")
+	bomb = bomb_to_attach
+	update_icon()
+	return TRUE
+>>>>>>> 9d4f49d... makes blast cannons not seem like an innocent item before a bomb is loaded (#56645)
 
 //returns the third value of a bomb blast
 /obj/item/gun/blastcannon/proc/calculate_bomb()
