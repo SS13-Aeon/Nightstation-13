@@ -42,6 +42,13 @@
 	var/semicd = 0						//cooldown handler
 	var/weapon_weight = WEAPON_LIGHT
 	var/dual_wield_spread = 24			//additional spread when dual wielding
+<<<<<<< HEAD
+=======
+
+	/// Just 'slightly' snowflakey way to modify projectile damage for projectiles fired from this gun.
+	var/projectile_damage_multiplier = 1
+
+>>>>>>> 1b8fe65... You can no longer shoot and melee with guns at the same time (#56647)
 	var/spread = 0						//Spread induced by the gun itself.
 	var/randomspread = 1				//Set to 0 for shotguns. This is used for weapons that don't fire all their bullets at once.
 
@@ -198,7 +205,11 @@
 	if(flag) //It's adjacent, is the user, or is on the user's person
 		if(target in user.contents) //can't shoot stuff inside us.
 			return
+<<<<<<< HEAD
 		if(!ismob(target) || user.a_intent == INTENT_HARM) //melee attack
+=======
+		if(!ismob(target) || user.combat_mode) //melee attack
+>>>>>>> 1b8fe65... You can no longer shoot and melee with guns at the same time (#56647)
 			return
 		if(target == user && user.zone_selected != BODY_ZONE_PRECISE_MOUTH) //so we can't shoot ourselves (unless mouth selected)
 			return
