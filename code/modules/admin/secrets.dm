@@ -537,6 +537,7 @@
 		if("dorf")
 			if(!check_rights(R_FUN))
 				return
+<<<<<<< HEAD:code/modules/admin/secrets.dm
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Dwarf Beards"))
 			for(var/i in GLOB.human_list)
 				var/mob/living/carbon/human/B = i
@@ -546,6 +547,16 @@
 
 		if("onlyone")
 			if(!check_rights(R_FUN))
+=======
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Egalitarian Station"))
+			for(var/obj/machinery/door/airlock/W in GLOB.machines)
+				if(is_station_level(W.z) && !istype(get_area(W), /area/command) && !istype(get_area(W), /area/commons) && !istype(get_area(W), /area/service) && !istype(get_area(W), /area/command/heads_quarters) && !istype(get_area(W), /area/security/prison))
+					W.req_access = list()
+			message_admins("[key_name_admin(holder)] activated Egalitarian Station mode")
+			priority_announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, 'sound/ai/commandreport.ogg')
+		if("ancap")
+			if(!is_funmin)
+>>>>>>> c54bd59... Standardizes area paths and area-based nomenclature (#56430):code/modules/admin/verbs/secrets.dm
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("There Can Be Only One"))
 			usr.client.only_one()
