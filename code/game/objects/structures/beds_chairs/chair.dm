@@ -10,7 +10,12 @@
 	max_integrity = 250
 	integrity_failure = 0.1
 	custom_materials = list(/datum/material/iron = 2000)
+<<<<<<< HEAD
 	var/buildstacktype = /obj/item/stack/sheet/metal
+=======
+	layer = OBJ_LAYER
+	var/buildstacktype = /obj/item/stack/sheet/iron
+>>>>>>> 8d586a7... Rename metal sheets to iron sheets (#56643)
 	var/buildstackamount = 1
 	var/item_chair = /obj/item/chair // if null it can't be picked up
 	layer = OBJ_LAYER

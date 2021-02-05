@@ -347,7 +347,12 @@ GLOBAL_LIST_INIT(dye_registry, list(
 		update_icon()
 
 /obj/machinery/washing_machine/deconstruct(disassembled = TRUE)
+<<<<<<< HEAD
 	new /obj/item/stack/sheet/metal(drop_location(), 2)
+=======
+	if (!(flags_1 & NODECONSTRUCT_1))
+		new /obj/item/stack/sheet/iron(drop_location(), 2)
+>>>>>>> 8d586a7... Rename metal sheets to iron sheets (#56643)
 	qdel(src)
 
 /obj/machinery/washing_machine/open_machine(drop = 1)
