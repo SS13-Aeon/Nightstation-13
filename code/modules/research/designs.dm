@@ -8,11 +8,11 @@ you use one of the material IDs below. These are NOT ids in the usual sense (the
 they are simply references used as part of a "has materials?" type proc. They all start with a $ to denote that they aren't reagents.
 The currently supporting non-reagent materials. All material amounts are set as the define MINERAL_MATERIAL_AMOUNT, which defaults to 2000
 
-Don't add new keyword/IDs if they are made from an existing one (such as rods which are made from metal). Only add raw materials.
+Don't add new keyword/IDs if they are made from an existing one (such as rods which are made from iron). Only add raw materials.
 
 Design Guidelines
 - When adding new designs, check rdreadme.dm to see what kind of things have already been made and where new stuff is needed.
-- A single sheet of anything is 2000 units of material. Materials besides metal/glass require help from other jobs (mining for
+- A single sheet of anything is 2000 units of material. Materials besides iron/glass require help from other jobs (mining for
 other types of metals and chemistry for reagents).
 - Add the AUTOLATHE tag to
 */
@@ -21,6 +21,7 @@ other types of metals and chemistry for reagents).
 //DO NOT REFERENCE OUTSIDE OF SSRESEARCH. USE THE PROCS IN SSRESEARCH TO OBTAIN A REFERENCE.
 
 /datum/design						//Datum for object designs, used in construction
+<<<<<<< HEAD
 	var/name = "Name"					//Name of the created object.
 	var/desc = "Desc"					//Description of the created object.
 	var/id = DESIGN_ID_IGNORE						//ID of the created object for easy refernece. Alphanumeric, lower-case, no symbols
@@ -31,6 +32,29 @@ other types of metals and chemistry for reagents).
 	var/list/make_reagents = list()			//Reagents produced. Format: "id" = amount. Currently only supported by the biogenerator.
 	var/list/category = null 			//Primarily used for Mech Fabricators, but can be used for anything
 	var/list/reagents_list = list()			//List of reagents. Format: "id" = amount.
+=======
+	/// Name of the created object
+	var/name = "Name"
+	/// Description of the created object
+	var/desc = "Desc"
+	/// The ID of the design. Used for quick reference. Alphanumeric, lower-case, no symbols
+	var/id = DESIGN_ID_IGNORE
+	/// Bitflags indicating what machines this design is compatable with. ([IMPRINTER]|[PROTOLATHE]|[AUTOLATHE]|[MECHFAB]|[BIOGENERATOR]|[LIMBGROWER]|[SMELTER]|[NANITE_COMPILER])
+	var/build_type = null
+	/// List of materials required to create one unit of the product. Format is (typepath or caregory) -> amount
+	var/list/materials = list()
+	/// The amount of time required to create one unit of the product.
+	var/construction_time
+	/// The typepath of the object produced by this design
+	var/build_path = null
+	/// List of reagents produced by this design. Currently only supported by the biogenerator.
+	var/list/make_reagents = list()
+	/// What category this design falls under. Used for sorting in production machines, mostly the mechfab.
+	var/list/category = null
+	/// List of reagents required to create one unit of the product.
+	var/list/reagents_list = list()
+	/// The maximum number of units of whatever is produced by this can be produced in one go.
+>>>>>>> 8d586a7... Rename metal sheets to iron sheets (#56643)
 	var/maxstack = 1
 	var/lathe_time_factor = 1			//How many times faster than normal is this to build on the protolathe
 	var/dangerous_construction = FALSE	//notify and log for admin investigations if this is printed.

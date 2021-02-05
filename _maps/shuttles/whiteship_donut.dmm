@@ -28,7 +28,12 @@
 /obj/machinery/light{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/item/stack/sheet/metal,
+=======
+/obj/item/stack/sheet/iron,
+/obj/structure/tank_dispenser,
+>>>>>>> 8d586a7... Rename metal sheets to iron sheets (#56643)
 /turf/open/floor/plasteel/airless,
 /area/shuttle/abandoned)
 "af" = (
@@ -129,7 +134,7 @@
 /area/shuttle/abandoned)
 "ax" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/iron,
 /turf/open/floor/plasteel/airless,
 /area/shuttle/abandoned)
 "ay" = (
@@ -312,7 +317,7 @@
 /area/shuttle/abandoned)
 "aY" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/iron,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
@@ -517,6 +522,41 @@
 /obj/item/crowbar/red,
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned)
+<<<<<<< HEAD
+=======
+"pe" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/shreds,
+/obj/item/storage/firstaid/ancient,
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned)
+"tT" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/turf/open/floor/plasteel/airless,
+/area/shuttle/abandoned)
+"vR" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned)
+"CQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 15
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned)
+"Ib" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/clothing/suit/space/eva,
+/obj/item/clothing/head/helmet/space/eva,
+/obj/item/clothing/mask/breath,
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned)
+>>>>>>> 8d586a7... Rename metal sheets to iron sheets (#56643)
 
 (1,1,1) = {"
 aa
