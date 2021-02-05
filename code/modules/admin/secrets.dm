@@ -537,6 +537,7 @@
 		if("dorf")
 			if(!check_rights(R_FUN))
 				return
+<<<<<<< HEAD:code/modules/admin/secrets.dm
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Dwarf Beards"))
 			for(var/i in GLOB.human_list)
 				var/mob/living/carbon/human/B = i
@@ -553,6 +554,26 @@
 
 		if("delayed_onlyone")
 			if(!check_rights(R_FUN))
+=======
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Egalitarian Station"))
+			for(var/obj/machinery/door/airlock/W in GLOB.machines)
+				if(is_station_level(W.z) && !istype(get_area(W), /area/command) && !istype(get_area(W), /area/commons) && !istype(get_area(W), /area/service) && !istype(get_area(W), /area/command/heads_quarters) && !istype(get_area(W), /area/security/prison))
+					W.req_access = list()
+			message_admins("[key_name_admin(holder)] activated Egalitarian Station mode")
+			priority_announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, SSstation.announcer.get_rand_report_sound())
+		if("ancap")
+			if(!is_funmin)
+				return
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Anarcho-capitalist Station"))
+			SSeconomy.full_ancap = !SSeconomy.full_ancap
+			message_admins("[key_name_admin(holder)] toggled Anarcho-capitalist mode")
+			if(SSeconomy.full_ancap)
+				priority_announce("The NAP is now in full effect.", null, SSstation.announcer.get_rand_report_sound())
+			else
+				priority_announce("The NAP has been revoked.", null, SSstation.announcer.get_rand_report_sound())
+		if("blackout")
+			if(!is_funmin)
+>>>>>>> 9573134... [READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309):code/modules/admin/verbs/secrets.dm
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("There Can Be Only One"))
 			usr.client.only_one_delayed()
@@ -691,6 +712,128 @@
 					else if (prefs["playersonly"]["value"] != "Yes")
 						addtimer(CALLBACK(GLOBAL_PROC, .proc/doPortalSpawn, get_random_station_turf(), pathToSpawn, prefs["amount"]["value"], storm, null, outfit), i*prefs["delay"]["value"])
 
+<<<<<<< HEAD:code/modules/admin/secrets.dm
+=======
+			var/newBombCap = input(holder,"What would you like the new bomb cap to be. (entered as the light damage range (the 3rd number in common (1,2,3) notation)) Must be above 4)", "New Bomb Cap", GLOB.MAX_EX_LIGHT_RANGE) as num|null
+			if (!CONFIG_SET(number/bombcap, newBombCap))
+				return
+
+			message_admins("<span class='boldannounce'>[key_name_admin(holder)] changed the bomb cap to [GLOB.MAX_EX_DEVESTATION_RANGE], [GLOB.MAX_EX_HEAVY_RANGE], [GLOB.MAX_EX_LIGHT_RANGE]</span>")
+			log_admin("[key_name(holder)] changed the bomb cap to [GLOB.MAX_EX_DEVESTATION_RANGE], [GLOB.MAX_EX_HEAVY_RANGE], [GLOB.MAX_EX_LIGHT_RANGE]")
+		//buttons that are fun for exactly you and nobody else.
+		if("monkey")
+			if(!is_funmin)
+				return
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Monkeyize All Humans"))
+			for(var/i in GLOB.human_list)
+				var/mob/living/carbon/human/H = i
+				INVOKE_ASYNC(H, /mob/living/carbon.proc/monkeyize)
+			ok = TRUE
+		if("traitor_all")
+			if(!is_funmin)
+				return
+			if(!SSticker.HasRoundStarted())
+				alert("The game hasn't started yet!")
+				return
+			var/objective = stripped_input(holder, "Enter an objective")
+			if(!objective)
+				return
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Traitor All", "[objective]"))
+			for(var/mob/living/H in GLOB.player_list)
+				if(!(ishuman(H)||istype(H, /mob/living/silicon/)))
+					continue
+				if(H.stat == DEAD || !H.mind || ispAI(H))
+					continue
+				if(is_special_character(H))
+					continue
+				var/datum/antagonist/traitor/T = new()
+				T.give_objectives = FALSE
+				var/datum/objective/new_objective = new
+				new_objective.owner = H
+				new_objective.explanation_text = objective
+				T.add_objective(new_objective)
+				H.mind.add_antag_datum(T)
+			message_admins("<span class='adminnotice'>[key_name_admin(holder)] used everyone is a traitor secret. Objective is [objective]</span>")
+			log_admin("[key_name(holder)] used everyone is a traitor secret. Objective is [objective]")
+		if("massbraindamage")
+			if(!is_funmin)
+				return
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Mass Braindamage"))
+			for(var/mob/living/carbon/human/H in GLOB.player_list)
+				to_chat(H, "<span class='boldannounce'>You suddenly feel stupid.</span>", confidential = TRUE)
+				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 60, 80)
+			message_admins("[key_name_admin(holder)] made everybody brain damaged")
+		if("floorlava")
+			SSweather.run_weather(/datum/weather/floor_is_lava)
+		if("anime")
+			if(!is_funmin)
+				return
+			var/animetype = alert("Would you like to have the clothes be changed?",,"Yes","No","Cancel")
+
+			var/droptype
+			if(animetype =="Yes")
+				droptype = alert("Make the uniforms Nodrop?",,"Yes","No","Cancel")
+
+			if(animetype == "Cancel" || droptype == "Cancel")
+				return
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Chinese Cartoons"))
+			message_admins("[key_name_admin(holder)] made everything kawaii.")
+			for(var/i in GLOB.human_list)
+				var/mob/living/carbon/human/H = i
+				SEND_SOUND(H, sound(SSstation.announcer.event_sounds[ANNOUNCER_ANIMES]))
+
+				if(H.dna.species.id == "human")
+					if(H.dna.features["tail_human"] == "None" || H.dna.features["ears"] == "None")
+						var/obj/item/organ/ears/cat/ears = new
+						var/obj/item/organ/tail/cat/tail = new
+						ears.Insert(H, drop_if_replaced=FALSE)
+						tail.Insert(H, drop_if_replaced=FALSE)
+					var/list/honorifics = list("[MALE]" = list("kun"), "[FEMALE]" = list("chan","tan"), "[NEUTER]" = list("san"), "[PLURAL]" = list("san")) //John Robust -> Robust-kun
+					var/list/names = splittext(H.real_name," ")
+					var/forename = names.len > 1 ? names[2] : names[1]
+					var/newname = "[forename]-[pick(honorifics["[H.gender]"])]"
+					H.fully_replace_character_name(H.real_name,newname)
+					H.update_mutant_bodyparts()
+					if(animetype == "Yes")
+						var/seifuku = pick(typesof(/obj/item/clothing/under/costume/schoolgirl))
+						var/obj/item/clothing/under/costume/schoolgirl/I = new seifuku
+						var/olduniform = H.w_uniform
+						H.temporarilyRemoveItemFromInventory(H.w_uniform, TRUE, FALSE)
+						H.equip_to_slot_or_del(I, ITEM_SLOT_ICLOTHING)
+						qdel(olduniform)
+						if(droptype == "Yes")
+							ADD_TRAIT(I, TRAIT_NODROP, ADMIN_TRAIT)
+				else
+					to_chat(H, "<span class='warning'>You're not kawaii enough for this!</span>", confidential = TRUE)
+		if("masspurrbation")
+			if(!is_funmin)
+				return
+			mass_purrbation()
+			message_admins("[key_name_admin(holder)] has put everyone on \
+				purrbation!")
+			log_admin("[key_name(holder)] has put everyone on purrbation.")
+		if("massremovepurrbation")
+			if(!is_funmin)
+				return
+			mass_remove_purrbation()
+			message_admins("[key_name_admin(holder)] has removed everyone from \
+				purrbation.")
+			log_admin("[key_name(holder)] has removed everyone from purrbation.")
+		if("massimmerse")
+			if(!is_funmin)
+				return
+			mass_immerse()
+			message_admins("[key_name_admin(holder)] has Fully Immersed \
+				everyone!")
+			log_admin("[key_name(holder)] has Fully Immersed everyone.")
+		if("unmassimmerse")
+			if(!is_funmin)
+				return
+			mass_immerse(remove=TRUE)
+			message_admins("[key_name_admin(holder)] has Un-Fully Immersed \
+				everyone!")
+			log_admin("[key_name(holder)] has Un-Fully Immersed everyone.")
+>>>>>>> 9573134... [READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309):code/modules/admin/verbs/secrets.dm
 	if(E)
 		E.processing = FALSE
 		if(E.announceWhen>0)

@@ -92,6 +92,22 @@
 #define DROP_SOUND_VOLUME 20
 #define YEET_SOUND_VOLUME 90
 
+<<<<<<< HEAD
+=======
+#define AMBIENCE_GENERIC "generic"
+#define AMBIENCE_HOLY "holy"
+#define AMBIENCE_DANGER "danger"
+#define AMBIENCE_RUINS "ruins"
+#define AMBIENCE_ENGI "engi"
+#define AMBIENCE_MINING "mining"
+#define AMBIENCE_MEDICAL "med"
+#define AMBIENCE_SPOOKY "spooky"
+#define AMBIENCE_SPACE "space"
+#define AMBIENCE_MAINT "maint"
+#define AMBIENCE_AWAY "away"
+#define AMBIENCE_REEBE "reebe" //unused
+#define AMBIENCE_CREEPY "creepy" //not to be confused with spooky
+>>>>>>> 9573134... [READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309)
 
 //default byond sound environments
 #define SOUND_ENVIRONMENT_NONE -1
@@ -136,3 +152,22 @@
 #define SOUND_AREA_LAVALAND SOUND_ENVIRONMENT_MOUNTAINS
 #define SOUND_AREA_ICEMOON SOUND_ENVIRONMENT_CAVE
 #define SOUND_AREA_WOODFLOOR SOUND_ENVIRONMENT_CITY
+
+
+///Announcer audio keys
+#define ANNOUNCER_AIMALF 			"announcer_aimalf"
+#define ANNOUNCER_ALIENS			"announcer_aliens"
+#define ANNOUNCER_ANIMES 			"announcer_animes"
+#define ANNOUNCER_GRANOMALIES 		"announcer_granomalies"
+#define ANNOUNCER_INTERCEPT 		"announcer_animes"
+#define ANNOUNCER_IONSTORM 			"announcer_ionstorm"
+#define ANNOUNCER_METEORS			"announcer_meteors"
+#define ANNOUNCER_OUTBREAK5			"announcer_outbreak5"
+#define ANNOUNCER_OUTBREAK7			"announcer_outbreak7"
+#define ANNOUNCER_POWEROFF			"announcer_poweroff"
+#define ANNOUNCER_POWERON			"announcer_poweron"
+#define ANNOUNCER_RADIATION			"announcer_radiation"
+#define ANNOUNCER_SHUTTLECALLED		"announcer_shuttlecalled"
+#define ANNOUNCER_SHUTTLEDOCK		"announcer_shuttledock"
+#define ANNOUNCER_SHUTTLERECALLED	"announcer_shuttlerecalled"
+#define ANNOUNCER_SPANOMALIES		"announcer_spanomalies"

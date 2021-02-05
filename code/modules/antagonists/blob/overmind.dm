@@ -122,8 +122,13 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	if(!victory_in_progress && max_count < blobs_legit.len)
 		max_count = blobs_legit.len
 
+<<<<<<< HEAD
 	if((world.time >= announcement_time || blobs_legit.len >= announcement_size) && !has_announced)
 		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", 'sound/ai/outbreak5.ogg')
+=======
+	if(announcement_time && (world.time >= announcement_time || blobs_legit.len >= announcement_size) && !has_announced)
+		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
+>>>>>>> 9573134... [READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309)
 		has_announced = TRUE
 
 /mob/camera/blob/proc/victory()

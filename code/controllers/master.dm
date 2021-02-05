@@ -305,6 +305,14 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/error_level = 0
 	var/sleep_delta = 1
 	var/list/subsystems_to_check
+<<<<<<< HEAD
+=======
+
+	//setup the stack overflow detector
+	stack_end_detector = new()
+	var/datum/stack_canary/canary = stack_end_detector.prime_canary()
+	canary.use_variable()
+>>>>>>> 9573134... [READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309)
 	//the actual loop.
 
 	while (1)

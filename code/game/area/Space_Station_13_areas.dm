@@ -457,7 +457,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	airlock_wires = /datum/wires/airlock/service
 	sound_environment = SOUND_AREA_WOODFLOOR
 
+<<<<<<< HEAD:code/game/area/Space_Station_13_areas.dm
 /area/crew_quarters/bar/atrium
+=======
+/area/service/bar/Initialize(mapload)
+	. = ..()
+	GLOB.bar_areas += src
+
+/area/service/bar/atrium
+>>>>>>> 9573134... [READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309):code/game/area/space_station_13_areas.dm
 	name = "Atrium"
 	icon_state = "bar"
 	sound_environment = SOUND_AREA_WOODFLOOR

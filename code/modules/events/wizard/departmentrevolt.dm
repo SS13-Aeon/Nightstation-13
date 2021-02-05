@@ -50,7 +50,20 @@
 						H.log_message("Was made into a separatist, long live [nation_name]!", LOG_ATTACK, color="red")
 
 	if(citizens.len)
+<<<<<<< HEAD
 		var/message
 		for(var/job in jobs_to_revolt)
 			message += "[job],"
 		message_admins("The nation of [nation_name] has been formed. Affected jobs are [message]")
+=======
+		var/jobs_english_list = english_list(jobs_to_revolt)
+		message_admins("The nation of [nation_name] has been formed. Affected jobs are [jobs_english_list]. Any new crewmembers with these jobs will join the secession.")
+		if(announcement)
+			var/announce_text = "The new independent state of [nation_name] has formed from the ashes of the [department] department!"
+			if(department == "Uprising of Assistants") //the text didn't really work otherwise
+				announce_text = "The assistants of the station have risen to form the new independent state of [nation_name]!"
+			priority_announce(announce_text, "Secession from [GLOB.station_name]",  has_important_message = TRUE)
+	else
+		message_admins("The nation of [nation_name] did not have enough potential members to be created.")
+		qdel(nation)
+>>>>>>> 9573134... [READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309)
