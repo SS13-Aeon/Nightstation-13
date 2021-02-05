@@ -32,6 +32,17 @@
 	if(setdesc && P.picture_desc)
 		desc = P.picture_desc
 
+<<<<<<< HEAD
+=======
+
+	if(!P.see_ghosts) ///Dont bother with this last bit if we can't see ghosts
+		return
+	for(var/i in P.mobs_seen) //Any ghosts in the pic? its a haunted photo ooooo~
+		if(isobserver(i))
+			set_custom_materials(list(/datum/material/hauntium = 2000))
+			break
+
+>>>>>>> 9605f39... hauntium is now properly applied to the photo (#56615)
 /obj/item/photo/update_icon_state()
 	if(!istype(picture) || !picture.picture_image)
 		return
