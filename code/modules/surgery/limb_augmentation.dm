@@ -6,13 +6,20 @@
 
 /datum/surgery_step/replace_limb
 	name = "replace limb"
-	implements = list(/obj/item/bodypart = 100, /obj/item/organ_storage = 100)
+	implements = list(/obj/item/bodypart = 100, /obj/item/borg/apparatus/organ_storage = 100)
 	time = 32
 	var/obj/item/bodypart/L = null // L because "limb"
 
 
 /datum/surgery_step/replace_limb/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+<<<<<<< HEAD
 	if(istype(tool, /obj/item/organ_storage) && istype(tool.contents[1], /obj/item/bodypart))
+=======
+	if(NOAUGMENTS in target.dna.species.species_traits)
+		to_chat(user, "<span class='warning'>[target] cannot be augmented!</span>")
+		return -1
+	if(istype(tool, /obj/item/borg/apparatus/organ_storage) && istype(tool.contents[1], /obj/item/bodypart))
+>>>>>>> aa51207... Makes borg organ bags into an apparatus (#56401)
 		tool = tool.contents[1]
 	var/obj/item/bodypart/aug = tool
 	if(aug.status != BODYPART_ROBOTIC)
@@ -43,7 +50,7 @@
 
 /datum/surgery_step/replace_limb/success(mob/user, mob/living/carbon/target, target_zone, obj/item/bodypart/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(L)
-		if(istype(tool, /obj/item/organ_storage))
+		if(istype(tool, /obj/item/borg/apparatus/organ_storage))
 			tool.icon_state = initial(tool.icon_state)
 			tool.desc = initial(tool.desc)
 			tool.cut_overlays()
