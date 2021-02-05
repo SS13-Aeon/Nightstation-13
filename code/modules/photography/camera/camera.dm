@@ -207,7 +207,11 @@
 	qdel(clone_area)
 	get_icon.Blend("#000", ICON_UNDERLAY)
 
+<<<<<<< HEAD
 	var/datum/picture/P = new("picture", desc.Join(" "), mobs_spotted, dead_spotted, get_icon, null, psize_x, psize_y, blueprints)
+=======
+	var/datum/picture/P = new("picture", desc.Join(" "), mobs_spotted, dead_spotted, get_icon, null, psize_x, psize_y, blueprints, can_see_ghosts = see_ghosts)
+>>>>>>> 9605f39... hauntium is now properly applied to the photo (#56615)
 	after_picture(user, P, flag)
 	blending = FALSE
 
