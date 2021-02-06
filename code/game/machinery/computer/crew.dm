@@ -117,8 +117,20 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		var/mob/living/carbon/human/H = tracked_mob
 
 		// Check if z-level is correct
+<<<<<<< HEAD
 		var/turf/pos = get_turf(H)
 		if (pos.z != z)
+=======
+		var/turf/pos = get_turf(tracked_living_mob)
+
+		// Is our target in nullspace for some reason?
+		if(!pos)
+			stack_trace("Tracked mob has no loc and is likely in nullspace: [tracked_living_mob] ([tracked_living_mob.type])")
+			continue
+
+		// Machinery and the target should be on the same level or different levels of the same station
+		if(pos.z != z && (!is_station_level(pos.z) || !is_station_level(z)))
+>>>>>>> db66ac5... Various crew tracking fixes (#56591)
 			continue
 
 		// Determine if this person is using nanites for sensors,
