@@ -93,7 +93,11 @@
 	message = "cm3 of metal"
 	material_id = /datum/material/iron
 	export_types = list(
+<<<<<<< HEAD
 		/obj/item/stack/sheet/metal, /obj/item/stack/tile/plasteel,
+=======
+		/obj/item/stack/sheet/iron, /obj/item/stack/tile/iron,
+>>>>>>> f6dfc68... repaths plasteel tiles to iron (#56644)
 		/obj/item/stack/rods, /obj/item/stack/ore, /obj/item/coin)
 
 /datum/export/material/glass

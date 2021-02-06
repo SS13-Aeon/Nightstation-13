@@ -383,7 +383,7 @@
 	merge_type = /obj/item/stack/tile/pod/dark
 
 //Plasteel (normal)
-/obj/item/stack/tile/plasteel
+/obj/item/stack/tile/iron
 	name = "floor tile"
 	singular_name = "floor tile"
 	desc = "The ground you walk on."
@@ -393,14 +393,24 @@
 	mats_per_unit = list(/datum/material/iron=500)
 	throwforce = 10
 	flags_1 = CONDUCT_1
+<<<<<<< HEAD
 	turf_type = /turf/open/floor/plasteel
 	mineralType = "metal"
+=======
+	turf_type = /turf/open/floor/iron
+	mineralType = "iron"
+>>>>>>> f6dfc68... repaths plasteel tiles to iron (#56644)
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 70)
 	resistance_flags = FIRE_PROOF
 	matter_amount = 1
 	cost = 125
+<<<<<<< HEAD
 	source = /datum/robot_energy_storage/metal
 	merge_type = /obj/item/stack/tile/plasteel
+=======
+	source = /datum/robot_energy_storage/iron
+	merge_type = /obj/item/stack/tile/iron
+>>>>>>> f6dfc68... repaths plasteel tiles to iron (#56644)
 
 /obj/item/stack/tile/plastic
 	name = "plastic tile"
