@@ -105,7 +105,7 @@
 	return dat
 
 /mob/living/simple_animal/bot/floorbot/attackby(obj/item/W , mob/user, params)
-	if(istype(W, /obj/item/stack/tile/plasteel))
+	if(istype(W, /obj/item/stack/tile/iron))
 		to_chat(user, "<span class='notice'>The floorbot can produce normal tiles itself.</span>")
 		return
 	if(specialtiles && istype(W, /obj/item/stack/tile))
@@ -328,7 +328,16 @@
 		sleep(50)
 		if(mode == BOT_REPAIRING && src.loc == target_turf)
 			if(autotile) //Build the floor and include a tile.
+<<<<<<< HEAD
 				target_turf.PlaceOnTop(/turf/open/floor/plasteel, flags = CHANGETURF_INHERIT_AIR)
+=======
+				if(replacetiles && tilestack)
+					tilestack.place_tile(target_turf)
+					if(!tilestack)
+						speak("Requesting refill of custom floor tiles to continue replacing.")
+				else
+					target_turf.PlaceOnTop(/turf/open/floor/iron, flags = CHANGETURF_INHERIT_AIR)
+>>>>>>> f6dfc68... repaths plasteel tiles to iron (#56644)
 			else //Build a hull plating without a floor tile.
 				target_turf.PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 
@@ -359,10 +368,18 @@
 				specialtiles--
 				if(specialtiles == 0)
 					speak("Requesting refill of custom floor tiles to continue replacing.")
+<<<<<<< HEAD
 	mode = BOT_IDLE
 	update_icon()
 	anchored = FALSE
 	target = null
+=======
+			else
+				F.PlaceOnTop(/turf/open/floor/iron, flags = CHANGETURF_INHERIT_AIR)
+
+	if(!QDELETED(src))
+		go_idle()
+>>>>>>> f6dfc68... repaths plasteel tiles to iron (#56644)
 
 /mob/living/simple_animal/bot/floorbot/update_icon()
 	icon_state = "[toolbox_color]floorbot[on]"
@@ -383,7 +400,7 @@
 	if(prob(50))
 		drop_part(robot_arm, Tsec)
 
-	new /obj/item/stack/tile/plasteel(Tsec, 1)
+	new /obj/item/stack/tile/iron(Tsec, 1)
 
 	do_sparks(3, TRUE, src)
 	..()
