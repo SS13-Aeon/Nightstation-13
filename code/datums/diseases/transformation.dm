@@ -126,9 +126,14 @@
 /datum/disease/transformation/jungle_fever/do_disease_transformation(mob/living/carbon/affected_mob)
 	if(affected_mob.mind && !is_monkey(affected_mob.mind))
 		add_monkey(affected_mob.mind)
+<<<<<<< HEAD
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/monkey/M = affected_mob.monkeyize(TR_KEEPITEMS | TR_KEEPIMPLANTS | TR_KEEPORGANS | TR_KEEPDAMAGE | TR_KEEPVIRUS | TR_KEEPSTUNS | TR_KEEPREAGENTS | TR_KEEPSE)
 		M.ventcrawler = VENTCRAWLER_ALWAYS
+=======
+		affected_mob.monkeyize()
+		ADD_TRAIT(affected_mob, TRAIT_VENTCRAWLER_ALWAYS, type)
+>>>>>>> b0f7381... Refactor ventcrawling flag into traits (#56620)
 
 
 /datum/disease/transformation/jungle_fever/stage_act()
