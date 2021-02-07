@@ -4,7 +4,6 @@
 	gender = FEMALE //All xenos are girls!!
 	dna = null
 	faction = list(ROLE_ALIEN)
-	ventcrawler = VENTCRAWLER_ALWAYS
 	sight = SEE_MOBS
 	see_in_dark = 4
 	verb_say = "hisses"
@@ -32,6 +31,12 @@
 
 	create_internal_organs()
 
+<<<<<<< HEAD
+=======
+	ADD_TRAIT(src, TRAIT_NEVER_WOUNDED, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+
+>>>>>>> b0f7381... Refactor ventcrawling flag into traits (#56620)
 	. = ..()
 
 /mob/living/carbon/alien/create_internal_organs()
