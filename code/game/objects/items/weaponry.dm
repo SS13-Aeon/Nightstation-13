@@ -722,6 +722,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 			else
 				qdel(target)
 
+<<<<<<< HEAD
 /obj/item/circlegame
 	name = "circled hand"
 	desc = "If somebody looks at this while it's below your waist, you get to bop them."
@@ -847,6 +848,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	"<span class='notice'>You slap [M]!</span>",\
 	"<span class='hear'>You hear a slap.</span>")
 	return
+=======
+>>>>>>> 3e7eaea... Improves Kissing (#56698)
 /obj/item/proc/can_trigger_gun(mob/living/user)
 	if(!user.can_use_guns(src))
 		return FALSE
