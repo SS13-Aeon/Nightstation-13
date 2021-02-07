@@ -210,6 +210,58 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PERMANENTLY_ONFIRE	"permanently_onfire" //overrides the update_fire proc to always add fire (for lava)
 #define TRAIT_SIGN_LANG				"sign_language" //Galactic Common Sign Language
 #define TRAIT_NANITE_MONITORING	"nanite_monitoring" //The mob's nanites are sending a monitoring signal visible on diag HUD
+<<<<<<< HEAD
+=======
+#define TRAIT_MARTIAL_ARTS_IMMUNE "martial_arts_immune" // nobody can use martial arts on this mob
+#define TRAIT_DUFFEL_CURSED "duffel_cursed" //You've been cursed with a living duffelbag, and can't have more added
+/// Prevents mob from riding mobs when buckled onto something
+#define TRAIT_CANT_RIDE			"cant_ride"
+#define TRAIT_BLOODY_MESS		"bloody_mess" //from heparin, makes open bleeding wounds rapidly spill more blood
+#define TRAIT_COAGULATING		"coagulating" //from coagulant reagents, this doesn't affect the bleeding itself but does affect the bleed warning messages
+/// The holder of this trait has antennae or whatever that hurt a ton when noogied
+#define TRAIT_ANTENNAE	"antennae"
+/// Blowing kisses actually does damage to the victim
+#define TRAIT_KISS_OF_DEATH	"kiss_of_death"
+
+#define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
+
+// You can stare into the abyss, but it does not stare back.
+// You're immune to the hallucination effect of the supermatter, either
+// through force of will, or equipment. Present on /mob or /datum/mind
+#define TRAIT_SUPERMATTER_MADNESS_IMMUNE "supermatter_madness_immune"
+
+// You can stare into the abyss, and it turns pink.
+// Being close enough to the supermatter makes it heal at higher temperatures
+// and emit less heat. Present on /mob or /datum/mind
+#define TRAIT_SUPERMATTER_SOOTHER "supermatter_soother"
+/*
+* Trait granted by various security jobs, and checked by [/obj/item/food/donut]
+* When present in the mob's mind, they will always love donuts.
+*/
+#define TRAIT_DONUT_LOVER "donut_lover"
+
+// METABOLISMS
+// Various jobs on the station have historically had better reactions
+// to various drinks and foodstuffs. Security liking donuts is a classic
+// example. Through years of training/abuse, their livers have taken
+// a liking to those substances. Steal a sec officer's liver, eat donuts good.
+
+// These traits are applied to /obj/item/organ/liver
+#define TRAIT_LAW_ENFORCEMENT_METABOLISM "law_enforcement_metabolism"
+#define TRAIT_CULINARY_METABOLISM "culinary_metabolism"
+#define TRAIT_COMEDY_METABOLISM "comedy_metabolism"
+#define TRAIT_MEDICAL_METABOLISM "medical_metabolism"
+#define TRAIT_GREYTIDE_METABOLISM "greytide_metabolism"
+#define TRAIT_ENGINEER_METABOLISM "engineer_metabolism"
+#define TRAIT_ROYAL_METABOLISM "royal_metabolism"
+#define TRAIT_PRETENDER_ROYAL_METABOLISM "pretender_royal_metabolism"
+
+// If present on a mob or mobmind, allows them to "suplex" an immovable rod
+// turning it into a glorified potted plant, and giving them an
+// achievement. Can also be used on rod-form wizards.
+// Normally only present in the mind of a Research Director.
+#define TRAIT_ROD_SUPLEX "rod_suplex"
+>>>>>>> 3e7eaea... Improves Kissing (#56698)
 
 //SKILLS
 #define TRAIT_UNDERWATER_BASKETWEAVING_KNOWLEDGE "underwater_basketweaving"
@@ -263,6 +315,13 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GRABWEAKNESS		"grab_weakness"
 #define TRAIT_SNOB				"snob"
 #define TRAIT_BALD				"bald"
+<<<<<<< HEAD
+=======
+#define TRAIT_BADTOUCH			"bad_touch"
+#define TRAIT_EXTROVERT			"extrovert"
+#define TRAIT_INTROVERT			"introvert"
+#define TRAIT_ANXIOUS			"anxious"
+>>>>>>> 3e7eaea... Improves Kissing (#56698)
 ///Trait for dryable items
 #define TRAIT_DRYABLE "trait_dryable"
 ///Trait for dried items
@@ -386,3 +445,36 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define ELEMENT_TRAIT "element_trait"
 /// Trait granted by [/obj/item/clothing/head/helmet/space/hardsuit/berserker]
 #define BERSERK_TRAIT "berserk_trait"
+<<<<<<< HEAD
+=======
+/// Trait granted by lipstick
+#define LIPSTICK_TRAIT "lipstick_trait"
+
+/**
+* Trait granted by [/mob/living/carbon/Initialize] and
+* granted/removed by [/obj/item/organ/tongue]
+* Used for ensuring that carbons without tongues cannot taste anything
+* so it is added in Initialize, and then removed when a tongue is inserted
+* and readded when a tongue is removed.
+*/
+#define NO_TONGUE_TRAIT "no_tongue_trait"
+
+/// Trait granted by [/mob/living/silicon/robot]
+/// Traits applied to a silicon mob by their model.
+#define MODEL_TRAIT "model_trait"
+
+/// Trait from [/datum/antagonist/nukeop/clownop]
+#define CLOWNOP_TRAIT "clownop"
+
+///Traits given by station traits
+#define STATION_TRAIT_BANANIUM_SHIPMENTS "station_trait_bananium_shipments"
+#define STATION_TRAIT_UNNATURAL_ATMOSPHERE "station_trait_unnatural_atmosphere"
+#define STATION_TRAIT_UNIQUE_AI	"station_trait_unique_ai"
+#define STATION_TRAIT_CARP_INFESTATION "station_trait_carp_infestation"
+#define STATION_TRAIT_PREMIUM_INTERNALS "station_trait_premium_internals"
+#define STATION_TRAIT_LATE_ARRIVALS "station_trait_late_arrivals"
+#define STATION_TRAIT_RANDOM_ARRIVALS "station_trait_random_arrivals"
+#define STATION_TRAIT_FILLED_MAINT "station_trait_filled_maint"
+#define STATION_TRAIT_EMPTY_MAINT "station_trait_empty_maint"
+#define STATION_TRAIT_PDA_GLITCHED "station_trait_pda_glitched"
+>>>>>>> 3e7eaea... Improves Kissing (#56698)
