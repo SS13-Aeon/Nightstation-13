@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+=======
+/// Plants that glow.
+#define GLOW_ID "glow"
+/// Plant types.
+#define PLANT_TYPE_ID "plant_type"
+/// Plants that affect the reagent's temperature.
+#define TEMP_CHANGE_ID "temperature_change"
+/// Plants that affect the reagent contents.
+#define CONTENTS_CHANGE_ID "contents_change"
+/// Plants that do something special when they impact.
+#define THROW_IMPACT_ID "special_throw_impact"
+
+>>>>>>> 0605e0b... Fixes a runtime with liquid contents gene (#56661)
 /datum/plant_gene
 	var/name
 	var/mutability_flags = PLANT_GENE_EXTRACTABLE | PLANT_GENE_REMOVABLE ///These flags tells the genemodder if we want the gene to be extractable, only removable or neither.
@@ -233,15 +247,57 @@
 	// For code, see grown.dm
 	name = "Liquid Contents"
 	examine_line = "<span class='info'>It has a lot of liquid contents inside.</span>"
+	trait_id = THROW_IMPACT_ID
 
-/datum/plant_gene/trait/squash/can_add(obj/item/seeds/S)
-	if(S.get_gene(/datum/plant_gene/trait/sticky))
-		return FALSE
+// Register a signal that our plant can be squashed on add.
+/datum/plant_gene/trait/squash/on_new(obj/item/food/grown/our_plant, newloc)
 	. = ..()
+	RegisterSignal(our_plant, COMSIG_PLANT_SQUASH, .proc/squash_plant)
 
-/datum/plant_gene/trait/squash/on_slip(obj/item/food/grown/G, mob/living/carbon/C)
-	// Squash the plant on slip.
-	G.squash(C)
+// Squash the plant on slip.
+/datum/plant_gene/trait/squash/on_slip(obj/item/food/grown/our_plant, mob/living/carbon/target)
+	SEND_SIGNAL(our_plant, COMSIG_PLANT_SQUASH, target)
+
+// Squash the plant on thrown impact.
+/datum/plant_gene/trait/squash/on_throw_impact(obj/item/food/grown/our_plant, atom/target)
+	SEND_SIGNAL(our_plant, COMSIG_PLANT_SQUASH, target)
+
+/*
+ * Signal proc to squash the plant this trait belongs to, causing a smudge, exposing the target to reagents, and deleting it,
+ *
+ * Arguments
+ * our_plant - the plant this trait belongs to.
+ * target - the atom being hit by this squashed plant.
+ */
+/datum/plant_gene/trait/squash/proc/squash_plant(obj/item/food/grown/our_plant, atom/target)
+	SIGNAL_HANDLER
+
+	var/turf/our_turf = get_turf(target)
+	our_plant.forceMove(our_turf)
+	if(istype(our_plant))
+		if(ispath(our_plant.splat_type, /obj/effect/decal/cleanable/food/plant_smudge))
+			var/obj/plant_smudge = new our_plant.splat_type(our_turf)
+			plant_smudge.name = "[our_plant.name] smudge"
+			if(our_plant.filling_color)
+				plant_smudge.color = our_plant.filling_color
+		else if(our_plant.splat_type)
+			new our_plant.splat_type(our_turf)
+	else
+		var/obj/effect/decal/cleanable/food/plant_smudge/misc_smudge = new(our_turf)
+		misc_smudge.name = "[our_plant.name] smudge"
+		misc_smudge.color = "#82b900"
+
+	our_plant.visible_message("<span class='warning'>[our_plant] is squashed.</span>","<span class='hear'>You hear a smack.</span>")
+	var/obj/item/seeds/seed = our_plant.get_plant_seed()
+	if(seed)
+		for(var/datum/plant_gene/trait/trait in seed.genes)
+			trait.on_squash(our_plant, target)
+
+	our_plant.reagents?.expose(our_turf)
+	for(var/things in our_turf)
+		our_plant.reagents?.expose(things)
+
+	qdel(our_plant)
 
 /datum/plant_gene/trait/slip
 	// Makes plant slippery, unless it has a grown-type trash. Then the trash gets slippery.
@@ -254,7 +310,7 @@
 	..()
 	if(istype(G) && ispath(G.trash_type, /obj/item/grown))
 		return
-	var/obj/item/seeds/seed = G.seed
+	var/obj/item/seeds/seed = G.get_plant_seed()
 	var/stun_len = seed.potency * rate
 
 	if(!istype(G, /obj/item/grown/bananapeel) && (!G.reagents || !G.reagents.has_reagent(/datum/reagent/lube)))
@@ -538,6 +594,7 @@
 
 /datum/plant_gene/trait/sticky
 	name = "Prickly Adhesion"
+	trait_id = THROW_IMPACT_ID
 
 /datum/plant_gene/trait/sticky/on_new(obj/item/food/grown/G, newloc)
 	. = ..()
@@ -548,10 +605,30 @@
 	G.updateEmbedding()
 	G.throwforce = (G.seed.potency/20)
 
+<<<<<<< HEAD
 /datum/plant_gene/trait/sticky/can_add(obj/item/seeds/S)
 	if(S.get_gene(/datum/plant_gene/trait/squash))
 		return FALSE
 	. = ..()
+=======
+/**
+ * This trait automatically heats up the plant's chemical contents when harvested.
+ * This requires nutriment to fuel. 1u nutriment = 25 K.
+ */
+/datum/plant_gene/trait/chem_heating
+	name = "Exothermic Activity"
+	trait_id = TEMP_CHANGE_ID
+	trait_flags = TRAIT_HALVES_YIELD
+
+/**
+ * This trait is the opposite of above - it cools down the plant's chemical contents on harvest.
+ * This requires nutriment to fuel. 1u nutriment = -5 K.
+ */
+/datum/plant_gene/trait/chem_cooling
+	name = "Endothermic Activity"
+	trait_id = TEMP_CHANGE_ID
+	trait_flags = TRAIT_HALVES_YIELD
+>>>>>>> 0605e0b... Fixes a runtime with liquid contents gene (#56661)
 
 /datum/plant_gene/trait/plant_type // Parent type
 	name = "you shouldn't see this"
@@ -568,3 +645,12 @@
 
 /datum/plant_gene/trait/plant_type/carnivory
 	name = "Obligate Carnivory"
+<<<<<<< HEAD
+=======
+
+#undef GLOW_ID
+#undef PLANT_TYPE_ID
+#undef TEMP_CHANGE_ID
+#undef CONTENTS_CHANGE_ID
+#undef THROW_IMPACT_ID
+>>>>>>> 0605e0b... Fixes a runtime with liquid contents gene (#56661)
