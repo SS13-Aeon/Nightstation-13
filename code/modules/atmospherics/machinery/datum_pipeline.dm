@@ -193,7 +193,11 @@
 	else
 		if((target.heat_capacity>0) && (partial_heat_capacity>0))
 			var/delta_temperature = air.temperature - target.temperature
+<<<<<<< HEAD
 
+=======
+			//Temp share things, see superconduction for more like this
+>>>>>>> 6d1cb94... LINDA Reforged (#55604)
 			var/heat = thermal_conductivity*delta_temperature* \
 				(partial_heat_capacity*target.heat_capacity/(partial_heat_capacity+target.heat_capacity))
 
