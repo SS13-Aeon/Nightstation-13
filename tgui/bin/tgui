@@ -76,6 +76,7 @@ task-clean() {
   ## NPM artifacts
   rm -rf **/node_modules
   rm -f **/package-lock.json
+<<<<<<< HEAD
 }
 
 ## Validates current build against the build stored in git
@@ -89,6 +90,8 @@ task-validate-build() {
     exit 1
   fi
   echo "tgui: build is ok"
+=======
+>>>>>>> d462a74... Revert "Use a dummy include to indicate TGUI isn't built (#56470)" (#56711)
 }
 
 ## Installs merge drivers and git hooks
