@@ -261,6 +261,16 @@
 		addtimer(CALLBACK(src, .proc/clear_cooldown, body.ckey), respawn_cooldown, TIMER_UNIQUE)
 		body.dust()
 
+<<<<<<< HEAD
+=======
+/obj/machinery/capture_the_flag/proc/ctf_qdelled_player(mob/living/body)
+	SIGNAL_HANDLER
+
+	recently_dead_ckeys += body.ckey
+	spawned_mobs -= body
+	addtimer(CALLBACK(src, .proc/clear_cooldown, body.ckey), respawn_cooldown, TIMER_UNIQUE)
+
+>>>>>>> 7650eb8... Fixes CTF runtimes / hard del (#56681)
 /obj/machinery/capture_the_flag/proc/clear_cooldown(ckey)
 	recently_dead_ckeys -= ckey
 
