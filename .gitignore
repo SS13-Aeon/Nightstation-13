@@ -231,3 +231,9 @@ tools/LinuxOneShot/Database
 tools/LinuxOneShot/TGS_Config
 tools/LinuxOneShot/TGS_Instances
 tools/LinuxOneShot/TGS_Logs
+<<<<<<< HEAD
+=======
+
+# Common build tooling
+!/tools/build
+>>>>>>> d462a74... Revert "Use a dummy include to indicate TGUI isn't built (#56470)" (#56711)
