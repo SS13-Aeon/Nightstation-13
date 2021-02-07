@@ -255,9 +255,16 @@
 	list_reagents = list(/datum/reagent/drug/aranesp = 10)
 	icon_state = "pill3"
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/pill/floorpill
 	name = "floorpill"
 	desc = "A strange pill found in the depths of maintenance"
+=======
+///Black and white pills that spawn in maintenance and have random reagent contents
+/obj/item/reagent_containers/pill/maintenance
+	name = "maintenance pill"
+	desc = "A strange pill found in the depths of maintenance."
+>>>>>>> ec85bb5... period! (#56685)
 	icon_state = "pill21"
 	var/static/list/names = list("maintenance pill","floorpill","mystery pill","suspicious pill","strange pill")
 	var/static/list/descs = list("Your feeling is telling you no, but...","Drugs are expensive, you can't afford not to eat any pills that you find."\
