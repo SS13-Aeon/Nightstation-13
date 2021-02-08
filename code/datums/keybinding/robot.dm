@@ -50,6 +50,7 @@
 	R.toggle_module(3)
 	return TRUE
 
+<<<<<<< HEAD
 /datum/keybinding/robot/intent_cycle
 	hotkey_keys = list("4")
 	name = "cycle_intent"
@@ -65,6 +66,8 @@
 	R.a_intent_change(INTENT_HOTKEY_LEFT)
 	return TRUE
 
+=======
+>>>>>>> 9a32149... Removed antiquated intent cycle hotkey for borgs (#56740)
 /datum/keybinding/robot/unequip_module
 	hotkey_keys = list("Q")
 	name = "unequip_module"
