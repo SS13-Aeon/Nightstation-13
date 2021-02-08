@@ -5850,8 +5850,13 @@
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
 "om" = (
+<<<<<<< HEAD
 /obj/machinery/computer/card/centcom,
 /turf/open/floor/plasteel/grimy,
+=======
+/obj/machinery/modular_computer/console/preset/id/centcom,
+/turf/open/floor/iron/grimy,
+>>>>>>> 8b4bb08... Replaced all id consoles with modular ones (#56650)
 /area/centcom/ferry)
 "on" = (
 /obj/machinery/computer/communications,
@@ -7618,7 +7623,7 @@
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
 "ry" = (
-/obj/machinery/computer/card/centcom,
+/obj/machinery/modular_computer/console/preset/id/centcom,
 /obj/machinery/computer/security/telescreen{
 	desc = "Used for watching the RD's goons and the AI's satellite from the safety of his office.";
 	name = "Research Monitor";
@@ -9109,7 +9114,7 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
 "ux" = (
-/obj/machinery/computer/card/centcom{
+/obj/machinery/modular_computer/console/preset/id/centcom{
 	dir = 1
 	},
 /obj/machinery/button/door/indestructible{
@@ -10310,7 +10315,7 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
 "xn" = (
-/obj/machinery/computer/card/centcom{
+/obj/machinery/modular_computer/console/preset/id/centcom{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral{
@@ -11980,7 +11985,7 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "Bv" = (
-/obj/machinery/computer/card/centcom{
+/obj/machinery/modular_computer/console/preset/id/centcom{
 	dir = 1
 	},
 /turf/open/floor/plasteel/grimy,
