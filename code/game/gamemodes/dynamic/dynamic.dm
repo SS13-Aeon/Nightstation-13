@@ -373,8 +373,19 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		rule.acceptable(roundstart_pop_ready, threat_level)	// Assigns some vars in the modes, running it here for consistency
 		rule.candidates = candidates.Copy()
 		rule.trim_candidates()
+<<<<<<< HEAD
 		if (rule.ready(TRUE))
 			picking_roundstart_rule(list(rule), forced = TRUE)
+=======
+		if (rule.ready(roundstart_pop_ready, TRUE))
+			var/cost = rule.cost
+			var/scaled_times = 0
+			if (rule.scaling_cost)
+				scaled_times = round(max(round_start_budget - cost, 0) / rule.scaling_cost)
+				cost += rule.scaling_cost * scaled_times
+
+			spend_roundstart_budget(picking_roundstart_rule(rule, scaled_times, forced = TRUE))
+>>>>>>> 91f443e... Fix forcing certain roundstart rulesets dividing by zero (#56728)
 
 /datum/game_mode/dynamic/proc/roundstart()
 	if (GLOB.dynamic_forced_extended)
