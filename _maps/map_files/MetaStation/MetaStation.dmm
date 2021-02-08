@@ -48085,6 +48085,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/plasteel/white,
@@ -48097,6 +48098,12 @@
 /obj/item/stock_parts/cell/high{
 	charge = 100;
 	maxcharge = 15000
+=======
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	name = "Nanite and Xenobiology Access";
+	req_access_txt = "47"
+>>>>>>> 02c98eb... Nanite lab access from Xenobio to Research (#56594)
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
@@ -60274,6 +60281,7 @@
 	dir = 4;
 	network = list("ss13","rd","xeno")
 	},
+<<<<<<< HEAD
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "daL" = (
@@ -60282,6 +60290,12 @@
 	dir = 4;
 	name = "Containment Pen #2";
 	req_access_txt = "55"
+=======
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	name = "Nanite Laboratory";
+	req_access_txt = "47"
+>>>>>>> 02c98eb... Nanite lab access from Xenobio to Research (#56594)
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
