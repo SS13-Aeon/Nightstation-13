@@ -4,10 +4,17 @@
   "version": "4.2.0",
   "dependencies": {
     "common": "workspace:*",
+<<<<<<< HEAD
     "dompurify": "^2.0.12",
     "inferno": "^7.4.2",
     "inferno-vnode-flags": "^7.4.2",
     "marked": "^1.1.1",
+=======
+    "dompurify": "^2.2.6",
+    "inferno": "^7.4.7",
+    "inferno-vnode-flags": "^7.4.7",
+    "marked": "^1.2.9",
+>>>>>>> ba5d1f1... Fix ExoFab UI and Section bugs, improve Tabs, upgrade deps (#56721)
     "tgui-dev-server": "workspace:*",
     "tgui-polyfill": "workspace:*"
   }

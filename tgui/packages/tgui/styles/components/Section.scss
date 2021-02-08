@@ -11,10 +11,6 @@
 $title-text-color: base.$color-fg !default;
 $background-color: base.$color-bg-section !default;
 $separator-color: colors.$primary !default;
-$shadow-color: rgba(0, 0, 0, 0.5) !default;
-$shadow-type: inset !default;
-$shadow-size: 0.5em !default;
-$shadow-offset: 0 0 !default;
 
 .Section {
   position: relative;
@@ -51,12 +47,17 @@ $shadow-offset: 0 0 !default;
   padding: 0.66em 0.5em;
 }
 
+.Section--fitted > .Section__rest > .Section__content {
+  padding: 0;
+}
+
 .Section--fill {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
+<<<<<<< HEAD
 
 .Section--scrollable .Section__content {
   overflow-y: scroll;
@@ -65,16 +66,36 @@ $shadow-offset: 0 0 !default;
 
 .Section--fill .Section__content {
   flex-grow: 1;
+=======
+.Section--fill > .Section__rest {
+  flex-grow: 1;
 }
 
-.Section--iefix.Section--fill {
+.Section--fill > .Section__rest > .Section__content {
+  height: 100%;
+}
+
+.Section--fill.Section--scrollable > .Section__rest > .Section__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+>>>>>>> ba5d1f1... Fix ExoFab UI and Section bugs, improve Tabs, upgrade deps (#56721)
+}
+
+.Section--fill.Section--iefix {
   display: table !important;
   width: 100% !important;
   height: 100% !important;
   border-collapse: collapse;
   border-spacing: 0;
 
+<<<<<<< HEAD
   & .Section__content {
+=======
+  & > .Section__rest {
+>>>>>>> ba5d1f1... Fix ExoFab UI and Section bugs, improve Tabs, upgrade deps (#56721)
     display: table-row !important;
     height: 100% !important;
   }
@@ -83,24 +104,36 @@ $shadow-offset: 0 0 !default;
 .Section--scrollable {
   overflow-x: hidden;
   overflow-y: hidden;
-}
 
+<<<<<<< HEAD
 .Section--level--1 .Section__titleText {
   font-size: base.em(14px);
+=======
+  & > .Section__rest > .Section__content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }
 
-.Section--level--2 .Section__titleText {
+// Nested sections
+.Section .Section {
+  background-color: transparent;
+  margin-left: -0.5em;
+  margin-right: -0.5em;
+
+  // Remove extra space above the first nested section
+  &:first-child {
+    margin-top: -0.5em;
+  }
+>>>>>>> ba5d1f1... Fix ExoFab UI and Section bugs, improve Tabs, upgrade deps (#56721)
+}
+
+// Level 2 section title
+.Section .Section .Section__titleText {
   font-size: base.em(13px);
 }
 
-.Section--level--3 .Section__titleText {
+// Level 3 section title
+.Section .Section .Section .Section__titleText {
   font-size: base.em(12px);
-}
-
-.Section--level--2,
-.Section--level--3 {
-  background-color: transparent;
-  box-shadow: none;
-  margin-left: -0.5em;
-  margin-right: -0.5em;
 }

@@ -39,8 +39,13 @@ export const Panel = (props, context) => {
         height="100%">
         <Flex.Item>
           <Section fitted>
+<<<<<<< HEAD
             <Flex mx={0.5} align="center">
               <Flex.Item mx={0.5} grow={1} overflowX="auto">
+=======
+            <Stack mr={1} align="center">
+              <Stack.Item grow overflowX="auto">
+>>>>>>> ba5d1f1... Fix ExoFab UI and Section bugs, improve Tabs, upgrade deps (#56721)
                 <ChatTabs />
               </Flex.Item>
               <Flex.Item mx={0.5}>
