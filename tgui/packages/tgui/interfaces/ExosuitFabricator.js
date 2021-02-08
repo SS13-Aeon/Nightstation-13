@@ -439,6 +439,7 @@ const PartLists = (props, context) => {
 
 
   return (
+<<<<<<< HEAD
     <Fragment>
       <Section>
         <Flex>
@@ -470,6 +471,43 @@ const PartLists = (props, context) => {
         ))
       )}
     </Fragment>
+=======
+    <Stack fill vertical>
+      <Stack.Item>
+        <Section fill>
+          <Stack align="baseline">
+            <Stack.Item>
+              <Icon name="search" />
+            </Stack.Item>
+            <Stack.Item grow>
+              <Input
+                fluid
+                placeholder="Search for..."
+                onInput={(e, v) => setSearchText(v)} />
+            </Stack.Item>
+          </Stack>
+        </Section>
+      </Stack.Item>
+      <Stack.Item grow>
+        <Section fill scrollable>
+          {!!searchText && (
+            <PartCategory
+              name={"Search Results"}
+              parts={partsList}
+              forceShow
+              placeholder="No matching results..." />
+          ) || (
+            Object.keys(partsList).map(category => (
+              <PartCategory
+                key={category}
+                name={category}
+                parts={partsList[category]} />
+            ))
+          )}
+        </Section>
+      </Stack.Item>
+    </Stack>
+>>>>>>> ba5d1f1... Fix ExoFab UI and Section bugs, improve Tabs, upgrade deps (#56721)
   );
 };
 
@@ -489,6 +527,7 @@ const PartCategory = (props, context) => {
 
   const [
     displayMatCost,
+<<<<<<< HEAD
   ] = useSharedState(context, "display_mats", false);
 
   return (
@@ -574,6 +613,80 @@ const PartCategory = (props, context) => {
         ))}
       </Section>
     ))
+=======
+  ] = useSharedState(context, 'display_mats', false);
+  if (!forceShow && parts.length === 0) {
+    return null;
+  }
+  return (
+    <Section
+      title={name}
+      level={2}
+      buttons={
+        <Button
+          disabled={!parts.length}
+          color="good"
+          content="Queue All"
+          icon="plus-circle"
+          onClick={() => act("add_queue_set", {
+            part_list: parts.map(part => part.id),
+          })} />
+      }>
+      {!parts.length && placeholder}
+      {parts.map(part => (
+        <Fragment key={part.name}>
+          <Stack align="center">
+            <Stack.Item>
+              <Button
+                disabled={(
+                  buildingPart || part.format.textColor === COLOR_BAD
+                )}
+                color="good"
+                icon="play"
+                onClick={() => act("build_part", { id: part.id })} />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                color="average"
+                icon="plus-circle"
+                onClick={() => act("add_queue_part", { id: part.id })} />
+            </Stack.Item>
+            <Stack.Item grow color={COLOR_KEYS[part.format.textColor]}>
+              {part.name}
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="question-circle"
+                tooltip={
+                  'Build Time: '
+                  + part.printTime + 's. '
+                  + (part.desc || '')
+                }
+                tooltipPosition="left" />
+            </Stack.Item>
+          </Stack>
+          {displayMatCost && (
+            <Stack mb={2}>
+              {Object.keys(part.cost).map(material => (
+                <Stack.Item
+                  key={material}
+                  width="50px"
+                  color={COLOR_KEYS[part.format[material].color]}>
+                  <MaterialAmount
+                    formatmoney
+                    style={{
+                      transform: 'scale(0.75) translate(0%, 10%)',
+                    }}
+                    name={material}
+                    amount={part.cost[material]} />
+                </Stack.Item>
+              ))}
+            </Stack>
+          )}
+        </Fragment>
+      ))}
+    </Section>
+>>>>>>> ba5d1f1... Fix ExoFab UI and Section bugs, improve Tabs, upgrade deps (#56721)
   );
 };
 

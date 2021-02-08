@@ -3,7 +3,13 @@
   "name": "tgui-polyfill",
   "version": "4.2.0",
   "dependencies": {
+<<<<<<< HEAD
     "core-js": "^3.6.5",
     "regenerator-runtime": "^0.13.7"
+=======
+    "core-js": "^3.8.3",
+    "regenerator-runtime": "^0.13.7",
+    "whatwg-fetch": "^3.5.0"
+>>>>>>> ba5d1f1... Fix ExoFab UI and Section bugs, improve Tabs, upgrade deps (#56721)
   }
 }
