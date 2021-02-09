@@ -9,8 +9,7 @@ export const Cargo = (props, context) => {
   return (
     <Window
       width={780}
-      height={750}
-      resizable>
+      height={750}>
       <Window.Content scrollable>
         <CargoContent />
       </Window.Content>

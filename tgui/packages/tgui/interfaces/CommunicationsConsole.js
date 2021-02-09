@@ -655,8 +655,7 @@ export const CommunicationsConsole = (props, context) => {
     <Window
       width={400}
       height={650}
-      theme={emagged ? "syndicate" : undefined}
-      resizable>
+      theme={emagged ? "syndicate" : undefined}>
       <Window.Content scrollable>
         {(canLogOut || !authenticated)
           ? (

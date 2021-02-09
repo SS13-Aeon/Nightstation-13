@@ -7,9 +7,14 @@ import { AccessList } from './common/AccessList';
 export const NtosCard = (props, context) => {
   return (
     <NtosWindow
+<<<<<<< HEAD
       width={450}
       height={520}
       resizable>
+=======
+      width={500}
+      height={520}>
+>>>>>>> 9d4a3f1... Nuke Window resizable and improve drag code (#56727)
       <NtosWindow.Content scrollable>
         <NtosCardContent />
       </NtosWindow.Content>
