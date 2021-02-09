@@ -422,6 +422,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
 		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
 
+	update_ambience_pref()
 
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
@@ -481,6 +482,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		UNSETEMPTY(movingmob.client_mobs_in_contents)
 		movingmob = null
 	active_mousedown_item = null
+	SSambience.ambience_listening_clients -= src
 	QDEL_NULL(view_size)
 	QDEL_NULL(void)
 	QDEL_NULL(tooltips)
@@ -1069,3 +1071,30 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		var/datum/verbs/menu/menuitem = GLOB.menulist[thing]
 		if (menuitem)
 			menuitem.Load_checked(src)
+<<<<<<< HEAD
+=======
+
+/client/proc/open_filter_editor(atom/in_atom)
+	if(holder)
+		holder.filteriffic = new /datum/filter_editor(in_atom)
+		holder.filteriffic.ui_interact(mob)
+
+
+/client/proc/set_right_click_menu_mode(shift_only)
+	if(shift_only)
+		winset(src, "mapwindow.map", "right-click=true")
+		winset(src, "ShiftUp", "is-disabled=false")
+		winset(src, "Shift", "is-disabled=false")
+	else
+		winset(src, "mapwindow.map", "right-click=false")
+		winset(src, "default.Shift", "is-disabled=true")
+		winset(src, "default.ShiftUp", "is-disabled=true")
+
+/client/proc/update_ambience_pref()
+	if(prefs.toggles & SOUND_AMBIENCE)
+		if(SSambience.ambience_listening_clients[src] > world.time)
+			return // If already properly set we don't want to reset the timer.
+		SSambience.ambience_listening_clients[src] = world.time + 10 SECONDS //Just wait 10 seconds before the next one aight mate? cheers.
+	else
+		SSambience.ambience_listening_clients -= src
+>>>>>>> 6988ef9... Refactors ambience to a subsystem (#56723)
