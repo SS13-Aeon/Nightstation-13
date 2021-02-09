@@ -11,8 +11,7 @@ export const StackingConsole = (props, context) => {
   return (
     <Window
       width={320}
-      height={340}
-      resizable>
+      height={340}>
       <Window.Content scrollable>
         {!machine ? (
           <NoticeBox>

@@ -26,6 +26,7 @@ export const MafiaPanel = (props, context) => {
     <Window
       title="Mafia"
       theme={role_theme}
+<<<<<<< HEAD
       width={650} // 414 or 415 / 444 or 445
       height={293 + playerAddedHeight}>
       <Window.Content scrollable={admin_controls}>
@@ -140,6 +141,24 @@ export const MafiaPanel = (props, context) => {
         <Flex>
           {!!actions && actions.map(action => (
             <Flex.Item key={action}>
+=======
+      width={650}
+      height={580}>
+      <Window.Content>
+        <Stack fill vertical>
+          {!roleinfo && (
+            <Stack.Item grow>
+              <MafiaLobby />
+            </Stack.Item>
+          )}
+          {!!roleinfo && (
+            <Stack.Item>
+              <MafiaRole />
+            </Stack.Item>
+          )}
+          {actions?.map(action => (
+            <Stack.Item key={action}>
+>>>>>>> 9d4a3f1... Nuke Window resizable and improve drag code (#56727)
               <Button
                 onClick={() => act("mf_action", { atype: action })}>
                 {action}

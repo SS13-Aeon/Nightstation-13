@@ -148,6 +148,7 @@ export const ExosuitFabricator = (props, context) => {
       title="Exosuit Fabricator"
       width={1100}
       height={640}>
+<<<<<<< HEAD
       <Window.Content
         scrollable>
         <Flex
@@ -187,6 +188,31 @@ export const ExosuitFabricator = (props, context) => {
               height="100%"
               overflowY="hide">
               <Flex.Item position="relative" basis="content">
+=======
+      <Window.Content>
+        <Stack fill vertical>
+          <Stack.Item>
+            <Stack fill>
+              <Stack.Item grow>
+                <Section fill title="Materials">
+                  <Materials />
+                </Section>
+              </Stack.Item>
+              <Stack.Item>
+                <Section fill title="Settings">
+                  <Button.Checkbox
+                    onClick={() => setDisplayMatCost(!displayMatCost)}
+                    checked={displayMatCost}>
+                    Display Material Costs
+                  </Button.Checkbox>
+                </Section>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Stack fill>
+              <Stack.Item>
+>>>>>>> 9d4a3f1... Nuke Window resizable and improve drag code (#56727)
                 <Section
                   height="100%"
                   overflowY="auto"
