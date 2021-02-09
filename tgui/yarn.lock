@@ -2857,12 +2857,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "css-loader@npm:^4.2.1":
   version: 4.2.1
   resolution: "css-loader@npm:4.2.1"
+=======
+"css-loader@npm:^5.0.2":
+  version: 5.0.2
+  resolution: "css-loader@npm:5.0.2"
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   dependencies:
     camelcase: ^6.0.0
     cssesc: ^3.0.0
+<<<<<<< HEAD
     icss-utils: ^4.1.1
     loader-utils: ^2.0.0
     normalize-path: ^3.0.0
@@ -2877,6 +2884,21 @@ __metadata:
   peerDependencies:
     webpack: ^4.27.0 || ^5.0.0
   checksum: bd8188efac141352371d3c87e90b6c5658018fa2e9438a22ad38e7a3896e492edb535ae7fe7e56e4c14e43ccc88fbb3a235a0929d4f9302bbf12215687edc9fa
+=======
+    icss-utils: ^5.1.0
+    loader-utils: ^2.0.0
+    postcss: ^8.2.4
+    postcss-modules-extract-imports: ^3.0.0
+    postcss-modules-local-by-default: ^4.0.0
+    postcss-modules-scope: ^3.0.0
+    postcss-modules-values: ^4.0.0
+    postcss-value-parser: ^4.1.0
+    schema-utils: ^3.0.0
+    semver: ^7.3.4
+  peerDependencies:
+    webpack: ^4.27.0 || ^5.0.0
+  checksum: 522ec665a9f32e749b9014562bbbce5291fbc6f21c0ce630570fed809638d848a9f640ff90dbb90cbdb9f9d442b93b9fc90266f5edf485480fd33258706ccaa3
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   languageName: node
   linkType: hard
 
@@ -4507,6 +4529,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "iconv-lite@npm:0.4.24":
   version: 0.4.24
   resolution: "iconv-lite@npm:0.4.24"
@@ -4536,6 +4559,14 @@ fsevents@~2.1.2:
   version: 0.1.5
   resolution: "iferr@npm:0.1.5"
   checksum: 9d366dcc6356bfc0156ba7b86c7ef1a8ede7533fc7b100b4700de618774f1b48aa60185a2193f8260870b9168daa38aee5b11d38c92f5100af8ccdf22b5c2717
+=======
+"icss-utils@npm:^5.0.0, icss-utils@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "icss-utils@npm:5.1.0"
+  peerDependencies:
+    postcss: ^8.1.0
+  checksum: 4bf5c2e25b106a6c1f58d5f7b35134810aa785455f0c30e31939d873d4110964c5e470862026e0af51608b6d64853c614d9c724018f73cd59974106c0927e982
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   languageName: node
   linkType: hard
 
@@ -5417,6 +5448,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "map-age-cleaner@npm:^0.1.3":
   version: 0.1.3
   resolution: "map-age-cleaner@npm:0.1.3"
@@ -5448,6 +5480,14 @@ fsevents@~2.1.2:
   bin:
     marked: bin/marked
   checksum: 4fb077a99ca6a6a4f389bbe2f27620509a332da6fac019560fc25e0e9636226cc86420ddbcfc6e8956920cbca68d64cd11d03954d22123a95ffc63c2e6c4e0ae
+=======
+"marked@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "marked@npm:2.0.0"
+  bin:
+    marked: bin/marked
+  checksum: 5b3b13b9b68beb126284d04fedeacee37c847618c091cf575eaa32746cf0af2d65b1ed25b2cc9269b0cdffa2e8dc5aa2daacff81ead68c59a7a6a1656f1d28ed
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   languageName: node
   linkType: hard
 
@@ -5574,6 +5614,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "mime-types@npm:^2.1.12, mime-types@npm:^2.1.26, mime-types@npm:~2.1.19, mime-types@npm:~2.1.24":
   version: 2.1.27
   resolution: "mime-types@npm:2.1.27"
@@ -5610,6 +5651,18 @@ fsevents@~2.1.2:
   version: 1.0.1
   resolution: "minimalistic-crypto-utils@npm:1.0.1"
   checksum: 736067bddd0e5036a1a4943abe7b63eb1dd0115ad87588420310d26a3d56fc4cd4694b7077fa102956c88d3922dbf7cbc5b7ffe749f27441d13c3e1b1133ab40
+=======
+"mini-css-extract-plugin@npm:^1.3.6":
+  version: 1.3.6
+  resolution: "mini-css-extract-plugin@npm:1.3.6"
+  dependencies:
+    loader-utils: ^2.0.0
+    schema-utils: ^3.0.0
+    webpack-sources: ^1.1.0
+  peerDependencies:
+    webpack: ^4.4.0 || ^5.0.0
+  checksum: b5ab207776e5b3babfe5cc0813eb349b5b77ed003d1070910d424869fc7bd24fc3cb7e84c32db4818847c8b1950fef8701ec60ea910c60e2761631823027ec5f
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   languageName: node
   linkType: hard
 
@@ -6820,7 +6873,22 @@ fsevents@~2.1.2:
     chalk: ^2.4.2
     source-map: ^0.6.1
     supports-color: ^6.1.0
+<<<<<<< HEAD
   checksum: 340f4f6ca6bd37961927f68bf7e38d071a7cba0468240cbba64ccf78012b2acbec974491284cb200e438dd3e655314e6d9508562523cbf9a49d5b00fd7e769fa
+=======
+  checksum: 8a979ea9799dd48399337708a395ddb8cf0e328515201ed35c99f5ba5eaa7688eae65764c570bf49b5be0b106226e2f222abc210de068b3d3da9a9a3bbb70567
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.2.4":
+  version: 8.2.5
+  resolution: "postcss@npm:8.2.5"
+  dependencies:
+    colorette: ^1.2.1
+    nanoid: ^3.1.20
+    source-map: ^0.6.1
+  checksum: dbd8281a32abdbb68be53a7022f405f25207cfadf86cd603bc47e29579432d6fe970fb4189af6ddbd81170c9f226ae36413970bed5bfcd6d04544c86374547be
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   languageName: node
   linkType: hard
 
@@ -7432,9 +7500,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "sass-loader@npm:^9.0.3":
   version: 9.0.3
   resolution: "sass-loader@npm:9.0.3"
+=======
+"sass-loader@npm:^11.0.1":
+  version: 11.0.1
+  resolution: "sass-loader@npm:11.0.1"
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   dependencies:
     klona: ^1.1.2
     loader-utils: ^2.0.0
@@ -7453,7 +7527,11 @@ fsevents@~2.1.2:
       optional: true
     sass:
       optional: true
+<<<<<<< HEAD
   checksum: 5ce94bb6708507c3ca6af5cada1c3442d06242aa16df38fcea059aafad0c49ad0ae980fece7c3844cc82cc2e373d7b3192c55046bf506337811b759ccdb23a4f
+=======
+  checksum: fdd50c6c65b4c912564e799a1a21a235ece179531ddf705ebd4b2671990118ee768da73b60ac7fe5089e9e2d1d0a2ede9b87da2c153a8d1147c2144e605093de
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   languageName: node
   linkType: hard
 
@@ -7524,9 +7602,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "semver@npm:^7.2.1, semver@npm:^7.3.2":
   version: 7.3.2
   resolution: "semver@npm:7.3.2"
+=======
+"semver@npm:^7.2.1, semver@npm:^7.3.2, semver@npm:^7.3.4":
+  version: 7.3.4
+  resolution: "semver@npm:7.3.4"
+  dependencies:
+    lru-cache: ^6.0.0
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   bin:
     semver: bin/semver.js
   checksum: bceb46d396d039afb5be2b2860bce1b0a43ecbadc72dde7ebe9c56dd9035ca50d9b8e086208ff9bbe53773ebde0bcfc6fc0842d7358398bca7054bb9ced801e3
@@ -8269,6 +8355,7 @@ fsevents@~2.1.2:
     babel-plugin-inferno: ^6.1.1
     babel-plugin-transform-remove-console: ^6.9.4
     common: "workspace:*"
+<<<<<<< HEAD
     css-loader: ^4.2.1
     cssnano: ^4.1.10
     eslint: ^7.4.0
@@ -8286,6 +8373,23 @@ fsevents@~2.1.2:
     webpack: ^4.44.1
     webpack-bundle-analyzer: ^3.8.0
     webpack-cli: ^3.3.12
+=======
+    css-loader: ^5.0.2
+    cssnano: ^4.1.10
+    eslint: ^7.19.0
+    eslint-plugin-react: ^7.22.0
+    file-loader: ^6.2.0
+    inferno: ^7.4.7
+    mini-css-extract-plugin: ^1.3.6
+    sass: ^1.32.6
+    sass-loader: ^11.0.1
+    style-loader: ^2.0.0
+    terser-webpack-plugin: ^5.1.1
+    url-loader: ^4.1.1
+    webpack: ^5.21.2
+    webpack-bundle-analyzer: ^4.4.0
+    webpack-cli: ^4.5.0
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   languageName: unknown
   linkType: soft
 
@@ -8294,10 +8398,17 @@ fsevents@~2.1.2:
   resolution: "tgui@workspace:packages/tgui"
   dependencies:
     common: "workspace:*"
+<<<<<<< HEAD
     dompurify: ^2.0.12
     inferno: ^7.4.2
     inferno-vnode-flags: ^7.4.2
     marked: ^1.1.1
+=======
+    dompurify: ^2.2.6
+    inferno: ^7.4.7
+    inferno-vnode-flags: ^7.4.7
+    marked: ^2.0.0
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
     tgui-dev-server: "workspace:*"
     tgui-polyfill: "workspace:*"
   languageName: unknown
@@ -8857,9 +8968,25 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "webpack@npm:^4.44.1":
   version: 4.44.1
   resolution: "webpack@npm:4.44.1"
+=======
+"webpack-sources@npm:^2.1.1":
+  version: 2.2.0
+  resolution: "webpack-sources@npm:2.2.0"
+  dependencies:
+    source-list-map: ^2.0.1
+    source-map: ^0.6.1
+  checksum: 7c4b797fa90d310872b70469dc04254e35571fb34530280a47b93edbe9cd6b0ffb79cf2b7565f4a18ff5b70315ff245d465ad35f952366cfd93c55d6445e2378
+  languageName: node
+  linkType: hard
+
+"webpack@npm:^5.21.2":
+  version: 5.21.2
+  resolution: "webpack@npm:5.21.2"
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   dependencies:
     "@webassemblyjs/ast": 1.9.0
     "@webassemblyjs/helper-module-context": 1.9.0
@@ -8894,7 +9021,11 @@ fsevents@~2.1.2:
       optional: true
   bin:
     webpack: bin/webpack.js
+<<<<<<< HEAD
   checksum: d4d140010bdf1fe4a5ef5435733e4b4fb71081cafd5e995adca0ca6259e271c7b51af909477e03bbbeb35487bd399a672bb0bc4a4726baebac059444b489b412
+=======
+  checksum: 0f8ec63a22a9c6a347e97e6a511f87d00f0f20abf7b62b8147de84325396f5192202e3c83f8fbad95fa7f9c35604e5a3cb5264f7ae58009ba5d9520dce04a76b
+>>>>>>> 25aae82... Upgrade marked to 2.0.0, along with other deps (#56767)
   languageName: node
   linkType: hard
 
