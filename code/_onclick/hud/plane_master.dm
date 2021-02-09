@@ -46,10 +46,13 @@
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 
+<<<<<<< HEAD
 /atom/movable/screen/plane_master/floor/backdrop(mob/mymob)
 	filters = list()
 	if(istype(mymob) && mymob.eye_blurry)
 		filters += GAUSSIAN_BLUR(clamp(mymob.eye_blurry*0.1,0.6,3))
+=======
+>>>>>>> 340f3bb... Refactors plane masters a bit and introduces plane master controllers (#56717)
 
 ///Contains most things in the game world
 /atom/movable/screen/plane_master/game_world
@@ -59,12 +62,17 @@
 	blend_mode = BLEND_OVERLAY
 
 /atom/movable/screen/plane_master/game_world/backdrop(mob/mymob)
+<<<<<<< HEAD
 	filters = list()
 	if(istype(mymob) && mymob.client && mymob.client.prefs && mymob.client.prefs.ambientocclusion)
 		filters += AMBIENT_OCCLUSION
 	if(istype(mymob) && mymob.eye_blurry)
 		filters += GAUSSIAN_BLUR(clamp(mymob.eye_blurry*0.1,0.6,3))
 
+=======
+	if(istype(mymob) && mymob.client && mymob.client.prefs && mymob.client.prefs.ambientocclusion)
+		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
+>>>>>>> 340f3bb... Refactors plane masters a bit and introduces plane master controllers (#56717)
 
 ///Contains all lighting objects
 /atom/movable/screen/plane_master/lighting
