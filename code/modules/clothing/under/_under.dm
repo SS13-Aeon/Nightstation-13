@@ -42,6 +42,13 @@
 	if(!attach_accessory(I, user))
 		return ..()
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/under/attackby_secondary(obj/item/weapon, mob/user, params)
+	toggle()
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+>>>>>>> 596a5ec... Renames the _alt attacks to _secondary for clarity (#56752)
 /obj/item/clothing/under/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()
 	if(ismob(loc))

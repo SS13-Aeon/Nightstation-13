@@ -12,11 +12,40 @@
 		return TRUE
 	if(pre_attack(target, user, params))
 		return TRUE
+<<<<<<< HEAD
 	if(target.attackby(src,user, params))
+=======
+
+	var/attackby_result
+
+	if (is_right_clicking)
+		switch (target.attackby_secondary(src, user, params))
+			if (SECONDARY_ATTACK_CALL_NORMAL)
+				attackby_result = target.attackby(src, user, params)
+			if (SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+				return TRUE
+			if (null)
+				CRASH("attackby_secondary must return an SECONDARY_ATTACK_* define, please consult code/__DEFINES/combat.dm")
+	else
+		attackby_result = target.attackby(src, user, params)
+
+	if (attackby_result)
+>>>>>>> 596a5ec... Renames the _alt attacks to _secondary for clarity (#56752)
 		return TRUE
 	if(QDELETED(src) || QDELETED(target))
 		attack_qdeleted(target, user, TRUE, params)
 		return TRUE
+<<<<<<< HEAD
+=======
+
+	if (is_right_clicking)
+		var/after_attack_secondary_result = afterattack_secondary(target, user, TRUE, params)
+
+		// There's no chain left to continue at this point, so CANCEL_ATTACK_CHAIN and CONTINUE_CHAIN are functionally the same.
+		if (after_attack_secondary_result == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || after_attack_secondary_result == SECONDARY_ATTACK_CONTINUE_CHAIN)
+			return TRUE
+
+>>>>>>> 596a5ec... Renames the _alt attacks to _secondary for clarity (#56752)
 	return afterattack(target, user, TRUE, params)
 
 /// Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
@@ -55,6 +84,22 @@
 		return TRUE
 	return FALSE
 
+<<<<<<< HEAD
+=======
+/**
+ * Called on an object being right-clicked on by an item
+ *
+ * Arguments:
+ * * obj/item/weapon - The item hitting this atom
+ * * mob/user - The wielder of this item
+ * * params - click params such as alt/shift etc
+ *
+ * See: [/obj/item/proc/melee_attack_chain]
+ */
+/atom/proc/attackby_secondary(obj/item/weapon, mob/user, params)
+	return SECONDARY_ATTACK_CALL_NORMAL
+
+>>>>>>> 596a5ec... Renames the _alt attacks to _secondary for clarity (#56752)
 /obj/attackby(obj/item/I, mob/living/user, params)
 	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_obj(src, user))
 
@@ -62,7 +107,20 @@
 	if(..())
 		return TRUE
 	user.changeNext_move(CLICK_CD_MELEE)
+<<<<<<< HEAD
 	return I.attack(src, user)
+=======
+	return I.attack(src, user, params)
+
+/mob/living/attackby_secondary(obj/item/weapon, mob/living/user, params)
+	var/result = weapon.attack_secondary(src, user, params)
+
+	// Normal attackby updates click cooldown, so we have to make up for it
+	if (result != SECONDARY_ATTACK_CALL_NORMAL)
+		user.changeNext_move(CLICK_CD_MELEE)
+
+	return result
+>>>>>>> 596a5ec... Renames the _alt attacks to _secondary for clarity (#56752)
 
 /**
  * Called from [/mob/living/proc/attackby]
@@ -109,6 +167,12 @@
 	log_combat(user, M, "attacked", src.name, "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
 	add_fingerprint(user)
 
+<<<<<<< HEAD
+=======
+/// The equivalent of [/obj/item/proc/attack] but for alternate attacks, AKA right clicking
+/obj/item/proc/attack_secondary(mob/living/victim, mob/living/user, params)
+	return SECONDARY_ATTACK_CALL_NORMAL
+>>>>>>> 596a5ec... Renames the _alt attacks to _secondary for clarity (#56752)
 
 /// The equivalent of the standard version of [/obj/item/proc/attack] but for object targets.
 /obj/item/proc/attack_obj(obj/O, mob/living/user)
@@ -164,6 +228,21 @@
 	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 
+<<<<<<< HEAD
+=======
+/**
+ * Called at the end of the attack chain if the user right-clicked.
+ *
+ * Arguments:
+ * * atom/target - The thing that was hit
+ * * mob/user - The mob doing the hitting
+ * * proximity_flag - is 1 if this afterattack was called on something adjacent, in your square, or on your person.
+ * * click_parameters - is the params string from byond [/atom/proc/Click] code, see that documentation.
+ */
+/obj/item/proc/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
+	return SECONDARY_ATTACK_CALL_NORMAL
+
+>>>>>>> 596a5ec... Renames the _alt attacks to _secondary for clarity (#56752)
 /// Called if the target gets deleted by our attack
 /obj/item/proc/attack_qdeleted(atom/target, mob/user, proximity_flag, click_parameters)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_QDELETED, target, user, proximity_flag, click_parameters)
