@@ -10,9 +10,46 @@
 /obj/item/proc/melee_attack_chain(mob/user, atom/target, params)
 	if(tool_behaviour && target.tool_act(user, src, tool_behaviour))
 		return TRUE
+<<<<<<< HEAD
 	if(pre_attack(target, user, params))
 		return TRUE
 	if(target.attackby(src,user, params))
+=======
+
+	var/pre_attack_result
+	if (is_right_clicking)
+		switch (pre_attack_secondary(target, user, params))
+			if (SECONDARY_ATTACK_CALL_NORMAL)
+				pre_attack_result = pre_attack(src, user, params)
+			if (SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+				return TRUE
+			if (SECONDARY_ATTACK_CONTINUE_CHAIN)
+				// Normal behavior
+			else
+				CRASH("pre_attack_secondary must return an SECONDARY_ATTACK_* define, please consult code/__DEFINES/combat.dm")
+	else
+		pre_attack_result = pre_attack(src, user, params)
+
+	if(pre_attack_result)
+		return TRUE
+
+	var/attackby_result
+
+	if (is_right_clicking)
+		switch (target.attackby_secondary(src, user, params))
+			if (SECONDARY_ATTACK_CALL_NORMAL)
+				attackby_result = target.attackby(src, user, params)
+			if (SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+				return TRUE
+			if (SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+				// Normal behavior
+			else
+				CRASH("attackby_secondary must return an SECONDARY_ATTACK_* define, please consult code/__DEFINES/combat.dm")
+	else
+		attackby_result = target.attackby(src, user, params)
+
+	if (attackby_result)
+>>>>>>> 1e9962d... Add locking into portals with right click on hand tele, refactor hand tele code, add pre_attack_secondary (#56700)
 		return TRUE
 	if(QDELETED(src) || QDELETED(target))
 		attack_qdeleted(target, user, TRUE, params)
@@ -39,6 +76,19 @@
 	if(SEND_SIGNAL(src, COMSIG_ITEM_PRE_ATTACK, A, user, params) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return TRUE
 	return FALSE //return TRUE to avoid calling attackby after this proc does stuff
+
+/**
+ * Called on the item before it hits something, when right clicking.
+ *
+ * Arguments:
+ * * atom/target - The atom about to be hit
+ * * mob/living/user - The mob doing the htting
+ * * params - click params such as alt/shift etc
+ *
+ * See: [/obj/item/proc/melee_attack_chain]
+ */
+/obj/item/proc/pre_attack_secondary(atom/target, mob/living/user, params)
+	return SECONDARY_ATTACK_CALL_NORMAL
 
 /**
  * Called on an object being hit by an item
