@@ -10,7 +10,26 @@
 /obj/item/proc/melee_attack_chain(mob/user, atom/target, params)
 	if(tool_behaviour && target.tool_act(user, src, tool_behaviour))
 		return TRUE
+<<<<<<< HEAD
 	if(pre_attack(target, user, params))
+=======
+
+	var/pre_attack_result
+	if (is_right_clicking)
+		switch (pre_attack_secondary(target, user, params))
+			if (SECONDARY_ATTACK_CALL_NORMAL)
+				pre_attack_result = pre_attack(target, user, params)
+			if (SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+				return TRUE
+			if (SECONDARY_ATTACK_CONTINUE_CHAIN)
+				// Normal behavior
+			else
+				CRASH("pre_attack_secondary must return an SECONDARY_ATTACK_* define, please consult code/__DEFINES/combat.dm")
+	else
+		pre_attack_result = pre_attack(target, user, params)
+
+	if(pre_attack_result)
+>>>>>>> e1560e7... Fix pre_attack (#56798)
 		return TRUE
 	if(target.attackby(src,user, params))
 		return TRUE
