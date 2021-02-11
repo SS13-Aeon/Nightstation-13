@@ -105,6 +105,7 @@
 			return
 	else
 		..()
+<<<<<<< HEAD
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/attack(obj/target, mob/user)
 	if(user.a_intent == INTENT_HARM && ismob(target) && target.reagents && reagents.total_volume)
@@ -127,3 +128,5 @@
 		reagents.expose(target, TOUCH)
 		reagents.clear_reagents()
 		return
+=======
+>>>>>>> 1ca55b7... Generalize splashing reagent containers code, put it on right click (#56813)
