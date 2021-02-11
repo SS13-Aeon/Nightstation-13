@@ -69,11 +69,19 @@
 				new /obj/effect/decal/cleanable/blood/old(src)
 		return
 
+<<<<<<< HEAD
 		//Hangars and pods covered in oil.
 	var/static/list/oily_areas = typecacheof(/area/quartermaster)
+=======
+	// Cargo bays covered in oil.
+	var/static/list/oily_areas = typecacheof(/area/cargo)
+>>>>>>> 7d4a20a... Tweak cargo filth to include package scraps (#56827)
 	if(is_type_in_typecache(A, oily_areas))
 		if(prob(25))
 			new /obj/effect/decal/cleanable/oil(src)
+		else if(prob(20))
+			// or occasionally the signs of opened packages
+			new /obj/effect/decal/cleanable/wrapping(src)
 		return
 
 
