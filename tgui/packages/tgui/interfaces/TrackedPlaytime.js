@@ -1,6 +1,6 @@
 import { sortBy } from "common/collections";
 import { useBackend } from "../backend";
-import { Box, Flex, ProgressBar, Section, Table } from "../components";
+import { Box, Button, Flex, ProgressBar, Section, Table } from "../components";
 import { Window } from "../layouts";
 
 const JOB_REPORT_MENU_FAIL_REASON_TRACKING_DISABLED = 1;
@@ -50,12 +50,17 @@ const PlaytimeSection = props => {
 };
 
 export const TrackedPlaytime = (props, context) => {
-  const { data } = useBackend(context);
+  const { act, data } = useBackend(context);
   const {
     failReason,
     jobPlaytimes,
     specialPlaytimes,
+<<<<<<< HEAD
 
+=======
+    exemptStatus,
+    isAdmin,
+>>>>>>> 9ce1073... Re-adds the admin button to let them exempt players from job exp requirements. (#56799)
     livingTime,
     ghostTime,
   } = data;
@@ -82,8 +87,20 @@ export const TrackedPlaytime = (props, context) => {
                 }}
               />
             </Section>
+<<<<<<< HEAD
 
             <Section title="Jobs">
+=======
+            <Section
+              title="Jobs"
+              buttons={!!isAdmin && (
+                <Button.Checkbox
+                  checked={!!exemptStatus}
+                  onClick={() => act("toggle_exempt")}>
+                  Job Playtime Exempt
+                </Button.Checkbox>
+              )}>
+>>>>>>> 9ce1073... Re-adds the admin button to let them exempt players from job exp requirements. (#56799)
               <PlaytimeSection
                 playtimes={jobPlaytimes}
               />
