@@ -86,6 +86,7 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/harpoon
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	can_be_sawn_off = FALSE
+	can_jam = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/enchanted
 	name = "enchanted bolt action rifle"
