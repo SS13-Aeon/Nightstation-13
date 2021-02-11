@@ -189,6 +189,20 @@
 		for(var/obj/O in contents)
 			O.emp_act(severity)
 
+<<<<<<< HEAD
+=======
+/obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
+	if (user.GetComponent(/datum/component/gunpoint))
+		to_chat(user, "<span class='warning'>You are already holding someone up!</span>")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if (user == victim)
+		to_chat(user,"<span class='warning'>You can't hold yourself up!</span>")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	user.AddComponent(/datum/component/gunpoint, victim, src)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+>>>>>>> 27e51bc... fixes 2 runtimes caused by holding people up with a gun (#56800)
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
 	if(QDELETED(target))
