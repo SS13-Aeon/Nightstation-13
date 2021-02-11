@@ -13,7 +13,16 @@
 
 	var/alt_inhands_file = 'icons/mob/alienqueen.dmi'
 
+<<<<<<< HEAD
 /mob/living/carbon/alien/humanoid/royal/can_inject()
+=======
+/mob/living/carbon/alien/humanoid/royal/Initialize()
+	. = ..()
+	// as a wise man once wrote: "pull over that ass too fat"
+	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+
+/mob/living/carbon/alien/humanoid/royal/can_inject(mob/user, target_zone, injection_flags)
+>>>>>>> a1046d8... Refactor can_inject, and introduce try_inject (#56816)
 	return FALSE
 
 /mob/living/carbon/alien/humanoid/royal/queen

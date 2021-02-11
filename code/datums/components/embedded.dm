@@ -233,3 +233,51 @@
 		to_chat(victim, "<span class='userdanger'>\The [weapon] that was embedded in your [limb.name] disappears!</span>")
 
 	qdel(src)
+<<<<<<< HEAD
+=======
+
+/// The signal for listening to see if someone is using a hemostat on us to pluck out this object
+/datum/component/embedded/proc/checkTweeze(mob/living/carbon/victim, obj/item/possible_tweezers, mob/user)
+	SIGNAL_HANDLER
+
+	if(!istype(victim) || possible_tweezers.tool_behaviour != TOOL_HEMOSTAT || user.zone_selected != limb.body_zone)
+		return
+
+	if(weapon != limb.embedded_objects[1]) // just pluck the first one, since we can't easily coordinate with other embedded components affecting this limb who is highest priority
+		return
+
+	if(ishuman(victim)) // check to see if the limb is actually exposed
+		var/mob/living/carbon/human/victim_human = victim
+		if(!victim_human.try_inject(user, limb.body_zone, INJECT_CHECK_IGNORE_SPECIES | INJECT_TRY_SHOW_ERROR_MESSAGE))
+			return TRUE
+
+	INVOKE_ASYNC(src, .proc/tweezePluck, possible_tweezers, user)
+	return COMPONENT_NO_AFTERATTACK
+
+/// The actual action for pulling out an embedded object with a hemostat
+/datum/component/embedded/proc/tweezePluck(obj/item/possible_tweezers, mob/user)
+	var/mob/living/carbon/victim = parent
+
+	var/self_pluck = (user == victim)
+
+	if(self_pluck)
+		user.visible_message("<span class='danger'>[user] begins plucking [weapon] from [user.p_their()] [limb.name]</span>", "<span class='notice'>You start plucking [weapon] from your [limb.name]...</span>",\
+			vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=victim)
+	else
+		user.visible_message("<span class='danger'>[user] begins plucking [weapon] from [victim]'s [limb.name]</span>","<span class='notice'>You start plucking [weapon] from [victim]'s [limb.name]...</span>", \
+			vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=victim)
+		to_chat(victim, "<span class='userdanger'>[user] begins plucking [weapon] from your [limb.name]...</span>")
+
+	var/pluck_time = 2.5 SECONDS * weapon.w_class * (self_pluck ? 2 : 1)
+	if(!do_after(user, pluck_time, victim))
+		if(self_pluck)
+			to_chat(user, "<span class='danger'>You fail to pluck [weapon] from your [limb.name].</span>")
+		else
+			to_chat(user, "<span class='danger'>You fail to pluck [weapon] from [victim]'s [limb.name].</span>")
+			to_chat(victim, "<span class='danger'>[user] fails to pluck [weapon] from your [limb.name].</span>")
+		return
+
+	to_chat(user, "<span class='notice'>You successfully pluck [weapon] from [victim]'s [limb.name].</span>")
+	to_chat(victim, "<span class='notice'>[user] plucks [weapon] from your [limb.name].</span>")
+	safeRemove(user)
+>>>>>>> a1046d8... Refactor can_inject, and introduce try_inject (#56816)
