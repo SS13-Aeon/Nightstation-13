@@ -18,11 +18,22 @@
 */
 //#define REFERENCE_TRACKING
 
+<<<<<<< HEAD
 ///Method of tracking references without using extools. Slower, kept to avoid over-reliance on extools.
 //#define LEGACY_REFERENCE_TRACKING
 #ifdef LEGACY_REFERENCE_TRACKING
 
 ///Use the legacy reference on things hard deleting by default.
+=======
+/*
+* Enables debug messages for every single reaction step. This is 1 message per 0.5s for a SINGLE reaction. Useful for tracking down bugs/asking me for help in the main reaction handiler (equilibrium.dm).
+*
+* * Requires TESTING to be defined to work.
+*/
+//#define REAGENTS_TESTING
+
+///Run a lookup on things hard deleting by default.
+>>>>>>> 56f7ac0... Reaction rates, pH, purity and more! Brings a heavily improved, less explosive and optimised fermichem to tg. (#56019)
 //#define GC_FAILURE_HARD_LOOKUP
 #ifdef GC_FAILURE_HARD_LOOKUP
 #define FIND_REF_NO_CHECK_TICK

@@ -30,6 +30,11 @@
 #define MEDAL_FLESH_ASCENSION	"Flesh"
 #define MEDAL_RUST_ASCENSION	"Rust"
 #define MEDAL_VOID_ASCENSION	"Void"
+<<<<<<< HEAD
+=======
+#define MEDAL_TOOLBOX_SOUL		"Toolsoul"
+#define MEDAL_CHEM_TUT          "Beginner Chemist"
+>>>>>>> 56f7ac0... Reaction rates, pH, purity and more! Brings a heavily improved, less explosive and optimised fermichem to tg. (#56019)
 
 //Skill medal hub IDs
 #define MEDAL_LEGENDARY_MINER		"Legendary Miner"
