@@ -21,6 +21,7 @@
 		return
 
 	if(istype(M))
+<<<<<<< HEAD
 		if(user.a_intent == INTENT_HARM)
 			var/R
 			M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>", \
@@ -35,33 +36,34 @@
 			reagents.expose(M, TOUCH)
 			log_combat(user, M, "splashed", R)
 			reagents.clear_reagents()
+=======
+		if(M != user)
+			M.visible_message("<span class='danger'>[user] attempts to feed [M] something from [src].</span>", \
+						"<span class='userdanger'>[user] attempts to feed you something from [src].</span>")
+			if(!do_mob(user, M))
+				return
+			if(!reagents || !reagents.total_volume)
+				return // The drink might be empty after the delay, such as by spam-feeding
+			M.visible_message("<span class='danger'>[user] feeds [M] something from [src].</span>", \
+						"<span class='userdanger'>[user] feeds you something from [src].</span>")
+			log_combat(user, M, "fed", reagents.log_list())
+>>>>>>> 1ca55b7... Generalize splashing reagent containers code, put it on right click (#56813)
 		else
-			if(M != user)
-				M.visible_message("<span class='danger'>[user] attempts to feed [M] something from [src].</span>", \
-							"<span class='userdanger'>[user] attempts to feed you something from [src].</span>")
-				if(!do_mob(user, M))
-					return
-				if(!reagents || !reagents.total_volume)
-					return // The drink might be empty after the delay, such as by spam-feeding
-				M.visible_message("<span class='danger'>[user] feeds [M] something from [src].</span>", \
-							"<span class='userdanger'>[user] feeds you something from [src].</span>")
-				log_combat(user, M, "fed", reagents.log_list())
-			else
-				to_chat(user, "<span class='notice'>You swallow a gulp of [src].</span>")
-			SEND_SIGNAL(src, COMSIG_GLASS_DRANK, M, user)
-			addtimer(CALLBACK(reagents, /datum/reagents.proc/trans_to, M, 5, TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
-			playsound(M.loc,'sound/items/drink.ogg', rand(10,50), TRUE)
-			if(iscarbon(M))
-				var/mob/living/carbon/carbon_drinker = M
-				var/list/diseases = carbon_drinker.get_static_viruses()
-				if(LAZYLEN(diseases))
-					var/list/datum/disease/diseases_to_add = list()
-					for(var/d in diseases)
-						var/datum/disease/malady = d
-						if(malady.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS)
-							diseases_to_add += malady
-					if(LAZYLEN(diseases_to_add))
-						AddComponent(/datum/component/infective, diseases_to_add)
+			to_chat(user, "<span class='notice'>You swallow a gulp of [src].</span>")
+		SEND_SIGNAL(src, COMSIG_GLASS_DRANK, M, user)
+		addtimer(CALLBACK(reagents, /datum/reagents.proc/trans_to, M, 5, TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
+		playsound(M.loc,'sound/items/drink.ogg', rand(10,50), TRUE)
+		if(iscarbon(M))
+			var/mob/living/carbon/carbon_drinker = M
+			var/list/diseases = carbon_drinker.get_static_viruses()
+			if(LAZYLEN(diseases))
+				var/list/datum/disease/diseases_to_add = list()
+				for(var/d in diseases)
+					var/datum/disease/malady = d
+					if(malady.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS)
+						diseases_to_add += malady
+				if(LAZYLEN(diseases_to_add))
+					AddComponent(/datum/component/infective, diseases_to_add)
 
 /obj/item/reagent_containers/glass/afterattack(obj/target, mob/user, proximity)
 	. = ..()
@@ -95,6 +97,7 @@
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
 		to_chat(user, "<span class='notice'>You fill [src] with [trans] unit\s of the contents of [target].</span>")
 
+<<<<<<< HEAD
 	else if(reagents.total_volume)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [target]!</span>", \
@@ -102,6 +105,8 @@
 			reagents.expose(target, TOUCH)
 			reagents.clear_reagents()
 
+=======
+>>>>>>> 1ca55b7... Generalize splashing reagent containers code, put it on right click (#56813)
 /obj/item/reagent_containers/glass/attackby(obj/item/I, mob/user, params)
 	var/hotness = I.get_temperature()
 	if(hotness && reagents)
