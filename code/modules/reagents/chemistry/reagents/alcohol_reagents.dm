@@ -482,6 +482,46 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = "100% proof that teen girls will drink anything with gold in it."
 	shot_glass_icon_state = "shotglassgold"
 
+<<<<<<< HEAD
+=======
+	/// Ratio of gold that the goldschlager recipe contains
+	var/static/gold_ratio
+
+	// This drink is really popular with a certain demographic.
+	var/teenage_girl_quality = DRINK_VERYGOOD
+
+/datum/reagent/consumable/ethanol/goldschlager/New()
+	. = ..()
+	if(!gold_ratio)
+		// Calculate the amount of gold that goldschlager is made from
+		var/datum/chemical_reaction/drink/goldschlager/goldschlager_reaction = new
+		var/vodka_amount = goldschlager_reaction.required_reagents[/datum/reagent/consumable/ethanol/vodka]
+		var/gold_amount = goldschlager_reaction.required_reagents[/datum/reagent/gold]
+		gold_ratio = gold_amount / (gold_amount + vodka_amount)
+		qdel(goldschlager_reaction)
+
+/datum/reagent/consumable/ethanol/goldschlager/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
+	// Reset quality each time, since the bottle can be shared
+	quality = initial(quality)
+
+	if(ishuman(exposed_mob))
+		var/mob/living/carbon/human/human = exposed_mob
+		// tgstation13 does not endorse underage drinking. laws may vary by your jurisdiction.
+		if(human.age >= 13 && human.age <= 19 && human.gender == FEMALE)
+			quality = teenage_girl_quality
+
+	return ..()
+
+/datum/reagent/consumable/ethanol/goldschlager/on_transfer(atom/A, methods = TOUCH, trans_volume)
+	if(!(methods & INGEST))
+		return ..()
+
+	var/convert_amount = trans_volume * gold_ratio
+	A.reagents.remove_reagent(/datum/reagent/consumable/ethanol/goldschlager, convert_amount)
+	A.reagents.add_reagent(/datum/reagent/gold, convert_amount)
+	return ..()
+
+>>>>>>> b168b54... Fix failing master with FermiChem merge (#56859)
 /datum/reagent/consumable/ethanol/patron
 	name = "Patron"
 	description = "Tequila with silver in it, a favorite of alcoholic women in the club scene."
