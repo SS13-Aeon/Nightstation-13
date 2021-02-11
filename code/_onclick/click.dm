@@ -151,7 +151,17 @@
 			UnarmedAttack(A,1)
 	else
 		if(W)
+<<<<<<< HEAD
 			W.afterattack(A,src,0,params)
+=======
+			if(modifiers["right"])
+				var/after_attack_secondary_result = W.afterattack_secondary(A, src, FALSE, params)
+
+				if(after_attack_secondary_result == SECONDARY_ATTACK_CALL_NORMAL)
+					W.afterattack(A, src, FALSE, params)
+			else
+				W.afterattack(A,src,0,params)
+>>>>>>> e3d444e... right clicking on a ranged attack now calls afterattack when it's supposed to (#56829)
 		else
 			RangedAttack(A,params)
 
