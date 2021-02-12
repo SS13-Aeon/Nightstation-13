@@ -5,8 +5,13 @@
 	// Avoid all randomness in tests
 	ADD_TRAIT(puncher, TRAIT_PERFECT_ATTACKER, INNATE_TRAIT)
 
+<<<<<<< HEAD
 	puncher.a_intent_change(INTENT_HARM)
 	victim.attack_hand(puncher)
+=======
+	puncher.set_combat_mode(TRUE)
+	victim.attack_hand(puncher, list(RIGHT_CLICK = FALSE))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 
 	TEST_ASSERT(victim.getBruteLoss() > 0, "Victim took no brute damage after being punched")
 
@@ -82,7 +87,11 @@
 
 	// First disarm, world should now look like:
 	// Attacker --> Empty space --> Victim --> Wall
+<<<<<<< HEAD
 	victim.attack_hand(attacker)
+=======
+	victim.attack_hand(attacker, list(RIGHT_CLICK = TRUE))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 
 	TEST_ASSERT_EQUAL(victim.loc.x, run_loc_bottom_left.x + 2, "Victim wasn't moved back after being pushed")
 	TEST_ASSERT(!victim.has_status_effect(STATUS_EFFECT_KNOCKDOWN), "Victim was knocked down despite not being against a wall")
@@ -91,7 +100,11 @@
 	attacker.forceMove(get_step(attacker, EAST))
 
 	// Second disarm, victim was against wall and should be down
+<<<<<<< HEAD
 	victim.attack_hand(attacker)
+=======
+	victim.attack_hand(attacker, list(RIGHT_CLICK = TRUE))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 
 	TEST_ASSERT_EQUAL(victim.loc.x, run_loc_bottom_left.x + 2, "Victim was moved after being pushed against a wall")
 	TEST_ASSERT(victim.has_status_effect(STATUS_EFFECT_KNOCKDOWN), "Victim was not knocked down after being pushed against a wall")

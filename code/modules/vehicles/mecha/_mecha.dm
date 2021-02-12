@@ -521,8 +521,13 @@
 		return
 	if(is_currently_ejecting)
 		return
+<<<<<<< HEAD
 	var/list/mouse_control = params2list(params)
 	if(isAI(user) && !mouse_control["middle"])//AIs use MMB
+=======
+	var/list/modifiers = params2list(params)
+	if(isAI(user) == !LAZYACCESS(modifiers, MIDDLE_CLICK))//BASICALLY if a human uses MMB, or an AI doesn't, then do nothing.
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 		return
 	if(phasing)
 		to_chat(occupants, "[icon2html(src, occupants)]<span class='warning'>Unable to interact with objects while phasing.</span>")

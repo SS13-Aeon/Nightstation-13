@@ -46,7 +46,14 @@
 
 /obj/item/energy_katana/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
+<<<<<<< HEAD
 	if(dash_toggled && !Adjacent(target) && !target.density)
+=======
+
+	var/list/modifiers = params2list(click_parameters)
+
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && !target.density)
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 		jaunt.Teleport(user, target)
 
 /obj/item/energy_katana/pickup(mob/living/user)

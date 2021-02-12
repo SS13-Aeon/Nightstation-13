@@ -16,6 +16,7 @@
 
 /mob/living/carbon/alien/humanoid/attack_hand(mob/living/carbon/human/M)
 	if(..())
+<<<<<<< HEAD
 		switch(M.a_intent)
 			if ("harm")
 				var/damage = rand(1, 9)
@@ -39,6 +40,10 @@
 					to_chat(M, "<span class='warning'>Your punch misses [src]!</span>")
 
 			if ("disarm")
+=======
+		if(M.combat_mode)
+			if(LAZYACCESS(modifiers, RIGHT_CLICK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 				if (body_position == STANDING_UP)
 					if (prob(5))
 						Unconscious(40)

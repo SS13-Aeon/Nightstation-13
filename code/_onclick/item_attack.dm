@@ -8,6 +8,12 @@
  * * [/obj/item/proc/afterattack]. The return value does not matter.
  */
 /obj/item/proc/melee_attack_chain(mob/user, atom/target, params)
+<<<<<<< HEAD
+=======
+
+	var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
+
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 	if(tool_behaviour && target.tool_act(user, src, tool_behaviour))
 		return TRUE
 	if(pre_attack(target, user, params))

@@ -100,7 +100,11 @@
 		return TRUE
 
 	var/try_to_fail = FALSE
+<<<<<<< HEAD
 	if(intent == INTENT_DISARM)
+=======
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 		try_to_fail = TRUE
 
 	var/datum/surgery_step/S = get_surgery_step()
