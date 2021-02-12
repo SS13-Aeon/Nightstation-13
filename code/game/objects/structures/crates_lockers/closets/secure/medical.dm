@@ -95,6 +95,11 @@
 	new /obj/item/wallframe/defib_mount(src)
 	new /obj/item/circuitboard/machine/techfab/department/medical(src)
 	new /obj/item/storage/photo_album/cmo(src)
+<<<<<<< HEAD
+=======
+	new /obj/item/storage/box/skillchips/quicker(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/medical/cmo(src)
+>>>>>>> 5b9d42c... Winter coats (#56854)
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control"
