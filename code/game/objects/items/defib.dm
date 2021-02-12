@@ -430,7 +430,12 @@
 			to_chat(user, "<span class='warning'>[src] are recharging!</span>")
 		return
 
+<<<<<<< HEAD
 	if(user.a_intent == INTENT_DISARM)
+=======
+	var/list/modifiers = params2list(params)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 		do_disarm(M, user)
 		return
 

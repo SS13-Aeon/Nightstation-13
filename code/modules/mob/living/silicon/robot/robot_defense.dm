@@ -235,8 +235,13 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		spark_system.start()
 	return ..()
 
+<<<<<<< HEAD
 /mob/living/silicon/robot/attack_alien(mob/living/carbon/alien/humanoid/M)
 	if (M.a_intent == INTENT_DISARM)
+=======
+/mob/living/silicon/robot/attack_alien(mob/living/carbon/alien/humanoid/M, modifiers)
+	if (LAZYACCESS(modifiers, RIGHT_CLICK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 		if(body_position == STANDING_UP)
 			M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 			var/obj/item/I = get_active_held_item()

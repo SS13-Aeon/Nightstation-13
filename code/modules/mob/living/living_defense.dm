@@ -229,7 +229,17 @@
 		to_chat(M, "No attacking people at spawn, you jackass.")
 		return FALSE
 
+<<<<<<< HEAD
 	if (M.a_intent == INTENT_HARM)
+=======
+	if (M.apply_martial_art(src, modifiers))
+		return TRUE
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		if (M != src)
+			M.disarm(src)
+			return TRUE
+	if (M.combat_mode)
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 		if(HAS_TRAIT(M, TRAIT_PACIFISM))
 			to_chat(M, "<span class='warning'>You don't want to hurt anyone!</span>")
 			return FALSE
@@ -278,12 +288,22 @@
 				to_chat(L, "<span class='warning'>Your bite misses [src]!</span>")
 	return FALSE
 
+<<<<<<< HEAD
 /mob/living/attack_alien(mob/living/carbon/alien/humanoid/M)
 	switch(M.a_intent)
 		if ("help")
 			visible_message("<span class='notice'>[M] caresses [src] with its scythe-like arm.</span>", \
 							"<span class='notice'>[M] caresses you with its scythe-like arm.</span>", null, null, M)
 			to_chat(M, "<span class='notice'>You caress [src] with your scythe-like arm.</span>")
+=======
+/mob/living/attack_alien(mob/living/carbon/alien/humanoid/M, modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
+		return TRUE
+	if(M.combat_mode)
+		if(HAS_TRAIT(M, TRAIT_PACIFISM))
+			to_chat(M, "<span class='warning'>You don't want to hurt anyone!</span>")
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 			return FALSE
 		if ("grab")
 			grabbedby(M)

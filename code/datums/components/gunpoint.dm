@@ -88,7 +88,11 @@
 /datum/component/gunpoint/proc/check_shove(mob/living/carbon/shooter, mob/shooter_again, mob/living/T)
 	SIGNAL_HANDLER
 
+<<<<<<< HEAD
 	if(T != target || shooter.a_intent == INTENT_DISARM || shooter.a_intent == INTENT_GRAB)
+=======
+	if(T != target || LAZYACCESS(modifiers, RIGHT_CLICK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 		return
 	shooter.visible_message("<span class='danger'>[shooter] bumps into [target] and fumbles [shooter.p_their()] aim!</span>", \
 		"<span class='danger'>You bump into [target] and fumble your aim!</span>", ignored_mobs = target)

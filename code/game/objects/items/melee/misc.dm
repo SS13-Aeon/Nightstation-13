@@ -284,8 +284,24 @@
 		return
 	if(!isliving(target))
 		return
+<<<<<<< HEAD
 	if (user.a_intent == INTENT_HARM)
 		if(!..())
+=======
+	var/list/modifiers = params2list(params)
+
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		..()
+		return
+	if(cooldown_check > world.time)
+		var/wait_desc = get_wait_description()
+		if (wait_desc)
+			to_chat(user, wait_desc)
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if (H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 			return
 		if(!iscyborg(target))
 			return

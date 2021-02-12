@@ -209,7 +209,12 @@
 	if(C.stat)
 		to_chat(user, "<span class='warning'>It would be dishonorable to attack a foe while they cannot retaliate.</span>")
 		return
+<<<<<<< HEAD
 	if(user.a_intent == INTENT_DISARM)
+=======
+	var/list/modifiers = params2list(params)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 		if(!wielded)
 			return ..()
 		if(!ishuman(target))

@@ -58,6 +58,7 @@ In all, this is a lot like the monkey code. /N
 	if(.)	//to allow surgery to return properly.
 		return FALSE
 
+<<<<<<< HEAD
 	switch(M.a_intent)
 		if("help")
 			help_shake_act(M)
@@ -67,6 +68,10 @@ In all, this is a lot like the monkey code. /N
 			M.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 			return TRUE
 		if("disarm")
+=======
+	if(M.combat_mode)
+		if(LAZYACCESS(modifiers, RIGHT_CLICK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 			M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 			return TRUE
 	return FALSE

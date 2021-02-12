@@ -30,8 +30,26 @@
 	SEND_SIGNAL(src, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, A, proximity)
 	A.attack_hand(src)
 
+<<<<<<< HEAD
 /// Return TRUE to cancel other attack hand effects that respect it.
 /atom/proc/attack_hand(mob/user)
+=======
+	if(dna?.species?.spec_unarmedattack(src, A, modifiers)) //Because species like monkeys dont use attack hand
+		return
+
+	if (LAZYACCESS(modifiers, RIGHT_CLICK))
+		var/secondary_result = A.attack_hand_secondary(src, modifiers)
+
+		if (secondary_result == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || secondary_result == SECONDARY_ATTACK_CONTINUE_CHAIN)
+			return
+		else if (secondary_result != SECONDARY_ATTACK_CALL_NORMAL)
+			CRASH("attack_hand_secondary did not return a SECONDARY_ATTACK_* define.")
+
+	A.attack_hand(src, modifiers)
+
+/// Return TRUE to cancel other attack hand effects that respect it. Modifiers is the assoc list for click info such as if it was a right click.
+/atom/proc/attack_hand(mob/user, modifiers)
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 	. = FALSE
 	if(!(interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND))
 		add_fingerprint(user)

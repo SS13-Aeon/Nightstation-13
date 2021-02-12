@@ -88,7 +88,14 @@
 		return
 	var/mob/living/silicon/pai/pAI = usr
 	if(iscarbon(pAI.card.loc))
+<<<<<<< HEAD
 		pAI.hostscan.attack(pAI.card.loc, pAI)
+=======
+		if (LAZYACCESS(modifiers, RIGHT_CLICK))
+			pAI.hostscan.attack_secondary(pAI.card.loc, pAI)
+		else
+			pAI.hostscan.attack(pAI.card.loc, pAI)
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 	else
 		to_chat(src, "<span class='warning'>You are not being carried by anyone!</span>")
 		return FALSE

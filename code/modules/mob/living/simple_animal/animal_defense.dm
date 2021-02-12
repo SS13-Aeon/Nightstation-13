@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M)
 	..()
 	switch(M.a_intent)
@@ -30,6 +31,22 @@
 			M.visible_message("<span class='danger'>[M.name] shoves [src], pushing [p_them()]!</span>",
 				"<span class='danger'>You shove [src], pushing [p_them()]!</span>", "<span class='hear'>You hear aggressive shuffling!</span>", COMBAT_MESSAGE_RANGE, list(src))
 			to_chat(src, "<span class='userdanger'>You're pushed by [name]!</span>")
+=======
+/mob/living/simple_animal/attack_hand(mob/living/carbon/human/M, modifiers)
+	// so that martial arts don't double dip
+	if (..())
+		return TRUE
+
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
+		playsound(src, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+		var/shove_dir = get_dir(M, src)
+		if(!Move(get_step(src, shove_dir), shove_dir))
+			log_combat(M, src, "shoved", "failing to move it")
+			M.visible_message("<span class='danger'>[M.name] shoves [src]!</span>",
+				"<span class='danger'>You shove [src]!</span>", "<span class='hear'>You hear aggressive shuffling!</span>", COMBAT_MESSAGE_RANGE, list(src))
+			to_chat(src, "<span class='userdanger'>You're shoved by [M.name]!</span>")
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 			return TRUE
 
 		if("harm")
@@ -82,7 +99,11 @@
 
 /mob/living/simple_animal/attack_alien(mob/living/carbon/alien/humanoid/M)
 	if(..()) //if harm or disarm intent.
+<<<<<<< HEAD
 		if(M.a_intent == INTENT_DISARM)
+=======
+		if(LAZYACCESS(modifiers, RIGHT_CLICK))
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, TRUE, -1)
 			visible_message("<span class='danger'>[M] [response_disarm_continuous] [name]!</span>", \
 							"<span class='userdanger'>[M] [response_disarm_continuous] you!</span>", null, COMBAT_MESSAGE_RANGE, M)

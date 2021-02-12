@@ -1412,8 +1412,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if("help")
 			help(M, H, attacker_style)
 
+<<<<<<< HEAD
 		if("grab")
 			grab(M, H, attacker_style)
+=======
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		disarm(M, H, attacker_style)
+		return // dont attack after
+	if(M.combat_mode)
+		harm(M, H, attacker_style)
+	else
+		help(M, H, attacker_style)
+>>>>>>> f4160f2... Converts all uses of modifiers to lazy access to avoid memes in future (#56846)
 
 		if("harm")
 			harm(M, H, attacker_style)
