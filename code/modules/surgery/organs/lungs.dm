@@ -264,14 +264,17 @@
 
 		var/SA_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/nitrous_oxide][MOLES])
 		if(SA_pp > SA_para_min) // Enough to make us stunned for a bit
+			H.throw_alert("too_much_n2o", /atom/movable/screen/alert/too_much_n2o)
 			H.Unconscious(60) // 60 gives them one second to wake up and run away a bit!
 			if(SA_pp > SA_sleep_min) // Enough to make us sleep as well
 				H.Sleeping(min(H.AmountSleeping() + 100, 200))
 		else if(SA_pp > 0.01)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
+			H.clear_alert("too_much_n2o")
 			if(prob(20))
 				H.emote(pick("giggle", "laugh"))
 				SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "chemical_euphoria", /datum/mood_event/chemical_euphoria)
 		else
+<<<<<<< HEAD
 			SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "chemical_euphoria")
 		if(safe_toxins_max && SA_pp > safe_toxins_max*3)
 			var/ratio = (breath_gases[/datum/gas/nitrous_oxide][MOLES]/safe_toxins_max)
@@ -279,6 +282,10 @@
 			H.throw_alert("too_much_tox", /atom/movable/screen/alert/too_much_tox)
 		else
 			H.clear_alert("too_much_tox")
+=======
+			n2o_euphoria = EUPHORIA_INACTIVE
+			H.clear_alert("too_much_n2o")
+>>>>>>> 6947493... Makes n2o nontoxic, for reasons (#56839)
 
 
 	// BZ
