@@ -484,6 +484,7 @@
 	return
 
 /obj/item/seeds/attackby(obj/item/O, mob/user, params)
+<<<<<<< HEAD
 	if (istype(O, /obj/item/plant_analyzer))
 		to_chat(user, "<span class='info'>*---------*\n This is \a <span class='name'>[src]</span>.</span>")
 		var/text
@@ -502,6 +503,8 @@
 
 		return
 
+=======
+>>>>>>> 4f7a73c... Moves the plant analyzer chem mode to right click + lets you read out a tray's chemical contents (#56836)
 	if(istype(O, /obj/item/pen))
 		var/choice = input("What would you like to change?") in list("Plant Name", "Seed Description", "Product Description", "Cancel")
 		if(!user.canUseTopic(src, BE_CLOSE))

@@ -48,6 +48,7 @@
 /obj/item/graft/Destroy()
 	QDEL_NULL(stored_trait)
 	return ..()
+<<<<<<< HEAD
 
 /obj/item/graft/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/plant_analyzer) && user.a_intent == INTENT_HELP)
@@ -64,3 +65,5 @@
 	if(stored_trait)
 		text += "- Graftable Traits: [stored_trait.get_name()] -\n"
 	return text
+=======
+>>>>>>> 4f7a73c... Moves the plant analyzer chem mode to right click + lets you read out a tray's chemical contents (#56836)
