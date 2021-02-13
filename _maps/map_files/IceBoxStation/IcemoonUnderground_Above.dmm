@@ -3276,6 +3276,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/laborcamp)
+<<<<<<< HEAD
 "rD" = (
 /obj/machinery/seed_extractor,
 /turf/open/floor/plasteel/dark,
@@ -3283,6 +3284,31 @@
 "rG" = (
 /turf/open/floor/plasteel/dark,
 /area/hydroponics)
+=======
+"rH" = (
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/service/hydroponics)
+"rI" = (
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/green/filled/corner,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/service/hydroponics)
+"rN" = (
+/obj/machinery/power/apc/auto_name/east,
+/obj/structure/cable,
+/obj/structure/closet/crate/secure/freezer/pizza,
+/turf/open/floor/iron,
+/area/cargo/warehouse)
+>>>>>>> 6fdefe3... Fixes tags on ordered pizza (#56369)
 "rS" = (
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas{
