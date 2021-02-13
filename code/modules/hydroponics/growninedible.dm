@@ -23,8 +23,9 @@
 	pixel_y = base_pixel_y + rand(-5, 5)
 
 	if(seed)
-		for(var/datum/plant_gene/trait/T in seed.genes)
-			T.on_new(src, loc)
+		// Go through all traits in their genes and call on_new_plant from them.
+		for(var/datum/plant_gene/trait/trait in seed.genes)
+			trait.on_new_plant(src, loc)
 
 		if(istype(src, seed.product)) // no adding reagents if it is just a trash item
 			seed.prepare_result(src)
@@ -46,12 +47,6 @@
 	if(reagents)
 		return TRUE
 	return FALSE
-
-/obj/item/grown/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	if(!..()) //was it caught by a mob?
-		if(seed)
-			for(var/datum/plant_gene/trait/T in seed.genes)
-				T.on_throw_impact(src, hit_atom)
 
 /obj/item/grown/microwave_act(obj/machinery/microwave/M)
 	return
