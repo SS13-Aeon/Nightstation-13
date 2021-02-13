@@ -244,8 +244,11 @@
 	I.desc = "Looks like this was \an [src] some time ago."
 	qdel(src)
 	return TRUE
+<<<<<<< HEAD
 
 /obj/structure/glowshroom/attackby(obj/item/I, mob/living/user, params)
 	if (istype(I, /obj/item/plant_analyzer))
 		return myseed.attackby(I, user, params) // Hacky I guess
 	return ..() // Attack normally
+=======
+>>>>>>> 4f7a73c... Moves the plant analyzer chem mode to right click + lets you read out a tray's chemical contents (#56836)

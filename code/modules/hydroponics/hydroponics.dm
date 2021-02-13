@@ -597,6 +597,7 @@
 			to_chat(user, "<span class='warning'>[src] already has seeds in it!</span>")
 			return
 
+<<<<<<< HEAD
 	else if(istype(O, /obj/item/plant_analyzer))
 		var/obj/item/plant_analyzer/P_analyzer = O
 		if(myseed)
@@ -623,6 +624,8 @@
 		to_chat(user, "")
 		return
 
+=======
+>>>>>>> 4f7a73c... Moves the plant analyzer chem mode to right click + lets you read out a tray's chemical contents (#56836)
 	else if(istype(O, /obj/item/cultivator))
 		if(weedlevel > 0)
 			user.visible_message("<span class='notice'>[user] uproots the weeds.</span>", "<span class='notice'>You remove the weeds from [src].</span>")

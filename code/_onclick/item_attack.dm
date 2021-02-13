@@ -12,7 +12,27 @@
 		return TRUE
 	if(pre_attack(target, user, params))
 		return TRUE
+<<<<<<< HEAD
 	if(target.attackby(src,user, params))
+=======
+
+	var/attackby_result
+
+	if (is_right_clicking)
+		switch (target.attackby_secondary(src, user, params))
+			if (SECONDARY_ATTACK_CALL_NORMAL)
+				attackby_result = target.attackby(src, user, params)
+			if (SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+				return TRUE
+			if (SECONDARY_ATTACK_CONTINUE_CHAIN)
+				// Normal behavior
+			else
+				CRASH("attackby_secondary must return an SECONDARY_ATTACK_* define, please consult code/__DEFINES/combat.dm")
+	else
+		attackby_result = target.attackby(src, user, params)
+
+	if (attackby_result)
+>>>>>>> 4f7a73c... Moves the plant analyzer chem mode to right click + lets you read out a tray's chemical contents (#56836)
 		return TRUE
 	if(QDELETED(src) || QDELETED(target))
 		attack_qdeleted(target, user, TRUE, params)
