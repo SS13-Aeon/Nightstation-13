@@ -196,9 +196,29 @@
 /datum/emote/living/kiss
 	key = "kiss"
 	key_third_person = "kisses"
+<<<<<<< HEAD
 	message = "blows a kiss."
 	message_param = "blows a kiss to %t."
 	emote_type = EMOTE_AUDIBLE
+=======
+	cooldown = 3 SECONDS
+
+/datum/emote/living/kiss/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	var/kiss_type = /obj/item/kisser
+
+	if(HAS_TRAIT(user, TRAIT_KISS_OF_DEATH))
+		kiss_type = /obj/item/kisser/death
+
+	var/obj/item/kiss_blower = new kiss_type(user)
+	if(user.put_in_hands(kiss_blower))
+		to_chat(user, "<span class='notice'>You ready your kiss-blowing hand.</span>")
+	else
+		qdel(kiss_blower)
+		to_chat(user, "<span class='warning'>You're incapable of blowing a kiss in your current state.</span>")
+>>>>>>> 53d6bf8... Fixes bullying socially anxious dead people by blowing kisses at their corpse (#56732)
 
 /datum/emote/living/laugh
 	key = "laugh"
