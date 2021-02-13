@@ -729,6 +729,18 @@
 ///called when an edible ingredient is added: (datum/component/edible/ingredient)
 #define COMSIG_EDIBLE_INGREDIENT_ADDED "edible_ingredient_added"
 
+<<<<<<< HEAD
+=======
+//Plants / Plant Traits
+
+///called when a plant with slippery skin is slipped on (mob/victim)
+#define COMSIG_PLANT_ON_SLIP "plant_on_slip"
+///called when a plant with liquid contents is squashed on (atom/target)
+#define COMSIG_PLANT_ON_SQUASH "plant_on_squash"
+///called when a plant grows in a tray (obj/machinery/hydroponics)
+#define COMSIG_PLANT_ON_GROW "plant_on_grow"
+
+>>>>>>> 6a92433... Refactors plant traits to use signals + autodocs a lot of plant gene stuff and better vars all over (#56841)
 //Gibs
 
 ///from base of /obj/effect/decal/cleanable/blood/gibs/streak(): (list/directions, list/diseases)
