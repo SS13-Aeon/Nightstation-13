@@ -21,6 +21,14 @@
 	name = "black lipstick"
 	colour = "black"
 
+<<<<<<< HEAD
+=======
+/obj/item/lipstick/black/death
+	name = "\improper Kiss of Death"
+	desc = "An incredibly potent tube of lipstick made from the venom of the dreaded Yellow Spotted Space Lizard, as deadly as it is chic. Try not to smear it!"
+	lipstick_trait = TRAIT_KISS_OF_DEATH
+
+>>>>>>> 53d6bf8... Fixes bullying socially anxious dead people by blowing kisses at their corpse (#56732)
 /obj/item/lipstick/random
 	name = "lipstick"
 	icon_state = "random_lipstick"
