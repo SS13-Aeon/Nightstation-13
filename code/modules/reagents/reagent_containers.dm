@@ -27,6 +27,27 @@
 
 	add_initial_reagents()
 
+<<<<<<< HEAD
+=======
+/obj/item/reagent_containers/create_reagents(max_vol, flags)
+	. = ..()
+	RegisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT), .proc/on_reagent_change)
+	RegisterSignal(reagents, COMSIG_PARENT_QDELETING, .proc/on_reagents_del)
+
+/obj/item/reagent_containers/Destroy()
+	return ..()
+
+/obj/item/reagent_containers/attack(mob/living/M, mob/living/user, params)
+	if (!user.combat_mode)
+		return
+	return ..()
+
+/obj/item/reagent_containers/proc/on_reagents_del(datum/reagents/reagents)
+	SIGNAL_HANDLER
+	UnregisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT, COMSIG_PARENT_QDELETING))
+	return NONE
+
+>>>>>>> cb35cba... Syringe toggle has been replaced with left-click to inject, right-click to draw. You can also now change transfer amount. (#56865)
 /obj/item/reagent_containers/proc/add_initial_reagents()
 	if(list_reagents)
 		reagents.add_reagent_list(list_reagents)
