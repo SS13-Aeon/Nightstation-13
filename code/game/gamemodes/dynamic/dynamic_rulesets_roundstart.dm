@@ -186,8 +186,13 @@
 	restricted_roles = list("Head of Security", "Captain") // Just to be sure that a wizard getting picked won't ever imply a Captain or HoS not getting drafted
 	required_candidates = 1
 	weight = 2
+<<<<<<< HEAD
 	cost = 30
 	requirements = list(90,90,70,40,30,20,10,10,10,10)
+=======
+	cost = 20
+	requirements = list(90,90,90,80,60,40,30,20,10,10)
+>>>>>>> d1efb18...  Makes wizard a little more rare (#56869)
 	var/list/roundstart_wizards = list()
 
 /datum/dynamic_ruleset/roundstart/wizard/acceptable(population=0, threat=0)
