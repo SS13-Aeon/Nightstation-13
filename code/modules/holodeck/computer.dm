@@ -133,7 +133,136 @@
 				emergency_shutdown()
 			nerf(obj_flags & EMAGGED)
 			obj_flags ^= EMAGGED
+<<<<<<< HEAD
 			say("Safeties restored. Restarting...")
+=======
+			say("Safeties reset. Restarting...")
+
+///this is what makes the holodeck not spawn anything on broken tiles (space and non engine plating / non holofloors)
+/datum/map_template/holodeck/update_blacklist(turf/placement, list/input_blacklist)
+	for (var/_turf in get_affected_turfs(placement))
+		var/turf/possible_blacklist = _turf
+		if (possible_blacklist.holodeck_compatible)
+			continue
+		input_blacklist += possible_blacklist
+
+///loads the template whose id string it was given ("offline_program" loads datum/map_template/holodeck/offline)
+/obj/machinery/computer/holodeck/proc/load_program(map_id, force = FALSE, add_delay = TRUE)
+	if (program == map_id)
+		return
+
+	if (!is_operational)//load_program is called once with a timer (in toggle_power) we dont want this to load anything if its off
+		map_id = offline_program
+		force = TRUE
+
+	if (!force && (!COOLDOWN_FINISHED(src, holodeck_cooldown) || spawning_simulation))
+		say("ERROR. Recalibrating projection apparatus.")
+		return
+
+	if(spawning_simulation)
+		return
+
+	if (add_delay)
+		COOLDOWN_START(src, holodeck_cooldown, (damaged ? HOLODECK_CD + HOLODECK_DMG_CD : HOLODECK_CD))
+		if (damaged && floorcheck())
+			damaged = FALSE
+
+	spawning_simulation = TRUE
+	active = (map_id != offline_program)
+	use_power = active + IDLE_POWER_USE
+	program = map_id
+
+	//clear the items from the previous program
+	for (var/_item in spawned)
+		var/obj/holo_item = _item
+		derez(holo_item)
+
+	for (var/_effect in effects)
+		var/obj/effect/holodeck_effect/holo_effect = _effect
+		effects -= holo_effect
+		holo_effect.deactivate(src)
+
+	//makes sure that any time a holoturf is inside a baseturf list (e.g. if someone put a wall over it) its set to the OFFLINE turf
+	//so that you cant bring turfs from previous programs into other ones (like putting the plasma burn turf into lounge for example)
+	for (var/turf/closed/holo_turf in linked)
+		for (var/_baseturf in holo_turf.baseturfs)
+			if (ispath(_baseturf, /turf/open/floor/holofloor))
+				holo_turf.baseturfs -= _baseturf
+				holo_turf.baseturfs += /turf/open/floor/holofloor/plating
+
+	template = SSmapping.holodeck_templates[map_id]
+	template.load(bottom_left) //this is what actually loads the holodeck simulation into the map
+
+	spawned = template.created_atoms //populate the spawned list with the atoms belonging to the holodeck
+
+	if(istype(template, /datum/map_template/holodeck/thunderdome1218) && !SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_MEDISIM])
+		say("Special note from \"1218 AD\" developer: I see you too are interested in the REAL dark ages of humanity! I've made this program also unlock some interesting shuttle designs on any communication console around. Have fun!")
+		SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_MEDISIM] = TRUE
+
+	nerf(!(obj_flags & EMAGGED))
+	finish_spawn()
+
+///finalizes objects in the spawned list
+/obj/machinery/computer/holodeck/proc/finish_spawn()
+	//this is used for holodeck effects (like spawners). otherwise they dont do shit
+	//holo effects are taken out of the spawned list and added to the effects list
+	//turfs and overlay objects are taken out of the spawned list
+	//objects get resistance flags added to them
+	for (var/atom/atoms in spawned)
+		if (isturf(atoms) || istype(atoms, /obj/effect/overlay/vis))
+			spawned -= atoms
+			continue
+
+		RegisterSignal(atoms, COMSIG_PARENT_PREQDELETED, .proc/remove_from_holo_lists)
+		atoms.flags_1 |= HOLOGRAM_1
+
+		if (isholoeffect(atoms))//activates holo effects and transfers them from the spawned list into the effects list
+			var/obj/effect/holodeck_effect/holo_effect = atoms
+			effects += holo_effect
+			spawned -= holo_effect
+			var/atom/active_effect = holo_effect.activate(src)
+			if(istype(active_effect) || islist(active_effect))
+				spawned += active_effect // we want mobs or objects spawned via holoeffects to be tracked as objects
+			continue
+
+		if (isobj(atoms))
+			var/obj/holo_object = atoms
+			holo_object.resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+			if (isstructure(holo_object))
+				holo_object.flags_1 |= NODECONSTRUCT_1
+				continue
+
+			if (ismachinery(holo_object))
+				var/obj/machinery/machines = holo_object
+				machines.flags_1 |= NODECONSTRUCT_1
+				machines.power_change()
+
+				if(istype(machines, /obj/machinery/button))
+					var/obj/machinery/button/buttons = machines
+					buttons.setup_device()
+	spawning_simulation = FALSE
+
+///this qdels holoitems that should no longer exist for whatever reason
+/obj/machinery/computer/holodeck/proc/derez(obj/object, silent = TRUE, forced = FALSE)
+	spawned -= object
+	if(!object)
+		return
+	UnregisterSignal(object, COMSIG_PARENT_PREQDELETED)
+	var/turf/target_turf = get_turf(object)
+	for(var/c in object) //make sure that things inside of a holoitem are moved outside before destroying it
+		var/atom/movable/object_contents = c
+		object_contents.forceMove(target_turf)
+
+	if(!silent)
+		visible_message("<span class='notice'>[object] fades away!</span>")
+
+	qdel(object)
+
+/obj/machinery/computer/holodeck/proc/remove_from_holo_lists(datum/to_remove, _forced)
+	spawned -= to_remove
+	UnregisterSignal(to_remove, COMSIG_PARENT_PREQDELETED)
+>>>>>>> 00cf04b... All Holobugs Must Die the Same Day Theyre Born or You Are Money Back Part Two (#56878)
 
 /obj/machinery/computer/holodeck/process(delta_time)
 	if(damaged && DT_PROB(5, delta_time))
