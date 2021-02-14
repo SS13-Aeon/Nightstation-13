@@ -48696,8 +48696,20 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+=======
+/turf/open/floor/iron/white,
+/area/medical/pharmacy)
+"dcO" = (
+/turf/open/floor/iron/white,
+/area/medical/chemistry)
+"dcP" = (
+/obj/machinery/chem_heater/withbuffer,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+>>>>>>> b85c72b... Fixes free buffers in reaction chambers (sorry!) (#56887)
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
@@ -51735,7 +51747,43 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/neutral{
+=======
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/hallway/primary/aft)
+"dkg" = (
+/obj/machinery/chem_master,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -32
+	},
+/obj/structure/sign/warning/nosmoking{
+	pixel_x = -32;
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/medical/pharmacy)
+"dkh" = (
+/obj/machinery/chem_heater/withbuffer,
+/obj/machinery/requests_console{
+	department = "Pharmacy";
+	name = "Pharmacy RC";
+	pixel_y = -32;
+	receive_ore_updates = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/medical/pharmacy)
+"dki" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
+>>>>>>> b85c72b... Fixes free buffers in reaction chambers (sorry!) (#56887)
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
@@ -52718,12 +52766,23 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/open/floor/plasteel,
 /area/security/checkpoint/engineering)
 "bYH" = (
 /obj/structure/table/reinforced,
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = -32
+=======
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/white,
+/area/medical/chemistry)
+"dnr" = (
+/obj/machinery/chem_heater/withbuffer,
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = 28
+>>>>>>> b85c72b... Fixes free buffers in reaction chambers (sorry!) (#56887)
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26;

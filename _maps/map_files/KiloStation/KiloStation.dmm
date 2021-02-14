@@ -26933,7 +26933,7 @@
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "aRN" = (
-/obj/machinery/chem_heater,
+/obj/machinery/chem_heater/withbuffer,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -34656,7 +34656,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/medical/pharmacy)
 "bdr" = (
-/obj/machinery/chem_heater{
+/obj/machinery/chem_heater/withbuffer{
 	pixel_x = 6
 	},
 /obj/effect/turf_decal/bot,
@@ -37092,7 +37092,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "bgM" = (
-/obj/machinery/chem_heater,
+/obj/machinery/chem_heater/withbuffer,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -86592,6 +86592,14 @@
 /obj/item/kirbyplants{
 	icon_state = "plant-05"
 	},
+<<<<<<< HEAD
+=======
+/turf/open/floor/engine,
+/area/engineering/main)
+"voc" = (
+/obj/machinery/chem_heater/withbuffer,
+/obj/effect/turf_decal/tile/neutral,
+>>>>>>> b85c72b... Fixes free buffers in reaction chambers (sorry!) (#56887)
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},

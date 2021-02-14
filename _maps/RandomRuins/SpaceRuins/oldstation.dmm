@@ -3590,7 +3590,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "iF" = (
-/obj/machinery/chem_heater,
+/obj/machinery/chem_heater/withbuffer,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/has_grav/ancientstation/rnd)
