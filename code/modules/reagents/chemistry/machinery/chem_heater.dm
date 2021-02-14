@@ -13,6 +13,14 @@
 	var/heater_coefficient = 0.05
 	var/on = FALSE
 
+<<<<<<< HEAD
+=======
+/obj/machinery/chem_heater/Initialize()
+	. = ..()
+	create_reagents(200, NO_REACT)//Lets save some calculations here		
+	//TODO: comsig reaction_start and reaction_end to enable/disable the UI autoupdater - this doesn't work presently as there's a hard divide between instant and processed reactions
+	
+>>>>>>> b85c72b... Fixes free buffers in reaction chambers (sorry!) (#56887)
 /obj/machinery/chem_heater/Destroy()
 	QDEL_NULL(beaker)
 	return ..()
@@ -131,3 +139,112 @@
 			on = FALSE
 			replace_beaker(usr)
 			. = TRUE
+<<<<<<< HEAD
+=======
+		if("acidBuffer")
+			var/target = params["target"]
+			if(text2num(target) != null)
+				target = text2num(target)
+				. = TRUE
+			if(.)
+				move_buffer("acid", target)
+		if("basicBuffer")
+			var/target = params["target"]
+			if(text2num(target) != null)
+				target = text2num(target) //Because the input is flipped
+				. = TRUE
+			if(.)
+				move_buffer("basic", target)
+		if("disp_vol")
+			var/target = params["target"]
+			if(text2num(target) != null)
+				target = text2num(target) //Because the input is flipped
+				. = TRUE
+			if(.)
+				dispense_volume = target
+		if("help")
+			tutorial_active = !tutorial_active
+			if(tutorial_active)
+				tutorial_state = 1
+				return
+			tutorial_state = 0
+			//Refresh window size
+			ui_close(usr)
+			ui_interact(usr, null)
+
+
+///Moves a type of buffer from the heater to the beaker, or vice versa
+/obj/machinery/chem_heater/proc/move_buffer(buffer_type, volume)
+	if(!beaker)
+		say("No beaker found!")
+		return
+	if(buffer_type == "acid")
+		if(volume < 0)
+			var/datum/reagent/acid_reagent = beaker.reagents.get_reagent(/datum/reagent/reaction_agent/acidic_buffer)
+			if(!acid_reagent)
+				say("Unable to find acidic buffer in beaker to draw from! Please insert a beaker containing acidic buffer.")
+				return
+			var/datum/reagent/acid_reagent_heater = reagents.get_reagent(/datum/reagent/reaction_agent/acidic_buffer)
+			var/cur_vol = 0
+			if(acid_reagent_heater)
+				cur_vol = acid_reagent_heater.volume 
+			volume = 100 - cur_vol
+			beaker.reagents.trans_id_to(src, acid_reagent.type, volume)//negative because we're going backwards
+			return
+		//We must be positive here
+		reagents.trans_id_to(beaker, /datum/reagent/reaction_agent/acidic_buffer, dispense_volume)
+		return
+
+	if(buffer_type == "basic")
+		if(volume < 0)
+			var/datum/reagent/basic_reagent = beaker.reagents.get_reagent(/datum/reagent/reaction_agent/basic_buffer)
+			if(!basic_reagent)
+				say("Unable to find basic buffer in beaker to draw from! Please insert a beaker containing basic buffer.")
+				return
+			var/datum/reagent/basic_reagent_heater = reagents.get_reagent(/datum/reagent/reaction_agent/basic_buffer)
+			var/cur_vol = 0
+			if(basic_reagent_heater)
+				cur_vol = basic_reagent_heater.volume 
+			volume = 100 - cur_vol
+			beaker.reagents.trans_id_to(src, basic_reagent.type, volume)//negative because we're going backwards
+			return
+		reagents.trans_id_to(beaker, /datum/reagent/reaction_agent/basic_buffer, dispense_volume)
+		return
+
+
+/obj/machinery/chem_heater/proc/get_purity_color(datum/equilibrium/equilibrium)
+	var/_reagent = equilibrium.reaction.results[1]
+	var/datum/reagent/reagent = equilibrium.holder.get_reagent(_reagent)
+	switch(reagent.purity)
+		if(1 to INFINITY)
+			return "blue"
+		if(0.8 to 1)
+			return "green"
+		if(reagent.inverse_chem_val to 0.8)
+			return "olive"
+		if(equilibrium.reaction.purity_min to reagent.inverse_chem_val)
+			return "orange"
+		if(-INFINITY to equilibrium.reaction.purity_min)
+			return "red"
+
+//Has a lot of buffer and is upgraded
+/obj/machinery/chem_heater/debug
+	name = "Debug Reaction Chamber"
+	desc = "Now with even more buffers!"
+
+/obj/machinery/chem_heater/debug/Initialize()
+	. = ..()
+	reagents.maximum_volume = 2000
+	reagents.add_reagent(/datum/reagent/reaction_agent/basic_buffer, 1000)
+	reagents.add_reagent(/datum/reagent/reaction_agent/acidic_buffer, 1000)
+	heater_coefficient = 0.4 //hack way to upgrade
+
+//map load types
+/obj/machinery/chem_heater/withbuffer
+	desc = "This Reaction Chamber comes with a bit of buffer to help get you started."
+
+/obj/machinery/chem_heater/withbuffer/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/reaction_agent/basic_buffer, 20)
+	reagents.add_reagent(/datum/reagent/reaction_agent/acidic_buffer, 20)
+>>>>>>> b85c72b... Fixes free buffers in reaction chambers (sorry!) (#56887)
