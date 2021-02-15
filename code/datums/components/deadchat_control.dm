@@ -110,3 +110,81 @@
 	if(orbiter in orbiters)
 		UnregisterSignal(orbiter, COMSIG_MOB_DEADSAY)
 		orbiters -= orbiter
+<<<<<<< HEAD
+=======
+
+/// Allows for this component to be removed via a dedicated VV dropdown entry.
+/datum/component/deadchat_control/proc/handle_vv_topic(datum/source, mob/user, list/href_list)
+	SIGNAL_HANDLER
+	if(!href_list[VV_HK_DEADCHAT_PLAYS] || !check_rights(R_FUN))
+		return
+	. = COMPONENT_VV_HANDLED
+	INVOKE_ASYNC(src, .proc/async_handle_vv_topic, user, href_list)
+
+/// Async proc handling the alert input and associated logic for an admin removing this component via the VV dropdown.
+/datum/component/deadchat_control/proc/async_handle_vv_topic(mob/user, list/href_list)
+	if(alert(user, "Remove deadchat control from [parent]?", "Deadchat Plays [parent]", "Remove", "Cancel") == "Remove")
+		// Quick sanity check as this is an async call.
+		if(QDELETED(src))
+			return
+
+		to_chat(user, "<span class='notice'>Deadchat can no longer control [parent].</span>")
+		log_admin("[key_name(user)] has removed deadchat control from [parent]")
+		message_admins("<span class='notice'>[key_name(user)] has removed deadchat control from [parent]</span>")
+
+		qdel(src)
+
+/// Informs any examiners to the inputs available as part of deadchat control, as well as the current operating mode and cooldowns.
+/datum/component/deadchat_control/proc/on_examine(atom/A, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+
+	examine_list += "<span class='notice'>[A.p_theyre(TRUE)] currently under deadchat control using the [deadchat_mode] ruleset!</span>"
+
+	if(deadchat_mode == DEMOCRACY_MODE)
+		examine_list += "<span class='notice'>Type a command into chat to vote on an action. This happens once every [input_cooldown * 0.1] seconds.</span>"
+	else if(deadchat_mode == ANARCHY_MODE)
+		examine_list += "<span class='notice'>Type a command into chat to perform. You may do this once every [input_cooldown * 0.1] seconds.</span>"
+
+	var/extended_examine = "<span class='notice'>Command list:"
+
+	for(var/possible_input in inputs)
+		extended_examine += " [possible_input]"
+
+	extended_examine += ".</span>"
+
+	examine_list += extended_examine
+
+/**
+ * Deadchat Moves Things
+ *
+ * A special variant of the deadchat_control component that comes pre-baked with all the hottest inputs for a spicy
+ * singularity or vomit goose.
+ */
+/datum/component/deadchat_control/cardinal_movement/Initialize(_deadchat_mode, _inputs, _input_cooldown, _on_removal)
+	if(!ismovable(parent))
+		return COMPONENT_INCOMPATIBLE
+
+	. = ..()
+
+	inputs["up"] = CALLBACK(GLOBAL_PROC, .proc/_step, parent, NORTH)
+	inputs["down"] = CALLBACK(GLOBAL_PROC, .proc/_step, parent, SOUTH)
+	inputs["left"] = CALLBACK(GLOBAL_PROC, .proc/_step, parent, WEST)
+	inputs["right"] = CALLBACK(GLOBAL_PROC, .proc/_step, parent, EAST)
+
+/**
+ * Deadchat Moves Things
+ *
+ * A special variant of the deadchat_control component that comes pre-baked with all the hottest inputs for spicy
+ * immovable rod.
+ */
+/datum/component/deadchat_control/immovable_rod/Initialize(_deadchat_mode, _inputs, _input_cooldown, _on_removal)
+	if(!istype(parent, /obj/effect/immovablerod))
+		return COMPONENT_INCOMPATIBLE
+
+	. = ..()
+
+	inputs["up"] = CALLBACK(parent, /obj/effect/immovablerod.proc/walk_in_direction, NORTH)
+	inputs["down"] = CALLBACK(parent, /obj/effect/immovablerod.proc/walk_in_direction, SOUTH)
+	inputs["left"] = CALLBACK(parent, /obj/effect/immovablerod.proc/walk_in_direction, WEST)
+	inputs["right"] = CALLBACK(parent, /obj/effect/immovablerod.proc/walk_in_direction, EAST)
+>>>>>>> 7c94f81... Adds more admin memery and deadchat_control options to immovable rods. (#56888)
