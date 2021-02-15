@@ -1283,6 +1283,15 @@
 /mob/living/carbon/human/species/lizard
 	race = /datum/species/lizard
 
+<<<<<<< HEAD
+=======
+/mob/living/carbon/human/species/lizard/ashwalker
+	race = /datum/species/lizard/ashwalker
+
+/mob/living/carbon/human/species/lizard/silverscale
+	race = /datum/species/lizard/silverscale
+
+>>>>>>> e09101c... Pirates are split into three different ghastly crews! (#56264)
 /mob/living/carbon/human/species/ethereal
 	race = /datum/species/ethereal
 
