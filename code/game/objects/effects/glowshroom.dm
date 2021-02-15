@@ -164,8 +164,13 @@
 			if(shroomCount >= placeCount)
 				continue
 
+<<<<<<< HEAD
 			Decay(TRUE, 2) // Decay before spawning new mushrooms to reduce their endurance
 			if(QDELETED(src))	//Decay can end us
+=======
+			Decay(TRUE, GLOWCAP_ENDURANCE_SPREAD_COST) // Decay before spawning new mushrooms to reduce their endurance
+			if(QDELETED(src)) //Decay can end us
+>>>>>>> da0b4f7d... Glowcap spread endurance loss is 10 times bigger (#56885)
 				return
 			var/obj/structure/glowshroom/child = new type(newLoc, myseed, TRUE, TRUE)
 			child.generation = generation + 1
