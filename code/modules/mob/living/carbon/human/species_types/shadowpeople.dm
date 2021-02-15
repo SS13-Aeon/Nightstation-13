@@ -1,6 +1,3 @@
-#define HEART_RESPAWN_THRESHHOLD 40
-#define HEART_SPECIAL_SHADOWIFY 2
-
 /datum/species/shadow
 	// Humans cursed to stay in the darkness, lest their life forces drain. They regain health in shadow and die in light.
 	name = "???"
@@ -29,6 +26,7 @@
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		return TRUE
 	return ..()
+<<<<<<< HEAD
 
 /datum/species/shadow/nightmare
 	name = "Nightmare"
@@ -259,3 +257,5 @@
 
 #undef HEART_SPECIAL_SHADOWIFY
 #undef HEART_RESPAWN_THRESHHOLD
+=======
+>>>>>>> 9c63024... Refactors the Light Eater and gives it some flavortext. Some minor behavior changes included. (#55551)

@@ -440,6 +440,7 @@
 #include "code\datums\components\knockoff.dm"
 #include "code\datums\components\label.dm"
 #include "code\datums\components\lifesteal.dm"
+#include "code\datums\components\light_eater.dm"
 #include "code\datums\components\lockon_aiming.dm"
 #include "code\datums\components\manual_blinking.dm"
 #include "code\datums\components\manual_breathing.dm"
@@ -585,6 +586,12 @@
 #include "code\datums\elements\firestacker.dm"
 #include "code\datums\elements\forced_gravity.dm"
 #include "code\datums\elements\light_blocking.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\elements\light_eaten.dm"
+#include "code\datums\elements\light_eater.dm"
+#include "code\datums\elements\movetype_handler.dm"
+>>>>>>> 9c63024... Refactors the Light Eater and gives it some flavortext. Some minor behavior changes included. (#55551)
 #include "code\datums\elements\obj_regen.dm"
 #include "code\datums\elements\point_of_interest.dm"
 #include "code\datums\elements\rad_insulation.dm"
@@ -1581,6 +1588,9 @@
 #include "code\modules\antagonists\morph\morph.dm"
 #include "code\modules\antagonists\morph\morph_antag.dm"
 #include "code\modules\antagonists\nightmare\nightmare.dm"
+#include "code\modules\antagonists\nightmare\nightmare_equipment.dm"
+#include "code\modules\antagonists\nightmare\nightmare_organs.dm"
+#include "code\modules\antagonists\nightmare\nightmare_species.dm"
 #include "code\modules\antagonists\nukeop\clownop.dm"
 #include "code\modules\antagonists\nukeop\nukeop.dm"
 #include "code\modules\antagonists\nukeop\equipment\borgchameleon.dm"
