@@ -44,14 +44,25 @@
 	},
 /turf/open/indestructible/necropolis/air,
 /area/shuttle/escape/arena)
-"p" = (
-/obj/structure/healingfountain,
-/turf/open/indestructible/necropolis/air,
-/area/shuttle/escape/arena)
 "z" = (
 /obj/effect/landmark/shuttle_arena_safe,
 /turf/open/indestructible/necropolis/air,
 /area/shuttle/escape/arena)
+<<<<<<< HEAD
+=======
+"T" = (
+/obj/machinery/computer/emergency_shuttle{
+	dir = 1
+	},
+/turf/open/indestructible{
+	icon_state = "cult"
+	},
+/area/shuttle/escape/arena)
+"V" = (
+/obj/structure/healingfountain,
+/turf/open/indestructible/necropolis/air,
+/area/shuttle/escape/arena)
+>>>>>>> 3846162... Give bone keys to arena shuttle victors (#56376)
 
 (1,1,1) = {"
 g
@@ -122,7 +133,7 @@ j
 j
 j
 h
-p
+V
 g
 "}
 (4,1,1) = {"
@@ -146,7 +157,7 @@ j
 m
 j
 j
-p
+V
 g
 "}
 (5,1,1) = {"
@@ -170,7 +181,7 @@ j
 j
 j
 j
-p
+V
 g
 "}
 (6,1,1) = {"
@@ -218,7 +229,7 @@ j
 j
 j
 j
-p
+V
 g
 "}
 (8,1,1) = {"
@@ -242,7 +253,7 @@ j
 j
 j
 j
-p
+V
 g
 "}
 (9,1,1) = {"
@@ -266,7 +277,7 @@ j
 m
 j
 j
-p
+V
 g
 "}
 (10,1,1) = {"
