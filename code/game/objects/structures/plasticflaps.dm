@@ -92,7 +92,13 @@
 		var/mob/living/M = A
 		if(M.buckled && istype(M.buckled, /mob/living/simple_animal/bot/mulebot)) // mulebot passenger gets a free pass.
 			return TRUE
+<<<<<<< HEAD
 		if(M.body_position == STANDING_UP && !M.ventcrawler && M.mob_size != MOB_SIZE_TINY)	//If your not laying down, or a ventcrawler or a small creature, no pass.
+=======
+
+		var/ventcrawler = HAS_TRAIT(M, TRAIT_VENTCRAWLER_ALWAYS) || HAS_TRAIT(M, TRAIT_VENTCRAWLER_NUDE)
+		if(M.body_position == STANDING_UP && !ventcrawler && M.mob_size != MOB_SIZE_TINY) //If your not laying down, or a ventcrawler or a small creature, no pass.
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 			return FALSE
 
 /obj/structure/plasticflaps/deconstruct(disassembled = TRUE)

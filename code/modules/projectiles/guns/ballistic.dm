@@ -186,7 +186,7 @@
 	if (bolt_type == BOLT_TYPE_NO_BOLT) //If there's no bolt, nothing to rack
 		return
 	if (bolt_type == BOLT_TYPE_OPEN)
-		if(!bolt_locked)	//If it's an open bolt, racking again would do nothing
+		if(!bolt_locked) //If it's an open bolt, racking again would do nothing
 			if (user)
 				to_chat(user, "<span class='notice'>\The [src]'s [bolt_wording] is already cocked!</span>")
 			return
@@ -499,13 +499,71 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 		w_class = WEIGHT_CLASS_NORMAL
 		inhand_icon_state = "gun"
 		worn_icon_state = "gun"
-		slot_flags &= ~ITEM_SLOT_BACK	//you can't sling it on your back
-		slot_flags |= ITEM_SLOT_BELT		//but you can wear it on your belt (poorly concealed under a trenchcoat, ideally)
+		slot_flags &= ~ITEM_SLOT_BACK //you can't sling it on your back
+		slot_flags |= ITEM_SLOT_BELT //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally)
 		recoil = SAWN_OFF_RECOIL
 		sawn_off = TRUE
 		update_icon()
 		return TRUE
 
+<<<<<<< HEAD
+=======
+/obj/item/gun/ballistic/proc/guncleaning(mob/user, /obj/item/A)
+	if(misfire_probability == 0)
+		to_chat(user, "<span class='notice'>\The [src] seems to be already clean of fouling.</span>")
+		return
+	
+	user.changeNext_move(CLICK_CD_MELEE)
+	user.visible_message("<span class='notice'>[user] begins to cleaning \the [src].</span>", "<span class='notice'>You begin to clean the internals of \the [src].</span>")
+	
+	if(do_after(user, 100, target = src))
+		var/original_misfire_value = initial(misfire_probability)
+		if(misfire_probability > original_misfire_value)
+			misfire_probability = original_misfire_value
+			user.visible_message("<span class='notice'>[user] cleans \the [src] of any fouling.</span>", "<span class='notice'>You clean \the [src], removing any fouling, preventing misfire.</span>")
+			return TRUE
+
+/obj/item/gun/ballistic/wrench_act(mob/living/user, obj/item/I)
+	if(!user.is_holding(src))
+		to_chat(user, "<span class='notice'>You need to hold [src] to modify it.</span>")
+		return TRUE
+	
+	if(!can_modify_ammo)
+		return
+	
+	if(bolt_type == BOLT_TYPE_STANDARD)
+		if(get_ammo()) 
+			to_chat(user, "<span class='notice'>You can't get at the internals while the gun has a bullet in it!</span>")
+			return
+		
+		else if(!bolt_locked)
+			to_chat(user, "<span class='notice'>You can't get at the internals while the bolt is down!</span>")
+			return
+
+	to_chat(user, "<span class='notice'>You begin to tinker with [src]...</span>")
+	I.play_tool_sound(src)
+	if(!I.use_tool(src, user, 3 SECONDS))
+		return TRUE
+	
+	if(blow_up(user))
+		user.visible_message("<span class='danger'>\The [src] goes off!</span>", "<span class='danger'>\The [src] goes off in your face!</span>")
+		return
+
+	if(magazine.caliber == initial_caliber)
+		magazine.caliber = alternative_caliber
+		if(alternative_ammo_misfires)
+			can_misfire = TRUE
+		fire_sound = alternative_fire_sound
+		to_chat(user, "<span class='notice'>You modify [src]. Now it will fire [alternative_caliber] rounds.</span>")
+	else
+		magazine.caliber = initial_caliber
+		if(alternative_ammo_misfires)
+			can_misfire = FALSE
+		fire_sound = initial_fire_sound
+		to_chat(user, "<span class='notice'>You reset [src]. Now it will fire [initial_caliber] rounds.</span>")
+
+
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 ///used for sawing guns, causes the gun to fire without the input of the user
 /obj/item/gun/ballistic/proc/blow_up(mob/user)
 	. = FALSE

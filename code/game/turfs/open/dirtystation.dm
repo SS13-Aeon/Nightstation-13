@@ -30,11 +30,11 @@
 														/area/vacant_room/office,
 														/area/ruin/space))
 	if(is_type_in_typecache(A, high_dirt_areas))
-		new /obj/effect/decal/cleanable/dirt(src)	//vanilla, but it works
+		new /obj/effect/decal/cleanable/dirt(src) //vanilla, but it works
 		return
 
 
-	if(prob(80))	//mid dirt  - 1/15
+	if(prob(80)) //mid dirt  - 1/15
 		return
 
 		//Construction zones. Blood, sweat, and oil.  Oh, and dirt.
@@ -59,7 +59,11 @@
 		return
 
 		//Bathrooms. Blood, vomit, and shavings in the sinks.
+<<<<<<< HEAD
 	var/static/list/bathroom_dirt_areas = typecacheof(list(	/area/crew_quarters/toilet,
+=======
+	var/static/list/bathroom_dirt_areas = typecacheof(list( /area/commons/toilet,
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 															/area/awaymission/research/interior/bathroom))
 	if(is_type_in_typecache(A, bathroom_dirt_areas))
 		if(prob(40))
@@ -77,7 +81,7 @@
 		return
 
 
-	if(prob(75))	//low dirt  - 1/60
+	if(prob(75)) //low dirt  - 1/60
 		return
 
 		//Areas where gibs will be present. Robusting probably happened some time ago.
@@ -124,7 +128,7 @@
 														/area/crew_quarters/heads/hor))
 	if(is_type_in_typecache(A, science_dirt_areas))
 		if(prob(20))
-			new /obj/effect/decal/cleanable/greenglow/filled(src)	//this cleans itself up but it might startle you when you see it.
+			new /obj/effect/decal/cleanable/greenglow/filled(src) //this cleans itself up but it might startle you when you see it.
 		return
 
 	return TRUE

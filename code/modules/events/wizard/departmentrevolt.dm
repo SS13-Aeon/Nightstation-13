@@ -7,8 +7,32 @@
 
 /datum/round_event/wizard/deprevolt/start()
 
+<<<<<<< HEAD
 	var/list/tidecolor
 	var/list/jobs_to_revolt	= 	list()
+=======
+	var/datum/round_event_control/wizard/deprevolt/event_control = control
+
+	var/list/independent_departments = list() ///departments that are already independent, these will be disallowed to be randomly picked
+	var/list/cannot_pick = list() ///departments that are already independent, these will be disallowed to be randomly picked
+	for(var/datum/antagonist/separatist/separatist_datum in GLOB.antagonists)
+		if(!separatist_datum.nation)
+			continue
+		independent_departments |= separatist_datum.nation
+		cannot_pick |= separatist_datum.nation.nation_department
+
+	var/announcement = event_control.announce
+	var/dangerous = event_control.dangerous_nation
+	var/department
+	if(event_control.picked_department)
+		department = event_control.picked_department
+		event_control.picked_department = null
+	else
+		department = pick(list("Uprising of Assistants", "Medical", "Engineering", "Science", "Supply", "Service", "Security") - cannot_pick)
+		if(!department)
+			message_admins("Department Revolt could not create a nation, as all the departments are independent! You have created nations, you madman!")
+	var/list/jobs_to_revolt = list()
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	var/nation_name
 	var/list/citizens	=		list()
 

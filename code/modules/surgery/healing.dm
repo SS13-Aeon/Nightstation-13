@@ -91,6 +91,7 @@
 	display_results(user, target, "<span class='warning'>You screwed up!</span>",
 		"<span class='warning'>[user] screws up!</span>",
 		"<span class='notice'>[user] fixes some of [target]'s wounds.</span>", TRUE)
+<<<<<<< HEAD
 	var/urdamageamt_burn = brutehealing * 0.8
 	var/urdamageamt_brute = burnhealing * 0.8
 	if(missinghpbonus)
@@ -98,6 +99,13 @@
 		urdamageamt_burn += round((target.getFireLoss()/ (missinghpbonus*2)),0.1)
 
 	target.take_bodypart_damage(urdamageamt_brute, urdamageamt_burn, wound_bonus=CANT_WOUND)
+=======
+	var/brute_dealt = brutehealing * 0.8
+	var/burn_dealt = burnhealing * 0.8
+	brute_dealt += round((target.getBruteLoss() * (brute_multiplier * 0.5)),0.1)
+	burn_dealt += round((target.getFireLoss() * (burn_multiplier * 0.5)),0.1)
+	target.take_bodypart_damage(brute_dealt, burn_dealt, wound_bonus=CANT_WOUND)
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	return FALSE
 
 /***************************BRUTE***************************/

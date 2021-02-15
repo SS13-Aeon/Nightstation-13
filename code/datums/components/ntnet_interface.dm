@@ -2,20 +2,82 @@
 /datum/proc/ntnet_receive(datum/netdata/data)
 	return
 
+<<<<<<< HEAD
 /datum/proc/ntnet_receive_broadcast(datum/netdata/data)
 	return
 
 /datum/proc/ntnet_send(datum/netdata/data, netid)
+=======
+/*
+ * Helper function that does 90% of the work in sending a packet
+ *
+ * This function gets the component and builds a packet so the sending
+ * person doesn't have to lift a finger.  Just create a netdata datum or even
+ * just a list and it will send it on its merry way.
+ *
+ * Arguments:
+ * * packet_data - Either a list() or a /datum/netdata.  If its netdata, the other args are ignored
+ * * target_id - Target hardware id or network_id for this packet. If we are a network id, then its
+					broadcasted to that network.
+ * * passkey - Authentication for the packet.  If the target doesn't authenticate the packet is dropped
+ */
+/datum/proc/ntnet_send(packet_data, target_id = null, passkey = null)
+	var/datum/netdata/data = packet_data
+	if(!data) // check for easy case
+		if(!islist(packet_data) || target_id == null)
+			stack_trace("ntnet_send: Bad packet creation") // hard fail as its runtime fault
+			return
+		data = new(packet_data)
+		data.receiver_id = target_id
+		data.passkey = passkey
+	if(data.receiver_id == null)
+		return NETWORK_ERROR_BAD_TARGET_ID
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	var/datum/component/ntnet_interface/NIC = GetComponent(/datum/component/ntnet_interface)
 	if(!NIC)
 		return FALSE
 	return NIC.__network_send(data, netid)
 
 /datum/component/ntnet_interface
+<<<<<<< HEAD
 	var/hardware_id			//text. this is the true ID. do not change this. stuff like ID forgery can be done manually.
 	var/network_name = ""			//text
 	var/list/networks_connected_by_id = list()		//id = datum/ntnet
 	var/differentiate_broadcast = TRUE				//If false, broadcasts go to ntnet_receive. NOT RECOMMENDED.
+=======
+	var/hardware_id = null // text. this is the true ID. do not change this. stuff like ID forgery can be done manually.
+	var/id_tag = null // named tag, mainly used to look up mapping objects
+	var/datum/ntnet/network = null // network we are on, we MUST be on a network or there is no point in this component
+	var/list/registered_sockets = list()// list of ports opened up on devices
+	var/list/alias = list() // if we live in more than one network branch
+
+/**
+ * Initialize for the interface
+ *
+ * Assigns a hardware id and gets your object onto the network
+ *
+ * Arguments:
+ * * network_name - Fully qualified network id of the network we are joining
+ * * network_tag - The objects id_tag.  Used for finding the device at mapload time
+ */
+/datum/component/ntnet_interface/Initialize(network_name, network_tag = null)
+	if(network_name == null || !istext(network_name))
+		log_telecomms("ntnet_interface/Initialize: Bad network '[network_name]' for '[parent]', going to limbo it")
+		network_name = LIMBO_NETWORK_ROOT
+	// Tags cannot be numbers and must be unique over the world
+	if(network_tag != null && !istext(network_tag))
+		// numbers are not allowed as lookups for interfaces
+		log_telecomms("Tag cannot be a number?  '[network_name]' for '[parent]', going to limbo it")
+		network_tag = "BADTAG_" + network_tag
+
+	hardware_id = SSnetworks.get_next_HID()
+	id_tag = network_tag
+	SSnetworks.interfaces_by_hardware_id[hardware_id] = src
+
+	network = SSnetworks.create_network_simple(network_name)
+
+	network.add_interface(src)
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 /datum/component/ntnet_interface/Initialize(force_name = "NTNet Device", autoconnect_station_network = TRUE)			//Don't force ID unless you know what you're doing!
 	hardware_id = "[SSnetworks.get_next_HID()]"

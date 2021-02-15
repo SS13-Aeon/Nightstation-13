@@ -188,7 +188,7 @@
 	)
 
 /datum/asset/simple/namespaced/common
-	assets = list("padlock.png"	= 'html/padlock.png')
+	assets = list("padlock.png" = 'html/padlock.png')
 	parents = list("common.css" = 'html/browser/common.css')
 
 /datum/asset/simple/permissions
@@ -464,7 +464,7 @@
 
 /datum/asset/simple/orbit
 	assets = list(
-		"ghost.png"	= 'html/ghost.png'
+		"ghost.png" = 'html/ghost.png'
 	)
 
 /datum/asset/simple/vv

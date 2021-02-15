@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+/// If we spawn an ERT with the "choose experienced leader" option, select the leader from the top X playtimes
+#define ERT_EXPERIENCED_LEADER_CHOOSE_TOP 3
+
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 /client/proc/one_click_antag()
 	set name = "Create Antagonist"
 	set desc = "Auto-create an antagonist of your choice"

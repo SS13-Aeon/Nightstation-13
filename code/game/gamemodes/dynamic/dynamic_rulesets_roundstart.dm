@@ -15,8 +15,13 @@
 	restricted_roles = list("Cyborg")
 	required_candidates = 1
 	weight = 5
+<<<<<<< HEAD
 	cost = 10	// Avoid raising traitor threat above 10, as it is the default low cost ruleset.
 	scaling_cost = 10
+=======
+	cost = 8 // Avoid raising traitor threat above 10, as it is the default low cost ruleset.
+	scaling_cost = 9
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	requirements = list(10,10,10,10,10,10,10,10,10,10)
 	antag_cap = list(1,1,1,1,2,2,2,2,3,3)
 	var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
@@ -58,7 +63,11 @@
 	cost = 15
 	scaling_cost = 15
 	requirements = list(40,30,30,20,20,15,15,15,10,10)
+<<<<<<< HEAD
 	antag_cap = list(2,2,2,2,2,2,2,2,2,2)	// Can pick 3 per team, but rare enough it doesn't matter.
+=======
+	antag_cap = 2 // Can pick 3 per team, but rare enough it doesn't matter.
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	var/list/datum/team/brother_team/pre_brother_teams = list()
 	var/const/min_team_size = 2
 
@@ -358,7 +367,7 @@
 
 //////////////////////////////////////////////
 //                                          //
-//               REVS		                //
+//               REVS                 //
 //                                          //
 //////////////////////////////////////////////
 

@@ -3,7 +3,7 @@
 	var/profit_ratio = 1
 
 /datum/component/pricetag/Initialize(_owner,_profit_ratio)
-	if(!isobj(parent))	//Has to account for both objects and sellable structures like crates.
+	if(!isobj(parent)) //Has to account for both objects and sellable structures like crates.
 		return COMPONENT_INCOMPATIBLE
 	owner = _owner
 	if(_profit_ratio)

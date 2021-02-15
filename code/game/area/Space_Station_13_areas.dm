@@ -3,11 +3,20 @@
 ### This file contains a list of all the areas in your station. Format is as follows:
 
 /area/CATEGORY/OR/DESCRIPTOR/NAME   (you can make as many subdivisions as you want)
+<<<<<<< HEAD:code/game/area/Space_Station_13_areas.dm
 	name = "NICE NAME" 				(not required but makes things really nice)
 	icon = 'ICON FILENAME' 			(defaults to 'icons/turf/areas.dmi')
 	icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
 	requires_power = FALSE 				(defaults to true)
 	ambientsounds = list()				(defaults to GENERIC from sound.dm. override it as "ambientsounds = list('sound/ambience/signal.ogg')" or using another define.
+=======
+	name = "NICE NAME" (not required but makes things really nice)
+	icon = 'ICON FILENAME' (defaults to 'icons/turf/areas.dmi')
+	icon_state = "NAME OF ICON" (defaults to "unknown" (blank))
+	requires_power = FALSE (defaults to true)
+	ambience_index = AMBIENCE_GENERIC   (picks the ambience from an assoc list in ambience.dm)
+	ambientsounds = list() (defaults to ambience_index's assoc on Initialize(). override it as "ambientsounds = list('sound/ambience/signal.ogg')" or by changing ambience_index)
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912):code/game/area/space_station_13_areas.dm
 
 NOTE: there are two lists of areas in the end of this file: centcom and station itself. Please maintain these lists valid. --rastaf0
 
@@ -16,7 +25,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /*-----------------------------------------------------------------------------*/
 
-/area/ai_monitored	//stub defined ai_monitored.dm
+/area/ai_monitored //stub defined ai_monitored.dm
 
 /area/ai_monitored/turret_protected
 
@@ -1321,6 +1330,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	ambientsounds = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/ambigen10.ogg', 'sound/ambience/ambitech.ogg',\
 											'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 	airlock_wires = /datum/wires/airlock/engineering
+<<<<<<< HEAD:code/game/area/Space_Station_13_areas.dm
+=======
+	network_root_id = STATION_NETWORK_ROOT // They should of unpluged the router before they left
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912):code/game/area/space_station_13_areas.dm
 
 /area/tcommsat/computer
 	name = "Telecomms Control Room"

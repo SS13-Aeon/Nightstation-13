@@ -95,6 +95,21 @@
 	var/i = parents.Find(reference)
 	reference.other_airs -= airs[i]
 	reference.other_atmosmch -= src
+<<<<<<< HEAD
+=======
+	/**
+	 *  We explicitly qdel pipeline when this particular pipeline
+	 *  is projected to have no member and cause GC problems.
+	 *  We have to do this because components don't qdel pipelines
+	 *  while pipes must and will happily wreck and rebuild everything
+	 * again every time they are qdeleted.
+	 */
+	if(!length(reference.other_atmosmch) && !length(reference.members))
+		if(QDESTROYING(reference))
+			parents[i] = null
+			CRASH("nullifyPipenet() called on qdeleting [reference] indexed on parents\[[i]\]")
+		qdel(reference)
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	parents[i] = null
 
 /obj/machinery/atmospherics/components/returnPipenetAir(datum/pipeline/reference)

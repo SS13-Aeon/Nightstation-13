@@ -117,7 +117,12 @@
 	damage = 0
 	nodamage = FALSE
 	movement_type = FLYING
+<<<<<<< HEAD
 	projectile_phasing = ALL		// just blows up the turfs lmao
+=======
+	projectile_phasing = ALL // just blows up the turfs lmao
+	/// The maximum distance this will inflict [EXPLODE_DEVASTATE]
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	var/heavyr = 0
 	var/mediumr = 0
 	var/lightr = 0

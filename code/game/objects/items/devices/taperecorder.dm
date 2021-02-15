@@ -139,9 +139,13 @@
 		to_chat(usr, "<span class='notice'>Recording started.</span>")
 		recording = 1
 		update_icon()
+<<<<<<< HEAD
 		mytape.timestamp += mytape.used_capacity
 		mytape.storedinfo += "\[[time2text(mytape.used_capacity * 10,"mm:ss")]\] Recording started."
 		var/used = mytape.used_capacity	//to stop runtimes when you eject the tape
+=======
+		var/used = mytape.used_capacity //to stop runtimes when you eject the tape
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 		var/max = mytape.max_capacity
 		while(recording && used < max)
 			mytape.used_capacity++
@@ -188,8 +192,15 @@
 
 	playing = 1
 	update_icon()
+<<<<<<< HEAD
 	to_chat(usr, "<span class='notice'>Playing started.</span>")
 	var/used = mytape.used_capacity	//to stop runtimes when you eject the tape
+=======
+	update_sound()
+	say("Playback started.")
+	playsound(src, 'sound/items/taperecorder/taperecorder_play.ogg', 50, FALSE)
+	var/used = mytape.used_capacity //to stop runtimes when you eject the tape
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	var/max = mytape.max_capacity
 	for(var/i = 1, used < max, sleep(10 * playsleepseconds))
 		if(!mytape)

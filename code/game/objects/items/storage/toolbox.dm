@@ -264,8 +264,13 @@
 	new /obj/item/clothing/shoes/combat/sneakboots(src)
 
 //floorbot assembly
+<<<<<<< HEAD
 /obj/item/storage/toolbox/attackby(obj/item/stack/tile/plasteel/T, mob/user, params)
 	var/list/allowed_toolbox = list(/obj/item/storage/toolbox/emergency,	//which toolboxes can be made into floorbots
+=======
+/obj/item/storage/toolbox/attackby(obj/item/stack/tile/iron/T, mob/user, params)
+	var/list/allowed_toolbox = list(/obj/item/storage/toolbox/emergency, //which toolboxes can be made into floorbots
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 							/obj/item/storage/toolbox/electrical,
 							/obj/item/storage/toolbox/mechanical,
 							/obj/item/storage/toolbox/artistic,

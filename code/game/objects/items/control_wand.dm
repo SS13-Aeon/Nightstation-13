@@ -52,6 +52,10 @@
 
 	data.data["data_secondary"] = "toggle"
 	data.passkey = access_list
+<<<<<<< HEAD
+=======
+	data.user = user // for responce message
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 	ntnet_send(data)
 
