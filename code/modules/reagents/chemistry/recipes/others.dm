@@ -39,6 +39,10 @@
 /datum/chemical_reaction/plasma_solidification
 	required_reagents = list(/datum/reagent/iron = 5, /datum/reagent/consumable/frostoil = 5, /datum/reagent/toxin/plasma = 20)
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/plasma_solidification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -48,6 +52,10 @@
 /datum/chemical_reaction/gold_solidification
 	required_reagents = list(/datum/reagent/consumable/frostoil = 5, /datum/reagent/gold = 20, /datum/reagent/iron = 1)
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/gold_solidification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -57,6 +65,10 @@
 /datum/chemical_reaction/uranium_solidification
 	required_reagents = list(/datum/reagent/consumable/frostoil = 5, /datum/reagent/uranium = 20, /datum/reagent/potassium = 1)
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/uranium_solidification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -71,6 +83,10 @@
 	required_reagents = list(/datum/reagent/liquidgibs = 10, /datum/reagent/lye  = 10) // requires two scooped gib tiles
 	required_temp = 374
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/soapification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -81,6 +97,10 @@
 	required_reagents = list(/datum/reagent/consumable/potato_juice = 10, /datum/reagent/consumable/ethanol/lizardwine = 10, /datum/reagent/monkey_powder = 10, /datum/reagent/drug/krokodil = 10, /datum/reagent/toxin/acid/nitracid = 10, /datum/reagent/baldium = 10, /datum/reagent/consumable/ethanol/hooch = 10, /datum/reagent/bluespace = 10, /datum/reagent/drug/pumpup = 10, /datum/reagent/consumable/space_cola = 10)
 	required_temp = 999
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/omegasoapification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -91,6 +111,10 @@
 	required_reagents = list(/datum/reagent/liquidgibs = 5, /datum/reagent/oxygen  = 5) //
 	required_temp = 374
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/candlefication/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -100,6 +124,10 @@
 /datum/chemical_reaction/meatification
 	required_reagents = list(/datum/reagent/liquidgibs = 10, /datum/reagent/consumable/nutriment = 10, /datum/reagent/carbon = 10)
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/meatification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -116,6 +144,24 @@
 	results = list(/datum/reagent/nitrous_oxide = 5)
 	required_reagents = list(/datum/reagent/ammonia = 2, /datum/reagent/nitrogen = 1, /datum/reagent/oxygen = 2)
 	required_temp = 525
+	optimal_temp = 550
+	overheat_temp = 575
+	temp_exponent_factor = 0.2
+	purity_min = 0.3
+	thermic_constant = 35 //gives a bonus 15C wiggle room
+	rate_up_lim = 25 //Give a chance to pull back
+
+/datum/chemical_reaction/nitrous_oxide/overly_impure(datum/reagents/holder, datum/equilibrium/equilibrium)
+	. = ..()
+	var/turf/exposed_turf = get_turf(holder.my_atom)
+	if(!exposed_turf)
+		return
+	exposed_turf.atmos_spawn_air("n2o=[equilibrium.step_target_vol/2];TEMP=[holder.chem_temp]")
+	clear_products(holder, equilibrium.step_target_vol)
+
+/datum/chemical_reaction/nitrous_oxide/overheated(datum/reagents/holder, datum/equilibrium/equilibrium)
+	return //This is empty because the explosion reaction will occur instead (see pyrotechnics.dm). This is just here to update the lookup ui.
+
 
 //Technically a mutation toxin
 /datum/chemical_reaction/mulligan
@@ -175,6 +221,10 @@
 	required_catalysts = list(/datum/reagent/blood = 1)
 	var/level_min = 1
 	var/level_max = 2
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/mix_virus/on_reaction(datum/reagents/holder, created_volume)
 	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in holder.reagent_list
@@ -269,10 +319,18 @@
 /datum/chemical_reaction/surfactant
 	results = list(/datum/reagent/fluorosurfactant = 5)
 	required_reagents = list(/datum/reagent/fluorine = 2, /datum/reagent/carbon = 2, /datum/reagent/toxin/acid = 1)
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/foam
 	required_reagents = list(/datum/reagent/fluorosurfactant = 1, /datum/reagent/water = 1)
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
 	holder.create_foam(/datum/effect_system/foam_spread,2*created_volume,notification="<span class='danger'>The solution spews out foam!</span>")
@@ -280,6 +338,10 @@
 /datum/chemical_reaction/metalfoam
 	required_reagents = list(/datum/reagent/aluminium = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/toxin/acid/fluacid = 1)
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/metalfoam/on_reaction(datum/reagents/holder, created_volume)
 	holder.create_foam(/datum/effect_system/foam_spread/metal,5*created_volume,1,"<span class='danger'>The solution spews out a metallic foam!</span>")
@@ -287,6 +349,10 @@
 /datum/chemical_reaction/smart_foam
 	required_reagents = list(/datum/reagent/aluminium = 3, /datum/reagent/smart_foaming_agent = 1, /datum/reagent/toxin/acid/fluacid = 1)
 	mob_react = TRUE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/smart_foam/on_reaction(datum/reagents/holder, created_volume)
 	holder.create_foam(/datum/effect_system/foam_spread/metal/smart,5*created_volume,1,"<span class='danger'>The solution spews out metallic foam!</span>")
@@ -294,6 +360,10 @@
 /datum/chemical_reaction/ironfoam
 	required_reagents = list(/datum/reagent/iron = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/toxin/acid/fluacid = 1)
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
 	holder.create_foam(/datum/effect_system/foam_spread/metal,5*created_volume,2,"<span class='danger'>The solution spews out a metallic foam!</span>")
@@ -313,6 +383,12 @@
 /datum/chemical_reaction/ammonia
 	results = list(/datum/reagent/ammonia = 3)
 	required_reagents = list(/datum/reagent/hydrogen = 3, /datum/reagent/nitrogen = 1)
+<<<<<<< HEAD
+=======
+	optimal_ph_min = 1  // Lets increase our range for this basic chem
+	optimal_ph_max = 12
+	H_ion_release = -0.02 //handmade is more neutral
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/diethylamine
 	results = list(/datum/reagent/diethylamine = 2)
@@ -408,6 +484,10 @@
 /datum/chemical_reaction/life
 	required_reagents = list(/datum/reagent/medicine/strange_reagent = 1, /datum/reagent/medicine/c2/synthflesh = 1, /datum/reagent/blood = 1)
 	required_temp = 374
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/life/on_reaction(datum/reagents/holder, created_volume)
 	chemical_mob_spawn(holder, rand(1, round(created_volume, 1)), "Life (hostile)") //defaults to HOSTILE_SPAWN
@@ -415,6 +495,10 @@
 /datum/chemical_reaction/life_friendly
 	required_reagents = list(/datum/reagent/medicine/strange_reagent = 1, /datum/reagent/medicine/c2/synthflesh = 1, /datum/reagent/consumable/sugar = 1)
 	required_temp = 374
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/life_friendly/on_reaction(datum/reagents/holder, created_volume)
 	chemical_mob_spawn(holder, rand(1, round(created_volume, 1)), "Life (friendly)", FRIENDLY_SPAWN)
@@ -422,6 +506,10 @@
 /datum/chemical_reaction/corgium
 	required_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/colorful_reagent = 1, /datum/reagent/medicine/strange_reagent = 1, /datum/reagent/blood = 1)
 	required_temp = 374
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/corgium/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -433,6 +521,10 @@
 /datum/chemical_reaction/monkey_powder
 	results = list(/datum/reagent/monkey_powder = 5)
 	required_reagents = list(/datum/reagent/consumable/banana = 1, /datum/reagent/consumable/nutriment=2,/datum/reagent/liquidgibs = 1)
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/monkey
 	required_reagents = list(/datum/reagent/monkey_powder = 50, /datum/reagent/water = 1)
@@ -456,6 +548,10 @@
 //butterflium
 /datum/chemical_reaction/butterflium
 	required_reagents = list(/datum/reagent/colorful_reagent = 1, /datum/reagent/medicine/omnizine = 1, /datum/reagent/medicine/strange_reagent = 1, /datum/reagent/consumable/nutriment = 1)
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/butterflium/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -466,6 +562,10 @@
 /datum/chemical_reaction/scream
 	required_reagents = list(/datum/reagent/medicine/strange_reagent = 1, /datum/reagent/consumable/cream = 5, /datum/reagent/consumable/ethanol/lizardwine = 5	)
 	required_temp = 374
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/scream/on_reaction(datum/reagents/holder, created_volume)
 	playsound(holder.my_atom, pick(list( 'sound/voice/human/malescream_1.ogg', 'sound/voice/human/malescream_2.ogg', 'sound/voice/human/malescream_3.ogg', 'sound/voice/human/malescream_4.ogg', 'sound/voice/human/malescream_5.ogg', 'sound/voice/human/malescream_6.ogg', 'sound/voice/human/femalescream_1.ogg', 'sound/voice/human/femalescream_2.ogg', 'sound/voice/human/femalescream_3.ogg', 'sound/voice/human/femalescream_4.ogg', 'sound/voice/human/femalescream_5.ogg', 'sound/voice/human/wilhelm_scream.ogg')), created_volume*5,TRUE)
@@ -510,6 +610,10 @@
 /datum/chemical_reaction/plastic_polymers
 	required_reagents = list(/datum/reagent/fuel/oil = 5, /datum/reagent/toxin/acid = 2, /datum/reagent/ash = 3)
 	required_temp = 374 //lazily consistent with soap & other crafted objects generically created with heat.
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/plastic_polymers/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -535,6 +639,10 @@
 /datum/chemical_reaction/slime_extractification
 	required_reagents = list(/datum/reagent/toxin/slimejelly = 30, /datum/reagent/consumable/frostoil = 5, /datum/reagent/toxin/plasma = 5)
 	mix_message = "The mixture condenses into a ball."
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/slime_extractification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -543,6 +651,10 @@
 /datum/chemical_reaction/metalgen_imprint
 	required_reagents = list(/datum/reagent/metalgen = 1, /datum/reagent/liquid_dark_matter = 1)
 	results = list(/datum/reagent/metalgen = 1)
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/metalgen_imprint/on_reaction(datum/reagents/holder, created_volume)
 	var/datum/reagent/metalgen/MM = holder.get_reagent(/datum/reagent/metalgen)
@@ -594,6 +706,10 @@
 	required_reagents = list(/datum/reagent/silver = 20, /datum/reagent/carbon = 10)
 	required_temp = 630
 	mob_react = FALSE
+<<<<<<< HEAD
+=======
+	reaction_flags = REACTION_INSTANT
+>>>>>>> 9281f1d... Tweak N2O reaction so people don't surprise blow up (#56901)
 
 /datum/chemical_reaction/silver_solidification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
