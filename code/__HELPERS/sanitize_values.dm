@@ -67,12 +67,18 @@
 	while(i <= len)
 		char = color[i]
 		switch(text2ascii(char))
-			if(48 to 57)		//numbers 0 to 9
+			if(48 to 57) //numbers 0 to 9
 				. += char
-			if(97 to 102)		//letters a to f
+			if(97 to 102) //letters a to f
 				. += char
+<<<<<<< HEAD
 			if(65 to 70)		//letters A to F
 				. += lowertext(char)
+=======
+			if(65 to 70) //letters A to F
+				char = lowertext(char)
+				. += char
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 			else
 				break
 		i += length(char)

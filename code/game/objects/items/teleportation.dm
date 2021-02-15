@@ -3,8 +3,8 @@
 
 /* Teleportation devices.
  * Contains:
- *		Locator
- *		Hand-tele
+ * Locator
+ * Hand-tele
  */
 
 /*
@@ -165,8 +165,57 @@
 	var/t1 = input(user, "Please select a teleporter to lock in on.", "Hand Teleporter") as null|anything in L
 	if (!t1 || user.get_active_held_item() != src || user.incapacitated())
 		return
+<<<<<<< HEAD
 	if(active_portal_pairs.len >= max_portal_pairs)
 		user.show_message("<span class='notice'>\The [src] is recharging!</span>")
+=======
+
+	// Not always a datum, but needed for IS_WEAKREF_OF to cast properly.
+	var/datum/teleport_location = locations[teleport_location_key]
+	if (!try_create_portal_to(user, teleport_location))
+		return
+
+	if (teleport_location == PORTAL_LOCATION_DANGEROUS)
+		last_portal_location = PORTAL_LOCATION_DANGEROUS
+	else if (!IS_WEAKREF_OF(teleport_location, last_portal_location))
+		if (isweakref(teleport_location))
+			var/datum/weakref/about_to_replace_location_ref = last_portal_location
+			var/obj/machinery/computer/teleporter/about_to_replace_location = about_to_replace_location_ref.resolve()
+			if (about_to_replace_location)
+				UnregisterSignal(about_to_replace_location, COMSIG_TELEPORTER_NEW_TARGET)
+
+		RegisterSignal(teleport_location, COMSIG_TELEPORTER_NEW_TARGET, .proc/on_teleporter_new_target)
+
+		last_portal_location = WEAKREF(teleport_location)
+
+/// Takes either PORTAL_LOCATION_DANGEROUS or an /obj/machinery/computer/teleport/computer.
+/obj/item/hand_tele/proc/try_create_portal_to(mob/user, teleport_location)
+	if (active_portal_pairs.len >= max_portal_pairs)
+		user.show_message("<span class='notice'>[src] is recharging!</span>")
+		return
+
+	var/teleport_turf
+
+	if (teleport_location == PORTAL_LOCATION_DANGEROUS)
+		var/list/dangerous_turfs = list()
+		for(var/turf/dangerous_turf in urange(10, orange=1))
+			if(dangerous_turf.x > world.maxx - PORTAL_DANGEROUS_EDGE_LIMIT || dangerous_turf.x < PORTAL_DANGEROUS_EDGE_LIMIT)
+				continue //putting them at the edge is dumb
+			if(dangerous_turf.y > world.maxy - PORTAL_DANGEROUS_EDGE_LIMIT || dangerous_turf.y < PORTAL_DANGEROUS_EDGE_LIMIT)
+				continue
+			var/area/dangerous_area = dangerous_turf.loc
+			if(dangerous_area.area_flags & NOTELEPORT)
+				continue
+			dangerous_turfs += dangerous_turf
+
+		teleport_turf = pick(dangerous_turfs)
+	else
+		var/obj/machinery/computer/teleporter/computer = teleport_location
+		teleport_turf = computer.target
+
+	if (teleport_turf == null)
+		to_chat(user, "<span class='notice'>[src] vibrates, then stops. Maybe you should try something else.</span>")
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 		return
 	var/atom/T = L[t1]
 	var/area/A = get_area(T)
@@ -194,7 +243,7 @@
 /obj/item/hand_tele/proc/on_portal_destroy(obj/effect/portal/P)
 	SIGNAL_HANDLER
 
-	active_portal_pairs -= P	//If this portal pair is made by us it'll be erased along with the other portal by the portal.
+	active_portal_pairs -= P //If this portal pair is made by us it'll be erased along with the other portal by the portal.
 
 /obj/item/hand_tele/proc/is_parent_of_portal(obj/effect/portal/P)
 	if(!istype(P))

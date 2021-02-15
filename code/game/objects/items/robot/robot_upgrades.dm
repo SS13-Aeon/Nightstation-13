@@ -8,11 +8,19 @@
 	icon_state = "cyborg_upgrade"
 	w_class = WEIGHT_CLASS_SMALL
 	var/locked = FALSE
+<<<<<<< HEAD
 	var/installed = 0
 	var/require_module = 0
 	var/list/module_type = null
 	///	Bitflags listing module compatibility. Used in the exosuit fabricator for creating sub-categories.
 	var/list/module_flags = NONE
+=======
+	var/installed = FALSE
+	var/require_model = FALSE
+	var/list/model_type = null
+	/// Bitflags listing model compatibility. Used in the exosuit fabricator for creating sub-categories.
+	var/list/model_flags = NONE
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	// if true, is not stored in the robot to be ejected
 	// if module is reset
 	var/one_use = FALSE

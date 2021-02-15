@@ -231,6 +231,7 @@
 	name = "Medical"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
+<<<<<<< HEAD
 		/obj/item/healthanalyzer,
 		/obj/item/reagent_containers/borghypo,
 		/obj/item/borg/apparatus/beaker,
@@ -257,6 +258,30 @@
 	moduleselect_icon = "medical"
 	can_be_pushed = FALSE
 	hat_offset = 3
+=======
+		/obj/item/toy/crayon/rainbow,
+		/obj/item/instrument/bikehorn,
+		/obj/item/stamp/clown,
+		/obj/item/bikehorn,
+		/obj/item/bikehorn/airhorn,
+		/obj/item/paint/anycolor,
+		/obj/item/soap/nanotrasen,
+		/obj/item/pneumatic_cannon/pie/selfcharge/cyborg,
+		/obj/item/razor, //killbait material
+		/obj/item/lipstick/purple,
+		/obj/item/reagent_containers/spray/waterflower/cyborg,
+		/obj/item/borg/cyborghug/peacekeeper,
+		/obj/item/borg/lollipop/clown,
+		/obj/item/picket_sign/cyborg,
+		/obj/item/reagent_containers/borghypo/clown,
+		/obj/item/extinguisher/mini)
+	emag_modules = list(
+		/obj/item/reagent_containers/borghypo/clown/hacked,
+		/obj/item/reagent_containers/spray/waterflower/cyborg/hacked)
+	model_select_icon = "service"
+	cyborg_base_icon = "clown"
+	hat_offset = -2
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 /obj/item/robot_module/engineering
 	name = "Engineering"

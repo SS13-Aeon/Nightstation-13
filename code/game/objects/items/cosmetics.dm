@@ -44,7 +44,29 @@
 		icon_state = "lipstick"
 
 /obj/item/lipstick/attack(mob/M, mob/user)
+<<<<<<< HEAD
 	if(!open)
+=======
+	if(!open || !ismob(M))
+		return
+
+	if(!ishuman(M))
+		to_chat(user, "<span class='warning'>Where are the lips on that?</span>")
+		return
+
+	var/mob/living/carbon/human/target = M
+	if(target.is_mouth_covered())
+		to_chat(user, "<span class='warning'>Remove [ target == user ? "your" : "[target.p_their()]" ] mask!</span>")
+		return
+	if(target.lip_style) //if they already have lipstick on
+		to_chat(user, "<span class='warning'>You need to wipe off the old lipstick first!</span>")
+		return
+
+	if(target == user)
+		user.visible_message("<span class='notice'>[user] does [user.p_their()] lips with \the [src].</span>", \
+			"<span class='notice'>You take a moment to apply \the [src]. Perfect!</span>")
+		target.update_lips("lipstick", colour, lipstick_trait)
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 		return
 
 	if(!ismob(M))

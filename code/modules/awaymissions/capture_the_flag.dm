@@ -401,7 +401,7 @@
 /obj/projectile/bullet/ctf/prehit_pierce(atom/target)
 	if(is_ctf_target(target))
 		damage = 60
-		return PROJECTILE_PIERCE_NONE	/// hey uhh don't hit anyone behind them
+		return PROJECTILE_PIERCE_NONE /// hey uhh don't hit anyone behind them
 	. = ..()
 
 /obj/item/gun/ballistic/automatic/laser/ctf
@@ -438,7 +438,7 @@
 /obj/projectile/beam/ctf/prehit_pierce(atom/target)
 	if(is_ctf_target(target))
 		damage = 150
-		return PROJECTILE_PIERCE_NONE		/// hey uhhh don't hit anyone behind them
+		return PROJECTILE_PIERCE_NONE /// hey uhhh don't hit anyone behind them
 	. = ..()
 
 /proc/is_ctf_target(atom/target)

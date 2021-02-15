@@ -161,9 +161,54 @@
 	var/max_volume = 0
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
+<<<<<<< HEAD
 		if(R.volume > max_volume)
 			max_volume = R.volume
 			name = R.name
+=======
+		var/matches = 0
+		// Switch between how we check the reagent type
+		if(strict)
+			if(R.type == reagent_type)
+				matches = 1
+		else
+			if(istype(R, reagent_type))
+				matches = 1
+		// We found a match, proceed to remove the reagent. Keep looping, we might find other reagents of the same type.
+		if(matches)
+			// Have our other proc handle removement
+			has_removed_reagent = remove_reagent(R.type, amount, safety)
+
+	return has_removed_reagent
+
+/// Fuck this one reagent
+/datum/reagents/proc/del_reagent(reagent)
+	var/list/cached_reagents = reagent_list
+	for(var/_reagent in cached_reagents)
+		var/datum/reagent/R = _reagent
+		if(R.type == reagent)
+			if(isliving(my_atom))
+				if(R.metabolizing)
+					R.metabolizing = FALSE
+					R.on_mob_end_metabolize(my_atom)
+				R.on_mob_delete(my_atom)
+
+			//Clear from relevant lists
+			LAZYREMOVE(addiction_list, R)
+			reagent_list -= R
+			LAZYREMOVE(previous_reagent_list, R.type)
+			qdel(R)
+			update_total()
+			SEND_SIGNAL(src, COMSIG_REAGENTS_DEL_REAGENT, reagent)
+	return TRUE
+
+//Converts the creation_purity to purity
+/datum/reagents/proc/uncache_creation_purity(id)
+	var/datum/reagent/R = has_reagent(id)
+	if(!R)
+		return
+	R.purity = R.creation_purity
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 	return name
 
@@ -565,6 +610,7 @@
 				if(total_matching_reagents == total_required_reagents && total_matching_catalysts == total_required_catalysts && matching_container && matching_other && meets_temp_requirement)
 					possible_reactions  += C
 
+<<<<<<< HEAD
 		if(possible_reactions.len)
 			var/datum/chemical_reaction/selected_reaction = possible_reactions[1]
 			//select the reaction with the most extreme temperature requirements
@@ -613,6 +659,47 @@
 			reaction_occurred = 1
 
 	while(reaction_occurred)
+=======
+/*
+* This ends a single instance of an ongoing reaction
+*
+* Arguments:
+* * E - the equilibrium that will be ended
+* Returns:
+* * mix_message - the associated mix message of a reaction
+*/
+/datum/reagents/proc/end_reaction(datum/equilibrium/equilibrium)
+	if(!equilibrium.holder || !equilibrium.reaction) //Somehow I'm getting empty equilibrium. This is here to handle them
+		LAZYREMOVE(reaction_list, equilibrium)
+		qdel(equilibrium)
+		stack_trace("The equilibrium datum currently processing in this reagents datum had a nulled holder or nulled reaction. src holder:[my_atom] || src type:[my_atom.type] ") //Shouldn't happen. Does happen
+		return
+	if(equilibrium.holder != src) //When called from Destroy() eqs are nulled in smoke. This is very strange. This is probably causing it to spam smoke because of the runtime interupting the removal.
+		stack_trace("The equilibrium datum currently processing in this reagents datum had a desynced holder to the ending reaction. src holder:[my_atom] | equilibrium holder:[equilibrium.holder.my_atom] || src type:[my_atom.type] | equilibrium holder:[equilibrium.holder.my_atom.type]")
+		LAZYREMOVE(reaction_list, equilibrium)
+	equilibrium.reaction.reaction_finish(src, equilibrium.reacted_vol)
+	var/reaction_message = equilibrium.reaction.mix_message
+	if(equilibrium.reaction.mix_sound)
+		playsound(get_turf(my_atom), equilibrium.reaction.mix_sound, 80, TRUE)
+	qdel(equilibrium) 
+	update_total()
+	SEND_SIGNAL(src, COMSIG_REAGENTS_REACTED, .)
+	return reaction_message
+
+/*
+* This stops the holder from processing at the end of a series of reactions (i.e. when all the equilibriums are completed)
+*
+* Also resets reaction variables to be null/empty/FALSE so that it can restart correctly in the future
+*/
+/datum/reagents/proc/finish_reacting()
+	STOP_PROCESSING(SSreagents, src)
+	is_reacting = FALSE
+	//Cap off values
+	for(var/_reagent in reagent_list)
+		var/datum/reagent/reagent = _reagent
+		reagent.volume = round(reagent.volume, CHEMICAL_VOLUME_ROUNDING)//To prevent runaways.
+	LAZYNULL(previous_reagent_list) //reset it to 0 - because any change will be different now.
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	update_total()
 
 /// Remove every reagent except this one
@@ -988,6 +1075,31 @@ Needs matabolizing takes into consideration if the chemical is matabolizing when
 
 	return english_list(out, "something indescribable")
 
+<<<<<<< HEAD
+=======
+
+/// Returns the total heat capacity for all of the reagents currently in this holder.
+/datum/reagents/proc/heat_capacity()
+	. = 0
+	var/list/cached_reagents = reagent_list //cache reagents
+	for(var/I in cached_reagents)
+		var/datum/reagent/R = I
+		. += R.specific_heat * R.volume
+
+/** Adjusts the thermal energy of the reagents in this holder by an amount.
+ *
+ * Arguments:
+ * - delta_energy: The amount to change the thermal energy by.
+ * - min_temp: The minimum temperature that can be reached.
+ * - max_temp: The maximum temperature that can be reached.
+ */
+/datum/reagents/proc/adjust_thermal_energy(delta_energy, min_temp = 2.7, max_temp = 1000)
+	var/heat_capacity = heat_capacity()
+	if(!heat_capacity)
+		return // no div/0 please
+	set_temperature(clamp(chem_temp + (delta_energy / heat_capacity), min_temp, max_temp))
+
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 /// Applies heat to this holder
 /datum/reagents/proc/expose_temperature(temperature, coeff=0.02)
 	if(istype(my_atom,/obj/item/reagent_containers))
@@ -1021,7 +1133,7 @@ Needs matabolizing takes into consideration if the chemical is matabolizing when
 	reagents = new /datum/reagents(max_vol, flags)
 	reagents.my_atom = src
 
-/proc/get_random_reagent_id()	// Returns a random reagent ID minus blacklisted reagents
+/proc/get_random_reagent_id() // Returns a random reagent ID minus blacklisted reagents
 	var/static/list/random_reagents = list()
 	if(!random_reagents.len)
 		for(var/thing  in subtypesof(/datum/reagent))

@@ -41,9 +41,15 @@
 			amount = restricted_gases[gastype]
 			if(gaslist[gastype])
 				continue
+<<<<<<< HEAD
 		
 		amount *= rand(50, 200) / 100	// Randomly modifes the amount from half to double the base for some variety
 		amount *= pressure_scalar		// If we pick a really small target pressure we want roughly the same mix but less of it all
+=======
+
+		amount *= rand(50, 200) / 100 // Randomly modifes the amount from half to double the base for some variety
+		amount *= pressure_scalar // If we pick a really small target pressure we want roughly the same mix but less of it all
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 		amount = CEILING(amount, 0.1)
 		
 		ASSERT_GAS(gastype, gasmix)

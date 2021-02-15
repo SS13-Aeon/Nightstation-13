@@ -2,6 +2,10 @@
 /datum/material/meat
 	name = "meat"
 	desc = "Meat"
+<<<<<<< HEAD
+=======
+	id = /datum/material/meat // So the bespoke versions are categorized under this
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	color = rgb(214, 67, 67)
 	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE)
 	sheet_type = /obj/item/stack/sheet/meat

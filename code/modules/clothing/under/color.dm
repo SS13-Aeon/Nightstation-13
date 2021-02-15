@@ -24,7 +24,7 @@
 	return INITIALIZE_HINT_QDEL
 
 /obj/item/clothing/under/color/jumpskirt/random
-	icon_state = "random_jumpsuit"		//Skirt variant needed
+	icon_state = "random_jumpsuit" //Skirt variant needed
 
 /obj/item/clothing/under/color/jumpskirt/random/Initialize()
 	..()

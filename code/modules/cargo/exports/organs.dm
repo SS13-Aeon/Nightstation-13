@@ -1,6 +1,10 @@
 /datum/export/organ
+<<<<<<< HEAD
 	include_subtypes = FALSE	//CentCom doesn't need organs from non-humans.
 	export_category = EXPORT_CONTRABAND
+=======
+	include_subtypes = FALSE //CentCom doesn't need organs from non-humans.
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 /datum/export/organ/heart
 	cost = CARGO_CRATE_VALUE * 0.2 //For the man who has everything and nothing.

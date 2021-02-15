@@ -528,7 +528,7 @@ nobiliumsuppression = INFINITY
 /datum/gas_reaction/metalhydrogen/init_reqs()
 	min_requirements = list(
 		/datum/gas/hydrogen = 100,
-		/datum/gas/bz		= 5,
+		/datum/gas/bz = 5,
 		"TEMP" = METAL_HYDROGEN_MINIMUM_HEAT
 		)
 
@@ -656,7 +656,7 @@ nobiliumsuppression = INFINITY
 			air.temperature = max(((air.temperature * old_heat_capacity + energy_produced) / new_heat_capacity), TCMB)
 
 
-/datum/gas_reaction/miaster	//dry heat sterilization: clears out pathogens in the air
+/datum/gas_reaction/miaster //dry heat sterilization: clears out pathogens in the air
 	priority = -10 //after all the heating from fires etc. is done
 	name = "Dry Heat Sterilization"
 	id = "sterilization"

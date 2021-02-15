@@ -109,7 +109,7 @@
 	if(!access_to_check) // No required_access, allow it.
 		return TRUE
 
-	if(!transfer && computer && (computer.obj_flags & EMAGGED))	//emags can bypass the execution locks but not the download ones.
+	if(!transfer && computer && (computer.obj_flags & EMAGGED)) //emags can bypass the execution locks but not the download ones.
 		return TRUE
 
 	if(isAdminGhostAI(user))

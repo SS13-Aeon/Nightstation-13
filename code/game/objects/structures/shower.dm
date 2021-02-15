@@ -4,7 +4,14 @@
 #define SHOWER_NORMAL_TEMP 300
 #define SHOWER_BOILING "boiling"
 #define SHOWER_BOILING_TEMP 400
+<<<<<<< HEAD
 #define SHOWER_REACTION_MULTIPLIER 0.05
+=======
+/// The volume of it's internal reagents the shower applies to everything it sprays.
+#define SHOWER_SPRAY_VOLUME 5
+/// How much the volume of the shower's spay reagents are amplified by when it sprays something.
+#define SHOWER_EXPOSURE_MULTIPLIER 2 // Showers effectively double exposed reagents
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 
 /obj/machinery/shower
@@ -133,6 +140,7 @@
 			var/atom/movable/movable_content = am
 			reagents.expose(movable_content, TOUCH, SHOWER_REACTION_MULTIPLIER) //There's not many reagents leaving the sink at once! This should make for a 10 unit reaction
 			if(!ismopable(movable_content)) // Mopables will be cleaned anyways by the turf wash above
+<<<<<<< HEAD
 				wash_atom(movable_content)
 	else
 		reagents.add_reagent(reagent_id, 1)
@@ -140,6 +148,18 @@
 		soundloop.stop()
 		handle_mist()
 		update_icon()
+=======
+				wash_atom(movable_content) // Reagent exposure is handled in wash_atom
+
+		reagents.remove_any(SHOWER_SPRAY_VOLUME)
+		return
+	on = FALSE
+	soundloop.stop()
+	handle_mist()
+	if(can_refill)
+		reagents.add_reagent(reagent_id, refill_rate * delta_time)
+	update_icon()
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	if(reagents.total_volume == reagents.maximum_volume)
 		return PROCESS_KILL
 

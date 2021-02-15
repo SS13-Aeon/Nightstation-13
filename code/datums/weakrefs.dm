@@ -7,7 +7,7 @@
 			input.weak_reference = new /datum/weakref(input)
 		return input.weak_reference
 
-/datum/proc/create_weakref()		//Forced creation for admin proccalls
+/datum/proc/create_weakref() //Forced creation for admin proccalls
 	return WEAKREF(src)
 
 /datum/weakref
@@ -18,8 +18,12 @@
 
 /datum/weakref/Destroy(force)
 	if(!force)
+<<<<<<< HEAD
 		return QDEL_HINT_LETMELIVE	//Let BYOND autoGC thiswhen nothing is using it anymore.
 	var/datum/target = resolve()
+=======
+		return QDEL_HINT_LETMELIVE //Let BYOND autoGC thiswhen nothing is using it anymore.
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	target?.weak_reference = null
 	return ..()
 

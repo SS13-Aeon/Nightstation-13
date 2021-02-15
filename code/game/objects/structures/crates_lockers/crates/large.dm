@@ -38,8 +38,13 @@
 		qdel(src)
 
 	else
+<<<<<<< HEAD
 		if(user.a_intent == INTENT_HARM)	//Only return  ..() if intent is harm, otherwise return 0 or just end it.
 			return ..()						//Stops it from opening and turning invisible when items are used on it.
+=======
+		if(user.combat_mode) //Only return  ..() if intent is harm, otherwise return 0 or just end it.
+			return ..() //Stops it from opening and turning invisible when items are used on it.
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 		else
 			to_chat(user, "<span class='warning'>You need a crowbar to pry this open!</span>")

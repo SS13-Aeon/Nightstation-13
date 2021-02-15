@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 #define POPCOUNT_SURVIVORS "survivors"					//Not dead at roundend
 #define POPCOUNT_ESCAPEES "escapees"					//Not dead and on centcom/shuttles marked as escaped
 #define POPCOUNT_SHUTTLE_ESCAPEES "shuttle_escapees" 	//Emergency shuttle only.
+=======
+#define POPCOUNT_SURVIVORS "survivors" //Not dead at roundend
+#define POPCOUNT_ESCAPEES "escapees" //Not dead and on centcom/shuttles marked as escaped
+#define POPCOUNT_SHUTTLE_ESCAPEES "shuttle_escapees" //Emergency shuttle only.
+#define PERSONAL_LAST_ROUND "personal last round"
+#define SERVER_LAST_ROUND "server last round"
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 /datum/controller/subsystem/ticker/proc/gather_roundend_feedback()
 	gather_antag_data()

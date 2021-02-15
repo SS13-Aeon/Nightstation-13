@@ -2,6 +2,7 @@
 	suicide_log()
 	adjustBruteLoss(max(200 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 	death(FALSE)
+<<<<<<< HEAD
 	ghostize(FALSE)	// Disallows reentering body and disassociates mind
 
 /mob/living/carbon/human/proc/disarm_suicide()
@@ -15,3 +16,6 @@
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound, src, 'sound/effects/cartoon_pop.ogg', 70), timer)
 			timer += 15
 	addtimer(CALLBACK(src, /mob/living/carbon/human/.proc/delayed_suicide, FALSE), timer-10)
+=======
+	ghostize(FALSE) // Disallows reentering body and disassociates mind
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)

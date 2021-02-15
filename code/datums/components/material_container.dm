@@ -148,6 +148,26 @@
 			primary_mat = MAT
 	return primary_mat
 
+<<<<<<< HEAD
+=======
+/**
+ * The default check for whether we can add materials to this material container.
+ *
+ * Arguments:
+ * - [mat][/atom/material]: The material we are checking for insertability.
+ */
+/datum/component/material_container/proc/can_hold_material(datum/material/mat)
+	if(mat in allowed_materials)
+		return TRUE
+	if(istype(mat) && ((mat.id in allowed_materials) || (mat.type in allowed_materials)))
+		allowed_materials += mat // This could get messy with passing lists by ref... but if you're doing that the list expansion is probably being taken care of elsewhere anyway...
+		return TRUE
+	if(insertion_check?.Invoke(mat))
+		allowed_materials += mat
+		return TRUE
+	return FALSE
+
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 /// For inserting an amount of material
 /datum/component/material_container/proc/insert_amount_mat(amt, datum/material/mat)
 	if(!istype(mat))

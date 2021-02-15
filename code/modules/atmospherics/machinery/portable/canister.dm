@@ -1,9 +1,15 @@
-#define CAN_DEFAULT_RELEASE_PRESSURE 	(ONE_ATMOSPHERE)
+#define CAN_DEFAULT_RELEASE_PRESSURE (ONE_ATMOSPHERE)
 ///Used when setting the mode of the canisters, enabling us to switch the overlays
 //These are used as icon states later down the line for tier overlays
+<<<<<<< HEAD
 #define CANISTER_TIER_1					"tier 1"
 #define CANISTER_TIER_2					"tier 2"
 #define CANISTER_TIER_3					"tier 3"
+=======
+#define CANISTER_TIER_1 1
+#define CANISTER_TIER_2 2
+#define CANISTER_TIER_3 3
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 /obj/machinery/portable_atmospherics/canister
 	name = "canister"

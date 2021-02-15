@@ -10,8 +10,12 @@
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list()
 	volume = 15
+<<<<<<< HEAD
 	var/mode = SYRINGE_DRAW
 	var/busy = FALSE		// needed for delayed drawing of blood
+=======
+	var/busy = FALSE // needed for delayed drawing of blood
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	var/proj_piercing = 0 //does it pierce through thick clothes when shot with syringe gun
 	custom_materials = list(/datum/material/iron=10, /datum/material/glass=20)
 	reagent_flags = TRANSPARENT

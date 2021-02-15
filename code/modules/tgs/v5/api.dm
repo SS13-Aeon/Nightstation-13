@@ -110,6 +110,13 @@
 	if(!topic_parameters)
 		return TopicResponse("Invalid topic parameters json!");
 
+<<<<<<< HEAD
+=======
+	if(!initialized)
+		TGS_WARNING_LOG("Missed topic due to not being initialized: [T]")
+		return TRUE // too early to handle, but it's still our responsibility
+
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 	var/their_sCK = topic_parameters[DMAPI5_PARAMETER_ACCESS_IDENTIFIER]
 	if(their_sCK != access_identifier)
 		return TopicResponse("Failed to decode [DMAPI5_PARAMETER_ACCESS_IDENTIFIER] from: [json]!");
@@ -266,7 +273,7 @@
 
 	var/port = result[DMAPI5_BRIDGE_RESPONSE_NEW_PORT]
 	if(!isnum(port))
-		return	//this is valid, server may just want use to reboot
+		return //this is valid, server may just want use to reboot
 
 	if(port == 0)
 		//to byond 0 means any port and "none" means close vOv

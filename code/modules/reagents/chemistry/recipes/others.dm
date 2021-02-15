@@ -313,6 +313,12 @@
 /datum/chemical_reaction/ammonia
 	results = list(/datum/reagent/ammonia = 3)
 	required_reagents = list(/datum/reagent/hydrogen = 3, /datum/reagent/nitrogen = 1)
+<<<<<<< HEAD
+=======
+	optimal_ph_min = 1  // Lets increase our range for this basic chem
+	optimal_ph_max = 12 
+	H_ion_release = -0.02 //handmade is more neutral
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 /datum/chemical_reaction/diethylamine
 	results = list(/datum/reagent/diethylamine = 2)
@@ -329,6 +335,10 @@
 /datum/chemical_reaction/weedkiller
 	results = list(/datum/reagent/toxin/plantbgone/weedkiller = 5)
 	required_reagents = list(/datum/reagent/toxin = 1, /datum/reagent/ammonia = 4)
+<<<<<<< HEAD
+=======
+	H_ion_release = -0.05 // Push towards acidic
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 
 /datum/chemical_reaction/pestkiller
 	results = list(/datum/reagent/toxin/pestkiller = 5)
@@ -464,7 +474,7 @@
 	..()
 //scream powder
 /datum/chemical_reaction/scream
-	required_reagents = list(/datum/reagent/medicine/strange_reagent = 1, /datum/reagent/consumable/cream = 5, /datum/reagent/consumable/ethanol/lizardwine = 5	)
+	required_reagents = list(/datum/reagent/medicine/strange_reagent = 1, /datum/reagent/consumable/cream = 5, /datum/reagent/consumable/ethanol/lizardwine = 5 )
 	required_temp = 374
 
 /datum/chemical_reaction/scream/on_reaction(datum/reagents/holder, created_volume)

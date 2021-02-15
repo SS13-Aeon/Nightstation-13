@@ -19,8 +19,13 @@
 		else if(isatom(object))
 			qdel(object)
 
+<<<<<<< HEAD
 	if(right_click)
 		if(check_rights(R_DEBUG|R_SERVER))	//Prevents buildmoded non-admins from breaking everything.
+=======
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		if(check_rights(R_DEBUG|R_SERVER)) //Prevents buildmoded non-admins from breaking everything.
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 			if(isturf(object))
 				return
 			var/atom/deleting = object

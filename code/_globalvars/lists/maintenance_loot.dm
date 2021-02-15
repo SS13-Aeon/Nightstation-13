@@ -235,7 +235,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		) = 8,
 
 	list(//fakeout items, keep this list at low relative weight
-		/obj/item/dice/d20 = 1,	//To balance out the stealth die of fates in oddities
+		/obj/item/dice/d20 = 1, //To balance out the stealth die of fates in oddities
 		/obj/item/clothing/shoes/jackboots = 1,
 		) = 1,
 ))
@@ -244,10 +244,15 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 		/obj/effect/rune/teleport = 1,
 		/obj/item/clothing/gloves/color/yellow = 1,
 		/obj/item/clothing/head/helmet/abductor = 1,
+<<<<<<< HEAD
 		/obj/item/clothing/head/helmet/justice =1,
 		/obj/item/clothing/suit/space/hardsuit/carp = 1,
 		/obj/item/dice/d20/fate/stealth/one_use = 1,	//Looks like a d20, keep the d20 in the uncommon pool.
 		/obj/item/dice/d20/fate/stealth/cursed = 1, 	//Only rolls 1
+=======
+		/obj/item/dice/d20/fate/stealth/one_use = 1, //Looks like a d20, keep the d20 in the uncommon pool.
+		/obj/item/dice/d20/fate/stealth/cursed = 1, //Only rolls 1
+>>>>>>> 0f435d5... Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912)
 		/obj/item/clothing/shoes/jackboots/fast = 1,
 		/obj/item/clothing/suit/armor/reactive/table = 1,
 		/obj/item/storage/box/donkpockets/donkpocketgondola = 1
