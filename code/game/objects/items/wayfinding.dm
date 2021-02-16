@@ -7,13 +7,44 @@
 	layer = HIGH_OBJ_LAYER
 	var/list/user_spawn_cooldowns = list()
 	var/list/user_interact_cooldowns = list()
+<<<<<<< HEAD
 	var/spawn_cooldown = 5 MINUTES //time per person to spawn another pinpointer
 	var/interact_cooldown = 20 SECONDS //time per person for subsequent interactions
 	var/start_bal = 200 //how much money it starts with to cover wayfinder refunds
 	var/refund_amt = 40 //how much money recycling a pinpointer rewards you
+=======
+	///How many credits the dispenser account starts with to cover wayfinder refunds.
+	var/start_bal = 400
+	///How many credits recycling a pinpointer rewards you. Set to 2/3 of cost in Initialize().
+	var/refund_amt = 0
+>>>>>>> e87ebc7... Can no longer immediately return a wayfinding pinpointer for a costume (#56916)
 	var/datum/bank_account/synth_acc = new /datum/bank_account/remote
 	var/ppt_cost = 65 //Jan 6 '20: Assistant can buy one roundstart (125 cr starting)
 	var/expression_timer
+<<<<<<< HEAD
+=======
+	///Avoid being Reddit.
+	var/funnyprob = 2
+	///List of slogans used by the dispenser to attract customers.
+	var/list/slogan_list = list("Find a wayfinding pinpointer? Give it to me! I'll make it worth your while. Please. Daddy needs his medicine.", //last sentence is a reference to Sealab 2021
+								"See a wayfinding pinpointer? Don't let it go to the crusher! Recycle it with me instead. I'll pay you!", //I see these things heading for disposals through cargo all the time
+								"Can't find the disk? Need a pinpointer? Buy a wayfinding pinpointer and find the captain's office today!",
+								"Bleeding to death? Can't read? Find your way to medbay today!", //there are signs that point to medbay but you need basic literacy to get the most out of them
+								"Voted tenth best pinpointer in the universe in 2560!", //there were no more than ten pinpointers in the game in 2020
+								"Helping assistants find the departments they tide since 2560.", //not really but it's advertising
+								"These pinpointers are flying out the airlock!", //because they're being thrown into space
+								"Grey pinpointers for the grey tide!", //I didn't pick the colour but it works
+								"Feeling lost? Find direction.",
+								"Automate your sense of direction. Buy a wayfinding pinpointer today!",
+								"Feed me a stray pinpointer.", //American Psycho reference
+								"We need a slogan!") //Liberal Crime Squad reference
+	///Number of the list entry of the slogan we're up to.
+	var/slogan_entry = 0
+	///Next tick we can say a slogan.
+	COOLDOWN_DECLARE(next_slogan_tick)
+	///Next tick the dispenser's spew rejection of non-wayfinding pinpointers can be triggered.
+	COOLDOWN_DECLARE(next_spew_tick)
+>>>>>>> e87ebc7... Can no longer immediately return a wayfinding pinpointer for a costume (#56916)
 
 /obj/machinery/pinpointer_dispenser/Initialize(mapload)
 	. = ..()
@@ -25,7 +56,58 @@
 
 	desc += " Only [ppt_cost] credits! It also likes making costumes..."
 
+<<<<<<< HEAD
 	set_expression("neutral")
+=======
+	power_change()
+
+	COOLDOWN_START(src, next_slogan_tick, COOLDOWN_SLOGAN)
+	slogan_list = shuffle(slogan_list) //minimise repetition
+
+	refund_amt = round(ppt_cost * 2/3)
+
+/obj/machinery/pinpointer_dispenser/power_change()
+	. = ..()
+	cut_overlays()
+	if(powered())
+		set_expression("veryhappy", 2 SECONDS) //v happy to be back in the pinpointer business
+		START_PROCESSING(SSmachines, src)
+
+/obj/machinery/pinpointer_dispenser/update_icon_state()
+	if(machine_stat & BROKEN)
+		set_light(0)
+	else if(powered())
+		set_light(1.4)
+	else
+		set_light(0)
+
+/obj/machinery/pinpointer_dispenser/process(delta_time)
+	if(machine_stat & (BROKEN|NOPOWER))
+		return PROCESS_KILL
+
+	if(!length(slogan_list) || !COOLDOWN_FINISHED(src, next_slogan_tick))
+		return
+	if(++slogan_entry > length(slogan_list))
+		slogan_entry = 1
+	var/slogan = slogan_list[slogan_entry]
+	say(slogan)
+	COOLDOWN_START(src, next_slogan_tick, COOLDOWN_SLOGAN)
+
+/obj/machinery/pinpointer_dispenser/Destroy()
+	for(var/i in 1 to rand(3, 9)) //Doesn't synthesise them in real time and instead stockpiles completed ones (though this is not how the cooldown works)
+		new /obj/item/pinpointer/wayfinding (loc)
+	say("Ouch.")
+	//An inexplicable explosion is never not funny plus it kind of explains why the machine just disappears
+	if(!isnull(loc))
+		explosion(get_turf(src), devastation_range = 0, heavy_impact_range = 0, light_impact_range = 1, flash_range = 3, flame_range = 1, smoke = TRUE)
+	return ..()
+
+/obj/machinery/pinpointer_dispenser/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+
+	if(machine_stat & (BROKEN|NOPOWER))
+		return
+>>>>>>> e87ebc7... Can no longer immediately return a wayfinding pinpointer for a costume (#56916)
 
 /obj/machinery/pinpointer_dispenser/attack_hand(mob/living/user)
 	if(world.time < user_interact_cooldowns[user.real_name])
@@ -34,14 +116,21 @@
 
 	user_interact_cooldowns[user.real_name] = world.time + interact_cooldown
 
+<<<<<<< HEAD
 	for(var/obj/item/pinpointer/wayfinding/WP in user.GetAllContents())
 		set_expression("unsure", 2 SECONDS)
 		say("<span class='robot'>I can detect the pinpointer on you, [user.first_name()].</span>")
 		user_spawn_cooldowns[user.real_name] = world.time + spawn_cooldown //spawn timer resets for trickers
+=======
+	for(var/obj/item/pinpointer/wayfinding/held_pinpointer in user.GetAllContents())
+		set_expression("veryhappy", 2 SECONDS)
+		say("<span class='robot'>You already have a pinpointer!</span>")
+>>>>>>> e87ebc7... Can no longer immediately return a wayfinding pinpointer for a costume (#56916)
 		return
 
 	var/msg
 	var/dispense = TRUE
+<<<<<<< HEAD
 	var/obj/item/pinpointer/wayfinding/pointat
 	for(var/obj/item/pinpointer/wayfinding/WP in range(7, user))
 		if(WP.Adjacent(user))
@@ -53,6 +142,17 @@
 		else if(WP in oview(7, user))
 			pointat = WP
 			break
+=======
+	var/pnpts_found = 0
+	for(var/obj/item/pinpointer/wayfinding/found_pinpointer in view(9, src))
+		point_at(found_pinpointer)
+		pnpts_found++
+
+	if(pnpts_found)
+		set_expression("veryhappy", 2 SECONDS)
+		say("<span class='robot'>[pnpts_found == 1 ? "There's a pinpointer" : "There are pinpointers"] there!</span>")
+		return
+>>>>>>> e87ebc7... Can no longer immediately return a wayfinding pinpointer for a costume (#56916)
 
 	if(world.time < user_spawn_cooldowns[user.real_name])
 		var/secsleft = (user_spawn_cooldowns[user.real_name] - world.time) / 10
@@ -82,6 +182,7 @@
 		user.put_in_hands(P)
 		P.owner = user.real_name
 
+<<<<<<< HEAD
 /obj/machinery/pinpointer_dispenser/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/pinpointer/wayfinding))
 		var/obj/item/pinpointer/wayfinding/WP = I
@@ -105,6 +206,68 @@
 		qdel(WP)
 		set_expression("happy", 2 SECONDS)
 		say("<span class='robot'>Thank you for recycling, [user.first_name()]! Here is [rfnd_amt ? "[rfnd_amt] credits." : "a freshly synthesized costume!"]</span>")
+=======
+/obj/machinery/pinpointer_dispenser/attackby(obj/item/I, mob/living/user, params)
+	if(machine_stat & (BROKEN|NOPOWER))
+		return ..()
+
+	if(istype(I, /obj/item/pinpointer/wayfinding))
+		var/obj/item/pinpointer/wayfinding/attacking_pinpointer = I
+
+		var/itsmypinpointer = TRUE
+		if(attacking_pinpointer.owner != user.real_name)
+			itsmypinpointer = FALSE
+
+		var/is_a_thing = "are [refund_amt] credit\s."
+		if(refund_amt > 0 && synth_acc.has_money(refund_amt) && !attacking_pinpointer.roundstart)
+			synth_acc.adjust_money(-refund_amt)
+			var/obj/item/holochip/holochip = new (user.loc)
+			holochip.credits = refund_amt
+			holochip.name = "[holochip.credits] credit holochip"
+			user.put_in_hands(holochip)
+		else if(!itsmypinpointer)
+			var/costume = pick(subtypesof(/obj/effect/spawner/bundle/costume))
+			new costume(user.loc)
+			is_a_thing = "is a freshly synthesised costume!"
+			if(prob(funnyprob))
+				is_a_thing = "is a pulse rifle! Just kidding it's a costume."
+		else
+			is_a_thing = "is a smile!"
+
+		var/recycling = "recycling"
+		if(prob(funnyprob))
+			recycling = "feeding me"
+
+		var/the_pinpointer = "your pinpointer" //To imply they got a costume because it was their pinpointer
+		if(!itsmypinpointer)
+			the_pinpointer = "that pinpointer"
+
+		to_chat(user, "<span class='notice'>You put [attacking_pinpointer] in the return slot.</span>")
+		qdel(attacking_pinpointer)
+
+		set_expression("veryhappy", 2 SECONDS)
+		say("<span class='robot'>Thank you for [recycling] [the_pinpointer]! Here [is_a_thing]</span>")
+		return
+
+	else if(istype(I, /obj/item/pinpointer))
+		set_expression("sad", 2 SECONDS)
+		user_interact_cooldowns[user.real_name] = world.time + COOLDOWN_INTERACT
+
+		//Any other type of pinpointer can make it throw up.
+		if(COOLDOWN_FINISHED(src, next_spew_tick))
+			I.forceMove(loc)
+			visible_message("<span class='warning'>[src] smartly rejects [I].</span>")
+			say("BLEURRRRGH!")
+			I.throw_at(user, 2, 3)
+			COOLDOWN_START(src, next_spew_tick, COOLDOWN_SPEW)
+
+		return
+
+	else if(I.force)
+		set_expression("sad", 2 SECONDS)
+
+	return ..()
+>>>>>>> e87ebc7... Can no longer immediately return a wayfinding pinpointer for a costume (#56916)
 
 /obj/machinery/pinpointer_dispenser/proc/set_expression(type, duration)
 	cut_overlays()
