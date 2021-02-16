@@ -56,6 +56,7 @@
 	else
 		return ..()
 
+<<<<<<< HEAD
 /obj/structure/fermenting_barrel/attack_hand(mob/user)
 	open = !open
 	if(open)
@@ -65,6 +66,19 @@
 	else
 		reagents.flags |= DRAINABLE
 		reagents.flags &= ~(REFILLABLE)
+=======
+/obj/structure/fermenting_barrel/attack_hand(mob/user, list/modifiers)
+	if(!can_open)
+		return
+	open = !open
+	if(open)
+		reagents.flags &= ~(DRAINABLE)
+		reagents.flags |= REFILLABLE | TRANSPARENT
+		to_chat(user, "<span class='notice'>You open [src], letting you fill it.</span>")
+	else
+		reagents.flags |= DRAINABLE
+		reagents.flags &= ~(REFILLABLE | TRANSPARENT)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		to_chat(user, "<span class='notice'>You close [src], letting you draw from its tap.</span>")
 	update_icon()
 

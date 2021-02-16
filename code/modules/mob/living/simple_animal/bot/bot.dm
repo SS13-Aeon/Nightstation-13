@@ -291,9 +291,15 @@
 	return TRUE //Successful completion. Used to prevent child process() continuing if this one is ended early.
 
 
+<<<<<<< HEAD
 /mob/living/simple_animal/bot/attack_hand(mob/living/carbon/human/H)
 	if(H.a_intent == INTENT_HELP)
 		interact(H)
+=======
+/mob/living/simple_animal/bot/attack_hand(mob/living/carbon/human/user, list/modifiers)
+	if(!user.combat_mode)
+		interact(user)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	else
 		return ..()
 

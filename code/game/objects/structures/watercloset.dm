@@ -18,7 +18,7 @@
 	update_icon()
 
 
-/obj/structure/toilet/attack_hand(mob/living/user)
+/obj/structure/toilet/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -160,7 +160,11 @@
 	. = ..()
 	hiddenitem = new /obj/item/food/urinalcake
 
+<<<<<<< HEAD
 /obj/structure/urinal/attack_hand(mob/user)
+=======
+/obj/structure/urinal/attack_hand(mob/living/user, list/modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	. = ..()
 	if(.)
 		return
@@ -277,7 +281,7 @@
 	. = ..()
 	. += "<span class='notice'>[reagents.total_volume]/[reagents.maximum_volume] liquids remaining.</span>"
 
-/obj/structure/sink/attack_hand(mob/living/user)
+/obj/structure/sink/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -474,7 +478,7 @@
 	var/busy = FALSE 	//Something's being washed at the moment
 	var/dispensedreagent = /datum/reagent/water // for whenever plumbing happens
 
-/obj/structure/water_source/attack_hand(mob/living/user)
+/obj/structure/water_source/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -586,7 +590,7 @@
 	resistance_flags = UNACIDABLE
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/structure/water_source/puddle/attack_hand(mob/M)
+/obj/structure/water_source/puddle/attack_hand(mob/user, list/modifiers)
 	icon_state = "puddle-splash"
 	. = ..()
 	icon_state = "puddle"
@@ -665,7 +669,7 @@
 	return TRUE
 
 
-/obj/structure/curtain/attack_hand(mob/user)
+/obj/structure/curtain/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -708,3 +712,38 @@
 /obj/structure/curtain/cloth/fancy
 	icon_type = "cur_fancy"
 	icon_state = "cur_fancy-open"
+<<<<<<< HEAD
+=======
+
+/obj/structure/curtain/cloth/fancy/mechanical
+	var/id = null
+
+/obj/structure/curtain/cloth/fancy/mechanical/Destroy()
+	GLOB.curtains -= src
+	return ..()
+
+/obj/structure/curtain/cloth/fancy/mechanical/Initialize()
+	. = ..()
+	GLOB.curtains += src
+
+/obj/structure/curtain/cloth/fancy/mechanical/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	id = "[port.id]_[id]"
+
+/obj/structure/curtain/cloth/fancy/mechanical/proc/open()
+	icon_state = "[icon_type]-open"
+	layer = SIGN_LAYER
+	density = FALSE
+	open = TRUE
+	set_opacity(FALSE)
+
+/obj/structure/curtain/cloth/fancy/mechanical/proc/close()
+	icon_state = "[icon_type]-closed"
+	layer = WALL_OBJ_LAYER
+	density = TRUE
+	open = FALSE
+	if(opaque_closed)
+		set_opacity(TRUE)
+
+/obj/structure/curtain/cloth/fancy/mechanical/attack_hand(mob/user, list/modifiers)
+		return
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)

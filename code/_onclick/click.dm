@@ -258,8 +258,16 @@
  *
  * proximity_flag is not currently passed to attack_hand, and is instead used
  * in human click code to allow glove touches only at melee range.
+<<<<<<< HEAD
  */
 /mob/proc/UnarmedAttack(atom/A, proximity_flag)
+=======
+ *
+ * modifiers is a lazy list of click modifiers this attack had,
+ * used for figuring out different properties of the click, mostly right vs left and such.
+ */
+/mob/proc/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(ismob(A))
 		changeNext_move(CLICK_CD_MELEE)
 	return

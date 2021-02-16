@@ -174,10 +174,14 @@
 	open = !open
 	update_icon()
 
-/obj/structure/displaycase/attack_paw(mob/user)
-	return attack_hand(user)
+/obj/structure/displaycase/attack_paw(mob/user, list/modifiers)
+	return attack_hand(user, modifiers)
 
+<<<<<<< HEAD
 /obj/structure/displaycase/attack_hand(mob/user)
+=======
+/obj/structure/displaycase/attack_hand(mob/living/user, list/modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	. = ..()
 	if(.)
 		return

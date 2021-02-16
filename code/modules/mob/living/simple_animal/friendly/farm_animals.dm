@@ -184,14 +184,20 @@
 	if(stat == CONSCIOUS)
 		udder.generateMilk()
 
+<<<<<<< HEAD
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M)
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
 		M.visible_message("<span class='warning'>[M] tips over [src].</span>",
+=======
+/mob/living/simple_animal/cow/attack_hand(mob/living/carbon/user, list/modifiers)
+	if(!stat && LAZYACCESS(modifiers, RIGHT_CLICK) && icon_state != icon_dead)
+		user.visible_message("<span class='warning'>[user] tips over [src].</span>",
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 			"<span class='notice'>You tip over [src].</span>")
-		to_chat(src, "<span class='userdanger'>You are tipped over by [M]!</span>")
+		to_chat(src, "<span class='userdanger'>You are tipped over by [user]!</span>")
 		Paralyze(60, ignore_canstun = TRUE)
 		icon_state = icon_dead
-		addtimer(CALLBACK(src, .proc/cow_tipped, M), rand(20,50))
+		addtimer(CALLBACK(src, .proc/cow_tipped, user), rand(20,50))
 
 	else
 		..()
@@ -227,10 +233,17 @@
 	speak = GLOB.wisdoms //Done here so it's setup properly
 
 ///Give intense wisdom to the attacker if they're being friendly about it
+<<<<<<< HEAD
 /mob/living/simple_animal/cow/wisdom/attack_hand(mob/living/carbon/M)
 	if(!stat && M.a_intent == INTENT_HELP)
 		to_chat(M, "<span class='nicegreen'>[src] whispers you some intense wisdoms and then disappears!</span>")
 		M.mind?.adjust_experience(pick(GLOB.skill_types), 500)
+=======
+/mob/living/simple_animal/cow/wisdom/attack_hand(mob/living/carbon/user, list/modifiers)
+	if(!stat && !user.combat_mode)
+		to_chat(user, "<span class='nicegreen'>[src] whispers you some intense wisdoms and then disappears!</span>")
+		user.mind?.adjust_experience(pick(GLOB.skill_types), 500)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		do_smoke(1, get_turf(src))
 		qdel(src)
 		return

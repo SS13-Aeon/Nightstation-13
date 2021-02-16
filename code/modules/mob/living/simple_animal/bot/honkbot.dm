@@ -112,9 +112,15 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 		target = H
 		mode = BOT_HUNT
 
+<<<<<<< HEAD
 /mob/living/simple_animal/bot/honkbot/attack_hand(mob/living/carbon/human/H)
 	if(H.a_intent == "harm")
 		retaliate(H)
+=======
+/mob/living/simple_animal/bot/honkbot/attack_hand(mob/living/carbon/human/user, list/modifiers)
+	if(user.combat_mode)
+		retaliate(user)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		addtimer(CALLBACK(src, .proc/react_buzz), 5)
 	return ..()
 
@@ -140,7 +146,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 		retaliate(Proj.firer)
 	return ..()
 
-/mob/living/simple_animal/bot/honkbot/UnarmedAttack(atom/A)
+/mob/living/simple_animal/bot/honkbot/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	if(!on)
 		return
 	if(iscarbon(A))
@@ -340,7 +346,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 	new /obj/effect/decal/cleanable/oil(loc)
 	..()
 
-/mob/living/simple_animal/bot/honkbot/attack_alien(mob/living/carbon/alien/user as mob)
+/mob/living/simple_animal/bot/honkbot/attack_alien(mob/living/carbon/alien/user, list/modifiers)
 	..()
 	if(!isalien(target))
 		target = user

@@ -56,6 +56,7 @@
 	popup.set_content(dat)
 	popup.open()
 
+<<<<<<< HEAD
 /obj/machinery/food_cart/proc/isFull()
 	return food_stored >= STORAGE_CAPACITY
 
@@ -103,6 +104,38 @@
 					else
 						stored_food[sanitize(S.name)] = 1
 	else if(O.is_drainable())
+=======
+/obj/machinery/food_cart/proc/unpack(mob/user)
+	if(unpacked)
+		return
+	if(!check_setup_place())
+		to_chat(user, "<span class='warning'>There isn't enough room to unpack here! Bad spaces were marked in red.</span>")
+		return
+	visible_message("<span class='notice'>[src] expands into a full stand.</span>")
+	anchored = TRUE
+	var/iteration = 1
+	var/turf/grabbed_turf = get_step(get_turf(src), EAST)
+	for(var/angle in list(0, -45, -45, 45))
+		var/turf/T = get_step(grabbed_turf, turn(SOUTH, angle))
+		var/obj/thing = packed_things[iteration]
+		thing.forceMove(T)
+		RegisterSignal(thing, COMSIG_MOVABLE_MOVED, .proc/lost_part)
+		iteration++
+	unpacked = TRUE
+
+/obj/machinery/food_cart/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(machine_stat & BROKEN)
+		to_chat(user, "<span class='warning'>[src] is completely busted.</span>")
+		return
+	var/obj/item/card/id/id_card = user.get_idcard(hand_first = TRUE)
+	if(!check_access(id_card))
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
+		return
+	to_chat(user, "<span class='notice'>You attempt to [unpacked ? "pack up" :"unpack"] [src]...</span>")
+	if(!do_after(user, 5 SECONDS, src))
+		to_chat(user, "<span class='warning'>Your [unpacked ? "" :"un"]packing of [src] was interrupted!</span>")
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		return
 	else
 		. = ..()

@@ -282,18 +282,22 @@
  * Attack responces
  */
 //Humans, monkeys, aliens
-/mob/living/simple_animal/parrot/attack_hand(mob/living/carbon/M)
+/mob/living/simple_animal/parrot/attack_hand(mob/living/carbon/user, list/modifiers)
 	..()
 	if(client)
 		return
+<<<<<<< HEAD
 	if(!stat && M.a_intent == INTENT_HARM)
+=======
+	if(!stat && user.combat_mode)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 
 		icon_state = icon_living //It is going to be flying regardless of whether it flees or attacks
 
 		if(parrot_state == PARROT_PERCH)
 			parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
 
-		parrot_interest = M
+		parrot_interest = user
 		parrot_state = PARROT_SWOOP //The parrot just got hit, it WILL move, now to pick a direction..
 
 		if(health > 30) //Let's get in there and squawk it up!
@@ -301,18 +305,27 @@
 		else
 			parrot_state |= PARROT_FLEE		//Otherwise, fly like a bat out of hell!
 			drop_held_item(0)
+<<<<<<< HEAD
 	if(stat != DEAD && M.a_intent == INTENT_HELP)
 		handle_automated_speech(1) //assured speak/emote
 	return
 
 /mob/living/simple_animal/parrot/attack_paw(mob/living/carbon/monkey/M)
 	return attack_hand(M)
+=======
+	if(stat != DEAD && !user.combat_mode)
+		handle_automated_speech(1) //assured speak/emote
+	return
 
-/mob/living/simple_animal/parrot/attack_alien(mob/living/carbon/alien/M)
-	return attack_hand(M)
+/mob/living/simple_animal/parrot/attack_paw(mob/living/carbon/human/user, list/modifiers)
+	return attack_hand(modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
+
+/mob/living/simple_animal/parrot/attack_alien(mob/living/carbon/alien/user, list/modifiers)
+	return attack_hand(user, modifiers)
 
 //Simple animals
-/mob/living/simple_animal/parrot/attack_animal(mob/living/simple_animal/M)
+/mob/living/simple_animal/parrot/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	. = ..() //goodbye immortal parrots
 
 	if(client)
@@ -321,8 +334,8 @@
 	if(parrot_state == PARROT_PERCH)
 		parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
 
-	if(M.melee_damage_upper > 0 && !stat)
-		parrot_interest = M
+	if(user.melee_damage_upper > 0 && !stat)
+		parrot_interest = user
 		parrot_state = PARROT_SWOOP | PARROT_ATTACK //Attack other animals regardless
 		icon_state = icon_living
 

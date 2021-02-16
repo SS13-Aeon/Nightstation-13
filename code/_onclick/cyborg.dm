@@ -159,7 +159,13 @@
 	clicks, you can do so here, but you will have to
 	change attack_robot() above to the proper function
 */
+<<<<<<< HEAD
 /mob/living/silicon/robot/UnarmedAttack(atom/A)
+=======
+/mob/living/silicon/robot/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
+		return
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	A.attack_robot(src)
 /mob/living/silicon/robot/RangedAttack(atom/A)
 	A.attack_robot(src)

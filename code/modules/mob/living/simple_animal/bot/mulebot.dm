@@ -809,7 +809,13 @@
 	if(load)
 		unload()
 
+<<<<<<< HEAD
 /mob/living/simple_animal/bot/mulebot/UnarmedAttack(atom/A)
+=======
+/mob/living/simple_animal/bot/mulebot/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
+		return
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(isturf(A) && isturf(loc) && loc.Adjacent(A) && load)
 		unload(get_dir(loc, A))
 	else

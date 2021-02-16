@@ -391,7 +391,13 @@
 /obj/machinery/bot_core/floorbot
 	req_one_access = list(ACCESS_CONSTRUCTION, ACCESS_ROBOTICS)
 
+<<<<<<< HEAD
 /mob/living/simple_animal/bot/floorbot/UnarmedAttack(atom/A)
+=======
+/mob/living/simple_animal/bot/floorbot/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
+		return
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(isturf(A))
 		repair(A)
 	else
