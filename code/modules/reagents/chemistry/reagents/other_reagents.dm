@@ -1134,7 +1134,10 @@
 	name = "Nanomachines"
 	description = "Microscopic construction robots."
 	color = "#535E66" // rgb: 83, 94, 102
+<<<<<<< HEAD
 	can_synth = FALSE
+=======
+>>>>>>> 6bfa2d3... Stop plants from creating xenomicrobes, nanomachines and tuberculosis (#56939)
 	taste_description = "sludge"
 	penetrates_skin = NONE
 
@@ -1147,7 +1150,10 @@
 	name = "Xenomicrobes"
 	description = "Microbes with an entirely alien cellular structure."
 	color = "#535E66" // rgb: 83, 94, 102
+<<<<<<< HEAD
 	can_synth = FALSE
+=======
+>>>>>>> 6bfa2d3... Stop plants from creating xenomicrobes, nanomachines and tuberculosis (#56939)
 	taste_description = "sludge"
 	penetrates_skin = NONE
 
@@ -1160,7 +1166,10 @@
 	name = "Tubercle bacillus Cosmosis microbes"
 	description = "Active fungal spores."
 	color = "#92D17D" // rgb: 146, 209, 125
+<<<<<<< HEAD
 	can_synth = FALSE
+=======
+>>>>>>> 6bfa2d3... Stop plants from creating xenomicrobes, nanomachines and tuberculosis (#56939)
 	taste_description = "slime"
 	penetrates_skin = NONE
 
