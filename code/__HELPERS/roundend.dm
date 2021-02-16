@@ -359,7 +359,36 @@
 /client/proc/roundend_report_file()
 	return "data/roundend_reports/[ckey].html"
 
+<<<<<<< HEAD
 /datum/controller/subsystem/ticker/proc/show_roundend_report(client/C, previous = FALSE)
+=======
+/**
+ * Log the round-end report as an HTML file
+ *
+ * Composits the roundend report, and saves it in two locations.
+ * The report is first saved along with the round's logs
+ * Then, the report is copied to a fixed directory specifically for
+ * housing the server's last roundend report. In this location,
+ * the file will be overwritten at the end of each shift.
+ */
+/datum/controller/subsystem/ticker/proc/log_roundend_report()
+	var/roundend_file = file("[GLOB.log_directory]/round_end_data.html")
+	var/list/parts = list()
+	parts += "<div class='panel stationborder'>"
+	parts += GLOB.survivor_report
+	parts += "</div>"
+	parts += GLOB.common_report
+	var/content = parts.Join()
+	//Log the rendered HTML in the round log directory
+	fdel(roundend_file)
+	WRITE_FILE(roundend_file, content)
+	//Place a copy in the root folder, to be overwritten each round.
+	roundend_file = file("data/server_last_roundend_report.html")
+	fdel(roundend_file)
+	WRITE_FILE(roundend_file, content)
+
+/datum/controller/subsystem/ticker/proc/show_roundend_report(client/C, report_type = null)
+>>>>>>> 1fac348... 'Server's Last Round' fix (#56934)
 	var/datum/browser/roundend_report = new(C, "roundend")
 	roundend_report.width = 800
 	roundend_report.height = 600
@@ -368,7 +397,6 @@
 	if(!previous)
 		var/list/report_parts = list(personal_report(C), GLOB.common_report)
 		content = report_parts.Join()
-		remove_verb(C, /client/proc/show_previous_roundend_report)
 		fdel(filename)
 		text2file(content, filename)
 	else
