@@ -99,6 +99,7 @@
 #define CAT_ICE	"Frozen"
 #define CAT_DRINK "Drinks"
 
+<<<<<<< HEAD
 // these aren't even used as bitflags so who even knows why they are treated like them
 #define RCD_FLOORWALL (1<<0)
 #define RCD_AIRLOCK (1<<1)
@@ -110,6 +111,19 @@
 
 #define RCD_UPGRADE_FRAMES (1<<0)
 #define RCD_UPGRADE_SIMPLE_CIRCUITS	(1<<1)
+=======
+//rcd modes
+#define RCD_FLOORWALL 0
+#define RCD_AIRLOCK 1
+#define RCD_DECONSTRUCT 2
+#define RCD_WINDOWGRILLE 3
+#define RCD_MACHINE 4
+#define RCD_COMPUTER 5
+#define RCD_FURNISHING 6
+
+#define RCD_UPGRADE_FRAMES (1<<0)
+#define RCD_UPGRADE_SIMPLE_CIRCUITS (1<<1)
+>>>>>>> bd5228e... RCD upgrades now work again (#56931)
 #define RCD_UPGRADE_SILO_LINK (1<<2)
 #define RCD_UPGRADE_FURNISHING (1<<3)
 
