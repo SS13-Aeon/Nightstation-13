@@ -23,7 +23,7 @@
 		projector = null
 	return ..()
 
-/obj/structure/holosign/attack_hand(mob/living/user)
+/obj/structure/holosign/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -154,8 +154,13 @@
 		return FALSE
 	return TRUE
 
+<<<<<<< HEAD
 /obj/structure/holosign/barrier/medical/attack_hand(mob/living/user)
 	if(CanPass(user) && user.a_intent == INTENT_HELP)
+=======
+/obj/structure/holosign/barrier/medical/attack_hand(mob/living/user, list/modifiers)
+	if(CanPass(user) && !user.combat_mode)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		force_allaccess = !force_allaccess
 		to_chat(user, "<span class='warning'>You [force_allaccess ? "deactivate" : "activate"] the biometric scanners.</span>") //warning spans because you can make the station sick!
 	else
@@ -174,7 +179,7 @@
 /obj/structure/holosign/barrier/cyborg/hacked/proc/cooldown()
 	shockcd = FALSE
 
-/obj/structure/holosign/barrier/cyborg/hacked/attack_hand(mob/living/user)
+/obj/structure/holosign/barrier/cyborg/hacked/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

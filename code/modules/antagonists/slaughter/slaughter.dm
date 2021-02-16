@@ -126,7 +126,13 @@
 	slam_cooldown = world.time
 	log_combat(src, victim, "slaughter slammed")
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/imp/slaughter/UnarmedAttack(atom/A, proximity)
+=======
+/mob/living/simple_animal/hostile/imp/slaughter/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
+		return
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(iscarbon(A))
 		var/mob/living/carbon/target = A
 		if(target.stat != DEAD && target.mind && current_hitstreak < wound_bonus_hitstreak_max)

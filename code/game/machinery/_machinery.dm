@@ -420,8 +420,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
 /obj/machinery/attack_paw(mob/living/user)
 	if(user.a_intent != INTENT_HARM)
+=======
+/obj/machinery/attack_paw(mob/living/user, list/modifiers)
+	if(!user.combat_mode)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		return attack_hand(user)
 	else
 		user.changeNext_move(CLICK_CD_MELEE)

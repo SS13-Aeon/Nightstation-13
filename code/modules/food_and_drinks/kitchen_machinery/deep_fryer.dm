@@ -105,7 +105,11 @@
 /obj/machinery/deepfryer/attack_ai(mob/user)
 	return
 
+<<<<<<< HEAD
 /obj/machinery/deepfryer/attack_hand(mob/user)
+=======
+/obj/machinery/deepfryer/attack_hand(mob/living/user, list/modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(frying)
 		if(frying.loc == src)
 			to_chat(user, "<span class='notice'>You eject [frying] from [src].</span>")

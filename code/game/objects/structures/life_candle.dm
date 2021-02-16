@@ -24,7 +24,15 @@
 	var/respawn_time = 50
 	var/respawn_sound = 'sound/magic/staff_animation.ogg'
 
+<<<<<<< HEAD
 /obj/structure/life_candle/attack_hand(mob/user)
+=======
+/obj/structure/life_candle/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/movetype_handler)
+
+/obj/structure/life_candle/attack_hand(mob/user, list/modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	. = ..()
 	if(.)
 		return

@@ -27,7 +27,16 @@
 
 	set_expression("neutral")
 
+<<<<<<< HEAD
 /obj/machinery/pinpointer_dispenser/attack_hand(mob/living/user)
+=======
+/obj/machinery/pinpointer_dispenser/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+
+	if(machine_stat & (BROKEN|NOPOWER))
+		return
+
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(world.time < user_interact_cooldowns[user.real_name])
 		to_chat(user, "<span class='warning'>It doesn't respond.</span>")
 		return

@@ -57,7 +57,7 @@ Slimecrossing Armor
 	set_light_color(newcolor)
 	set_light(5)
 
-/obj/structure/light_prism/attack_hand(mob/user)
+/obj/structure/light_prism/attack_hand(mob/user, list/modifiers)
 	to_chat(user, "<span class='notice'>You dispel [src].</span>")
 	qdel(src)
 
@@ -109,6 +109,7 @@ Slimecrossing Armor
 	throw_speed = 1
 	throw_range = 3
 
+<<<<<<< HEAD
 /obj/item/clothing/head/peaceflower/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_HEAD)
@@ -119,6 +120,9 @@ Slimecrossing Armor
 	REMOVE_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
 
 /obj/item/clothing/head/peaceflower/attack_hand(mob/user)
+=======
+/obj/item/clothing/head/peaceflower/attack_hand(mob/user, list/modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.head)

@@ -49,7 +49,13 @@
 		return ..()
 	eat_atom(attacked_target)
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/ooze/UnarmedAttack(atom/A)
+=======
+/mob/living/simple_animal/hostile/ooze/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
+		return
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(!check_edible(A))
 		return ..()
 	eat_atom(A)

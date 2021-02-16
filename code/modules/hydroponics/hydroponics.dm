@@ -767,7 +767,7 @@
 
 	return ..()
 
-/obj/machinery/hydroponics/attack_hand(mob/user)
+/obj/machinery/hydroponics/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

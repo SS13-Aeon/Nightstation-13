@@ -108,7 +108,13 @@
 		evolve()
 		return
 
+<<<<<<< HEAD
 /mob/living/simple_animal/mouse/UnarmedAttack(atom/A, proximity)
+=======
+/mob/living/simple_animal/mouse/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
+		return
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	. = ..()
 	if(istype(A, /obj/item/food/cheesewedge) && canUseTopic(A, BE_CLOSE, NO_DEXTERITY))
 		if(health == maxHealth)

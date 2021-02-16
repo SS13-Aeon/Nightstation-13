@@ -778,8 +778,13 @@ GLOBAL_LIST_EMPTY(allCasters)
 		playsound(loc, 'sound/effects/glassbr3.ogg', 100, TRUE)
 
 
+<<<<<<< HEAD
 /obj/machinery/newscaster/attack_paw(mob/user)
 	if(user.a_intent != INTENT_HARM)
+=======
+/obj/machinery/newscaster/attack_paw(mob/living/user, list/modifiers)
+	if(!user.combat_mode)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		to_chat(user, "<span class='warning'>The newscaster controls are far too complicated for your tiny brain!</span>")
 	else
 		take_damage(5, BRUTE, MELEE)

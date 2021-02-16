@@ -72,6 +72,7 @@
 	. = ..()
 	density = FALSE
 
+<<<<<<< HEAD
 /obj/vehicle/ridden/wheelchair/motorized/attack_hand(mob/living/user)
 	if(power_cell && panel_open)
 		power_cell.update_icon()
@@ -80,6 +81,15 @@
 		to_chat(user, "<span class='notice'>You remove the power cell from [src].</span>")
 		return
 	return ..()
+=======
+/obj/vehicle/ridden/wheelchair/motorized/attack_hand(mob/living/user, list/modifiers)
+	if(!power_cell || !panel_open)
+		return ..()
+	power_cell.update_icon()
+	to_chat(user, "<span class='notice'>You remove [power_cell] from [src].</span>")
+	user.put_in_hands(power_cell)
+	power_cell = null
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 
 /obj/vehicle/ridden/wheelchair/motorized/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)

@@ -12,7 +12,14 @@
 	open_sound_volume = 25
 	close_sound_volume = 50
 
+<<<<<<< HEAD
 /obj/structure/closet/crate/large/attack_hand(mob/user)
+=======
+	// Stops people from "diving into" a crate you can't open normally
+	divable = FALSE
+
+/obj/structure/closet/crate/large/attack_hand(mob/user, list/modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	add_fingerprint(user)
 	if(manifest)
 		tear_manifest(user)

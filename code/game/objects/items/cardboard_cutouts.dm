@@ -38,8 +38,13 @@
 	))
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
+<<<<<<< HEAD
 /obj/item/cardboard_cutout/attack_hand(mob/living/user)
 	if(user.a_intent == INTENT_HELP || pushed_over)
+=======
+/obj/item/cardboard_cutout/attack_hand(mob/living/user, list/modifiers)
+	if(!user.combat_mode || pushed_over)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		return ..()
 	user.visible_message("<span class='warning'>[user] pushes over [src]!</span>", "<span class='danger'>You push over [src]!</span>")
 	playsound(src, 'sound/weapons/genhit.ogg', 50, TRUE)

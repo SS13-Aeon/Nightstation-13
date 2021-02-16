@@ -81,7 +81,7 @@
 	..()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/taperecorder/attack_hand(mob/user)
+/obj/item/taperecorder/attack_hand(mob/user, list/modifiers)
 	if(loc != user || !mytape || !user.is_holding(src))
 		return ..()
 	eject(user)

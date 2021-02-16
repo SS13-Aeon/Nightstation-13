@@ -67,7 +67,7 @@
 		MA.pixel_y = 12
 		. += H
 
-/obj/structure/headpike/attack_hand(mob/user)
+/obj/structure/headpike/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

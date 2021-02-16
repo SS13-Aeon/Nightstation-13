@@ -173,6 +173,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	if(smeared_mob.density || prob(10))
 		smeared_mob.ex_act(EXPLODE_HEAVY)
 
+<<<<<<< HEAD
 /obj/effect/immovablerod/attack_hand(mob/living/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/U = user
@@ -193,3 +194,70 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 				new /obj/structure/festivus/anchored(drop_location())
 				new /obj/effect/anomaly/flux(drop_location())
 				qdel(src)
+=======
+/obj/effect/immovablerod/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(.)
+		return
+
+	if(!(HAS_TRAIT(user, TRAIT_ROD_SUPLEX) || (user.mind && HAS_TRAIT(user.mind, TRAIT_ROD_SUPLEX))))
+		return
+
+	playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
+	for(var/mob/M in urange(8, src))
+		if(M.stat != CONSCIOUS)
+			continue
+		shake_camera(M, 2, 3)
+
+	if(wizard)
+		user.visible_message("<span class='boldwarning'>[src] transforms into [wizard] as [user] suplexes them!</span>", "<span class='warning'>As you grab [src], it suddenly turns into [wizard] as you suplex them!</span>")
+		to_chat(wizard, "<span class='boldwarning'>You're suddenly jolted out of rod-form as [user] somehow manages to grab you, slamming you into the ground!</span>")
+		wizard.Stun(60)
+		wizard.apply_damage(25, BRUTE)
+		qdel(src)
+	else
+		user.client.give_award(/datum/award/achievement/misc/feat_of_strength, user) //rod-form wizards would probably make this a lot easier to get so keep it to regular rods only
+		user.visible_message("<span class='boldwarning'>[user] suplexes [src] into the ground!</span>", "<span class='warning'>You suplex [src] into the ground!</span>")
+		new /obj/structure/festivus/anchored(drop_location())
+		new /obj/effect/anomaly/flux(drop_location())
+		qdel(src)
+
+	return TRUE
+
+/* Below are a couple of admin helper procs when dealing with immovable rod memes. */
+/**
+ * Stops your rod's automated movement. Sit... Stay... Good rod!
+ */
+/obj/effect/immovablerod/proc/sit_stay_good_rod()
+	walk(src, 0)
+
+/**
+ * Allows your rod to release restraint level zero and go for a walk.
+ *
+ * If walkies_location is set, rod will walk_towards the location, chasing it across z-levels if necessary.
+ * If walkies_location is not set, rod will call complete_trajectory() and follow the logic from that proc.
+ *
+ * Arguments:
+ * * walkies_location - Any atom that the immovable rod will now chase down as a special target.
+ */
+/obj/effect/immovablerod/proc/go_for_a_walk(walkies_location = null)
+	if(walkies_location)
+		special_target = walkies_location
+		walk_towards(src, special_target, 1)
+		return
+
+	complete_trajectory()
+
+/obj/effect/immovablerod/deadchat_plays(mode = DEMOCRACY_MODE, cooldown = 6 SECONDS)
+	return AddComponent(/datum/component/deadchat_control/immovable_rod, mode, list(), cooldown)
+
+/**
+ * Rod will walk towards edge turf in the specified direction.
+ *
+ * Arguments:
+ * * direction - The direction to walk the rod towards: NORTH, SOUTH, EAST, WEST.
+ */
+/obj/effect/immovablerod/proc/walk_in_direction(direction)
+	destination = get_edge_target_turf(src, direction)
+	walk_towards(src, destination, 1)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)

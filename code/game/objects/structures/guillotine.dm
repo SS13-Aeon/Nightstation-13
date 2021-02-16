@@ -66,7 +66,11 @@
 	if (LAZYLEN(buckled_mobs))
 		. += "Someone appears to be strapped in. You can help them out, or you can harm them by activating the guillotine."
 
+<<<<<<< HEAD
 /obj/structure/guillotine/attack_hand(mob/user)
+=======
+/obj/structure/guillotine/attack_hand(mob/living/user, list/modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	add_fingerprint(user)
 
 	// Currently being used by something

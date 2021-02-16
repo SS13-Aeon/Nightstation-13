@@ -55,7 +55,7 @@
 	return TRUE
 
 
-/obj/vehicle/sealed/car/attack_hand(mob/living/user)
+/obj/vehicle/sealed/car/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(!(car_traits & CAN_KIDNAP))
 		return

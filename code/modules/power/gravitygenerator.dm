@@ -87,8 +87,13 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 /obj/machinery/gravity_generator/part/get_status()
 	return main_part?.get_status()
 
+<<<<<<< HEAD
 /obj/machinery/gravity_generator/part/attack_hand(mob/user)
 	return main_part.attack_hand(user)
+=======
+/obj/machinery/gravity_generator/part/attack_hand(mob/user, list/modifiers)
+	return main_part.attack_hand(user, modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 
 /obj/machinery/gravity_generator/part/set_broken()
 	..()

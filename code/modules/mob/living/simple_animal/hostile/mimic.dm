@@ -298,9 +298,13 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/mimic/xenobio/attack_hand(mob/living/carbon/human/M)
+/mob/living/simple_animal/hostile/mimic/xenobio/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	. = ..()
+<<<<<<< HEAD
 	if(M.a_intent != "help")
+=======
+	if(user.combat_mode)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		return
 	toggle_open()
 

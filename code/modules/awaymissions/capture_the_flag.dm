@@ -48,6 +48,7 @@
 	if(is_ctf_target(loc)) //don't reset from someone's hands.
 		return PROCESS_KILL
 	if(world.time > reset_cooldown)
+<<<<<<< HEAD
 		forceMove(get_turf(src.reset))
 		for(var/mob/M in GLOB.player_list)
 			var/area/mob_area = get_area(M)
@@ -57,6 +58,25 @@
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/ctf/attack_hand(mob/living/user)
+=======
+		reset_flag()
+
+/obj/item/ctf/proc/reset_flag(capture = FALSE)
+	SIGNAL_HANDLER
+
+	forceMove(get_turf(src.reset))
+	for(var/mob/M in GLOB.player_list)
+		var/area/mob_area = get_area(M)
+		if(istype(mob_area, game_area))
+			if(!capture)
+				to_chat(M, "<span class='userdanger'>[src] has been returned to the base!</span>")
+	STOP_PROCESSING(SSobj, src)
+	return TRUE //so if called by a signal, it doesn't delete
+
+//working with attack hand feels like taking my brain and putting it through an industrial pill press so i'm gonna be a bit liberal with the comments
+/obj/item/ctf/attack_hand(mob/living/user, list/modifiers)
+	//pre normal check item stuff, this is for our special flag checks
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	if(!is_ctf_target(user) && !anyonecanpickup)
 		to_chat(user, "<span class='warning'>Non-players shouldn't be moving the flag!</span>")
 		return
@@ -681,7 +701,7 @@
 /obj/machinery/control_point/attackby(mob/user, params)
 	capture(user)
 
-/obj/machinery/control_point/attack_hand(mob/user)
+/obj/machinery/control_point/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

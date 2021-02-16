@@ -122,17 +122,21 @@
 	deathmessage = "blows apart!"
 	..()
 
-/mob/living/simple_animal/hostile/mining_drone/attack_hand(mob/living/carbon/human/M)
+/mob/living/simple_animal/hostile/mining_drone/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
+<<<<<<< HEAD
 	if(M.a_intent == INTENT_HELP)
+=======
+	if(!user.combat_mode)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 		toggle_mode()
 		switch(mode)
 			if(MINEDRONE_COLLECT)
-				to_chat(M, "<span class='info'>[src] has been set to search and store loose ore.</span>")
+				to_chat(user, "<span class='info'>[src] has been set to search and store loose ore.</span>")
 			if(MINEDRONE_ATTACK)
-				to_chat(M, "<span class='info'>[src] has been set to attack hostile wildlife.</span>")
+				to_chat(user, "<span class='info'>[src] has been set to attack hostile wildlife.</span>")
 		return
 
 /mob/living/simple_animal/hostile/mining_drone/CanAllowThrough(atom/movable/O)

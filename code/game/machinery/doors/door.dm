@@ -167,7 +167,7 @@
 			do_animate("deny")
 	return
 
-/obj/machinery/door/attack_hand(mob/user)
+/obj/machinery/door/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

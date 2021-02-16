@@ -243,7 +243,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	color = null
 	add_atom_colour(pipe_cleaner_color, FIXED_COLOUR_PRIORITY)
 
-/obj/item/stack/pipe_cleaner_coil/attack_hand(mob/user)
+/obj/item/stack/pipe_cleaner_coil/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

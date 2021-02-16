@@ -83,8 +83,14 @@
 		if(BURN)
 			playsound(loc, 'sound/items/welder.ogg', 100, TRUE)
 
+<<<<<<< HEAD
 /obj/structure/bed/nest/attack_alien(mob/living/carbon/alien/user)
 	if(user.a_intent != INTENT_HARM)
 		return attack_hand(user)
+=======
+/obj/structure/bed/nest/attack_alien(mob/living/carbon/alien/user, list/modifiers)
+	if(!user.combat_mode)
+		return attack_hand(user, modifiers)
+>>>>>>> 5c22a0c... Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847)
 	else
 		return ..()
