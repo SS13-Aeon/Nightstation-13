@@ -250,6 +250,7 @@
 	baseturfs = /turf/open/lava/plasma/mafia
 	slowdown = 0
 
+<<<<<<< HEAD
 /obj/vehicle/ridden/lavaboat/plasma
 	name = "plasma boat"
 	desc = "A boat used for traversing the streams of plasma without turning into an icecube."
@@ -258,6 +259,9 @@
 	resistance_flags = FREEZE_PROOF
 	can_buckle = TRUE
 ///////////	papers
+=======
+/////////// papers
+>>>>>>> 9ee4703... Icebox QoL minus features (#56472)
 
 
 /obj/item/paper/crumpled/ruins/snowdin/foreshadowing
