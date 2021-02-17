@@ -192,6 +192,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SECURITY_HUD		"sec_hud"
 #define TRAIT_DIAGNOSTIC_HUD	"diag_hud" //for something granting you a diagnostic hud
 #define TRAIT_MEDIBOTCOMINGTHROUGH "medbot" //Is a medbot healing you
+<<<<<<< HEAD
 #define TRAIT_PASSTABLE			"passtable"
 #define TRAIT_NOFLASH			"noflash" //Makes you immune to flashes
 #define TRAIT_XENO_IMMUNE		"xeno_immune"//prevents xeno huggies implanting skeletons
@@ -210,6 +211,78 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PERMANENTLY_ONFIRE	"permanently_onfire" //overrides the update_fire proc to always add fire (for lava)
 #define TRAIT_SIGN_LANG				"sign_language" //Galactic Common Sign Language
 #define TRAIT_NANITE_MONITORING	"nanite_monitoring" //The mob's nanites are sending a monitoring signal visible on diag HUD
+=======
+#define TRAIT_PASSTABLE "passtable"
+#define TRAIT_NOFLASH "noflash" //Makes you immune to flashes
+#define TRAIT_XENO_IMMUNE "xeno_immune"//prevents xeno huggies implanting skeletons
+#define TRAIT_FLASH_SENSITIVE "flash_sensitive"//Makes you flashable from any direction
+#define TRAIT_NAIVE "naive"
+#define TRAIT_PRIMITIVE "primitive"
+#define TRAIT_GUNFLIP "gunflip"
+#define TRAIT_SPECIAL_TRAUMA_BOOST "special_trauma_boost" ///Increases chance of getting special traumas, makes them harder to cure
+#define TRAIT_BLOODCRAWL_EAT "bloodcrawl_eat"
+#define TRAIT_SPACEWALK "spacewalk"
+#define TRAIT_GAMERGOD "gamer-god" //double arcade prizes
+#define TRAIT_GIANT "giant"
+#define TRAIT_DWARF "dwarf"
+#define TRAIT_SILENT_FOOTSTEPS "silent_footsteps" //makes your footsteps completely silent
+#define TRAIT_NICE_SHOT "nice_shot" //hnnnnnnnggggg..... you're pretty good....
+#define TRAIT_TUMOR_SUPPRESSED "brain_tumor_suppressed" //prevents the damage done by a brain tumor
+#define TRAIT_PERMANENTLY_ONFIRE "permanently_onfire" //overrides the update_fire proc to always add fire (for lava)
+#define TRAIT_SIGN_LANG "sign_language" //Galactic Common Sign Language
+#define TRAIT_NANITE_MONITORING "nanite_monitoring" //The mob's nanites are sending a monitoring signal visible on diag HUD
+#define TRAIT_MARTIAL_ARTS_IMMUNE "martial_arts_immune" // nobody can use martial arts on this mob
+#define TRAIT_DUFFEL_CURSED "duffel_cursed" //You've been cursed with a living duffelbag, and can't have more added
+/// Prevents mob from riding mobs when buckled onto something
+#define TRAIT_CANT_RIDE "cant_ride"
+#define TRAIT_BLOODY_MESS "bloody_mess" //from heparin, makes open bleeding wounds rapidly spill more blood
+#define TRAIT_COAGULATING "coagulating" //from coagulant reagents, this doesn't affect the bleeding itself but does affect the bleed warning messages
+/// From anti-convulsant medication against seizures.
+#define TRAIT_ANTICONVULSANT "anticonvulsant"
+/// The holder of this trait has antennae or whatever that hurt a ton when noogied
+#define TRAIT_ANTENNAE "antennae"
+/// Blowing kisses actually does damage to the victim
+#define TRAIT_KISS_OF_DEATH "kiss_of_death"
+
+#define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
+
+// You can stare into the abyss, but it does not stare back.
+// You're immune to the hallucination effect of the supermatter, either
+// through force of will, or equipment. Present on /mob or /datum/mind
+#define TRAIT_SUPERMATTER_MADNESS_IMMUNE "supermatter_madness_immune"
+
+// You can stare into the abyss, and it turns pink.
+// Being close enough to the supermatter makes it heal at higher temperatures
+// and emit less heat. Present on /mob or /datum/mind
+#define TRAIT_SUPERMATTER_SOOTHER "supermatter_soother"
+/*
+* Trait granted by various security jobs, and checked by [/obj/item/food/donut]
+* When present in the mob's mind, they will always love donuts.
+*/
+#define TRAIT_DONUT_LOVER "donut_lover"
+
+// METABOLISMS
+// Various jobs on the station have historically had better reactions
+// to various drinks and foodstuffs. Security liking donuts is a classic
+// example. Through years of training/abuse, their livers have taken
+// a liking to those substances. Steal a sec officer's liver, eat donuts good.
+
+// These traits are applied to /obj/item/organ/liver
+#define TRAIT_LAW_ENFORCEMENT_METABOLISM "law_enforcement_metabolism"
+#define TRAIT_CULINARY_METABOLISM "culinary_metabolism"
+#define TRAIT_COMEDY_METABOLISM "comedy_metabolism"
+#define TRAIT_MEDICAL_METABOLISM "medical_metabolism"
+#define TRAIT_GREYTIDE_METABOLISM "greytide_metabolism"
+#define TRAIT_ENGINEER_METABOLISM "engineer_metabolism"
+#define TRAIT_ROYAL_METABOLISM "royal_metabolism"
+#define TRAIT_PRETENDER_ROYAL_METABOLISM "pretender_royal_metabolism"
+
+// If present on a mob or mobmind, allows them to "suplex" an immovable rod
+// turning it into a glorified potted plant, and giving them an
+// achievement. Can also be used on rod-form wizards.
+// Normally only present in the mind of a Research Director.
+#define TRAIT_ROD_SUPLEX "rod_suplex"
+>>>>>>> ef80ed1... Addiction rework (#56923)
 
 //SKILLS
 #define TRAIT_UNDERWATER_BASKETWEAVING_KNOWLEDGE "underwater_basketweaving"

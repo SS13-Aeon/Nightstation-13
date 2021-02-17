@@ -420,7 +420,11 @@
 				state = "Gas"
 			var/const/P = 3 //The number of seconds between life ticks
 			var/T = initial(R.metabolization_rate) * (60 / P)
+<<<<<<< HEAD
 			analyze_vars = list("name" = initial(R.name), "state" = state, "color" = initial(R.color), "description" = initial(R.description), "metaRate" = T, "overD" = initial(R.overdose_threshold), "addicD" = initial(R.addiction_threshold))
+=======
+			analyze_vars = list("name" = initial(R.name), "state" = state, "color" = initial(R.color), "description" = initial(R.description), "metaRate" = T, "overD" = initial(R.overdose_threshold), "pH" = initial(R.ph))
+>>>>>>> ef80ed1... Addiction rework (#56923)
 			screen = "analyze"
 			return TRUE
 
@@ -569,6 +573,28 @@
 			container.lefthand_file = style["lefthand_file"]
 			container.righthand_file = style["righthand_file"]
 
+<<<<<<< HEAD
+=======
+
+//Checks to see if the target reagent is being created (reacting) and if so prevents transfer
+//Only prevents reactant from being moved so that people can still manlipulate input reagents
+/obj/machinery/chem_master/proc/check_reactions(datum/reagent/reagent, datum/reagents/holder)
+	if(!reagent)
+		return FALSE
+	var/canMove = TRUE
+	for(var/e in holder.reaction_list)
+		var/datum/equilibrium/E = e
+		if(E.reaction.reaction_flags & REACTION_COMPETITIVE)
+			continue
+		for(var/result in E.reaction.required_reagents)
+			var/datum/reagent/R = result
+			if(R == reagent.type)
+				canMove = FALSE
+	if(!canMove)
+		say("Cannot move arrested chemical reaction reagents!")
+	return canMove
+
+>>>>>>> ef80ed1... Addiction rework (#56923)
 /**
  * Machine that allows to identify and separate reagents in fitting container
  * as well as to create new containers with separated reagents in it.
