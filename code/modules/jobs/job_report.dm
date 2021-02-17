@@ -43,6 +43,11 @@
 	data["livingTime"] = play_records[EXP_TYPE_LIVING]
 	data["ghostTime"] = play_records[EXP_TYPE_GHOST]
 
+<<<<<<< HEAD
+=======
+	data["isAdmin"] = check_rights(R_ADMIN, show_msg = FALSE)
+
+>>>>>>> ecb2a4e... Fixes admin rights message when player attempts to open playtime panel (#56951)
 	return data
 
 #undef JOB_REPORT_MENU_FAIL_REASON_TRACKING_DISABLED
