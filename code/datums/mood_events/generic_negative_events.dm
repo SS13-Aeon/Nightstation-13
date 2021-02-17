@@ -285,3 +285,55 @@
 /datum/mood_event/bald
 	description ="<span class='warning'>I need something to cover my head...</span>\n"
 	mood_change = -3
+<<<<<<< HEAD
+=======
+
+/datum/mood_event/bad_touch
+	description = "<span class='warning'>I don't like when people touch me.</span>\n"
+	mood_change = -3
+	timeout = 4 MINUTES
+
+/datum/mood_event/very_bad_touch
+	description = "<span class='warning'>I really don't like when people touch me.</span>\n"
+	mood_change = -5
+	timeout = 4 MINUTES
+
+/datum/mood_event/noogie
+	description = "<span class='warning'>Ow! This is like space high school all over again...</span>\n"
+	mood_change = -2
+	timeout = 60 SECONDS
+
+/datum/mood_event/noogie_harsh
+	description = "<span class='warning'>OW!! That was even worse than a regular noogie!</span>\n"
+	mood_change = -4
+	timeout = 60 SECONDS
+
+/datum/mood_event/aquarium_negative
+	description = "<span class='warning'>All the fish are dead...</span>\n"
+	mood_change = -3
+	timeout = 90 SECONDS
+
+/datum/mood_event/tail_lost
+	description = "<span class='boldwarning'>My tail!! Why?!</span>\n"
+	mood_change = -8
+	timeout = 10 MINUTES
+
+/datum/mood_event/tail_balance_lost
+	description = "<span class='warning'>I feel off-balance without my tail.</span>\n"
+	mood_change = -2
+
+/datum/mood_event/tail_regained_right
+	description = "<span class='warning'>My tail is back, but that was traumatic...</span>\n"
+	mood_change = -2
+	timeout = 5 MINUTES
+
+/datum/mood_event/tail_regained_wrong
+	description = "<span class='boldwarning'>Is this some kind of sick joke?! This is NOT the right tail.</span>\n"
+	mood_change = -12 // -8 for tail still missing + -4 bonus for being frakenstein's monster
+	timeout = 5 MINUTES
+
+/datum/mood_event/burnt_wings
+	description = "<span class='boldwarning'>MY PRECIOUS WINGS!!</span>\n"
+	mood_change = -10
+	timeout = 10 MINUTES
+>>>>>>> f9a140f... Tailed species now gain a negative moodlet for having their tail lost (#56959)
