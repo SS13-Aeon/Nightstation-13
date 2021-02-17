@@ -215,8 +215,14 @@
 /obj/machinery/door/proc/try_to_crowbar(obj/item/I, mob/user)
 	return
 
+<<<<<<< HEAD
 /obj/machinery/door/attackby(obj/item/I, mob/user, params)
 	if(user.a_intent != INTENT_HARM && (I.tool_behaviour == TOOL_CROWBAR || istype(I, /obj/item/fireaxe)))
+=======
+/obj/machinery/door/attackby(obj/item/I, mob/living/user, params)
+	var/list/modifiers = params2list(params)
+	if((!user.combat_mode || LAZYACCESS(modifiers, RIGHT_CLICK)) && (I.tool_behaviour == TOOL_CROWBAR || istype(I, /obj/item/fireaxe)))
+>>>>>>> d40732f... you can now open airlocks and firedoors and stuff with a crowbar on combat mode by right clicking (#56960)
 		var/forced_open = FALSE
 		if(istype(I, /obj/item/crowbar))
 			var/obj/item/crowbar/C = I
