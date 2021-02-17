@@ -693,7 +693,11 @@ DEFINE_BITFIELD(turret_flags, list(
 	installation = null
 	always_up = 1
 	use_power = NO_POWER_USE
+<<<<<<< HEAD
 	has_cover = 0
+=======
+	has_cover = FALSE
+>>>>>>> 4d40a03... Fixes an incorrectly set variable in portaturret code that broke all syndicate shuttle turrets (#56941)
 	scan_range = 9
 	req_access = list(ACCESS_SYNDICATE)
 	mode = TURRET_LETHAL
