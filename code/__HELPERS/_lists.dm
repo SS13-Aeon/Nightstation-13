@@ -19,12 +19,28 @@
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)
 #define LAZYSET(L, K, V) if(!L) { L = list(); } L[K] = V;
 #define LAZYLEN(L) length(L)
+<<<<<<< HEAD
 #define LAZYCLEARLIST(L) if(L) L.Cut()
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
 #define reverseList(L) reverseRange(L.Copy())
 #define LAZYADDASSOC(L, K, V) if(!L) { L = list(); } L[K] += list(V);
 #define LAZYREMOVEASSOC(L, K, V) if(L) { if(L[K]) { L[K] -= V; if(!length(L[K])) L -= K; } if(!length(L)) L = null; }
 #define LAZYACCESSASSOC(L, I, K) L ? L[I] ? L[I][K] ? L[I][K] : null : null : null
+=======
+///Sets a list to null
+#define LAZYNULL(L) L = null
+#define LAZYADDASSOC(L, K, V) if(!L) { L = list(); } L[K] += V;
+///This is used to add onto lazy assoc list when the value you're adding is a /list/. This one has extra safety over lazyaddassoc because the value could be null (and thus cant be used to += objects)
+#define LAZYADDASSOCLIST(L, K, V) if(!L) { L = list(); } L[K] += list(V);
+#define LAZYREMOVEASSOC(L, K, V) if(L) { if(L[K]) { L[K] -= V; if(!length(L[K])) L -= K; } if(!length(L)) L = null; }
+#define LAZYACCESSASSOC(L, I, K) L ? L[I] ? L[I][K] ? L[I][K] : null : null : null
+#define QDEL_LAZYLIST(L) for(var/I in L) qdel(I); L = null;
+//These methods don't null the list
+#define LAZYCOPY(L) (L ? L.Copy() : list() ) //Use LAZYLISTDUPLICATE instead if you want it to null with no entries
+#define LAZYCLEARLIST(L) if(L) L.Cut() // Consider LAZYNULL instead
+#define SANITIZE_LIST(L) ( islist(L) ? L : list() )
+#define reverseList(L) reverseRange(L.Copy())
+>>>>>>> ef80ed1... Addiction rework (#56923)
 
 /// Passed into BINARY_INSERT to compare keys
 #define COMPARE_KEY __BIN_LIST[__BIN_MID]

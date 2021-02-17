@@ -1039,6 +1039,12 @@
 	glass_name = "glass of welder fuel"
 	glass_desc = "Unless you're an industrial tool, this is probably not safe for consumption."
 	penetrates_skin = NONE
+<<<<<<< HEAD
+=======
+	ph = 4
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	addiction_types = list(/datum/addiction/alcohol = 4)
+>>>>>>> ef80ed1... Addiction rework (#56923)
 
 /datum/reagent/fuel/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	. = ..()
@@ -1119,6 +1125,12 @@
 	description = "Impedrezene is a narcotic that impedes one's ability by slowing down the higher brain cell functions."
 	color = "#E07DDD" // pink = happy = dumb
 	taste_description = "numbness"
+<<<<<<< HEAD
+=======
+	ph = 9.1
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	addiction_types = list(/datum/addiction/opiods = 10)
+>>>>>>> ef80ed1... Addiction rework (#56923)
 
 /datum/reagent/impedrezene/on_mob_life(mob/living/carbon/M)
 	M.jitteriness = max(M.jitteriness-5,0)
@@ -1283,6 +1295,12 @@
 	metabolization_rate = REAGENTS_METABOLISM * 0.5 // Because stimulum/nitryl/freon/hypernoblium are handled through gas breathing, metabolism must be lower for breathcode to keep up
 	color = "E1A116"
 	taste_description = "sourness"
+<<<<<<< HEAD
+=======
+	ph = 1.8
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	addiction_types = list(/datum/addiction/stimulants = 14)
+>>>>>>> ef80ed1... Addiction rework (#56923)
 
 /datum/reagent/stimulum/on_mob_metabolize(mob/living/L)
 	..()
@@ -1588,6 +1606,11 @@
 	reagent_state = LIQUID
 	color = "#2D2D2D"
 	taste_description = "oil"
+<<<<<<< HEAD
+=======
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	addiction_types = null
+>>>>>>> ef80ed1... Addiction rework (#56923)
 
 /datum/reagent/stable_plasma
 	name = "Stable Plasma"

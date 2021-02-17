@@ -383,6 +383,12 @@
 	color = "#E700E7" // rgb: 231, 0, 231
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	taste_description = "mushroom"
+<<<<<<< HEAD
+=======
+	ph = 11
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	addiction_types = list(/datum/addiction/hallucinogens = 12)
+>>>>>>> ef80ed1... Addiction rework (#56923)
 
 /datum/reagent/drug/mushroomhallucinogen/on_mob_life(mob/living/carbon/M)
 	if(!M.slurring)

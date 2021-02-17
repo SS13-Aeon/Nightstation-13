@@ -60,10 +60,6 @@
 	var/chem_temp = 150
 	/// unused
 	var/last_tick = 1
-	/// see [/datum/reagents/proc/metabolize] for usage
-	var/addiction_tick = 1
-	/// currently addicted reagents
-	var/list/datum/reagent/addiction_list
 	/// various flags, see code\__DEFINES\reagents.dm
 	var/flags
 
@@ -81,7 +77,6 @@
 /datum/reagents/Destroy()
 	. = ..()
 	//We're about to delete all reagents, so lets cleanup
-	addiction_list = null
 	for(var/reagent in reagent_list)
 		var/datum/reagent/R = reagent
 		qdel(R)
@@ -161,9 +156,52 @@
 	var/max_volume = 0
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
+<<<<<<< HEAD
 		if(R.volume > max_volume)
 			max_volume = R.volume
 			name = R.name
+=======
+		var/matches = 0
+		// Switch between how we check the reagent type
+		if(strict)
+			if(R.type == reagent_type)
+				matches = 1
+		else
+			if(istype(R, reagent_type))
+				matches = 1
+		// We found a match, proceed to remove the reagent. Keep looping, we might find other reagents of the same type.
+		if(matches)
+			// Have our other proc handle removement
+			has_removed_reagent = remove_reagent(R.type, amount, safety)
+
+	return has_removed_reagent
+
+/// Fuck this one reagent
+/datum/reagents/proc/del_reagent(reagent)
+	var/list/cached_reagents = reagent_list
+	for(var/_reagent in cached_reagents)
+		var/datum/reagent/R = _reagent
+		if(R.type == reagent)
+			if(isliving(my_atom))
+				if(R.metabolizing)
+					R.metabolizing = FALSE
+					R.on_mob_end_metabolize(my_atom)
+				R.on_mob_delete(my_atom)
+
+			reagent_list -= R
+			LAZYREMOVE(previous_reagent_list, R.type)
+			qdel(R)
+			update_total()
+			SEND_SIGNAL(src, COMSIG_REAGENTS_DEL_REAGENT, reagent)
+	return TRUE
+
+//Converts the creation_purity to purity
+/datum/reagents/proc/uncache_creation_purity(id)
+	var/datum/reagent/R = has_reagent(id)
+	if(!R)
+		return
+	R.purity = R.creation_purity
+>>>>>>> ef80ed1... Addiction rework (#56923)
 
 	return name
 
@@ -404,6 +442,7 @@
 							R.overdosed = TRUE
 							need_mob_update += R.overdose_start(C)
 							log_game("[key_name(C)] has started overdosing on [R.name] at [R.volume] units.")
+<<<<<<< HEAD
 					var/is_addicted_to = cached_addictions && is_type_in_list(R, cached_addictions)
 					if(R.addiction_threshold)
 						if(R.volume >= R.addiction_threshold && !is_addicted_to)
@@ -443,6 +482,15 @@
 					else
 						SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
 		addiction_tick++
+=======
+					for(var/addiction in R.addiction_types)
+						C.mind?.add_addiction_points(addiction, R.addiction_types[addiction] * REAGENTS_METABOLISM)
+
+					if(R.overdosed)
+						need_mob_update += R.overdose_process(C)
+
+				need_mob_update += R.on_mob_life(C)
+>>>>>>> ef80ed1... Addiction rework (#56923)
 	if(C && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		C.updatehealth()
 		C.update_stamina()
