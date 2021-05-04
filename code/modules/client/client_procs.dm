@@ -316,10 +316,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		set_macros()
 
 	// Initialize tgui panel
-	tgui_panel.initialize()
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
-
+	tgui_panel.initialize()
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -446,6 +445,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	return ..()
 
 /client/Destroy()
+<<<<<<< HEAD
+=======
+	if(mob)
+		var/stealth_admin = mob.client?.holder?.fakekey
+		var/announce_join = mob.client?.prefs?.broadcast_login_logout
+		if (!stealth_admin)
+			deadchat_broadcast(" has disconnected.", "<b>[mob][mob.get_realname_string()]</b>", follow_target = mob, turf_target = get_turf(mob), message_type = DEADCHAT_LOGIN_LOGOUT, admin_only=!announce_join)
+
+>>>>>>> a6e60e4... tgui 4.3 (#56080)
 	GLOB.clients -= src
 	GLOB.directory -= ckey
 	log_access("Logout: [key_name(src)]")
