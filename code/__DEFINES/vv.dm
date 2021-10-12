@@ -84,6 +84,11 @@
 #define VV_HK_TRIGGER_EXPLOSION "explode"
 #define VV_HK_AUTO_RENAME "auto_rename"
 #define VV_HK_RADIATE "radiate"
+<<<<<<< HEAD
+=======
+#define VV_HK_EDIT_FILTERS "edit_filters"
+#define VV_HK_ADD_AI "add_ai"
+>>>>>>> cb01640... Filterrific! (#55246)
 
 // /obj
 #define VV_HK_OSAY "osay"
