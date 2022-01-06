@@ -7,7 +7,12 @@
 	icon = 'ICON FILENAME' 			(defaults to 'icons/turf/areas.dmi')
 	icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
 	requires_power = FALSE 				(defaults to true)
+<<<<<<< HEAD:code/game/area/Space_Station_13_areas.dm
 	ambientsounds = list()				(defaults to GENERIC from sound.dm. override it as "ambientsounds = list('sound/ambience/signal.ogg')" or using another define.
+=======
+	ambience_index = AMBIENCE_GENERIC   (picks the ambience from an assoc list in ambience.dm)
+	ambientsounds = list()				(defaults to ambience_index's assoc on Initialize(). override it as "ambientsounds = list('sound/ambience/signal.ogg')" or by changing ambience_index)
+>>>>>>> 92902a7... Adds a new security bounty and tweaks existing security bounties. (#55952):code/game/area/space_station_13_areas.dm
 
 NOTE: there are two lists of areas in the end of this file: centcom and station itself. Please maintain these lists valid. --rastaf0
 
@@ -78,7 +83,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Maintenance
 
 /area/maintenance
+<<<<<<< HEAD:code/game/area/Space_Station_13_areas.dm
 	ambientsounds = MAINTENANCE
+=======
+	name = "Generic Maintenance"
+	ambience_index = AMBIENCE_MAINT
+>>>>>>> 92902a7... Adds a new security bounty and tweaks existing security bounties. (#55952):code/game/area/space_station_13_areas.dm
 	area_flags = BLOBS_ALLOWED | UNIQUE_AREA
 	airlock_wires = /datum/wires/airlock/maint
 	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
@@ -251,6 +261,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
+/area/hallway/primary
+	name = "Primary Hallway"
+
 /area/hallway/primary/aft
 	name = "Aft Primary Hallway"
 	icon_state = "hallA"
@@ -370,6 +383,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Crew
 
 /area/crew_quarters
+	name = "Crew Quarters"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/crew_quarters/dorms
