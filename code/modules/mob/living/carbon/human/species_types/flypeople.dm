@@ -7,6 +7,11 @@
 	meat = /obj/item/food/meat/slab/human/mutant/fly
 	disliked_food = null
 	liked_food = GROSS
+<<<<<<< HEAD
+=======
+	mutanteyes = /obj/item/organ/eyes/fly
+	toxic_food = NONE
+>>>>>>> 102fdf8... Flypeople can get flashed from any direction (#55724)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/fly
 	payday_modifier = 0.75
